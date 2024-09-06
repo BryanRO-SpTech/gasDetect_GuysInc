@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entregável Calculadora Financeira 2</title>
+</head>
+<body>
+
+  <h1>Calculadora Financeira 2</h1>
+
+  <h2>Melhora na Eficiência Operacional</h2>
+
+  <span>Quantidade de matéria-prima desperdiçada (em kg)</span> 
+  <input type="text" name="" id="ipt_materia">
+  <br><br>
+  <span>Custo por kg da matéria-prima</span>
+  <input type="	" name="" id="ipt_custoKg">
+  <br><br>
+  <span>Número de paradas de produção por mês</span>
+  <input type="text" name="" id="ipt_paradas">
+  <br><br>
+  <span>Custo por hora de parada</span>
+  <input type="text" name="" id="ipt_custoHora">
+  <br><br>
+  <button onclick="Calcular()">Calcular Ganho</button>
+  <br><br>
+  <div id="div_mensagem"></div>
+ 
+</body>
+</html>
+
+<script>
+
+function Calcular() {
+
+var materia = Number(ipt_materia.value);
+var custoKg = Number(ipt_custoKg.value);
+var paradas = Number(ipt_paradas.value);
+var custoHora = Number(ipt_custoHora.value);
+
+var ganhoMateriaPrima = materia * custoKg;
+var ganhoParadas = paradas * custoHora;
+
+var ganhoAnual = (ganhoMateriaPrima + ganhoParadas) * 12;
+
+div_mensagem.innerHTML = `O seu lucro anual com nosso produto será 
+de aproximadamente R$${ganhoAnual}`;
+
+}
+
+
+</script>

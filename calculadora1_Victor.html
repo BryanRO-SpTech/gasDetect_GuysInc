@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entregável Calculadora Financeira 1</title>
+</head>
+<body>
+
+    <h1>Calculadora Financeira</h1>
+
+    <span>Quantidade de gás vazando (em litros)</span>
+    <input type="text" name="" id="ipt_vazando"> <br><br>
+
+    <span>Preço do gás (por litro)</span>
+    <input type="text" name="" id="ipt_preco"> <br><br>
+
+    <span>Número de dias que ocorre o vazamento (dentro de 1 mês)</span>
+    <input type="number" name="" id="ipt_dias"> <br><br>
+
+    <button onclick="Calcular()">Calcular Perda</button> <br><br>
+
+    <div id="div_mensagem"></div>
+
+    <script>
+
+        function Calcular() {
+
+            var vazando = ipt_vazando.value;
+            var preco = ipt_preco.value;
+            var dias = ipt_dias.value;
+
+            var perdaMensal = vazando * preco * dias;
+            var perdaAnual = perdaMensal * 12;
+
+
+            div_mensagem.innerHTML = `Sua perda anual foi de aproximadamente R$${perdaAnual}`;
+
+        }
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+    
+</body>
+</html>
