@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Financeira</title>
+</head>
+<body>
+    
+    <h1>Simulador Financeiro GasDetect</h1>
+    <br><br>
+    Qual é o custo médio de recuperação por incidente na sua indústria?
+    
+    <input type="number" id="ipt_custoPorUm">
+    <br><br>
+    Quantos incidentes com gases inflamáveis ocorrem, em média, por ano na sua indústria? 
+    
+    <input type="number" id="ipt_qtdIncidentes">
+    <br><br>
+    Quantas áreas criticas existem na sua indústria?
+    
+    <input type="number" id="ipt_areas">
+    <br></br>
+    Quantos metros quadrados aproximadamente cada área possui?
+    
+    <input type="number" id="ipt_metrosArea">
+    <br><br>
+    Quantos sensores você estaria disposto a instalar?
+    
+    <input type="number" id="ipt_sensores">
+    <br><br>
+    <button onclick="calcular()">Calcular</button>
+    <div id="div_msg"></div>
+
+    
+</body>
+</html>
+
+<script>
+    var economiaComSolucao = 0;
+    var roi =0;
+    var economiaComSolucaoCliente =0;
+    function calcular(){
+        var custoPorUmIncidente = Number(ipt_custoPorUm.value);
+        var qtdIncidentes = Number(ipt_qtdIncidentes.value);
+        var sensores = Number(ipt_sensores.value);
+        var areas = Number(ipt_areas.value);
+        var metrosArea = Number(ipt_metrosArea.value);
+
+        //vamos considerar cada sensor como 195R$
+        var custoPotencialPorAno = qtdIncidentes * custoPorUmIncidente;
+        if(custoPotencialPorAno >= 20000){
+        // a solução pretende diminuir em até 50 por cento os incidentes, então calculamos
+        //50% dos custos anuais para acharmos a economia
+        var quantidadeSensoresIdeal = (areas * metrosArea) / 30;
+        var porcentagemClienteSensores = sensores * 50 / quantidadeSensoresIdeal;
+       
+        if(porcentagemClienteSensores > 50){
+            porcentagemClienteSensores = 50;
+        }else if (porcentagemClienteSensores < 0){
+            porcentagemClienteSensores =0;
+        }
+        
+        economiaComSolucao = custoPotencialPorAno * 0.5;
+        economiaComSolucaoCliente = custoPotencialPorAno * (porcentagemClienteSensores/100);
+        //vamos considerar o custo da solução como 10000 reais
+        //calculamos a  quantia do retorno sobre o investimento, diminuindo na economia o custo do projeto, dividido pelo prorpio custo, vezes 100
+        var precoAdicionalSensores = 195 * quantidadeSensoresIdeal;
+        var precoAdicionalSensoresCliente = 195 * sensores;
+        var custoSolucao = 10000 + precoAdicionalSensores;
+        var custoSolucaoCliente = 10000 + precoAdicionalSensoresCliente;
+        roi = ((economiaComSolucao - custoSolucao)/custoSolucao) * 100;
+        var roiCliente = ((economiaComSolucao - custoSolucaoCliente)/custoSolucaoCliente) * 100;
+        //adicionando uma mensagem na tela com um botao que mostra a economia e o roi, chamadno a função abaixo
+        div_msg.innerHTML = `<h1>PREJUÍZOS</h1><h1>Seu gasto por incidente é de <span style="color:red">R$${custoPorUmIncidente}</span><br>O gasto potencial anual com os incidentes em sua empresa<br> Considerando que você tem <span style="color:blue">${qtdIncidentes}</span> incidentes por ano é de <span style="color:red">R$${custoPotencialPorAno}</span></h1>
+        `;
+        var economiaMes = economiaComSolucao/12;
+
+        if(roi >= roiCliente){
+                div_msg.innerHTML += `<h1>BENEFÍCIOS PARA ${Math.round(quantidadeSensoresIdeal)} SENSORES INSTALADOS(RECOMENDADO)</h1>
+            <h1>Utilizando ${Math.round(quantidadeSensoresIdeal)} sensores, para cobrir ${areas} áreas criticas, cada uma tendo ${metrosArea} m³, totalizando em ${areas * metrosArea} m³</h1><h1>A redução de custos seria de 50%</h1><h1>o que nos levaria a uma economia de R$${economiaComSolucao} por ano</h1>`;
+
+
+            div_msg.innerHTML += `<h1 style="color:blue">ROI(retorno sobre investimento) de ${roi.toFixed(2)}%</h1>`
+
+        }else{
+        div_msg.innerHTML += `<h1>BENEFÍCIOS PARA ${sensores} SENSORES INSTALADOS</h1>
+        <h1>Utilizando ${sensores} sensores, para cobrir ${areas} áreas criticas, cada uma tendo ${metrosArea} m³, totalizando em ${areas * metrosArea} m³</h1><h1>A redução de custos seria de ${porcentagemClienteSensores.toFixed(2)}%</h1><h1>o que nos levaria a uma economia de R$${economiaComSolucaoCliente} por ano</h1>`;
+
+
+        div_msg.innerHTML += `<h1 style="color:blue">ROI(retorno sobre investimento) de ${roiCliente.toFixed(2)}%</h1>`
+        }
+
+       
+        }
+    }
+</script>
