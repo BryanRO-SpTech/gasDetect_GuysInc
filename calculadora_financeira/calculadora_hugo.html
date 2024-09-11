@@ -21,9 +21,7 @@
     <br>
     <input type="number" id="ipt_perProcessos">
     <br></br>
-    Qual é o custo de um sistema de controle de gases inflamáveis que você considera implementar?
-    <br>
-    <input type="number" id="ipt_considera">
+    
     <br><br>
     <button onclick="calcular()">Calcular</button>
     <div id="div_msg"></div>
@@ -46,7 +44,8 @@
         economiaComSolucao = custoPotencialPorAno * 0.5;
         //vamos considerar o custo da solução como 10000 reais
         //calculamos a  quantia do retorno sobre o investimento, diminuindo na economia o custo do projeto, dividido pelo prorpio custo, vezes 100
-        roi = ((economiaComSolucao - 10000)/10000) * 100;
+        var custoDaSolucao = 10000;
+        roi = ((economiaComSolucao - custoDaSolucao)/custoDaSolucao) * 100;
         //adicionando uma mensagem na tela com um botao que mostra a economia e o roi, chamadno a função abaixo
         div_msg.innerHTML = `<h1>O gasto potencial anual com os incidentes em sua empresa é de <span style="color:red">R$${custoPotencialPorAno}</span></h1>
         <button onclick="mostrarEconomiaERoi()">Mostrar Economia e ROI</button>`;
