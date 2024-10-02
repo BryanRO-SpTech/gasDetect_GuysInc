@@ -6,8 +6,15 @@
     padding: 0;
     box-sizing: border-box;
 }
+:root {
+    --tamanho-footer: 80px;
+    --tamanho-banner: calc(100vh - var(--tamanho-footer) - 2px);
+}
 body {
     font-family: 'Rubik', sans-serif;
+}
+.fundo_img {
+    height: var(--tamanho-banner);
     background-image: url(../assets/img/Fundo1page.png);
     background-size: cover;
     background-position: center;
@@ -75,18 +82,6 @@ button:active {
     box-shadow: none;
     transform: scale(0.98);
 } 
-/* .card {
-    background-color: #d7d7d7;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    margin-left: 5em;
-    margin-right: 34em;
-    margin-top: 10em;
-    height: 14em;
-} */
 .card #mensagem {
     color: #120823;
 }
@@ -101,8 +96,7 @@ button:active {
 }  
 .card {
     text-align: center;
-    /* padding-top: 50px; */
-    /* border-radius: 10px; */
+    border-radius: 10px;
     border: 3px solid rgb(255, 255, 255);
     transform-style: preserve-3d;
     background: linear-gradient(135deg,#0000 18.75%,#f3f3f3 0 31.25%,#0000 0),
@@ -119,8 +113,7 @@ button:active {
     transform: rotate3d(0.5, 1, 0, 30deg);
 }  
 .content-box {
-    /* background: rgba(4, 193, 250, 0.732); */
-    /* border-radius: 10px 100px 10px 10px; */
+    border-radius: 10px 100px 10px 10px;
     transition: all 0.5s ease-in-out;
     padding: 60px 25px 25px 25px;
     transform-style: preserve-3d;
@@ -155,7 +148,7 @@ button:active {
     font-size: 9px;
     text-transform: uppercase;
     color: rgb(7, 185, 255);
-    /* border-radius: 5px; */
+    border-radius: 5px;
     background: white;
     padding: 0.5rem 0.7rem;
     transition: all 0.5s ease-in-out;

@@ -7,34 +7,78 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="../assets/img/GUYS-logo.png" alt="Logo Guys inc.">
-            <h1>GUYS inc.</h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#quemSomos">QUEM SOMOS?</a></li>
-                <li><a href="#solucao">SOLUÇÃO</a></li>
-                <li><a href="#simulador">SIMULADOR</a></li>
-                <li><a href="#faleConosco">FALE CONOSCO</a></li>
-            </ul>
-        </nav>
-        <div class="login-buttons">
-            <button>Cadastro</button>
-            <button id="bt">login</button>
-        </div>
-    </header>
-    <div class="parent">
-        <div class="card">
-            <div class="content-box">
-                <section>
-                    <h2 class="card-title">SUA EMPRESA MERECE <span class="blue-text">SEGURANÇA</span></h2>
-                    <p class="card-content">Nosso produto faz com que você não precise se preocupar com gases inflamáveis da sua empresa!</p>
-                    <p class="card-content">E ainda melhor, tudo por metade do preço de mercado. Não acredita? <a href="#solucao" class="blue-text" id="see-more">saiba mais</a></p>
-                </section>
-            </div>    
+    <div class="fundo_img">
+        <header>
+            <div class="logo">
+                <img src="../assets/img/GUYS-logo.png" alt="Logo Guys inc.">
+                <h1>GUYS inc.</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#quemSomos">QUEM SOMOS?</a></li>
+                    <li><a href="#solucao">SOLUÇÃO</a></li>
+                    <li><a href="#simulador">SIMULADOR</a></li>
+                    <li><a href="#faleConosco">FALE CONOSCO</a></li>
+                </ul>
+            </nav>
+            <div class="login-buttons">
+                <button>Cadastro</button>
+                <button id="bt">login</button>
+            </div>
+        </header>
+        <div class="parent">
+            <div class="card">
+                <div class="content-box">
+                    <section>
+                        <h2 class="card-title">SUA EMPRESA MERECE <span class="blue-text">SEGURANÇA</span></h2>
+                        <p class="card-content">Nosso produto faz com que você não precise se preocupar com gases inflamáveis da sua empresa!</p>
+                        <p class="card-content">E ainda melhor, tudo por metade do preço de mercado. Não acredita? <a href="#solucao" class="blue-text" id="see-more">saiba mais</a></p>
+                    </section>
+                </div>    
+            </div>
         </div>
     </div>
+    <section>
+        <div class="container">
+            <h2>ESSA É A NOSSA <span class="blue-text">SOLUÇÃO</span></h2>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <img src="../assets/img/Gas_Detetc.png" alt="Imagem gás detect">
+            <h2><span class="blue-text">UNO R3</span></h2>
+            <p>Utilizaremos o Arduino Uno e o sensor MQ-2 para captar dados. Em seguida, essas informações serão armazenadas de forma segura. Por fim, transformaremos os dados em informações fáceis de entender para o usuário por meio do nosso dashboard.</p>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <p>Conheça nosso <span class="blue-text">dashboard!</span> Aqui você vai receber toda a informaçãonecessária para seu negócio funcionar como o planejado</p>
+        </div>
+    </section>
+    <section>
+        <div class="simulador-box">
+            <h2>SIMULADOR FINANCEIRO</h2>
+            <form id="simuladorForm">
+                <label for="Input1">Informe o gasto por incidente na sua empresa:</label>
+                <input type="number" id="gastos" required>
+                <label for="incidentes">Quantos incidentes ocorrem por ano:</label>
+                <input type="number" id="incidentes" required>
+                
+                <label for="percentual">Percentual onde gases inflamáveis estão presentes:</label>
+                <input type="number" id="percentual" required>
+                
+                <a href="#simulador">CALCULAR</a>
+            </form>
+        </div>
+
+        <div class="info-box">
+            <p>Aqui você pode calcular os custos e resultados da nossa solução comparando com seu produto atual ou o custo médio do mercado.</p>
+            <div class="mq2">
+                <span class="blue-text">M</span> <br>
+                <span class="blue-text">Q</span> <br>
+                <span class="blue-text">2</span>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
