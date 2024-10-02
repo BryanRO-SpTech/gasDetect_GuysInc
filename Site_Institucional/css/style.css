@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Rubik', sans-serif;
+    background-image: url(../assets/img/Fundo1page.png);
+    background-size: cover;
+    background-position: center;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+    color: white;
+}
+header h1 {
+    font-size: 1.5em;
+}
+img{
+    width: 120px;
+    height: 100px;
+    background-size: cover;
+}
+.logo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2em;
+}
+nav ul{
+    list-style: none;
+    display: flex;
+    gap: 5em;
+}
+nav ul li a {
+    color: #120823;
+    text-decoration: none;
+    font-weight: bold;
+}
+.login-buttons button {
+    margin-left: 1em;
+    background-color: #262A69;
+    color: white;
+    border: none;
+    padding: 0.5em 1.5em;
+    border-radius: 5px;
+}
+button {
+    padding: 12.5px 30px;
+    border: 0;
+    border-radius: 100px;
+    background-color: #2ba8fb;
+    color: #ffffff;
+    font-weight: Bold;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+  
+button:hover {
+    background-color: #6fc5ff;
+    box-shadow: 0 0 20px #6fc5ff50;
+    transform: scale(1.1);
+}
+  
+button:active {
+    background-color: #3d94cf;
+    transition: all 0.25s;
+    -webkit-transition: all 0.25s;
+    box-shadow: none;
+    transform: scale(0.98);
+} 
+/* .card {
+    background-color: #d7d7d7;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    margin-left: 5em;
+    margin-right: 34em;
+    margin-top: 10em;
+    height: 14em;
+} */
+.card #mensagem {
+    color: #120823;
+}
+/* teste card */
+.parent {
+    width: 300px;
+    padding: 20px;
+    perspective: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}  
+.card {
+    text-align: center;
+    /* padding-top: 50px; */
+    /* border-radius: 10px; */
+    border: 3px solid rgb(255, 255, 255);
+    transform-style: preserve-3d;
+    background: linear-gradient(135deg,#0000 18.75%,#f3f3f3 0 31.25%,#0000 0),
+        repeating-linear-gradient(45deg,#f3f3f3 -6.25% 6.25%,#ffffff 0 18.75%);
+    background-size: 60px 60px;
+    background-position: 0 0, 0 0;
+    background-color: #f0f0f0;
+    width: 100%;
+    box-shadow: rgba(142, 142, 142, 0.3) 0px 30px 30px -10px;
+    transition: all 0.5s ease-in-out;
+}  
+.card:hover {
+    background-position: -100px 100px, -100px 100px;
+    transform: rotate3d(0.5, 1, 0, 30deg);
+}  
+.content-box {
+    /* background: rgba(4, 193, 250, 0.732); */
+    /* border-radius: 10px 100px 10px 10px; */
+    transition: all 0.5s ease-in-out;
+    padding: 60px 25px 25px 25px;
+    transform-style: preserve-3d;
+}  
+.content-box .card-title {
+    display: inline-block;
+    color: #120823;
+    font-size: 25px;
+    font-weight: 900;
+    transition: all 0.5s ease-in-out;
+    transform: translate3d(0px, 0px, 50px);
+}  
+.content-box .card-title:hover {
+    transform: translate3d(0px, 0px, 60px);
+}  
+.content-box .card-content {
+    margin-top: 10px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #120823;
+    transition: all 0.5s ease-in-out;
+    transform: translate3d(0px, 0px, 30px);
+} 
+.content-box .card-content:hover {
+    transform: translate3d(0px, 0px, 60px);
+}  
+.content-box .see-more {
+    cursor: pointer;
+    margin-top: 1rem;
+    display: inline-block;
+    font-weight: 900;
+    font-size: 9px;
+    text-transform: uppercase;
+    color: rgb(7, 185, 255);
+    /* border-radius: 5px; */
+    background: white;
+    padding: 0.5rem 0.7rem;
+    transition: all 0.5s ease-in-out;
+    transform: translate3d(0px, 0px, 20px);
+} 
+.content-box .see-more:hover {
+    transform: translate3d(0px, 0px, 60px);
+}
+.blue-text {
+    color: #00A0EB;
+}
