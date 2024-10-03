@@ -42,7 +42,7 @@
         Tempo médio de parada da fábrica por incidente (em horas):<br>
         <input type="number" id="ipt_tempoParada"><br><br>
 
-        Custo por hora de fábrica parada (em R$):<br>
+        Prejuízo por hora de fábrica parada (em R$):<br>
         <input type="number" id="ipt_custoParadaHora"><br> <br>
 
         <button onclick="calcular()">Calcular</button> <br> <br>
@@ -90,7 +90,7 @@
     function solucao(){
         div_mensagem.innerHTML += `<b>Economia com a solução GasDetect:</b> <br> <br>
                                 Com a implementação do nosso sistema, sua empresa pode obter um ganho financeiro de até <b>50%</b> <br> <br>
-                                💸 Considerando a média de 4 incidentes anuais você teria um lucro ao ANO de: <span class='ganhos'>${formatarDinheiro(economiaPerdas)}.</span> <br>
+                                💸 Considerando a média de ${incidentesAnuais} incidentes anuais você teria um lucro ao ANO de: <span class='ganhos'>${formatarDinheiro(economiaPerdas)}.</span> <br>
                                 📶 Ao adquirir a nossa solução pelos próximos 3 anos sua empresa obteria uma prospecção de  <span class='ganhos'>${formatarDinheiro(economiaPerdas*3)}.</span>`
     }
 
