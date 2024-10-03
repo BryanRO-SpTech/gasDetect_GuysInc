@@ -4,113 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GUYS Inc</title>
+    <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <div class="fundo_img">
-        <header>
-            <div class="logo">
-                <img src="../assets/img/GUYS-logo.png" alt="Logo Guys inc.">
-                <h1>GUYS inc.</h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#quemSomos">QUEM SOMOS?</a></li>
-                    <li><a href="#solucao">SOLUÇÃO</a></li>
-                    <li><a href="#simulador">SIMULADOR</a></li>
-                    <li><a href="#faleConosco">FALE CONOSCO</a></li>
-                </ul>
-            </nav>
-            <div class="login-buttons">
-                <button>Cadastro</button>
-                <button id="bt">login</button>
-            </div>
-        </header>
-        <div class="parent">
-            <div class="card">
-                <div class="content-box">
-                    <section>
-                        <h2 class="card-title">SUA EMPRESA MERECE <span class="blue-text">SEGURANÇA</span></h2>
-                        <p class="card-content">Nosso produto faz com que você não precise se preocupar com gases inflamáveis da sua empresa!</p>
-                        <p class="card-content">E ainda melhor, tudo por metade do preço de mercado. Não acredita? <a href="#solucao" class="blue-text" id="see-more">saiba mais</a></p>
-                    </section>
-                </div>    
-            </div>
+    <header>
+        <div class="logo">
+            <img src="../assets/img/GUYS-logo.png" alt="Logo Guys inc.">
+            <h1>GUYS inc.</h1>
         </div>
-    </div>
-    <section>
-        <div class="container">
-            <h2>ESSA É A NOSSA <span class="blue-text">SOLUÇÃO</span></h2>
-        </div>
-    </section>
-    <section>
-        <div class="container">
-            <img src="../assets/img/Gas_Detetc.png" alt="Imagem gás detect">
-            <h2><span class="blue-text">UNO R3</span></h2>
-            <p>Utilizaremos o Arduino Uno e o sensor MQ-2 para captar dados. Em seguida, essas informações serão armazenadas de forma segura. Por fim, transformaremos os dados em informações fáceis de entender para o usuário por meio do nosso dashboard.</p>
-        </div>
-    </section>
-    <section>
-        <div class="container">
-            <p>Conheça nosso <span class="blue-text">dashboard!</span> Aqui você vai receber toda a informaçãonecessária para seu negócio funcionar como o planejado</p>
-        </div>
-    </section>
-    <section>
-        <div class="simulador-box">
-            <h2>SIMULADOR FINANCEIRO</h2>
-            <form id="simuladorForm">
-                <label for="Input1">Informe o gasto por incidente na sua empresa:</label>
-                <input type="number" id="iptGastos" required>
-
-                <label for="incidentes">Quantos incidentes ocorrem por ano:</label>
-                <input type="number" id="iptIncidentes" required>
-                
-                <label for="percentual">Percentual onde gases inflamáveis estão presentes:</label>
-                <input type="number" id="iptPercentual" required>
-                
-                <a href="#simulador">CALCULAR</a>
-            </form>
-        </div>
-
-        <div class="info-box">
-            <p>Aqui você pode calcular os custos e resultados da nossa solução comparando com seu produto atual ou o custo médio do mercado.</p>
-            <div class="mq2">
-                <span class="blue-text">M</span> <br>
-                <span class="blue-text">Q</span> <br>
-                <span class="blue-text">2</span>
-            </div>
-        </div>
-    </section>
-    <section>
-        <div class="text-box">
-            <a href="#quemSomos"></a>
-            <h2>QUEM SÃO OS <span class="blue-text">GUYS?</span></h2>
-            <p>Nós da <span class="highlight">GUYS inc</span> queremos trazer o melhor dos dois mundos, tecnologia de ponta e um preço que cabe no bolso! Ao lado você pode conferir a lista de integrantes que desenvolveram nosso produto.</p>
-        </div>    
-        <div class="image-box">
-            <img src="../assets/img/img_quem-Guys.png" alt="Ilustração do GUYS">
-        </div>    
-    </section>
-    <section>
-        <h2>FALE CONOSCO</h2>
-        <a href="#faleConosco"></a>
-        <form id="faleConosco">
-            <label for="nome">Nome Completo:</label>
-            <input type="text" id="iptNome">
-
-            <label for="email">E-mail:</label>
-            <input type="text" id="iptEmail">
-
-            <label for="nomeEmpresa">Nome Empresa:</label>
-            <input type="text" id="iptNomeEmpresa">
-
-            <label for="Mensagem">Mensagem</label>
-            <input type="text" id="iptMensagem">
-
-            <button onclick="form()">Enviar</button>
-        </form>
-    </section>
-    <footer>
         <nav>
             <ul>
                 <li><a href="#quemSomos">QUEM SOMOS?</a></li>
@@ -119,6 +21,110 @@
                 <li><a href="#faleConosco">FALE CONOSCO</a></li>
             </ul>
         </nav>
-    </footer>
+        <div class="login-buttons">
+            <button>Cadastro</button>
+            <button id="bt">login</button>
+        </div>
+    </header>
+    <main>
+        <div class="fundo_img">
+            <div class="parent">
+                <div class="card">
+                    <div class="content-box">
+                        <section>
+                            <h2 class="card-title">A SUA EMPRESA MERECE <span class="blue-text">SEGURANÇA</span></h2>
+                            <p class="card-content">Nosso produto faz com que você não precise se preocupar com gases inflamáveis da sua empresa!</p>
+                            <p class="card-content">E ainda melhor, tudo por metade do preço de mercado. Não acredita? <a href="#solucao" class="blue-text" id="see-more">saiba mais</a></p>
+                        </section>
+                    </div>    
+                </div>
+            </div>
+        </div>
+        <section>
+            <div class="container">
+                <h2 class="solucao">ESSA É A NOSSA <span class="blue-text">SOLUÇÃO</span></h2>
+            </div>
+        </section>
+        <section>
+            <div class="container-2">
+                <img src="../assets/img/gas_detect_light.png" class="gasDetect" alt="Imagem gás detect">
+                <h2 class="title"><span class="blue-text">UNO R3</span></h2>
+                <p class="text-ardu">Utilizaremos o Arduino Uno e o sensor MQ-2 para captar dados. Em seguida, essas informações serão armazenadas de forma segura. Por fim, transformaremos os dados em informações fáceis de entender para o usuário por meio do nosso dashboard.</p>
+            </div>
+        </section>
+        <section>
+            <div class="container">
+                <p>Conheça nosso <span class="blue-text">dashboard!</span> Aqui você vai receber toda a informaçãonecessária para seu negócio funcionar como o planejado</p>
+            </div>
+        </section>
+        <section>
+            <div class="simulador-box">
+                <h2>SIMULADOR FINANCEIRO</h2>
+                <form id="simuladorForm">
+                    <label for="Input1">Informe o gasto por incidente na sua empresa:</label>
+                    <input type="number" id="iptGastos" required>
+    
+                    <label for="incidentes">Quantos incidentes ocorrem por ano:</label>
+                    <input type="number" id="iptIncidentes" required>
+                    
+                    <label for="percentual">Percentual onde gases inflamáveis estão presentes:</label>
+                    <input type="number" id="iptPercentual" required>
+                    
+                    <a href="#simulador">CALCULAR</a>
+                </form>
+            </div>
+    
+            <div class="info-box">
+                <p>Aqui você pode calcular os custos e resultados da nossa solução comparando com seu produto atual ou o custo médio do mercado.</p>
+                <div class="mq2">
+                    <span class="blue-text">M</span> <br>
+                    <span class="blue-text">Q</span> <br>
+                    <span class="blue-text">2</span>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="text-box">
+                <a href="#quemSomos"></a>
+                <h2>QUEM SÃO OS <span class="blue-text">GUYS?</span></h2>
+                <p>Nós da <span class="highlight">GUYS inc</span> queremos trazer o melhor dos dois mundos, tecnologia de ponta e um preço que cabe no bolso! Ao lado você pode conferir a lista de integrantes que desenvolveram nosso produto.</p>
+            </div>    
+            <div class="image-box">
+                <img src="../assets/img/img_quem-Guys.png" alt="Ilustração do GUYS">
+            </div>    
+        </section>
+        <section>
+            <h2>FALE CONOSCO</h2>
+            <a href="#faleConosco"></a>
+            <form id="faleConosco">
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="iptNome">
+    
+                <label for="email">E-mail:</label>
+                <input type="text" id="iptEmail">
+    
+                <label for="nomeEmpresa">Nome Empresa:</label>
+                <input type="text" id="iptNomeEmpresa">
+    
+                <label for="Mensagem">Mensagem</label>
+                <input type="text" id="iptMensagem">
+    
+                <button onclick="form()">Enviar</button>
+            </form>
+        </section>
+        <footer>
+            <nav>
+                <ul>
+                    <li><a href="#quemSomos">QUEM SOMOS?</a></li>
+                    <li><a href="#solucao">SOLUÇÃO</a></li>
+                    <li><a href="#simulador">SIMULADOR</a></li>
+                    <li><a href="#faleConosco">FALE CONOSCO</a></li>
+                </ul>
+            </nav>
+            <section>
+
+            </section>
+        </footer>
+    </main>
 </body>
 </html>

@@ -1,0 +1,13 @@
+:root {
+    --tamanho-footer: 80px;
+    --tamanho-header: 100px;
+    --tamanho-main: calc(100vh - var(--tamanho-header));
+}
+
+:root, :root[theme="ligth"] {
+    --cor-fundo: #f5f5f5;
+    --cor-texto: #120823;
+    --cor-secundaria: #262A69;
+    --cor-terciaria: #2ba8fb;
+    --cor-contraste: #ffffff;
+}

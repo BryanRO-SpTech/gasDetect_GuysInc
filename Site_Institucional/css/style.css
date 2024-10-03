@@ -1,59 +1,56 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-:root {
-    --tamanho-footer: 80px;
-    --tamanho-banner: calc(100vh - var(--tamanho-footer) - 2px);
-}
+
 body {
     font-family: 'Rubik', sans-serif;
-}
-.fundo_img {
-    height: var(--tamanho-banner);
-    background-image: url(../assets/img/Fundo1page.png);
-    background-size: cover;
-    background-position: center;
+    overflow: hidden;
 }
 header {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     padding: 1em;
-    color: white;
+    color: var(--cor-contraste);
+    position: fixed;
+    height: var(--tamanho-header);
+    z-index: 1;
+    width: 100%;
+    top: 0;
 }
 header h1 {
     font-size: 1.5em;
 }
-img{
+img {
     width: 120px;
     height: 100px;
     background-size: cover;
 }
-.logo{
+.logo {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 2em;
+    color: var(--cor-secundaria)
 }
-nav ul{
+nav ul {
     list-style: none;
     display: flex;
-    gap: 5em;
+    gap: 10em;
 }
 nav ul li a {
-    color: #120823;
+    color: var(--cor-texto);
     text-decoration: none;
     font-weight: bold;
 }
 .login-buttons button {
     margin-left: 1em;
-    background-color: #262A69;
-    color: white;
+    background-color: var(--cor-secundaria);
+    color: var(--cor-contraste);
     border: none;
     padding: 0.5em 1.5em;
     border-radius: 5px;
@@ -62,67 +59,75 @@ button {
     padding: 12.5px 30px;
     border: 0;
     border-radius: 100px;
-    background-color: #2ba8fb;
-    color: #ffffff;
-    font-weight: Bold;
+    background-color: var(--cor-terciaria);
+    color: var(--cor-contraste);
+    font-weight: bold;
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
 }
-  
 button:hover {
     background-color: #6fc5ff;
     box-shadow: 0 0 20px #6fc5ff50;
     transform: scale(1.1);
+    cursor: pointer;
 }
-  
 button:active {
     background-color: #3d94cf;
     transition: all 0.25s;
     -webkit-transition: all 0.25s;
     box-shadow: none;
     transform: scale(0.98);
-} 
+}
+main {
+    height: var(--tamanho-main);
+    margin-top: 100px;
+    overflow-y: scroll;
+}
+
+.fundo_img {
+    height: calc(100vh - 100px);
+    background-image: url(../assets/img/Fundo1page.png);
+    background-size: cover;
+    background-position: center;
+}
 .card #mensagem {
     color: #120823;
 }
 /* teste card */
 .parent {
-    width: 300px;
-    padding: 20px;
+    padding: 120px;
     perspective: 1000px;
+
+    width: 100%;
+    height: 100%;
+
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: start;
 }  
 .card {
-    text-align: center;
     border-radius: 10px;
-    border: 3px solid rgb(255, 255, 255);
     transform-style: preserve-3d;
-    background: linear-gradient(135deg,#0000 18.75%,#f3f3f3 0 31.25%,#0000 0),
-        repeating-linear-gradient(45deg,#f3f3f3 -6.25% 6.25%,#ffffff 0 18.75%);
-    background-size: 60px 60px;
-    background-position: 0 0, 0 0;
-    background-color: #f0f0f0;
+    background-color: #fffdfd81;
     width: 100%;
-    box-shadow: rgba(142, 142, 142, 0.3) 0px 30px 30px -10px;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;    
+    width: 750px;
+    height: 350px;
+    padding: 35px 30px;
 }  
 .card:hover {
     background-position: -100px 100px, -100px 100px;
-    transform: rotate3d(0.5, 1, 0, 30deg);
+    transform: rotate3d(1, 1, 0, 10deg);
 }  
 .content-box {
     border-radius: 10px 100px 10px 10px;
     transition: all 0.5s ease-in-out;
-    padding: 60px 25px 25px 25px;
     transform-style: preserve-3d;
 }  
 .content-box .card-title {
     display: inline-block;
     color: #120823;
-    font-size: 25px;
-    font-weight: 900;
+    font-size: 40px;
+    font-weight: 600;
     transition: all 0.5s ease-in-out;
     transform: translate3d(0px, 0px, 50px);
 }  
@@ -131,8 +136,8 @@ button:active {
 }  
 .content-box .card-content {
     margin-top: 10px;
-    font-size: 12px;
-    font-weight: 700;
+    font-size: 28px;
+    font-weight: 400;
     color: #120823;
     transition: all 0.5s ease-in-out;
     transform: translate3d(0px, 0px, 30px);
@@ -149,14 +154,38 @@ button:active {
     text-transform: uppercase;
     color: rgb(7, 185, 255);
     border-radius: 5px;
-    background: white;
+    background: var(--cor-contraste);
     padding: 0.5rem 0.7rem;
     transition: all 0.5s ease-in-out;
     transform: translate3d(0px, 0px, 20px);
-} 
+}
 .content-box .see-more:hover {
     transform: translate3d(0px, 0px, 60px);
 }
 .blue-text {
-    color: #00A0EB;
+    color: var(--cor-terciaria);
+}
+.container .solucao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.gasDetect {
+    justify-content: flex-start;
+    width: 20%;
+    height: 40%;
+}
+.container-2 .title {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 50%;
+}
+.text-ardu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
 }
