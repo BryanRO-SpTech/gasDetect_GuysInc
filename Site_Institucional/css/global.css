@@ -1,3 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Rubik', sans-serif;
+}
+
 :root {
     --tamanho-footer: 80px;
     --tamanho-header: 100px;
@@ -8,6 +20,8 @@
 :root, :root[theme="ligth"] {
     --cor-fundo: #f5f5f5;
     --cor-texto: #120823;
+    --cor-texto-secundario: #9FFFFF;
+    --cor-label-inputs-hover-botao: #65C5D7;
     --cor-secundaria: #262A69;
     --cor-terciaria: #2ba8fb;
     --cor-contraste: #ffffff;

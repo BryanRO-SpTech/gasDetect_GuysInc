@@ -1,0 +1,158 @@
+:root, :root[theme="ligth"] {
+    --background-filter-color: rgba(240, 248, 255, 0.11); 
+}
+
+body {
+    background-image: url("../assets/img/background_login.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+    height: 100vh;
+    width: 100vw;
+}
+
+.background-filter {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    z-index: -1;
+
+    background-color: var(--background-filter-color);
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.login-content {
+    background-color: var(--cor-secundaria);
+    width: 27%;
+    height: 70%;
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-content {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    width: 150px;
+    height: 150px;
+
+    border-radius: 50%;
+
+    background-color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    user-select: none;
+}
+
+.logo img {
+    height: 80px;
+}
+
+.message-content {
+    font-size: 1.4em;
+    width: 100%;
+    text-align: center;
+
+    color: var(--cor-texto-secundario);
+}
+
+.message-content h3 {
+    padding: 5px;
+}
+
+#login_form {
+    height: 35%;
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.label {
+    text-align: start;
+    width: 73%;
+
+    color: var(--cor-label-inputs-hover-botao);
+
+    font-weight: 700;
+    font-size: 18px;
+
+    pointer-events: none;
+    user-select: none;
+
+    transform: translateY(-31px);
+
+    transition: all 0.2s;
+}
+
+.input-div input {
+    width: 80%;
+    height: 40px;
+    border-radius: 15px;
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+}
+
+.input-div input:focus {
+    border: none;
+    outline: none;
+}
+
+.input-div input:focus + .label,
+input:not(:placeholder-shown) + .label {
+    transform: translateY(-63px);
+}
+
+.input-div button {
+    width: 30%;
+    height: 40px;
+    border-radius: 15px;
+    border: none;
+    background-color: var(--cor-terciaria);
+    color: var(--cor-contraste);
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+
+    transition: all 0.2s;
+}
+
+.input-div button:hover {
+    background-color: var(--cor-label-inputs-hover-botao);
+}
+
+.input-div a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 30px;
+}
