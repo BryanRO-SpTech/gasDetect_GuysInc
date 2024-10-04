@@ -47,6 +47,9 @@ nav ul li a {
     text-decoration: none;
     font-weight: bold;
 }
+nav ul li a:hover {
+    color: #0099ff;
+}
 .login-buttons button {
     margin-left: 1em;
     background-color: var(--cor-secundaria);
@@ -165,27 +168,214 @@ main {
 .blue-text {
     color: var(--cor-terciaria);
 }
-.container .solucao {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+/* nossa solução */
+.section-soluction {
+    height: var(--tamanho-section);
+    margin: 0;
+
+}
+.solucao {
+    margin-top: 40px;
+    gap: 1em;
 }
 .gasDetect {
+    display: flex;
     justify-content: flex-start;
-    width: 20%;
-    height: 40%;
-}
-.container-2 .title {
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    width: 50%;
+    margin-top: 20px;
+    width: 500px;
+    height: 450px;
+    padding: 40px;
+}  
+#uno {
+    font-size: 80px;
 }
-.text-ardu {
+.containerSolu {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    column-count:2;
+    margin-bottom: 80px;
+}
+.logoGas {
+    margin-right: 20px;
+}
+.title {
+    margin-bottom: 40px;
+    font-size: 1.2rem;
+}
+.text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.text p {
+    font-size: 1.2rem;
+}
+.text-dashboard {
+    text-align: center;
+    margin-bottom: 60px;
+    word-wrap: break-word;
+    font-size: 1.2em;
+}
+
+/* simulador */
+.section-simulador {
+    height: var(--tamanho-section);
+    display: flex;
+}
+.simulador-box {
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+.simulador-box, .info-box {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 200px;
+}
+.simulador-box h2 {
+    font-size: 2rem;
+    color: #333;
+}
+.simulador-box form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.simulador-box input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+.simulador-box a {
+    background-color: var(--cor-secundaria);
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    width: 400px;
+}
+.simulador-box a:hover {
+    background-color: var(--cor-terciaria);
+    box-shadow: 0 0 20px #6fc5ff50;
+    transform: scale(1.1);
+    cursor: pointer;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+.text-mq2 {
+    text-align: left;
+    word-wrap: break-word;
+}
+.mq2 {
+    word-wrap:break-word ;
+    font-size: 4rem;
+    text-align: right;
+    margin-top: 50px;
+    display: block;
+}
+/* Quem somos? */
+
+.section-somos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+    margin-left: 200px;
+    height: var(--tamanho-section);
+}
+.section-somos .text-box {
+    max-width: 50%;
+    margin-top: 100px;
+    margin-bottom: 60px;
+    font-size: 1.2em;
+}
+.section-somos .image-box img {
+    width: 65%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-right: 200px;
+}
+.text-somos {
+    margin-bottom: 40px;
+}
+/* Fale Conosco */
+h2 {
+    text-align: center;
+}
+.section-fale {
+    height: var(--tamanho-section);
+}
+.section-fale form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+.section-fale input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+.section-fale button {
+    background-color: var(--cor-secundaria);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.section-fale button:hover {
+    background-color: var(--cor-terciaria);
+}
+
+p {
+    font-size: 1.2rem;
+}
+
+/* rodapé */
+footer {
+    background-color: #41134A;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+footer nav ul {
     display: flex;
     justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    gap: 6rem;
+    text-align: left;
+}
 
+footer nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+footer nav ul li a:hover {
+    color: #0099ff;
+}
+.contato img {
+    width: 20px;
+    height: 14px;
+    justify-content: flex-end;
+}
+nav .contato {
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+}
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
 }

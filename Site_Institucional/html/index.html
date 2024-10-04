@@ -41,33 +41,35 @@
             </div>
         </div>
         <section>
-            <div class="container">
-                <h2 class="solucao">ESSA É A NOSSA <span class="blue-text">SOLUÇÃO</span></h2>
+                <div class="container">
+                    <h2 class="solucao">ESSA É A NOSSA <span class="blue-text">SOLUÇÃO</span></h2>
+                </div>
+            <div class="containerSolu">
+                <div class="logoGas">
+                    <img src="../assets/img/gas_detect_light.png" class="gasDetect" alt="Imagem gás detect">
+                </div>
+                <div class="text">
+                    <h2 class="title"><span class="blue-text" id="Uno">UNO R3</span></h2>
+                    <p>Utilizaremos o Arduino Uno e o sensor MQ-2 para captar dados. Em seguida, essas informações serão armazenadas de forma segura. Por fim, transformaremos os dados em informações fáceis de entender para o usuário por meio do nosso dashboard.</p>
+                </div>
             </div>
         </section>
-        <section>
-            <div class="container-2">
-                <img src="../assets/img/gas_detect_light.png" class="gasDetect" alt="Imagem gás detect">
-                <h2 class="title"><span class="blue-text">UNO R3</span></h2>
-                <p class="text-ardu">Utilizaremos o Arduino Uno e o sensor MQ-2 para captar dados. Em seguida, essas informações serão armazenadas de forma segura. Por fim, transformaremos os dados em informações fáceis de entender para o usuário por meio do nosso dashboard.</p>
+        <section class="section-dashboard">
+            <div>
+                <p class="text-dashboard">Conheça nosso <a class="blue-text" href="#login">dashboard!</a> Aqui você vai receber toda a informação necessária para seu negócio funcionar como o planejado</p>
             </div>
         </section>
-        <section>
-            <div class="container">
-                <p>Conheça nosso <span class="blue-text">dashboard!</span> Aqui você vai receber toda a informaçãonecessária para seu negócio funcionar como o planejado</p>
-            </div>
-        </section>
-        <section>
+        <section class="section-simulador">
             <div class="simulador-box">
                 <h2>SIMULADOR FINANCEIRO</h2>
                 <form id="simuladorForm">
-                    <label for="Input1">Informe o gasto por incidente na sua empresa:</label>
+                    <label>Informe o gasto por incidente na sua empresa:</label>
                     <input type="number" id="iptGastos" required>
     
-                    <label for="incidentes">Quantos incidentes ocorrem por ano:</label>
+                    <label>Quantos incidentes ocorrem por ano:</label>
                     <input type="number" id="iptIncidentes" required>
                     
-                    <label for="percentual">Percentual onde gases inflamáveis estão presentes:</label>
+                    <label>Percentual onde gases inflamáveis estão presentes:</label>
                     <input type="number" id="iptPercentual" required>
                     
                     <a href="#simulador">CALCULAR</a>
@@ -75,7 +77,9 @@
             </div>
     
             <div class="info-box">
+                <div class="text-mq2">
                 <p>Aqui você pode calcular os custos e resultados da nossa solução comparando com seu produto atual ou o custo médio do mercado.</p>
+                </div>
                 <div class="mq2">
                     <span class="blue-text">M</span> <br>
                     <span class="blue-text">Q</span> <br>
@@ -83,47 +87,50 @@
                 </div>
             </div>
         </section>
-        <section>
+        <section class="section-somos">
             <div class="text-box">
                 <a href="#quemSomos"></a>
-                <h2>QUEM SÃO OS <span class="blue-text">GUYS?</span></h2>
+                <h2 class="text-somos">QUEM SÃO OS <span class="blue-text">GUYS?</span></h2>
                 <p>Nós da <span class="highlight">GUYS inc</span> queremos trazer o melhor dos dois mundos, tecnologia de ponta e um preço que cabe no bolso! Ao lado você pode conferir a lista de integrantes que desenvolveram nosso produto.</p>
             </div>    
             <div class="image-box">
                 <img src="../assets/img/img_quem-Guys.png" alt="Ilustração do GUYS">
             </div>    
         </section>
-        <section>
+        <section class="section-fale">
             <h2>FALE CONOSCO</h2>
             <a href="#faleConosco"></a>
             <form id="faleConosco">
-                <label for="nome">Nome Completo:</label>
+                <label>Nome Completo:</label>
                 <input type="text" id="iptNome">
     
-                <label for="email">E-mail:</label>
+                <label>E-mail:</label>
                 <input type="text" id="iptEmail">
     
-                <label for="nomeEmpresa">Nome Empresa:</label>
+                <label>Nome Empresa:</label>
                 <input type="text" id="iptNomeEmpresa">
     
-                <label for="Mensagem">Mensagem</label>
+                <label>Mensagem</label>
                 <input type="text" id="iptMensagem">
     
                 <button onclick="form()">Enviar</button>
             </form>
         </section>
         <footer>
-            <nav>
+            <nav class="nav">
                 <ul>
                     <li><a href="#quemSomos">QUEM SOMOS?</a></li>
                     <li><a href="#solucao">SOLUÇÃO</a></li>
                     <li><a href="#simulador">SIMULADOR</a></li>
                     <li><a href="#faleConosco">FALE CONOSCO</a></li>
                 </ul>
+                <div class="contato">
+                    <span>CONTATO</span>
+                    <img src="../assets/icons/facebook.png" alt="icone do Facebook">
+                    <img src="../assets/icons/instagram (2).png" alt="icone do Instagram">
+                    <img src="../assets/icons/linkedin.png" alt="icone do linkedin">
+                </div>
             </nav>
-            <section>
-
-            </section>
         </footer>
     </main>
 </body>

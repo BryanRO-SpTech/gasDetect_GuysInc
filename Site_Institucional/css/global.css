@@ -2,6 +2,7 @@
     --tamanho-footer: 80px;
     --tamanho-header: 100px;
     --tamanho-main: calc(100vh - var(--tamanho-header));
+    --tamanho-section: calc(100vh - var(--tamanho-header));
 }
 
 :root, :root[theme="ligth"] {
