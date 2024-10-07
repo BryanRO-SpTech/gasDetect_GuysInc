@@ -32,8 +32,8 @@ body {
 
 .box {
     display: flex;
-    width: 60%;
-    height: 70%;
+    width: 75%;
+    height: 85%;
     background-color: var(--cor-fundo);
     border-radius: 25px;
 }
@@ -167,3 +167,18 @@ body {
     font-weight: 700;
     margin-top: 20px;
 }
+
+
+.mensagemValidacao {
+    width: 75%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.mensagemValidacao span {
+    color: red;
+    font-size: 16px;
+    font-weight: 700;
+}
+
