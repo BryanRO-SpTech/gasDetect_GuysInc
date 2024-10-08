@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .container {
+            width: 98vw;
+            height: 98vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #circle {
+            width: 200px;
+            height: 100px;
+            border-top: solid 10px blue;
+            border-left: solid 10px blue;
+            border-right: solid 10px blue;
+
+            background-color: #4CAF50; /* Cor do meio círculo */
+            border-top-left-radius: 150px;
+            border-top-right-radius: 150px;
+
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #pointer-box {
+            width: 50px;
+            height: 50px;
+            border: solid red 1px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            transform: rotate(50deg)
+        }
+
+
+        #pointer {
+            width: 3px;
+            height: 190%;
+            background-color: black;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="container">
+        <div id="circle">
+            <div id="pointer-box">
+                <div id="pointer"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
