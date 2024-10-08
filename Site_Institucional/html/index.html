@@ -33,17 +33,18 @@
                     <div class="content-box">
                         <section>
                             <h2 class="card-title">A SUA EMPRESA MERECE <span class="blue-text">SEGURANÇA</span></h2>
-                            <p class="card-content">Nosso produto faz com que você não precise se preocupar com gases inflamáveis da sua empresa!</p>
+                            <p class="card-content">Nosso produto faz com que você não precise se preocupar com gases inflamáveis da sua empresa!</p>                              
                             <p class="card-content">E ainda melhor, tudo por metade do preço de mercado. Não acredita? <a href="#solucao" class="blue-text" id="see-more">saiba mais</a></p>
                         </section>
                     </div>    
                 </div>
             </div>
         </div>
-        <section>
-                <div class="container">
-                    <h2 class="solucao">ESSA É A NOSSA <span class="blue-text">SOLUÇÃO</span></h2>
-                </div>
+    </div>
+    <section id="solucao">
+            <div class="container">
+                <h2 class="solucao">ESSA É A NOSSA <span class="blue-text">SOLUÇÃO</span></h2>
+            </div>
             <div class="containerSolu">
                 <div class="logoGas">
                     <img src="../assets/img/gas_detect_light.png" class="gasDetect" alt="Imagem gás detect">
@@ -53,13 +54,16 @@
                     <p>Utilizaremos o Arduino Uno e o sensor MQ-2 para captar dados. Em seguida, essas informações serão armazenadas de forma segura. Por fim, transformaremos os dados em informações fáceis de entender para o usuário por meio do nosso dashboard.</p>
                 </div>
             </div>
-        </section>
+    </section>
         <section class="section-dashboard">
             <div>
                 <p class="text-dashboard">Conheça nosso <a class="blue-text" href="#login">dashboard!</a> Aqui você vai receber toda a informação necessária para seu negócio funcionar como o planejado</p>
             </div>
+            <div>
+                <img src="" alt="Imagem dashboard">
+            </div>
         </section>
-        <section class="section-simulador">
+        <section id="simulador" class="section-simulador">
             <div class="simulador-box">
                 <h2>SIMULADOR FINANCEIRO</h2>
                 <form id="simuladorForm">
@@ -72,7 +76,7 @@
                     <label>Percentual onde gases inflamáveis estão presentes:</label>
                     <input type="number" id="iptPercentual" required>
                     
-                    <a href="#simulador">CALCULAR</a>
+                    <a href="#">CALCULAR</a>
                 </form>
             </div>
     
@@ -87,9 +91,8 @@
                 </div>
             </div>
         </section>
-        <section class="section-somos">
+        <section id="quemSomos" class="section-somos">
             <div class="text-box">
-                <a href="#quemSomos"></a>
                 <h2 class="text-somos">QUEM SÃO OS <span class="blue-text">GUYS?</span></h2>
                 <p>Nós da <span class="highlight">GUYS inc</span> queremos trazer o melhor dos dois mundos, tecnologia de ponta e um preço que cabe no bolso! Ao lado você pode conferir a lista de integrantes que desenvolveram nosso produto.</p>
             </div>    
@@ -97,10 +100,9 @@
                 <img src="../assets/img/img_quem-Guys.png" alt="Ilustração do GUYS">
             </div>    
         </section>
-        <section class="section-fale">
+        <section id="faleConosco" class="section-fale">
             <h2>FALE CONOSCO</h2>
-            <a href="#faleConosco"></a>
-            <form id="faleConosco">
+            <form>
                 <label>Nome Completo:</label>
                 <input type="text" id="iptNome">
     

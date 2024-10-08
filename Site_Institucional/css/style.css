@@ -1,3 +1,6 @@
+html {
+    scroll-behavior: smooth;
+}
 body {
     overflow: hidden;
 }
@@ -12,6 +15,7 @@ header {
     z-index: 1;
     width: 100%;
     top: 0;
+    background-color: #B9C4E4;
 }
 header h1 {
     font-size: 1.5em;
@@ -82,7 +86,7 @@ main {
     height: calc(100vh - 100px);
     background-image: url(../assets/img/Fundo1page.png);
     background-size: cover;
-    background-position: center;
+    background-position: 30% 40%;
 }
 .card #mensagem {
     color: #120823;
@@ -225,7 +229,8 @@ main {
     max-width: 600px;
     margin: 0 auto;
     text-align: center;
-    margin-top: 200px;
+    margin-top: 90px;
+    height: 400px;
 }
 .simulador-box h2 {
     font-size: 2rem;
@@ -265,7 +270,7 @@ main {
     word-wrap:break-word ;
     font-size: 4rem;
     text-align: right;
-    margin-top: 50px;
+    /* margin-top: 50px; */
     display: block;
 }
 /* Quem somos? */
