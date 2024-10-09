@@ -23,7 +23,7 @@
                 <h3>Insira seu login:</h3>
             </div>
 
-            <form id="login_form">
+            <section id="login_form">
                 <div class="input-div">
                     <input type="email" placeholder="" id="ipt_email">
                     <div class="label">
@@ -36,14 +36,16 @@
                     <div class="label">
                         <label for="ipt_senha">Senha:</label>
                     </div>
+                    <span id="spn_login_error"></span>
                 </div>
+
                 
                 <div class="input-div">
-                    <button>Entrar</button>
+                    <button onclick="validarLogin()">Entrar</button>
                     <a href="./cadastro.html">Cadastre-se</a>
                     <a href="#">Esqueci minha senha</a>
                 </div>
-            </form>
+            </section>
         </div>
     </section>
 </body>

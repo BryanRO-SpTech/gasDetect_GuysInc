@@ -156,3 +156,10 @@ input:not(:placeholder-shown) + .label {
     font-weight: 700;
     margin-top: 30px;
 }
+
+
+#spn_login_error {
+    color: red;
+    font-size: 1.2em;
+    text-align: center;
+}
