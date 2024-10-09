@@ -27,7 +27,7 @@
                 </div>
 
                 <div class="input-div">
-                    <button id="btn_cadastrar" onclick="() => console.log('Teste')">Cadastrar</button>
+                    <button id="btn_cadastrar" onclick="redirecionar()">Cadastrar</button>
                     <a href="./login.html">Já possuo login</a>
                 </div>
                 </form>
@@ -39,7 +39,7 @@
                         <div class="label">
                             <label for="ipt_razaoSocial">Razão Social:</label>
                         </div>
-                        <input type="text" id="ipt_razaoSocial">
+                        <input type="text" id="ipt_razaoSocial" oninput="validarRazaoSocial()">
                         <div class="mensagemValidacao">
                             <span id="span_mensagem_razao_social"></span>
                         </div>
@@ -49,7 +49,7 @@
                         <div class="label">
                             <label for="ipt_cnpj">CNPJ:</label>
                         </div>
-                        <input type="text" maxlength="14" id="ipt_cnpj">
+                        <input type="text" maxlength="14" id="ipt_cnpj" oninput="validarCnpj()">
                         <div class="mensagemValidacao">
                             <span id="span_mensagem_cnpj"></span>
                         </div>
@@ -59,7 +59,7 @@
                         <div class="label">
                             <label for="ipt_nome">Seu nome:</label>
                         </div>
-                        <input type="text" id="ipt_nome">
+                        <input type="text" id="ipt_nome" oninput="validarNome()">
                         <div class="mensagemValidacao">
                             <span id="span_mensagem_nome"></span>
                         </div>
@@ -69,7 +69,7 @@
                         <div class="label">
                             <label for="ipt_email">E-mail:</label>
                         </div>
-                        <input type="email" maxlength="80" id="ipt_email">
+                        <input type="email" maxlength="80" id="ipt_email" oninput="validarEmail()">
                         <div class="mensagemValidacao">
                             <span id="span_mensagem_email"></span>
                         </div>
@@ -80,7 +80,7 @@
                         <div class="label">
                             <label for="ipt_cpf">Seu CPF:</label>
                         </div>
-                        <input type="text" maxlength="11" id="ipt_cpf">
+                        <input type="text" maxlength="11" id="ipt_cpf" oninput="validarCpf()">
                         <div class="mensagemValidacao">
                             <span id="span_mensagem_cpf"></span>
                         </div>
@@ -90,7 +90,7 @@
                         <div class="label">
                             <label for="ipt_senha">Senha:</label>
                         </div>
-                        <input type="password" id="ipt_senha">
+                        <input type="password" id="ipt_senha" oninput="validarSenha()">
                         <div class="mensagemValidacao">
                             <span id="span_mensagem_senha"></span>
                         </div>
@@ -100,7 +100,7 @@
                         <div class="label">
                             <label for="ipt_confirmar">Confirmar senha:</label>
                         </div>
-                        <input type="password" id="ipt_confirmar">
+                        <input type="password" id="ipt_confirmar" oninput="validarConfirmarSenha()">
                         <div class="mensagemValidacao">
                             <span id="span_mensagem_confirmar"></span>
                         </div>
