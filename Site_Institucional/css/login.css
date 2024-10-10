@@ -33,8 +33,8 @@ body {
 
 .login-content {
     background-color: var(--cor-secundaria);
-    width: 27%;
-    height: 70%;
+    width: 500px;
+    height: 650px;
     border-radius: 20px;
 
     display: flex;

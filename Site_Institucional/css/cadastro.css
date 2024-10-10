@@ -98,6 +98,43 @@ body {
     padding: 5px;
 }
 
+.button-cadastrar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    height: 20%;
+    width: 100%;
+}
+
+.button-cadastrar button {
+    width: 60%;
+    height: 40px;
+    border-radius: 15px;
+    border: none;
+    background-color: var(--cor-terciaria);
+    color: var(--cor-contraste);
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+
+    transition: all 0.2s;
+}
+
+.button-cadastrar button:hover {
+    background-color: var(--cor-label-inputs-hover-botao);
+}
+
+.button-cadastrar a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 20px;
+}
+
+
 #cadastro_form {
     height: 90%;
     margin: 30px;
@@ -132,7 +169,7 @@ body {
 
 .input-div input {
     width: 80%;
-    height: 100%;
+    height: 60%;
     border-radius: 10px;
     border: none;
     padding: 10px;
@@ -144,33 +181,6 @@ body {
     border: none;
     outline: none;
 }
-
-.input-div button {
-    width: 60%;
-    height: 40px;
-    border-radius: 15px;
-    border: none;
-    background-color: var(--cor-terciaria);
-    color: var(--cor-contraste);
-    font-size: 18px;
-    font-weight: 700;
-    cursor: pointer;
-
-    transition: all 0.2s;
-}
-
-.input-div button:hover {
-    background-color: var(--cor-label-inputs-hover-botao);
-}
-
-.input-div a {
-    color: white;
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: 700;
-    margin-top: 20px;
-}
-
 
 .mensagemValidacao {
     width: 75%;
