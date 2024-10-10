@@ -1,5 +1,6 @@
 body {
     overflow: hidden;
+    background-color: var(--cor-fundo);
 }
 header {
     display: flex;
@@ -9,7 +10,7 @@ header {
     color: var(--cor-contraste);
     position: fixed;
     height: var(--tamanho-header);
-    z-index: 1;
+    /* z-index: 1; */
     width: 100%;
     top: 0;
     background-color: #B9C4E4;
@@ -33,7 +34,7 @@ img {
 nav ul {
     list-style: none;
     display: flex;
-    gap: 10em;
+    gap: 8em;
 }
 nav ul li a {
     color: var(--cor-texto);
@@ -79,16 +80,17 @@ button:active {
     position: absolute;
 }
 .label {
-    background-color: #111;
+    background-color: #fff;
     border-radius: 50px;
     cursor: pointer;
     display: flex;
-    align-items: flex-end;
+    align-items: flex-end;  
     justify-content: space-between;
     padding: 5px;
     position: relative;
     height: 26px;
     width: 50px;
+    bottom: 2px;
     transform: scale(1.5);
 }
 .label .ball {
@@ -98,7 +100,7 @@ button:active {
     top: 2px;
     left: 2px;
     height: 22px;
-    width: 22px;
+    width: 22px;        
     transform: translate(0px);
     transition: transform 0.2s linear;
 }
@@ -106,10 +108,10 @@ button:active {
     transform: translateX(24px);
 }
 .fa-moon {
-    color: #f1c40f;
+    color: var(--cor-button);
 }
 .fa-sun {
-    color: #f1c40f;
+    color: var(--cor-button);
 }
 main {
     height: var(--tamanho-main);
@@ -363,15 +365,19 @@ h2 {
 .section-fale input {
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 15px;
     font-size: 1rem;
+}
+textarea {
+    resize: none;
+    border-radius: 15px;
 }
 .section-fale button {
     background-color: var(--cor-secundaria);
     color: white;
     border: none;
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
 }
 .section-fale button:hover {
@@ -422,59 +428,6 @@ nav .contato {
     align-items: center;
     padding: 10px;
 }
-
-@media (max-width: 1200px) {
-    nav ul {
-        gap: 5em; /* Reduzir o espaço em telas menores */
-    }
-}
-
-@media (max-width: 800px) {
-    header {
-        flex-direction: column; /* Mudar a direção do flex para coluna */
-        align-items: flex-start; /* Alinhar os itens ao início */
-        padding: 0.5em; /* Reduzir o padding */
-    }
-
-    nav ul {
-        flex-direction: column; /* Colocar os links em coluna */
-        gap: 1em;
-    }
-
-    .logo {
-        gap: 1em; /* Reduzir o gap entre logo e nav */
-    }
-
-    .card {
-        width: 100%; /* Usar a largura total */
-        height: auto; /* Altura automática para adaptar ao conteúdo */
-    }
-
-    .section-somos {
-        flex-direction: column; /* Mudar para coluna */
-        margin-left: 0; /* Remover margem à esquerda */
-    }
-
-    .section-somos .image-box img {
-        width: 100%; /* Ajustar a imagem para a largura total */
-        margin-right: 0; /* Remover margem à direita */
-    }
-}
-
-@media (max-width: 600px) {
-    header h1 {
-        font-size: 1.2em; /* Reduzir o tamanho da fonte do título */
-    }
-
-    button {
-        padding: 10px 20px; /* Reduzir o padding dos botões */
-    }
-
-    .text {
-        font-size: 1rem; /* Ajustar o tamanho da fonte */
-    }
-
-    p {
-        font-size: 1rem; /* Ajustar o tamanho da fonte do parágrafo */
-    }
+body.dark {
+    background-color: #000000;
 }
