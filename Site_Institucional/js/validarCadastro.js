@@ -20,10 +20,6 @@ function validarRazaoSocial() {
         mensagem = "A razão social não pode ser vazia.";
     }
 
-    else if (razaoSocial.length > 60) {
-        mensagem = "A razão social não pode ter mais de 60 caracteres.";
-    }
-
     else {
         razaoSocialValido = true;
     }
@@ -39,9 +35,8 @@ function validarCnpj() {
 
     let mensagem = "";
 
-    if (!contemApenasNumeros(cnpj.value)) {
-        removerCaracteresInvalidos(cnpj, "0123456789")
-    }
+    removerCaracteresInvalidos(cnpj, "0123456789")
+
 
     if (cnpj.value.length < 14) {
         mensagem = `CNPJ deve conter exatamente 14 dígitos. Digite mais ${14 - cnpj.value.length} números...`;
@@ -60,6 +55,8 @@ function validarNome() {
     const nome = document.getElementById("ipt_nome").value;
     const spanMensagem = document.getElementById("span_mensagem_nome");
 
+    const quantPalavras = nome.split(" ").filter(palavra => palavra != "");
+
     let mensagem = "";
 
     if (nome.length === 0) {
@@ -68,6 +65,10 @@ function validarNome() {
 
     else if (nome.length > 45) {
         mensagem = "O nome não pode ter mais de 45 caracteres.";
+    }
+
+    else if (quantPalavras.length < 2) {
+        mensagem = "Escreva seu nome completo";
     }
 
     else if (contemNumeros(nome) || contemCaracterEspecial(nome)) {
@@ -125,9 +126,7 @@ function validarCpf() {
 
     let mensagem = "";
 
-    if (!contemApenasNumeros(cpf.value.value)) {
-        removerCaracteresInvalidos(cpf, "0123456789")
-    }
+    removerCaracteresInvalidos(cpf, "0123456789")
 
     if (cpf.value.length < 11) {
         mensagem = `CPF deve conter exatamente 11 dígitos. Digite mais ${11 - cpf.value.length} números...`;
@@ -264,5 +263,5 @@ function removerCaracteresInvalidos(input, caracteresValidos) {
         }
     }
 
-    input.value = texto;
+    input.value = texto.trim();
 }
