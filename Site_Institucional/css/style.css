@@ -10,7 +10,6 @@ header {
     color: var(--cor-contraste);
     position: fixed;
     height: var(--tamanho-header);
-    /* z-index: 1; */
     width: 100%;
     top: 0;
     background-color: #B9C4E4;
@@ -19,17 +18,16 @@ header {
 header h1 {
     font-size: 1.5em;
 }
-img {
-    width: 120px;
-    height: 100px;
-    background-size: cover;
-}
 .logo {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 2em;
+    gap: 1.5em;
     color: var(--cor-secundaria)
+}
+.logo a img {
+    width: 70%;
+    margin-left: 10%;
 }
 nav ul {
     list-style: none;
@@ -43,6 +41,10 @@ nav ul li a {
 }
 nav ul li a:hover {
     color: #0099ff;
+}
+.login-buttons a {
+    text-decoration: none;
+    
 }
 .login-buttons button {
     margin-left: 1em;
@@ -205,8 +207,7 @@ main {
 /* nossa solução */
 .section-soluction {
     height: var(--tamanho-section);
-    padding-top: 40px;
-
+    display: grid;
 }
 .solucao {
     margin-top: 40px;
@@ -216,10 +217,8 @@ main {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin-top: 20px;
-    width: 500px;
-    height: 450px;
-    padding: 40px;
+    width: 100%;
+    height: 100%;
 }  
 #uno {
     font-size: 80px;
@@ -231,37 +230,49 @@ main {
     column-count:2;
     height: 400px;
 }
-.logoGas {
-    margin-right: 20px;
+.title h2 {
+    display: flex;
+    flex-direction: column-reverse;
+    font-size: 2rem;
 }
-.title {
-    margin-bottom: 40px;
-    font-size: 1.2rem;
+.containerSolu .logoGas {
+    margin-right: 20px;
+    width: 60%;
+    padding: 0;
+    margin: 0;
 }
 .text {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 50%;
+    margin-bottom: 6%;
+    height: 50%;
 }
 .text p {
     font-size: 1.2rem;
 }
-.dash {
+.pai {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+.dash {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
 .text-dashboard {
-    text-align: start;
+    text-align: center;
     flex-direction: column;
     word-wrap: break-word;
     font-size: 1.2em;
 }
-.board {
-
-}
-.img-dash {
-    
+.board .img-dash {
+    display: flex;
+    justify-content: flex-start;
+    width: 65%;
+    height: 55%;
 }
 
 /* simulador */
@@ -288,20 +299,17 @@ main {
 .simulador-box form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-}
-.simulador-box input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
+    margin-top: 10px;
+    gap: 30px;
 }
 .simulador-box a {
     background-color: var(--cor-secundaria);
     color: white;
     padding: 10px 20px;
     text-decoration: none;
-    width: 400px;
+    width: 40%;
+    border-radius: 10px;
+
 }
 .simulador-box a:hover {
     background-color: var(--cor-terciaria);
@@ -311,16 +319,18 @@ main {
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
 }
-.text-mq2 {
-    text-align: left;
+.info-box .text-mq2 {
+    text-align: center;
     word-wrap: break-word;
+    max-width: 300px;
 }
 .mq2 {
     word-wrap:break-word ;
-    font-size: 4rem;
+    font-size: 3rem;
     text-align: right;
-    /* margin-top: 50px; */
-    display: block;
+    margin-top: 4px;
+    display: flex;
+    flex-direction: column;
 }
 /* Quem somos? */
 
@@ -359,7 +369,7 @@ h2 {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    max-width: 600px;
+    max-width: 530px;
     margin: 0 auto;
 }
 .section-fale input {
@@ -374,7 +384,7 @@ textarea {
 }
 .section-fale button {
     background-color: var(--cor-secundaria);
-    color: white;
+    color: var(--cor-contraste);
     border: none;
     padding: 10px 20px;
     border-radius: 10px;
@@ -427,7 +437,4 @@ nav .contato {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-}
-body.dark {
-    background-color: #000000;
 }

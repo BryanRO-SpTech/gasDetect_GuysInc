@@ -28,7 +28,7 @@ body {
     --cor-button: #262A69;
     --cor-button-hover:  #6fc5ff;
 }
-/* :root, :root[theme="dark"] {
+:root, :root[theme="dark"] {
     --cor-fundo: #000000;
     --cor-texto: #ffffff;
     --cor-texto-secundario: #9FFFFF;
@@ -38,4 +38,4 @@ body {
     --cor-contraste: #ffffff;
     --cor-button: #00A0EB;
     --cor-button-hover:  #6fc5ff;
-} */
+}

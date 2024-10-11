@@ -10,7 +10,9 @@
 <body>
     <header>
         <div class="logo">
-            <img src="../assets/img/GUYS-logo.png" alt="Logo Guys inc.">
+            <a href="../html/index.html">
+                <img src="../assets/img/GUYS-logo.png" alt="Logo Guys inc.">
+            </a>
             <h1>GUYS inc.</h1>
         </div>
         <nav>
@@ -22,15 +24,15 @@
             </ul>
         </nav>
         <div class="login-buttons">
-            <a href="./cadastro.html">
-                <button >Cadastro</button>
+            <a href="../html/cadastro.html">
+                    <button>Cadastro</button>
             </a>
             <a href="./login.html">
                 <button>login</button>
             </a> 
         </div>
         <div >
-            <input type="checkbox" class="checkbox" id="chk">
+            <input type="checkbox" onclick="trocaTema()" class="checkbox" id="chk">
 
             <label class="label" for="chk">
                 <i class="fas fa-moon"></i>
@@ -54,7 +56,7 @@
             </div>
         </div>
     </div>
-    <section id="solucao">
+    <section class="section-soluction">
         <br>
             <div class="container">
                 <h2 class="solucao">ESSA É A NOSSA <span class="blue-text">SOLUÇÃO</span></h2>
@@ -64,15 +66,21 @@
                     <img src="../assets/img/gas_detect_light.png" class="gasDetect" alt="Imagem gás detect">
                 </div>
                 <div class="text">
-                    <h2 class="title"><span class="blue-text" id="Uno">UNO R3</span></h2>
                     <p>Utilizaremos o Arduino Uno e o sensor MQ-2 para captar dados. Em seguida, essas informações serão armazenadas de forma segura. Por fim, transformaremos os dados em informações fáceis de entender para o usuário por meio do nosso dashboard.</p>
                 </div>
+                <div class="title">
+                    <h2><span class="blue-text">UNO R3</span></h2>
+                </div> 
             </div>
-            <div class="dash">
-                <p class="text-dashboard">Conheça nosso <a class="blue-text" href="login.html">dashboard!</a> Aqui você vai receber toda a informação necessária para seu negócio funcionar como o planejado</p>
-            </div>
-            <div class="board">
-                <img class="img-dash" src="" alt="Imagem dashboard">
+            <div class="pai">
+                <div class="dash">
+                    <p class="text-dashboard">Conheça nosso <a class="blue-text" href="login.html">dashboard!</a> Aqui você vai receber toda a informação necessária para seu negócio funcionar como o planejado</p>
+                </div>
+                <div class="board">
+                    <a href="../html/login.html">
+                        <img class="img-dash" src="../assets/img/Dashboard.png" alt="Imagem dashboard">
+                    </a>
+                </div>
             </div>
         </section>
         <section id="simulador" class="section-simulador">
@@ -80,21 +88,24 @@
                 <h2>SIMULADOR FINANCEIRO</h2>
                 <form id="simuladorForm">
                     <label>Informe o gasto por incidente na sua empresa:</label>
-                    <input type="number" id="iptGastos" required>
+                    <hr>
+                    <!-- <input type="number" id="iptGastos" required> -->
     
                     <label>Quantos incidentes ocorrem por ano:</label>
-                    <input type="number" id="iptIncidentes" required>
+                    <hr>
+                    <!-- <input type="number" id="iptIncidentes" required> -->
                     
                     <label>Percentual onde gases inflamáveis estão presentes:</label>
-                    <input type="number" id="iptPercentual" required>
+                    <hr>
+                    <!-- <input type="number" id="iptPercentual" required> -->
                     
                     <a href="#">CALCULAR</a>
                 </form>
             </div>
     
             <div class="info-box">
-                <div class="text-mq2">
-                <p>Aqui você pode calcular os custos e resultados da nossa solução comparando com seu produto atual ou o custo médio do mercado.</p>
+                <div class="text mq2">
+                    <p>Aqui você pode calcular os custos e resultados da nossa solução comparando com seu produto atual ou o custo médio do mercado.</p>
                 </div>
                 <div class="mq2">
                     <span class="blue-text">M</span> <br>
@@ -115,6 +126,7 @@
         <section id="faleConosco" class="section-fale">
             <br> <br> <br> <br>
             <h2>FALE CONOSCO</h2>
+            <br> <br>
             <form>
                 <label>Nome Completo:</label>
                 <input type="text" id="iptNome">

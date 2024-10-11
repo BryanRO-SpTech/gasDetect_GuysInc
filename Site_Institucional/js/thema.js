@@ -1,5 +1,7 @@
-const chk = document.getElementById('chk');
+document.documentElement.setAttribute('theme', localStorage.getItem('theme') || 'ligth');
 
-chk.addEventListener('change', () => {
-    document.body.classList.toggle('dark')
-})
+const trocaTema = () => {
+    const newTheme = document.documentElement.getAttribute('theme') == 'ligth' ? 'dark':'ligth';
+    document.documentElement.setAttribute('theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+} 
