@@ -91,6 +91,8 @@ body {
     width: 100%;
     text-align: center;
 
+    padding: 20px;
+
     color: var(--cor-texto-secundario);
 }
 

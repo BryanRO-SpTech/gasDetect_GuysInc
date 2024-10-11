@@ -44,6 +44,12 @@ nav ul li a {
 nav ul li a:hover {
     color: #0099ff;
 }
+
+.login-buttons a {
+    text-decoration: none;
+}
+
+
 .login-buttons button {
     margin-left: 1em;
     background-color: var(--cor-button);

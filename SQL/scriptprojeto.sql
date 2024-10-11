@@ -20,7 +20,7 @@ UF CHAR(2),
 fkEmpresa INT,
 CONSTRAINT fkEmpresaFabrica FOREIGN KEY(fkEmpresa)
 	REFERENCES empresa (idCliente)
-    );
+);
   
     
 CREATE TABLE cargo (
