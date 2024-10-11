@@ -59,8 +59,6 @@ function validarNome() {
 
     let mensagem = "";
 
-    console.log(quantPalavras)
-
     if (nome.length === 0) {
         mensagem = "O nome não pode ser vazio.";
     }
