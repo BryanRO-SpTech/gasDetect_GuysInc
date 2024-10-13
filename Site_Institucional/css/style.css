@@ -42,19 +42,10 @@ nav ul li a {
 nav ul li a:hover {
     color: #0099ff;
 }
-<<<<<<< HEAD
 .login-buttons a {
     text-decoration: none;
     
 }
-=======
-
-.login-buttons a {
-    text-decoration: none;
-}
-
-
->>>>>>> b4922359abcf06fd73e27ba4d13196fc2cbc9c29
 .login-buttons button {
     margin-left: 1em;
     background-color: var(--cor-button);
@@ -129,6 +120,7 @@ main {
     margin-top: 100px;
     overflow-y: scroll;
     scroll-behavior: smooth !important;
+    color: var(--cor-texto-main);
 }
 
 .fundo_img {
@@ -161,6 +153,7 @@ main {
     width: 750px;
     height: 350px;
     padding: 35px 30px;
+    cursor: pointer;
 }  
 .card:hover {
     background-position: -100px 100px, -100px 100px;
@@ -216,72 +209,73 @@ main {
 /* nossa solução */
 .section-soluction {
     height: var(--tamanho-section);
-    display: grid;
 }
-.solucao {
-    margin-top: 40px;
-    gap: 1em;
-}
-.gasDetect {
+.container {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 100%;
-}  
-#uno {
-    font-size: 80px;
+}
+.container .solucao {
+    margin-top: 5px;
+    text-align: center;
+    font-size: 2rem;
 }
 .containerSolu {
     display: flex;
-    max-width: 1200px;
-    margin: 0 auto;
-    column-count:2;
-    height: 400px;
-}
-.title h2 {
-    display: flex;
-    flex-direction: column-reverse;
-    font-size: 2rem;
 }
 .containerSolu .logoGas {
-    margin-right: 20px;
-    width: 60%;
-    padding: 0;
-    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 40%;
+}  
+.containerSolu .logoGas img{
+    width: 50%;
+    height: 50%;
+    cursor: pointer;
 }
-.text {
+.logoGas:hover {
+    transform: translateX(100px)scale(2.0)rotate(-40seg);
+    transform: translateY(10px)scale(2.0)rotate(-40seg);
+}
+.text  {
+    width: 40%;
+    margin-bottom: 6%;
+    height: 50%;
+    align-items: center;
+}
+.text p {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 50%;
-    margin-bottom: 6%;
-    height: 50%;
+    align-items: center;
+    font-size: 1.5rem;
+    word-break: break-word;
 }
-.text p {
-    font-size: 1.2rem;
+.containerSolu .text h2 {
+    font-size: 1.8rem;
+    font-weight: 200;
+    justify-content: end;
 }
 .pai {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
-.dash {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-.text-dashboard {
+.pai .dash p {
     text-align: center;
-    flex-direction: column;
-    word-wrap: break-word;
-    font-size: 1.2em;
+    align-items: start;
+    font-size: 1.5rem;
+    word-break: break-word;
 }
-.board .img-dash {
+.pai .board img {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
+    align-items: center;
     width: 65%;
-    height: 55%;
+    height: 75%;
+    margin-bottom: 10px;
 }
 
 /* simulador */
@@ -303,7 +297,7 @@ main {
 }
 .simulador-box h2 {
     font-size: 2rem;
-    color: #333;
+    color: var(--cor-texto-main);
 }
 .simulador-box form {
     display: flex;
@@ -312,7 +306,7 @@ main {
     gap: 30px;
 }
 .simulador-box a {
-    background-color: var(--cor-secundaria);
+    background-color: var(--cor-button);
     color: white;
     padding: 10px 20px;
     text-decoration: none;
@@ -321,7 +315,7 @@ main {
 
 }
 .simulador-box a:hover {
-    background-color: var(--cor-terciaria);
+    background-color: var(--cor-button-hover);
     box-shadow: 0 0 20px #6fc5ff50;
     transform: scale(1.1);
     cursor: pointer;
@@ -377,30 +371,39 @@ h2 {
 .section-fale form {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 10px;
     max-width: 530px;
     margin: 0 auto;
 }
+/* .section-fale form label {
+    display: flex;
+    justify-content: flex-start;
+    text-align: start;
+} */
 .section-fale input {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 15px;
     font-size: 1rem;
+    width: 75%;
 }
 textarea {
     resize: none;
     border-radius: 15px;
 }
 .section-fale button {
-    background-color: var(--cor-secundaria);
+    background-color: var(--cor-button);
     color: var(--cor-contraste);
     border: none;
     padding: 10px 20px;
     border-radius: 10px;
     cursor: pointer;
+    width: 40%;
 }
 .section-fale button:hover {
-    background-color: var(--cor-terciaria);
+    background-color: var(--cor-button-hover);
 }
 
 p {
@@ -432,9 +435,13 @@ footer nav ul li a:hover {
     color: #0099ff;
 }
 .contato img {
-    width: 20px;
+    width: 17px;
     height: 14px;
     justify-content: flex-end;
+
+}
+.linkedin {
+    padding-left: 5px;
 }
 nav .contato {
     display: flex;
