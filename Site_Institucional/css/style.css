@@ -118,7 +118,8 @@ button:active {
 main {
     height: var(--tamanho-main);
     margin-top: 100px;
-    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-color: var(--cor-contraste);
     scroll-behavior: smooth !important;
     color: var(--cor-texto-main);
 }
@@ -210,39 +211,59 @@ main {
 .section-soluction {
     height: var(--tamanho-section);
 }
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 .container .solucao {
     margin-top: 5px;
     text-align: center;
     font-size: 2rem;
 }
+.gridPai {
+    display: flex;
+    width: 100%;
+    /* height: 40%; */
+    margin-top: 2%;
+}
 .containerSolu {
     display: flex;
+    width: 50%;
 }
 .containerSolu .logoGas {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
-    height: 40%;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
 }  
 .containerSolu .logoGas img{
-    width: 50%;
-    height: 50%;
+    width: 70%;
+    height: 90%;
     cursor: pointer;
+    display: flex;
+    align-items: flex-start;
 }
-.logoGas:hover {
+.logoGas p {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1.5rem;
+    word-break: break-all;
+}
+/* .logoGas:hover {
     transform: translateX(100px)scale(2.0)rotate(-40seg);
     transform: translateY(10px)scale(2.0)rotate(-40seg);
+} */
+.grid {
+    width: 50%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .text  {
-    width: 40%;
-    margin-bottom: 6%;
-    height: 50%;
+    width: 90%;
+    height: 40%;
     align-items: center;
 }
 .text p {
@@ -253,12 +274,21 @@ main {
     font-size: 1.5rem;
     word-break: break-word;
 }
-.containerSolu .text h2 {
-    font-size: 1.8rem;
+.text span {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 2%;
+    font-size: 2.4rem;
     font-weight: 200;
-    justify-content: end;
 }
-.pai {
+.text img {
+    height: 60%;
+    width: 80%;
+    margin-top: 2%;
+    display: flex;
+    flex-direction: row-reverse;
+}
+/* .pai {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -276,7 +306,7 @@ main {
     width: 65%;
     height: 75%;
     margin-bottom: 10px;
-}
+} */
 
 /* simulador */
 .section-simulador {
