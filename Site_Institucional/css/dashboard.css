@@ -144,3 +144,70 @@ main {
     overflow-y: auto;
     color: var(--cor-texto);
 }
+
+.kpis {
+    height: 300px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carrossel {
+    border: 1px solid green;
+    height: 90%;
+    width: 90%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.carrossel .arrow {
+    width: 30px;
+    height: 50px;
+
+    cursor: pointer;
+}
+
+.carrossel #left-arrow {
+    background-image: url(../assets/img/leftArrow.png);
+    background-size: 100% 100%;
+}
+
+.carrossel #right-arrow {
+    background-image: url(../assets/img/rightArrow.png);
+    background-size: 100% 100%;
+}
+
+.carrossel .kpis-content {
+    width: 90%;
+    height: 100%;
+
+    display: flex;
+}
+
+.kpis-content .kpi {
+    width: 20%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.nanometro {
+    background-image: url(../assets/img/nanometro.png);
+    background-repeat: no-repeat;
+    background-position: center;
+
+    height: 90%;
+    width: 100%;
+}
+
+.kpi span {
+    font-size: 1.2em;
+    font-weight: bold;
+
+}
