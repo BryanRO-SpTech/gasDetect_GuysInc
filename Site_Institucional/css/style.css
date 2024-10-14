@@ -357,7 +357,7 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 50px;
+    /* gap: 50px; */
     margin-left: 200px;
     height: var(--tamanho-section);
 }
@@ -381,12 +381,12 @@ main {
     font-weight: 600;
 }
 /* Fale Conosco */
+.section-fale {
+    height: var(--tamanho-section);
+}
 h2 {
     text-align: center;
     font-size: 2.4rem;
-}
-.section-fale {
-    height: var(--tamanho-section);
 }
 .section-fale form {
     display: flex;
