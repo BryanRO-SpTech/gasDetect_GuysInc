@@ -144,12 +144,3 @@ WHERE responsavel = 'Ivan Drago'
 ORDER BY dataHora DESC; 
 
 
-
-
-
-
-
-
-
-
-
