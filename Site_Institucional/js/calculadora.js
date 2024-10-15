@@ -1,57 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora GUYS Inc.</title>
-
-    <style>
-        button{
-            background-color: #00A0EB;
-            color: white;
-            border-radius: 6px;
-            padding: 7px;
-        }
-        .perdas{
-            color: red;
-            font-weight: bold;
-        }
-
-        .ganhos{
-            color:green;
-            font-weight: bold;
-        }
-
-        
-
-
-    </style>
-</head>
-<body>
-    <h2>Calculadora GUYS Inc</h2>
-
-        Média de incidentes anuais relacionados à emissão de gases:<br>
-        <input type="number" id="ipt_mediaIncidentes"><br> <br>
-
-        Custo de indenização de colaboradores por incidente (em R$):<br>
-        <input type="number" id="ipt_custoIndenizacao"><br><br>
-
-        Custo de manutenção de equipamentos após incidente (em R$):<br>
-        <input type="number" id="ipt_custoManutencao"><br><br>
-
-        Tempo médio de parada da fábrica por incidente (em horas):<br>
-        <input type="number" id="ipt_tempoParada"><br><br>
-
-        Prejuízo por hora de fábrica parada (em R$):<br>
-        <input type="number" id="ipt_custoParadaHora"><br> <br>
-
-        <button onclick="calcular()">Calcular</button> <br> <br>
-
-    <div id="div_mensagem"></div>
-</body>
-</html>
-
-<script>
 
     //var globais usar nas 2 funções
 
@@ -99,6 +45,3 @@
     }
 
 
-
-
-</script>  

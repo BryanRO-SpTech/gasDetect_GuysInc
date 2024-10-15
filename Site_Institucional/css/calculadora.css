@@ -1,0 +1,15 @@
+button{
+    background-color: #00A0EB;
+    color: white;
+    border-radius: 6px;
+    padding: 7px;
+}
+.perdas{
+    color: red;
+    font-weight: bold;
+}
+
+.ganhos{
+    color:green;
+    font-weight: bold;
+}
