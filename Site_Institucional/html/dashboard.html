@@ -62,6 +62,15 @@
         </section>
 
         <section class="line chart">
+            <div class="filters">
+                <button class="filter selected" id="diario">Diário</button>
+                <button class="filter" id="mensal">Mensal</button>
+                <button class="filter" id="anual">Anual</button>
+            </div>
+            
+            <div class="line-chart-div">
+                <canvas id="lineChart"></canvas>
+            </div>
 
         </section>
 
@@ -71,8 +80,6 @@
 
         
     </main>
-
-    <canvas id="teste"></canvas>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://kit.fontawesome.com/998c60ef77.js" crossorigin="anonymous"></script>
