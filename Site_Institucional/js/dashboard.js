@@ -170,7 +170,7 @@ function mostrarGraficoDeLinha() {
 
         for (let i = 0; i < dataAnual[sensorSelecionado].registros.length; i++) {
             data.push(dataAnual[sensorSelecionado].registros[i].porcGas);
-            labels.push(`Mês de ${dataAnual[sensorSelecionado].registros[i].mes}`);
+            labels.push(`${dataAnual[sensorSelecionado].registros[i].mes}`);
         }
 
         lineChart.data.datasets[0].data = data;
