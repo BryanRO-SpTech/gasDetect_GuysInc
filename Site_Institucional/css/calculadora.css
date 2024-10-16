@@ -1,9 +1,176 @@
+:root,:root[theme="light"]{
+    --background-filter-color:rgba(240,248,255,0.11)
+}
+
+body{
+    background-image: url(../assets/img/background_login.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+}
+
+.backgound-filter{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: var(--background-filter-color);
+}
+
+.container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card{
+    display: flex;
+    width: 75%;
+    height: 85%;
+    background-color: var(--cor-fundo);
+    border-radius: 25px;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--cor-secundaria);
+    width: 40%;
+    height: 100%;
+    border-radius: 20px;
+    gap: 50px;
+}
+.simular-content{
+    background-color: var(--cor-fundo);
+    width: 60%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+.logo-card{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo{
+    width: 180px;
+    height: 180px; 
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    user-select: none;
+}
+
+.logo img{
+    height: 100px;
+}
+
+.mensagem{
+    text-align: center;
+    color: var(--cor-texto-secundario);
+    font-size: 1em;
+    padding: 20px;
+}
+
+.mensagem h2{
+    padding: 5px;
+}
+
+.botao-simular{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+    flex-direction: column;
+}
+
+.botao-simular button{
+    width: 45%;
+    height: 40px;
+    font-size: 20px;
+    font-weight: 700;
+    background-color: var(--cor-terciaria);
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: white;
+}
+
+.botao-simular button:hover{
+    background-color: var(--cor-label-inputs-hover-botao);
+}
+
+.simulador{
+    height: 90%;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.input{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 10%;
+}
+
+.label{
+    text-align: start;
+    width: 70%;
+    color: var(--cor-texto);
+    font-weight: 700;
+    font-size: 20px;
+    user-select: none;
+    transition: all 0.2s;
+   
+}
+
+.input input{
+    width: 95%;
+    height: 60%;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+    background-color: #d9d9d9;
+    margin-top: 10px;
+   }
+
+#div_mensagem{
+    margin: 15px;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: start;
+    padding: 20px;
+    
+}
+
 button{
     background-color: #00A0EB;
     color: white;
     border-radius: 6px;
     padding: 7px;
+    display: flex;
+    justify-content: center;
+    width: 100px;
 }
+
 .perdas{
     color: red;
     font-weight: bold;

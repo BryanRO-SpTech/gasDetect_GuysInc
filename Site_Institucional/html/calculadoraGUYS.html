@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,30 +9,64 @@
     <link rel="stylesheet" href="../css/calculadora.css">
 
 </head>
+
 <body>
-    <h2>Calculadora GUYS Inc</h2>
-
-        Média de incidentes anuais relacionados à emissão de gases:<br>
-        <input type="number" id="ipt_mediaIncidentes"><br> <br>
-
-        Custo de indenização de colaboradores por incidente (em R$):<br>
-        <input type="number" id="ipt_custoIndenizacao"><br><br>
-
-        Custo de manutenção de equipamentos após incidente (em R$):<br>
-        <input type="number" id="ipt_custoManutencao"><br><br>
-
-        Tempo médio de parada da fábrica por incidente (em horas):<br>
-        <input type="number" id="ipt_tempoParada"><br><br>
-
-        Prejuízo por hora de fábrica parada (em R$):<br>
-        <input type="number" id="ipt_custoParadaHora"><br> <br>
-
-        <button onclick="calcular()">Calcular</button> <br> <br>
-
-    <div id="div_mensagem"></div>
-
+    <div class="backgound-filter"></div>
+    <section class="container">
+        <div class="card">
+            <div class="info">
+                <div class="logo-card">
+                    <div class="logo">
+                        <img src="../assets/img/GUYS-logo.png" alt="imagem logo Guys Inc">
+                    </div>
+                </div>
+                <div class="mensagem">
+                    <h2>Preencha os campos e simule seus resultados</h2>
+                </div>
+                <div class="botao-simular">
+                    <button onclick="calcular()">Simular</button>
+                </div>
+            </div>
+            <div class="simular-content">
+                <div id="div_mensagem">
+                    <div class="simulador">
+                        <div class="input">
+                            <div class="label">
+                                <label> Média de incidentes anuais relacionados à emissão de gases:</label>
+                                <input type="number" id="ipt_mediaIncidentes">
+                            </div>
+                        </div>
+                        <div class="input">
+                            <div class="label">
+                                <label>Custo de indenização de colaboradores por incidente (em R$):</label>
+                                <input type="number" id="ipt_custoIndenizacao">
+                            </div>
+                        </div>
+                        <div class="input">
+                            <div class="label">
+                                <label> Custo de manutenção de equipamentos após incidente (em R$):</label>
+                                <input type="number" id="ipt_custoManutencao">
+                            </div>
+                        </div>
+                        <div class="input">
+                            <div class="label">
+                                <label>Tempo médio de parada da fábrica por incidente <br>(em horas):</label>
+                                <input type="number" id="ipt_tempoParada">
+                            </div>
+                        </div>
+                        <div class="input">
+                            <div class="label">
+                                <label>Prejuízo por hora de fábrica parada (em R$):</label>
+                                <input type="number" id="ipt_custoParadaHora">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <script src="../js/calculadora.js"></script>
-    
-</body>
-</html>
 
+</body>
+
+</html>
