@@ -3,7 +3,7 @@ CREATE DATABASE guysinc;
 USE guysinc;
 
 CREATE TABLE empresa (
-idCliente INT PRIMARY KEY AUTO_INCREMENT,
+idCliente INT PRIMARY KEY AUTO_INCREMENT,''
 razaoSocial VARCHAR(60),
 cnpjSede CHAR(14),
 responsavel VARCHAR(60)
