@@ -61,7 +61,7 @@ CONSTRAINT fkLimite_Setor FOREIGN KEY(fkLimite) REFERENCES LimiteAlerta(idParame
 
 CREATE TABLE Sensor (
 idSensor INT PRIMARY KEY AUTO_INCREMENT,
-descricao VARCHAR(255),
+titulo VARCHAR(255),
 fkSetor INT,
 CONSTRAINT fkSetor_Sensor FOREIGN KEY(fkSetor) REFERENCES Setor(idSetor)
 );
@@ -144,6 +144,7 @@ JOIN sensor AS s ON r.fkSensor = s.idSensor;
 
 
 
+
 SELECT 
     funcionario.nome AS 'Nome do Funcionario',
     cargo AS Cargo
@@ -153,21 +154,19 @@ JOIN
     cargo ON funcionario.fkCargo = cargo.idCargo;
 
 
-
-
 SELECT 
     e.razaoSocial AS Empresa,
     fa.logradouro AS 'Rua da Fábrica'
 FROM 
     empresa AS e
 JOIN 
-    fabrica AS fa ON e.idCliente = fa.fkEmpresa;
+    fabrica AS fa ON e.idEmpresa = fa.fkEmpresa;
 
 
 
 
 SELECT 
-    s.descricao AS Sensor,
+    s.titulo AS Sensor,
     se.setor AS Setor,
     fa.logradouro AS 'Rua da Fábrica',
     e.razaoSocial AS 'Nome da Empresa'
@@ -184,7 +183,7 @@ JOIN
 
 
     SELECT 
-    s.descricao AS 'Descrição do Sensor',
+    s.titulo AS 'Descrição do Sensor',
     se.setor AS Setor,
     se.sala AS Sala,
     la.limiteAlerta AS 'Limite do Alerta',
@@ -199,4 +198,3 @@ JOIN
     Fabrica AS f ON se.fkFabrica = f.idFabrica
 JOIN 
     Empresa AS e ON f.fkEmpresa = e.idEmpresa;
-
