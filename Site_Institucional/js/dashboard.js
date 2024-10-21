@@ -1,4 +1,5 @@
 let lineChart = null;
+let barChart = null;
 let sensorSelecionado = 0;
 
 function mostrarKPI() {
@@ -62,6 +63,7 @@ function mostrarKPI() {
             kpis[i].classList.add("selected");
             sensorSelecionado = i;
             mostrarGraficoDeLinha();
+            mostrarGraficoDeBarra();
         });
     }
 }
@@ -94,8 +96,8 @@ function mostrarGraficoDeLinha() {
                         data: data,
                         fill: false,
                         tension: 0.1,
-                        backgroundColor: ['#65C5D7'],
-                        borderColor: ['#65C5D7'],
+                        backgroundColor: ['red'],
+                        borderColor: ['red'],
                     },
                     {
                         label: "",
@@ -184,5 +186,68 @@ function mostrarGraficoDeLinha() {
 }
 
 
+function mostrarGraficoDeBarra() {
+
+    const ctx = document.getElementById('barChart');
+
+    if (!barChart) {
+        barChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                datasets: [{
+                    label: `Sensor ${sensorSelecionado + 1}`,
+                    data: [12, 19, 3, 5, 2, 3, 10, 6, 14, 10, 18, 12],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+
+        });
+    } else {
+        if (sensorSelecionado == 0) {
+            barChart.data.datasets[0].data = [12, 19, 3, 5, 2, 3, 10, 6, 14, 10, 18, 12];
+            barChart.data.datasets[0].label = `Sensor ${sensorSelecionado + 1}`;
+        } else if (sensorSelecionado == 1) {
+            barChart.data.datasets[0].data = [20, 7, 10, 8, 5, 11, 15, 19, 10, 4, 11, 17];
+            barChart.data.datasets[0].label = `Sensor ${sensorSelecionado + 1}`;
+        } else if (sensorSelecionado == 2) {
+            barChart.data.datasets[0].data = [11, 4, 17, 19, 4, 10, 18, 15, 12, 3, 4, 7];
+            barChart.data.datasets[0].label = `Sensor ${sensorSelecionado + 1}`;
+        } else if (sensorSelecionado == 3) {
+            barChart.data.datasets[0].data = [3, 7, 13, 18, 10, 6, 5, 11, 15, 19, 3, 5];
+            barChart.data.datasets[0].label = `Sensor ${sensorSelecionado + 1}`;
+        }
+        barChart.update();
+    }
+}
+
+function mudarTema() {
+    const theme = document.documentElement.getAttribute("theme");
+    console.log(theme);
+    if (theme == "light") {
+        lineChart.options.scales.y.grid.color = "#2A719B";
+        lineChart.options.scales.x.grid.color = "#2A719B";
+        barChart.options.scales.y.grid.color = "#2A719B";
+        barChart.options.scales.x.grid.color = "#2A719B";
+    } else {
+        lineChart.options.scales.y.grid.color = "#cfd1d0";
+        lineChart.options.scales.x.grid.color = "#cfd1d0";
+        barChart.options.scales.y.grid.color = "#cfd1d0";
+        barChart.options.scales.x.grid.color = "#cfd1d0";
+    }
+    lineChart.update();
+    barChart.update();
+    trocaTema();
+}
+
 document.addEventListener("DOMContentLoaded", mostrarKPI);
 document.addEventListener("DOMContentLoaded", mostrarGraficoDeLinha);
+document.addEventListener("DOMContentLoaded", mostrarGraficoDeBarra);
