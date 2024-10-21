@@ -143,6 +143,7 @@ main {
     height: 100vh;
     overflow-y: auto;
     color: var(--cor-texto);
+    overflow-x: hidden;
 }
 
 .kpis {
@@ -230,13 +231,22 @@ main {
     margin-bottom: 40px;
 }
 
+.container {
+    display: flex;
+    padding: 10px;
+}
+
 .chart {
-    height: 450px;
+    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 30px;
+    justify-content: flex-end;
 }   
+
+.line {
+    height: 100%;
+}
 
 .line .filters {
     display: flex;
@@ -272,7 +282,7 @@ main {
 }
 
 .line .line-chart-div{
-    height: 100%;
+    width: 100%;
 
     display: flex;
     justify-content: center;

@@ -41,7 +41,7 @@
                 </li>
             </ul>
             <div class="botoes">
-                <input type="checkbox" onclick="trocaTema()" class="checkbox" id="chk">
+                <input type="checkbox" onclick="mudarTema()" class="checkbox" id="chk">
 
                 <label class="label" for="chk">
                     <i class="fas fa-moon"></i>
@@ -61,29 +61,30 @@
             </div>
         </section>
 
-        <section class="line chart">
-            <div class="filters">
-                <button class="filter selected" id="diario">Diário</button>
-                <button class="filter" id="mensal">Mensal</button>
-                <button class="filter" id="anual">Anual</button>
-            </div>
-            
-            <div class="line-chart-div">
-                <canvas id="lineChart"></canvas>
-            </div>
-
-        </section>
-
-        <section class="bars chart">
-            
-        </section>
-
-        
+        <div class="container">
+            <section class="line chart">
+                <div class="filters">
+                    <button class="filter selected" id="diario">Diário</button>
+                    <button class="filter" id="mensal">Mensal</button>
+                    <button class="filter" id="anual">Anual</button>
+                </div>
+                
+                <div class="line-chart-div">
+                    <canvas id="lineChart"></canvas>
+                </div>
+    
+            </section>
+    
+            <section class="bar chart">
+                <canvas id="barChart"></canvas>
+            </section>
+        </div>
+       
     </main>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://kit.fontawesome.com/998c60ef77.js" crossorigin="anonymous"></script>
-    <script src="../js/thema.js"></script>
+    <script src="../js/tema.js"></script>
     <script src="../js/dashboardData.js"></script>
     <script src="../js/dashboard.js"></script>
 </body>
