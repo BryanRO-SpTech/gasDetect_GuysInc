@@ -233,15 +233,27 @@ function mudarTema() {
     const theme = document.documentElement.getAttribute("theme");
     console.log(theme);
     if (theme == "light") {
+        lineChart.options.plugins.legend.labels.color = "#2A719B";
         lineChart.options.scales.y.grid.color = "#2A719B";
+        lineChart.options.scales.y.ticks.color = "#2A719B";
         lineChart.options.scales.x.grid.color = "#2A719B";
+        lineChart.options.scales.x.ticks.color = "#2A719B";
+        barChart.options.plugins.legend.labels.color = "#2A719B";
         barChart.options.scales.y.grid.color = "#2A719B";
+        barChart.options.scales.y.ticks.color = "#2A719B";
         barChart.options.scales.x.grid.color = "#2A719B";
+        barChart.options.scales.x.ticks.color = "#2A719B";
     } else {
+        lineChart.options.plugins.legend.labels.color = "#000000";
         lineChart.options.scales.y.grid.color = "#cfd1d0";
+        lineChart.options.scales.y.ticks.color = "#000000";
         lineChart.options.scales.x.grid.color = "#cfd1d0";
+        lineChart.options.scales.x.ticks.color = "#000000";
+        barChart.options.plugins.legend.labels.color = "#000000";
         barChart.options.scales.y.grid.color = "#cfd1d0";
+        barChart.options.scales.y.ticks.color = "#000000";
         barChart.options.scales.x.grid.color = "#cfd1d0";
+        barChart.options.scales.x.ticks.color = "#000000";
     }
     lineChart.update();
     barChart.update();
