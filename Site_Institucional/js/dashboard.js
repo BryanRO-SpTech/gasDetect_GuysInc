@@ -47,7 +47,7 @@ function mostrarKPI() {
                     cutout: '75%',
                     hoverOffset: 4
                 }]
-            },
+            }
         });
     }
 
@@ -114,6 +114,11 @@ function mostrarGraficoDeLinha() {
                     y: {
                         beginAtZero: true,
 
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: "bottom"
                     }
                 }
             }
@@ -206,6 +211,11 @@ function mostrarGraficoDeBarra() {
                 scales: {
                     y: {
                         beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: "bottom"
                     }
                 }
             }

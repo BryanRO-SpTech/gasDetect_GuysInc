@@ -307,18 +307,18 @@ const dataAnual = [
     },
     {
         registros: [
-            { id: 1, porcGas: Math.random() * 15 + 75, mes: "Janeiro" },
-            { id: 2, porcGas: Math.random() * 15 + 75, mes: "Fevereiro" },
-            { id: 3, porcGas: Math.random() * 15 + 75, mes: "Março" },
-            { id: 4, porcGas: Math.random() * 15 + 75, mes: "Abril" },
-            { id: 5, porcGas: Math.random() * 15 + 75, mes: "Maio" },
-            { id: 6, porcGas: Math.random() * 15 + 75, mes: "Junho" },
-            { id: 7, porcGas: Math.random() * 15 + 75, mes: "Julho" },
-            { id: 8, porcGas: Math.random() * 15 + 75, mes: "Agosto" },
-            { id: 9, porcGas: Math.random() * 15 + 75, mes: "Setembro" },
-            { id: 10, porcGas: Math.random() * 15 + 75, mes: "Outubro" },
-            { id: 11, porcGas: Math.random() * 15 + 75, mes: "Novembro" },
-            { id: 12, porcGas: Math.random() * 15 + 75, mes: "Dezembro" }
+            { id: 1, porcGas: 0, mes: "Janeiro" },
+            { id: 2, porcGas: Math.random() * 2, mes: "Fevereiro" },
+            { id: 3, porcGas: Math.random() * 5, mes: "Março" },
+            { id: 4, porcGas: Math.random() * 7, mes: "Abril" },
+            { id: 5, porcGas: 0, mes: "Maio" },
+            { id: 6, porcGas: Math.random() * 15, mes: "Junho" },
+            { id: 7, porcGas: Math.random() * 8, mes: "Julho" },
+            { id: 8, porcGas: Math.random() * 15, mes: "Agosto" },
+            { id: 9, porcGas: 0, mes: "Setembro" },
+            { id: 10, porcGas: Math.random() * 4, mes: "Outubro" },
+            { id: 11, porcGas: Math.random() * 1, mes: "Novembro" },
+            { id: 12, porcGas: Math.random() * 10, mes: "Dezembro" }
         ]
     }
 ];

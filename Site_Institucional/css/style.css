@@ -280,7 +280,8 @@ main {
 }
 /* simulador */
 .section-simulador {
-    height: var(--tamanho-section);
+    margin-top: 150px;
+    height: calc(fit-content);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -359,7 +360,7 @@ main {
     justify-content: space-between;
     align-items: center;
     margin-left: 200px;
-    height: var(--tamanho-section);
+    height: fit-content;
 }
 .section-somos .text-box {
     max-width: 50%;
@@ -396,7 +397,8 @@ main {
 }
 /* Fale Conosco */
 .section-fale {
-    height: var(--tamanho-section);
+    height: fit-content;
+    margin: 0 0 80px 0;
     display: flex;
     justify-content: center;
     align-items: center;
