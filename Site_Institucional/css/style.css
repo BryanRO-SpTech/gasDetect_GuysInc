@@ -274,8 +274,8 @@ main {
     font-size: 2.8rem;
     font-weight: 200;
 }
-.text a .img-dash {
-    height: 600px;
+.text .img-dash {
+    height: 500px;
     width: 90%;
 }
 /* simulador */
@@ -297,7 +297,7 @@ main {
     max-width: 600px;
     margin: 0 auto;
     text-align: center;
-    height: 400px;
+    height: 500px;
 }
 .simulador-box h2 {
     font-size: 2.4rem;
