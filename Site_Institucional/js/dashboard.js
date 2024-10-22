@@ -39,7 +39,7 @@ function mostrarKPI() {
                     label: 'Gás',
                     data: [kpi, 100 - kpi],
                     backgroundColor: [
-                        kpi > 30 ? "red" : "#8D6969",
+                        kpi > 20 ? "red" : "#8D6969",
                         "transparent"
                     ],
                     rotation: 180,
@@ -74,6 +74,7 @@ function mostrarGraficoDeLinha() {
 
     let data = [];
     let labels = [];
+    let limite = [];
 
     const diario = document.getElementById("diario");
     const mensal = document.getElementById("mensal");
@@ -83,6 +84,10 @@ function mostrarGraficoDeLinha() {
     for (let i = 0; i < dataDiario[sensorSelecionado].registros.length; i++) {
         data.push(dataDiario[sensorSelecionado].registros[i].porcGas);
         labels.push(dataDiario[sensorSelecionado].registros[i].horario);
+    }
+
+    for(i = 0; i < 30; i++) {
+        limite.push(20);
     }
 
     if (!lineChart) {
@@ -101,17 +106,18 @@ function mostrarGraficoDeLinha() {
                     },
                     {
                         label: "",
-                        data: [100],
+                        data: limite,
                         fill: false,
                         tension: 0.1,
                         backgroundColor: ['transparent'],
-                        borderColor: ['transparent'],
+                        borderColor: ['red'],
                     },
                 ]
             },
             options: {
                 scales: {
                     y: {
+                        max: 100,
                         beginAtZero: true,
 
                     }
@@ -129,6 +135,7 @@ function mostrarGraficoDeLinha() {
         diario.classList.add("selected");
 
         lineChart.data.datasets[0].data = data;
+        lineChart.data.datasets[1].data = limite;
         lineChart.data.labels = labels;
         lineChart.data.datasets[0].label = `Sensor ${sensorSelecionado + 1}`;
         lineChart.update();
@@ -145,49 +152,58 @@ function mostrarGraficoDeLinha() {
         }
 
         lineChart.data.datasets[0].data = data;
+        lineChart.data.datasets[1].data = limite;
         lineChart.data.labels = labels;
         lineChart.update();
-
+        
         anual.classList.remove("selected");
         mensal.classList.remove("selected");
         diario.classList.add("selected");
+        
+        div_titulo.innerHTML = `<h1>Evasão de gás(%)</h1>`
     });
 
-    mensal.addEventListener("click", () => {
-        data = [];
-        labels = [];
+mensal.addEventListener("click", () => {
+    data = [];
+    labels = [];
 
-        for (let i = 0; i < dataMensal[sensorSelecionado].registros.length; i++) {
-            data.push(dataMensal[sensorSelecionado].registros[i].porcGas);
-            labels.push(`Dia ${dataMensal[sensorSelecionado].registros[i].dia}`);
-        }
+    for (let i = 0; i < dataMensal[sensorSelecionado].registros.length; i++) {
+        data.push(dataMensal[sensorSelecionado].registros[i].porcGas);
+        labels.push(`Dia ${dataMensal[sensorSelecionado].registros[i].dia}`);
+    }
+    
+    lineChart.data.datasets[0].data = data;
+    lineChart.data.labels = labels;
+    lineChart.update();
+    
+    anual.classList.remove("selected");
+    diario.classList.remove("selected");
+    mensal.classList.add("selected");
+    
+    div_titulo.innerHTML = `<h1>Maior Evasão Registrada(%)</h1>`
+});
 
-        lineChart.data.datasets[0].data = data;
-        lineChart.data.labels = labels;
-        lineChart.update();
+anual.addEventListener("click", () => {
+    data = [];
+    labels = [];
+    
+    for (let i = 0; i < dataAnual[sensorSelecionado].registros.length; i++) {
+        data.push(dataAnual[sensorSelecionado].registros[i].porcGas);
+        labels.push(`${dataAnual[sensorSelecionado].registros[i].mes}`);
+    }
+    
+    lineChart.data.datasets[0].data = data;
+    lineChart.data.labels = labels;
+    lineChart.update();
+    
+    diario.classList.remove("selected");
+    mensal.classList.remove("selected");
+    anual.classList.add("selected");
+    
+    div_titulo.innerHTML = `<h1>Evasão média anual(%)</h1>`
+});
 
-        anual.classList.remove("selected");
-        diario.classList.remove("selected");
-        mensal.classList.add("selected");
-    });
-
-    anual.addEventListener("click", () => {
-        data = [];
-        labels = [];
-
-        for (let i = 0; i < dataAnual[sensorSelecionado].registros.length; i++) {
-            data.push(dataAnual[sensorSelecionado].registros[i].porcGas);
-            labels.push(`${dataAnual[sensorSelecionado].registros[i].mes}`);
-        }
-
-        lineChart.data.datasets[0].data = data;
-        lineChart.data.labels = labels;
-        lineChart.update();
-
-        diario.classList.remove("selected");
-        mensal.classList.remove("selected");
-        anual.classList.add("selected");
-    });
+console.log(limite)
 }
 
 
