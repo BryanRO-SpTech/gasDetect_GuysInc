@@ -86,7 +86,7 @@ function mostrarGraficoDeLinha() {
         labels.push(dataDiario[sensorSelecionado].registros[i].horario);
     }
 
-    for(i = 0; i < 30; i++) {
+    for (i = 0; i < 30; i++) {
         limite.push(20);
     }
 
@@ -101,16 +101,18 @@ function mostrarGraficoDeLinha() {
                         data: data,
                         fill: false,
                         tension: 0.1,
-                        backgroundColor: ['red'],
-                        borderColor: ['red'],
+                        backgroundColor: ['#3081B8'],
+                        borderColor: ['#3081B8'],
                     },
                     {
-                        label: "",
+                        label: "Limite Aceitável",
                         data: limite,
                         fill: false,
                         tension: 0.1,
                         backgroundColor: ['transparent'],
                         borderColor: ['red'],
+                        borderDash: [5, 5],
+                        pointRadius: 0,
                     },
                 ]
             },
@@ -119,12 +121,11 @@ function mostrarGraficoDeLinha() {
                     y: {
                         max: 100,
                         beginAtZero: true,
-
-                    }
+                    },
                 },
                 plugins: {
                     legend: {
-                        position: "bottom"
+                        position: "bottom",
                     }
                 }
             }
@@ -155,55 +156,55 @@ function mostrarGraficoDeLinha() {
         lineChart.data.datasets[1].data = limite;
         lineChart.data.labels = labels;
         lineChart.update();
-        
+
         anual.classList.remove("selected");
         mensal.classList.remove("selected");
         diario.classList.add("selected");
-        
+
         div_titulo.innerHTML = `<h1>Evasão de gás(%)</h1>`
     });
 
-mensal.addEventListener("click", () => {
-    data = [];
-    labels = [];
+    mensal.addEventListener("click", () => {
+        data = [];
+        labels = [];
 
-    for (let i = 0; i < dataMensal[sensorSelecionado].registros.length; i++) {
-        data.push(dataMensal[sensorSelecionado].registros[i].porcGas);
-        labels.push(`Dia ${dataMensal[sensorSelecionado].registros[i].dia}`);
-    }
-    
-    lineChart.data.datasets[0].data = data;
-    lineChart.data.labels = labels;
-    lineChart.update();
-    
-    anual.classList.remove("selected");
-    diario.classList.remove("selected");
-    mensal.classList.add("selected");
-    
-    div_titulo.innerHTML = `<h1>Maior Evasão Registrada(%)</h1>`
-});
+        for (let i = 0; i < dataMensal[sensorSelecionado].registros.length; i++) {
+            data.push(dataMensal[sensorSelecionado].registros[i].porcGas);
+            labels.push(`Dia ${dataMensal[sensorSelecionado].registros[i].dia}`);
+        }
 
-anual.addEventListener("click", () => {
-    data = [];
-    labels = [];
-    
-    for (let i = 0; i < dataAnual[sensorSelecionado].registros.length; i++) {
-        data.push(dataAnual[sensorSelecionado].registros[i].porcGas);
-        labels.push(`${dataAnual[sensorSelecionado].registros[i].mes}`);
-    }
-    
-    lineChart.data.datasets[0].data = data;
-    lineChart.data.labels = labels;
-    lineChart.update();
-    
-    diario.classList.remove("selected");
-    mensal.classList.remove("selected");
-    anual.classList.add("selected");
-    
-    div_titulo.innerHTML = `<h1>Evasão média anual(%)</h1>`
-});
+        lineChart.data.datasets[0].data = data;
+        lineChart.data.labels = labels;
+        lineChart.update();
 
-console.log(limite)
+        anual.classList.remove("selected");
+        diario.classList.remove("selected");
+        mensal.classList.add("selected");
+
+        div_titulo.innerHTML = `<h1>Maior Evasão Registrada(%)</h1>`
+    });
+
+    anual.addEventListener("click", () => {
+        data = [];
+        labels = [];
+
+        for (let i = 0; i < dataAnual[sensorSelecionado].registros.length; i++) {
+            data.push(dataAnual[sensorSelecionado].registros[i].porcGas);
+            labels.push(`${dataAnual[sensorSelecionado].registros[i].mes}`);
+        }
+
+        lineChart.data.datasets[0].data = data;
+        lineChart.data.labels = labels;
+        lineChart.update();
+
+        diario.classList.remove("selected");
+        mensal.classList.remove("selected");
+        anual.classList.add("selected");
+
+        div_titulo.innerHTML = `<h1>Evasão média anual(%)</h1>`
+    });
+
+    console.log(limite)
 }
 
 
@@ -264,6 +265,7 @@ function mudarTema() {
         lineChart.options.scales.y.ticks.color = "#2A719B";
         lineChart.options.scales.x.grid.color = "#2A719B";
         lineChart.options.scales.x.ticks.color = "#2A719B";
+
         barChart.options.plugins.legend.labels.color = "#2A719B";
         barChart.options.scales.y.grid.color = "#2A719B";
         barChart.options.scales.y.ticks.color = "#2A719B";
@@ -275,6 +277,7 @@ function mudarTema() {
         lineChart.options.scales.y.ticks.color = "#000000";
         lineChart.options.scales.x.grid.color = "#cfd1d0";
         lineChart.options.scales.x.ticks.color = "#000000";
+
         barChart.options.plugins.legend.labels.color = "#000000";
         barChart.options.scales.y.grid.color = "#cfd1d0";
         barChart.options.scales.y.ticks.color = "#000000";
