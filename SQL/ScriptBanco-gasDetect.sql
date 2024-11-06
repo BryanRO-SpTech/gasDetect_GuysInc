@@ -179,22 +179,3 @@ JOIN
 JOIN 
     empresa AS e ON fa.fkEmpresa = e.idEmpresa;
 
-
-
-
-    SELECT 
-    s.titulo AS 'Descrição do Sensor',
-    se.setor AS Setor,
-    se.sala AS Sala,
-    la.limiteAlerta AS 'Limite do Alerta',
-    e.razaoSocial AS 'Nome da Empresa'
-FROM 
-    Sensor AS s
-JOIN 
-    Setor AS se ON s.fkSetor = se.idSetor
-JOIN 
-    LimiteAlerta AS la ON se.fkLimite = la.idParametroAlerta
-JOIN 
-    Fabrica AS f ON se.fkFabrica = f.idFabrica
-JOIN 
-    Empresa AS e ON f.fkEmpresa = e.idEmpresa;
