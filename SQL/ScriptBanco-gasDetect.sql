@@ -14,19 +14,12 @@ nome VARCHAR(45) NOT NULL,
 cpf CHAR(11) NOT NULL,
 email VARCHAR(80) NOT NULL,
 senha TEXT NOT NULL,
-fkCargo INT,
+cargo VARCHAR(30),
+descCargo VARCHAR(255),
 fkEmpresa INT,
 CONSTRAINT fkEmpresa_Funcionario FOREIGN KEY(fkEmpresa) REFERENCES Empresa(idEmpresa)
 );
 
-
-CREATE TABLE Cargo (
-idCargo INT PRIMARY KEY AUTO_INCREMENT,
-cargo VARCHAR(30) NOT NULL,
-descricao VARCHAR(255)
-);
-
-ALTER TABLE Funcionario ADD CONSTRAINT fkCargo_Funcionario FOREIGN KEY(fkCargo) REFERENCES cargo(idCargo);
 ALTER TABLE Empresa ADD CONSTRAINT fkResponsavel_Empresa FOREIGN KEY(fkResponsavel) REFERENCES Funcionario(idFuncionario);
 
 
@@ -82,21 +75,12 @@ INSERT INTO empresa (razaoSocial, cnpjSede, fkResponsavel) VALUES
 ('Cores do Mundo Ltda', '32165498700159', NULL),
 ('Soluções em Tintas e Vernizes', '15975348600150', NULL);
 
-
-INSERT INTO cargo (cargo, descricao) VALUES
-('Gerente de Produção', 'Responsável pela linha de produção de tintas'),
-('Técnico em Tintas', 'Especialista em formulações de tintas'),
-('Analista de Qualidade', 'Verifica a qualidade das tintas produzidas'),
-('Coordenador de Vendas', 'Gerencia a equipe de vendas de tintas'),
-('Assistente de Logística', 'Auxilia na distribuição de produtos');
-
-
-INSERT INTO funcionario (nome, cpf, email, senha, fkCargo, fkEmpresa) VALUES
-('João Silva', '12345678901', 'joao@tintasecores.com', 'senha123', 1, 1),
-('Maria Souza', '98765432100', 'maria@inovacaoemtintas.com', 'senha456', 2, 2),
-('Carlos Pereira', '45678912345', 'carlos@fabricacaotintasverdes.com', 'senha789', 3, 3),
-('Ana Costa', '32165498765', 'ana@coresdomundo.com', 'senha101', 4, 4),
-('Luiz Fernando', '15975348612', 'luiz@solucoesemtintas.com', 'senha202', 5, 5);
+INSERT INTO funcionario (nome, cpf, email, senha, cargo, descCargo, fkEmpresa) VALUES
+('João Silva', '12345678901', 'joao@tintasecores.com', 'senha123', 'Gerente de Produção', 'Responsável pela linha de produção de tintas', 1),
+('Maria Souza', '98765432100', 'maria@inovacaoemtintas.com', 'senha456','Técnico em Tintas', 'Especialista em formulações de tintas', 2),
+('Carlos Pereira', '45678912345', 'carlos@fabricacaotintasverdes.com', 'senha789','Analista de Qualidade', 'Verifica a qualidade das tintas produzidas', 3),
+('Ana Costa', '32165498765', 'ana@coresdomundo.com', 'senha101', 'Coordenador de Vendas', 'Gerencia a equipe de vendas de tintas', 4),
+('Luiz Fernando', '15975348612', 'luiz@solucoesemtintas.com', 'senha202', 'Assistente de Logística', 'Auxilia na distribuição de produtos', 5);
 
 
 INSERT INTO fabrica (cep, logradouro, numero, bairro, cidade, UF, fkEmpresa) VALUES
@@ -146,12 +130,10 @@ JOIN sensor AS s ON r.fkSensor = s.idSensor;
 
 
 SELECT 
-    funcionario.nome AS 'Nome do Funcionario',
+    nome AS 'Nome do Funcionario',
     cargo AS Cargo
 FROM 
-    funcionario 
-JOIN 
-    cargo ON funcionario.fkCargo = cargo.idCargo;
+    funcionario;
 
 
 SELECT 
