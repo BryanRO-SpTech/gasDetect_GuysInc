@@ -6,39 +6,72 @@ var incidentesAnuais = 0;
 
 function calcular() {
     // atribuindo VALORES DAS INPUTS
-    incidentesAnuais = Number(ipt_mediaIncidentes.value)
-    var custoIndenizacao = Number(ipt_custoIndenizacao.value)
-    var custoManutencao = Number(ipt_custoManutencao.value)
-    var tempoParada = Number(ipt_tempoParada.value)
-    var custoParadaHora = Number(ipt_custoParadaHora.value)
+    var incidentesAnuais = Number(ipt_mediaIncidentes.value);
+    var custoIndenizacaoManutencao = Number(ipt_custoIndenizacao.value);
+    var tempoParada = Number(ipt_tempoParada.value);
+    var custoParadaHora = Number(ipt_custoParadaHora.value);
+
+    div_incidente.innerHTML = ``
+    div_custo.innerHTML = ``
+    div_custohora.innerHTML = ``
+    div_hora.innerHTML = ``
 
     //CALCULO PERDAS
-    var totalIndenizacao = incidentesAnuais * custoIndenizacao;
-    var totalManutencao = incidentesAnuais * custoManutencao;
+    var totalIndenizacao = incidentesAnuais * custoIndenizacaoManutencao;
     var totalHorasParada = incidentesAnuais * tempoParada;
     var totalParada = totalHorasParada * custoParadaHora;
 
-    totalPerdas = totalIndenizacao + totalManutencao + totalParada;
+    totalPerdas = totalIndenizacao + totalParada;
 
     //CALCULO GANHO
     economiaPerdas = totalPerdas * 0.5;
 
-    div_mensagem.innerHTML = `<br><br><br><br>Detalhamento de perdas considerando média de <b> ${incidentesAnuais} </b> incidentes por ano:<br> <br>
-                🕝 Devido à paralisação da sua fábrica por ${totalHorasParada} horas no total, <br> sua empresa sofreu uma perda de  <span class = 'perdas'>${formatarDinheiro(totalParada)}.</span><br><br>
-                💼 Em indenizações a colaboradores decorrentes dos incidentes, <br> sua empresa sofreu uma perda de  <span class = 'perdas'>${formatarDinheiro(totalIndenizacao)}.</span><br><br>
-                🛠️ O custo com manutenção de equipamentos após os incidentes <br> foi de  <span class = 'perdas'>${formatarDinheiro(totalManutencao)}.</span><br><br>
-                ⚠️Perda total estimada:  <span class = 'perdas'>${formatarDinheiro(totalPerdas)}</span> <br><br> 
-            
-            <button onclick='solucao()'>GasDetect</button> <br>`
+    if (incidentesAnuais <= 0) {
 
+        div_incidente.innerHTML = `⛔ Insira um valor válido`;
+
+    }
+
+    if (custoIndenizacaoManutencao <= 0) {
+
+        div_custo.innerHTML = `⛔ Insira um valor válido`;
+
+    }
+
+    if (custoParadaHora <= 0) {
+
+        div_custohora.innerHTML = `⛔ Insira um valor válido`;
+
+    }
+
+    if (tempoParada <= 0) {
+
+        div_hora.innerHTML = `⛔ Insira um valor válido`;
+
+    }
+
+    if (incidentesAnuais > 0 && custoIndenizacaoManutencao > 0 && custoParadaHora > 0 && tempoParada > 0) {
+
+        div_mensagem.innerHTML = `Detalhamento de perdas considerando média de <b> ${incidentesAnuais} </b> incidentes por ano:<br> <br>
+        🕝 Com a paralisação de ${totalHorasParada} horas causou perdas na produção e finanças de  <span class = 'perdas'>${formatarDinheiro(totalParada)}.</span><br><br>
+        🛠️ 
+        O custo com manutenção e indenizações resultou em uma perda de <span class='perdas'>${formatarDinheiro(totalIndenizacao)}.</span><br><br>
+        ⚠️ Perda total estimada:<span class = 'perdas'>${formatarDinheiro(totalPerdas)}</span> <br><br><br><br>
+        
+        <b>Economia com a solução GasDetect:</b>
+        
+       Com nosso sistema, sua empresa tem um ganho de até <span class='ganhos'><b>50%</b></span>. <br><br>
+        💸 Com ${incidentesAnuais} incidentes anuais, seu lucro anual seria de: <span class='ganhos'>${formatarDinheiro(economiaPerdas)}.</span> <br> <br>
+        📶 Ao adquirir nossa solução por 3 anos, sua empresa terá uma prospecção de <span class='ganhos'>${formatarDinheiro(economiaPerdas * 3)}.</span>
+        
+        <a href="../html/calculadoraGUYS.html"><button class="botao-voltar">Voltar</button></a>
+        `
+
+
+    }
 }
 
-function solucao() {
-    div_mensagem.innerHTML = `<br><br><br><br><br><br><b>Economia com a solução GasDetect:</b> <br> <br>
-                                Com a implementação do nosso sistema, sua empresa pode obter um ganho financeiro de até <span class='ganhos'><b>50%</b></span> <br> <br>
-                                💸 Considerando a média de ${incidentesAnuais} incidentes anuais você teria um lucro ao ANO de: <span class='ganhos'>${formatarDinheiro(economiaPerdas)}.</span> <br> <br>
-                                📶 Ao adquirir a nossa solução pelos próximos 3 anos sua empresa obteria uma prospecção de  <span class='ganhos'>${formatarDinheiro(economiaPerdas * 3)}.</span>`
-}
+
 
 function formatarDinheiro(valor) {
     return valor.toLocaleString('pt-br', { style: "currency", currency: 'BRL' })
