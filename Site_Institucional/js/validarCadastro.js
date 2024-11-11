@@ -6,12 +6,18 @@ let cpfValido = false;
 let senhaValido = false;
 let confirmarSenhaValido = false;
 
-
+const razaoSocial = '';
+const cnpj = '';
+const nome = '';
+const email = '';
+const cpf = '';
+const senha = '';
+const confirmarSenha = '';
 
 function validarRazaoSocial() {
     razaoSocialValido = false
 
-    const razaoSocial = document.getElementById("ipt_razaoSocial").value;
+    razaoSocial = document.getElementById("ipt_razaoSocial").value;
     const spanMensagem = document.getElementById("span_mensagem_razao_social");
 
     let mensagem = "";
@@ -30,7 +36,7 @@ function validarRazaoSocial() {
 function validarCnpj() {
     cnpjValido = false
 
-    const cnpj = document.getElementById("ipt_cnpj");
+    cnpj = document.getElementById("ipt_cnpj");
     const spanMensagem = document.getElementById("span_mensagem_cnpj");
 
     let mensagem = "";
@@ -52,7 +58,7 @@ function validarCnpj() {
 function validarNome() {
     nomeValido = false;
 
-    const nome = document.getElementById("ipt_nome").value;
+    nome = document.getElementById("ipt_nome").value;
     const spanMensagem = document.getElementById("span_mensagem_nome");
 
     const quantPalavras = nome.split(" ").filter(palavra => palavra != "");
@@ -85,7 +91,7 @@ function validarNome() {
 function validarEmail() {
     emailValido = false;
 
-    const email = document.getElementById("ipt_email").value;
+    email = document.getElementById("ipt_email").value;
     const spanMensagem = document.getElementById("span_mensagem_email");
 
     let mensagem = "";
@@ -121,7 +127,7 @@ function validarEmail() {
 function validarCpf() {
     cpfValido = false;
 
-    const cpf = document.getElementById("ipt_cpf");
+    cpf = document.getElementById("ipt_cpf");
     const spanMensagem = document.getElementById("span_mensagem_cpf");
 
     let mensagem = "";
@@ -142,7 +148,7 @@ function validarCpf() {
 function validarSenha() {
     senhaValido = false;
 
-    const senha = document.getElementById("ipt_senha").value;
+    senha = document.getElementById("ipt_senha").value;
     const spanMensagem = document.getElementById("span_mensagem_senha");
 
     let mensagem = "";
@@ -168,8 +174,9 @@ function validarSenha() {
 function validarConfirmarSenha() {
     confirmarSenhaValido = false;
 
-    const senha = document.getElementById("ipt_senha").value;
-    const confirmarSenha = document.getElementById("ipt_confirmar").value;
+    senha = document.getElementById("ipt_senha").value;
+    confirmarSenha = document.getElementById("ipt_confirmar").value;
+
     const spanMensagem = document.getElementById("span_mensagem_confirmar");
 
     let mensagem = "";
@@ -185,7 +192,7 @@ function validarConfirmarSenha() {
     spanMensagem.innerHTML = mensagem;
 }
 
-function redirecionar() {
+function cadastrar() {
     if (
         razaoSocialValido &&
         cnpjValido &&
@@ -195,8 +202,48 @@ function redirecionar() {
         senhaValido &&
         confirmarSenhaValido
     ) {
-        window.location.replace("./login.html");
-    }
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+              idEmpresaVincularServer: idEmpresaVincular
+            }),
+          })
+            .then(function (resposta) {
+              console.log("resposta: ", resposta);
+              
+              if (resposta.ok) {
+                  cardErro.style.display = "block";
+                  
+                  mensagem_erro.innerHTML =
+                  "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+                  
+                  setTimeout(() => {
+                    window.location.replace("./login.html");
+                }, "2000");
+      
+                limparFormulario();
+                finalizarAguardar();
+              } else {
+                throw "Houve um erro ao tentar realizar o cadastro!";
+              }
+            })
+            .catch(function (resposta) {
+              console.log(`#ERRO: ${resposta}`);
+              finalizarAguardar();
+            });
+      
+          return false;
+        }
+
+
 }
 
 
