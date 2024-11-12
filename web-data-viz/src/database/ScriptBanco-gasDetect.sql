@@ -1,29 +1,24 @@
-CREATE DATABASE Guys_Inc;
+CREATE DATABASE if not exists Guys_Inc;
 USE Guys_Inc;
 
-CREATE TABLE Empresa (
+CREATE TABLE if not exists Empresa (
 idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
 razaoSocial VARCHAR(120) NOT NULL,
-cnpjSede CHAR(14) NOT NULL,
-fkResponsavel INT UNIQUE
+cnpjSede CHAR(14) NOT NULL
 );
 
-CREATE TABLE Funcionario (
+CREATE TABLE if not exists Funcionario (
 idFuncionario  INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(45) NOT NULL,
 cpf CHAR(11) NOT NULL,
 email VARCHAR(80) NOT NULL,
 senha TEXT NOT NULL,
-cargo VARCHAR(30),
 descCargo VARCHAR(255),
 fkEmpresa INT,
 CONSTRAINT fkEmpresa_Funcionario FOREIGN KEY(fkEmpresa) REFERENCES Empresa(idEmpresa)
 );
 
-ALTER TABLE Empresa ADD CONSTRAINT fkResponsavel_Empresa FOREIGN KEY(fkResponsavel) REFERENCES Funcionario(idFuncionario);
-
-
-CREATE TABLE Fabrica (
+CREATE TABLE if not exists Fabrica (
 idFabrica INT PRIMARY KEY AUTO_INCREMENT,
 cep VARCHAR(45) NOT NULL,
 logradouro VARCHAR(45) NOT NULL,
@@ -35,12 +30,12 @@ fkEmpresa INT,
 CONSTRAINT fkEmpresa_Fabrica FOREIGN KEY(fkEmpresa) REFERENCES Empresa(idEmpresa)
 );
 
-CREATE TABLE LimiteAlerta (
+CREATE TABLE if not exists LimiteAlerta (
 idParametroAlerta INT PRIMARY KEY AUTO_INCREMENT,
 limiteAlerta INT NOT NULL
 );
 
-CREATE TABLE Setor (
+CREATE TABLE if not exists Setor (
 idSetor INT PRIMARY KEY AUTO_INCREMENT,
 tamanhoM2 INT NOT NULL,
 setor VARCHAR(45),
@@ -52,14 +47,14 @@ CONSTRAINT fkFabrica_Setor FOREIGN KEY(fkFabrica) REFERENCES Fabrica(idFabrica),
 CONSTRAINT fkLimite_Setor FOREIGN KEY(fkLimite) REFERENCES LimiteAlerta(idParametroAlerta)
 );
 
-CREATE TABLE Sensor (
+CREATE TABLE if not exists Sensor (
 idSensor INT PRIMARY KEY AUTO_INCREMENT,
 titulo VARCHAR(255),
 fkSetor INT,
 CONSTRAINT fkSetor_Sensor FOREIGN KEY(fkSetor) REFERENCES Setor(idSetor)
 );
 
-CREATE TABLE Registro (
+CREATE TABLE if not exists Registro (
 idRegistro INT PRIMARY KEY AUTO_INCREMENT,
 dtHora TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
 porcGas DECIMAL(5,2) NOT NULL,
@@ -68,19 +63,19 @@ CONSTRAINT fkSensor_Registro FOREIGN KEY(fkSensor) REFERENCES Sensor(idSensor)
 );
 
 
-INSERT INTO empresa (razaoSocial, cnpjSede, fkResponsavel) VALUES
-('Tintas e Cores S.A.', '12345678000195', NULL),
-('Inovação em Tintas Ltda', '98765432000156', NULL),
-('Fabricação de Tintas Verdes', '45678912300158', NULL),
-('Cores do Mundo Ltda', '32165498700159', NULL),
-('Soluções em Tintas e Vernizes', '15975348600150', NULL);
+INSERT INTO empresa (razaoSocial, cnpjSede) VALUES
+('Tintas e Cores S.A.', '12345678000195'),
+('Inovação em Tintas Ltda', '98765432000156'),
+('Fabricação de Tintas Verdes', '45678912300158'),
+('Cores do Mundo Ltda', '32165498700159'),
+('Soluções em Tintas e Vernizes', '15975348600150');
 
-INSERT INTO funcionario (nome, cpf, email, senha, cargo, descCargo, fkEmpresa) VALUES
-('João Silva', '12345678901', 'joao@tintasecores.com', 'senha123', 'Gerente de Produção', 'Responsável pela linha de produção de tintas', 1),
-('Maria Souza', '98765432100', 'maria@inovacaoemtintas.com', 'senha456','Técnico em Tintas', 'Especialista em formulações de tintas', 2),
-('Carlos Pereira', '45678912345', 'carlos@fabricacaotintasverdes.com', 'senha789','Analista de Qualidade', 'Verifica a qualidade das tintas produzidas', 3),
-('Ana Costa', '32165498765', 'ana@coresdomundo.com', 'senha101', 'Coordenador de Vendas', 'Gerencia a equipe de vendas de tintas', 4),
-('Luiz Fernando', '15975348612', 'luiz@solucoesemtintas.com', 'senha202', 'Assistente de Logística', 'Auxilia na distribuição de produtos', 5);
+INSERT INTO funcionario (nome, cpf, email, senha, descCargo, fkEmpresa) VALUES
+('João Silva', '12345678901', 'joao@tintasecores.com', 'senha123', 'Responsável pela linha de produção de tintas', 1),
+('Maria Souza', '98765432100', 'maria@inovacaoemtintas.com', 'senha456', 'Especialista em formulações de tintas', 2),
+('Carlos Pereira', '45678912345', 'carlos@fabricacaotintasverdes.com', 'senha789', 'Verifica a qualidade das tintas produzidas', 3),
+('Ana Costa', '32165498765', 'ana@coresdomundo.com', 'senha101', 'Gerencia a equipe de vendas de tintas', 4),
+('Luiz Fernando', '15975348612', 'luiz@solucoesemtintas.com', 'senha202', 'Auxilia na distribuição de produtos', 5);
 
 
 INSERT INTO fabrica (cep, logradouro, numero, bairro, cidade, UF, fkEmpresa) VALUES

@@ -6,13 +6,13 @@ let cpfValido = false;
 let senhaValido = false;
 let confirmarSenhaValido = false;
 
-const razaoSocial = '';
-const cnpj = '';
-const nome = '';
-const email = '';
-const cpf = '';
-const senha = '';
-const confirmarSenha = '';
+let razaoSocial = '';
+let cnpj = '';
+let nome = '';
+let email = '';
+let cpf = '';
+let senha = '';
+let confirmarSenha = '';
 
 function validarRazaoSocial() {
     razaoSocialValido = false
@@ -210,37 +210,35 @@ function cadastrar() {
             body: JSON.stringify({
                 // crie um atributo que recebe o valor recuperado aqui
                 // Agora vá para o arquivo routes/usuario.js
-                nomeServer: nomeVar,
-                emailServer: emailVar,
-                senhaServer: senhaVar,
-              idEmpresaVincularServer: idEmpresaVincular
+                razaoSocialServer: razaoSocial,
+                cnpjServer: cnpj,
+                nomeServer: nome,
+                emailServer: email,
+                cpfServer: cpf,
+                senhaServer: senha
             }),
           })
             .then(function (resposta) {
               console.log("resposta: ", resposta);
               
-              if (resposta.ok) {
-                  cardErro.style.display = "block";
+            if (resposta.ok) {
+                mensagemValidacao.style.display = "block";
                   
-                  mensagem_erro.innerHTML =
-                  "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+                span_mensagem_cadastro_efetuado.innerHTML =
+                "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
                   
-                  setTimeout(() => {
-                    window.location.replace("./login.html");
-                }, "2000");
+                window.location.replace("./login.html");
+                
       
-                limparFormulario();
-                finalizarAguardar();
-              } else {
+            } else {
                 throw "Houve um erro ao tentar realizar o cadastro!";
-              }
+            }
             })
             .catch(function (resposta) {
-              console.log(`#ERRO: ${resposta}`);
-              finalizarAguardar();
+            span_mensagem_cadastro_efetuado.innerHTML = `#ERRO: ${resposta}`;
             });
       
-          return false;
+            return false;
         }
 
 
