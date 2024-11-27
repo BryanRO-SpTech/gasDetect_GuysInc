@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html theme="light" lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Guys Inc</title>
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="./css/config.css">
+</head>
+
+<body>
+    <header>
+        <div class="side">
+            <div class="logo">
+                <a href="/html/index.html">
+                    <img src="/assets/img/GUYS-logo.png" alt="Logo Guys inc.">
+                </a>
+            </div>
+            <h1>GUYS inc.</h1>
+        </div>
+        <div class="sideBar">
+            <div class="imagem">
+                <img src="/assets/img/GUYS-logo.png" alt="imagem logo Guys Inc">
+            </div>
+            <div class="nome">
+                <h3><span id="b_usuario">usuário</span></h3>
+            </div>
+                <nav class="menu">
+                    <ul>
+                        <a href="">
+                            <li>Configurar meu perfil</li>
+                        </a>
+                        <a href="">
+                            <li>Gerenciar Empresa</li>
+                        </a>
+                        <a href="">
+                            <li>Gerenciar Fábrica</li>
+                        </a>
+                        <a href="">
+                            <li>Gerenciar Colaboradores</li>
+                        </a>                       
+                    </ul>
+                </nav>
+
+            <div class="botoes">
+                <input type="checkbox" onclick="mudarTema()" class="checkbox" id="chk">
+
+                <label class="label" for="chk">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                    <div class="ball"></div>
+                </label>
+                <a href="config.html">
+                    <img src="/assets/icons/engrenagem.png" alt="Configurações">
+                </a>
+            </div>
+        </div>
+    </header>
+        <div class="container">
+            <div class="imagem">
+                <img src="/assets/img/GUYS-logo.png" alt="imagem logo Guys Inc">
+            </div>
+            <div class="cadastro-content">
+                <div class="input-div">
+                    <div class="labels">
+                        <label for="ipt_nome">Seu nome:</label>
+                    </div>
+                    <input type="text" id="ipt_nome" oninput="validarNome()">
+                    <div class="mensagemValidacao">
+                        <span id="span_mensagem_nome"></span>
+                    </div>
+                </div>
+                
+                <div class="input-div">
+                    <div class="labels">
+                        <label for="ipt_email">E-mail:</label>
+                    </div>
+                    <input type="email" maxlength="80" id="ipt_email" oninput="validarEmail()">
+                    <div class="mensagemValidacao">
+                        <span id="span_mensagem_email"></span>
+                    </div>
+                </div>
+                
+                <div class="input-div">
+                    <div class="labels">
+                        <label for="ipt_cpf">Seu CPF:</label>
+                    </div>
+                    <input type="text" maxlength="11" id="ipt_cpf" oninput="validarCpf()">
+                    <div class="mensagemValidacao">
+                        <span id="span_mensagem_cpf"></span>
+                    </div>
+                </div>
+                <button onclick="alterar_senha()">Alterar Senha</button>
+                <div class="salvar">
+                    <button onclick="salvar()">Salvar</button>
+                </div>
+
+                
+                
+            </div>
+    
+            
+        </div>
+       
+        
+</body>
+<script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+</script>
