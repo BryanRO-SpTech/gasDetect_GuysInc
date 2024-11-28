@@ -175,11 +175,16 @@ button{
 .botao-voltar{
     transform: translate(150%, 80%);
     cursor: pointer;
-    padding: 40px;
-    width: 150px;
-    height: 40px;
-    border-radius: 10px;
+    padding: 25px;
+    width: 140px;
+    height: 30px;
+    border-radius: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
 }
+
 
 
 .perdas{

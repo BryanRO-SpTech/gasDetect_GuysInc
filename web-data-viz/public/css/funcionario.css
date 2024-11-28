@@ -91,13 +91,13 @@ header {
 }
 
 .menu li{
-   padding: 10px;
+    padding: 10px;
    border-bottom: 1px white solid;
    width: 100%;
    color: #90E4EC;
    height: 20%;
    font-weight: 700;
-   text-align: start;
+   text-align: center;
    
 }
 
@@ -162,13 +162,13 @@ header {
 
 
 .cadastro-content {
-    margin-top: 30px;
+    margin-top: 80px;
     margin-left: 270px;
-display: flex;
+    display: flex;
     width: 60%;
     height: 100%;
     flex-direction: column;
-align-items: center;
+    align-items: center;
 }
 
 
@@ -199,8 +199,10 @@ align-items: center;
 }
 
 .labels {
+    display: flex;
     color: var(--cor-texto);
-    
+    align-items: start;
+    justify-content: start;
     font-weight: 700;
     font-size: 18px;
     user-select: none;
@@ -228,9 +230,10 @@ align-items: center;
     justify-content: center;
     align-items: start;
     flex-direction: column;
-    margin-top: 10px;
+    margin-top: 80px;
     width: 100%;
     margin-left: 150px;
+
 }
 
 .input-div1 input {
@@ -262,38 +265,19 @@ align-items: center;
 }
 
 button{
-    margin-top: 20px;
+    margin-top: 40px;
     width: 70%;
-    padding: 10px;
+    padding: 8px;
     border-radius: 10px;
     border: none;
     font-size: 15px;
     font-weight: 700;
     color: #fff;  
     cursor: pointer;
-
-}
-
-.salvar{
     background-color: #90E4EC;
 }
-.senha{
-    background-color: #262A69;
-    margin-top: 30px;
 
-}
 
-.imagem_perfil{
-background-color: #262A69;
-min-width: 140px;
-min-height: 140px; 
-border-radius: 50%;
-}
-
-.user #a_usuario{
-    font-size: 20px;
-    color: #262A69;
-}
 
 
 li img{
@@ -303,16 +287,3 @@ li img{
 
 }
 
-.trocar-img{
-    background-color: #535050;
-    border-radius: 50%;
-    min-width: 40px;
-    min-height: 40px;
-    transform: translate(80%, -90%);
-}
-
-.trocar-img img{
-    margin-left: 10px;
-    margin-top: 8px;    
-    width: 55%;
-}

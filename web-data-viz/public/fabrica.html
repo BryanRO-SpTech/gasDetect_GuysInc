@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html theme="light" lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Fábricas Guys Inc</title>
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/fabrica.css">
+</head>
+
+<body>
+    <header>
+        <div class="side">
+            <div class="logo">
+                <a href="/html/index.html">
+                    <img src="/assets/img/GUYS-logo.png" alt="Logo Guys inc.">
+                </a>
+            </div>
+            <h1>GUYS inc.</h1>
+        </div>
+        <div class="sideBar">
+            <div class="imagem">
+                <img src="/assets/img/GUYS-logo.png" alt="imagem logo Guys Inc">
+            </div>
+            <div class="nome">
+                <h3><span id="b_usuario">usuário</span></h3>
+            </div>
+            <nav class="menu">
+                <ul>
+                    <a href="config.html">
+                        <li> <img src="/assets/icons/configurando-usuario.png" alt=""> Configurar meu perfil</li>
+                    </a>
+                    <a href="funcionario.html">
+                        <li><img src="/assets/icons/companhia.png" alt=""> Gerenciar Empresa</li>
+                    </a>
+                    <a href="">
+
+                        <li> <img src="/assets/icons/gerenciamento.png" alt=""> Gerenciar Fábrica</li>
+                    </a>
+                    <a href="">
+
+                        <li> <img src="/assets/icons/id-de-toque.png" alt=""> Gerenciar Colaboradores</li>
+                    </a>
+                </ul>
+            </nav>
+
+            <div class="botoes">
+                <input type="checkbox" onclick="mudarTema()" class="checkbox" id="chk">
+
+                <label class="label" for="chk">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                    <div class="ball"></div>
+                </label>
+                <a href="config.html">
+                    <img src="/assets/icons/engrenagem.png" alt="Configurações">
+                </a>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="cadastro-content">
+            <div class="guys">
+                <h1>Fábricas Cadastradas</h1>
+            </div>
+
+
+            <div class="cadastro-fab">
+                <span id="info">CEP</span>
+                <span id="info">Logradouro</span>
+                <span id="info">Número</span>
+                <span id="info">Bairro</span>
+                <span id="info">Cidade</span>
+                <span id="info">UF</span>
+            </div>
+
+
+
+
+
+        </div>
+
+
+    </div>
+
+
+</body>
+<script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+</script>
