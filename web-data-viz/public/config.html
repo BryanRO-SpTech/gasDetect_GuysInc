@@ -29,16 +29,18 @@
                 <nav class="menu">
                     <ul>
                         <a href="">
-                            <li>Configurar meu perfil</li>
+                            <li> <img src="/assets/icons/configurando-usuario.png" alt="">  Configurar meu perfil</li>
                         </a>
                         <a href="">
-                            <li>Gerenciar Empresa</li>
+                            <li><img src="/assets/icons/companhia.png" alt=""> Gerenciar Empresa</li>
                         </a>
                         <a href="">
-                            <li>Gerenciar Fábrica</li>
+    
+                            <li> <img src="/assets/icons/gerenciamento.png" alt=""> Gerenciar Fábrica</li>
                         </a>
                         <a href="">
-                            <li>Gerenciar Colaboradores</li>
+                           
+                            <li> <img src="/assets/icons/id-de-toque.png" alt=""> Gerenciar Colaboradores</li>
                         </a>                       
                     </ul>
                 </nav>
@@ -57,12 +59,18 @@
             </div>
         </div>
     </header>
-        <div class="container">
-            <div class="imagem">
-                <img src="/assets/img/GUYS-logo.png" alt="imagem logo Guys Inc">
-            </div>
-            <div class="cadastro-content">
-                <div class="input-div">
+    <div class="container">
+        <div class="cadastro-content">
+                <div class="imagem_perfil">
+                    <img src="/assets/img/GUYS-logo.png" alt="imagem logo Guys Inc">
+                </div>
+                <div class="trocar-img">
+                    <img src="/assets/icons/ferramenta-lapis.png" alt=""> 
+                </div>
+                <div class="user">
+                    <h3><span id="b_usuario">usuário</span></h3>
+                </div>
+                <div class="input-div1">
                     <div class="labels">
                         <label for="ipt_nome">Seu nome:</label>
                     </div>
@@ -91,10 +99,9 @@
                         <span id="span_mensagem_cpf"></span>
                     </div>
                 </div>
-                <button onclick="alterar_senha()">Alterar Senha</button>
-                <div class="salvar">
-                    <button onclick="salvar()">Salvar</button>
-                </div>
+                <button class="senha" onclick="alterar_senha()">Alterar Senha</button>
+                    <button class="salvar" onclick="salvar()">Salvar</button>
+
 
                 
                 
