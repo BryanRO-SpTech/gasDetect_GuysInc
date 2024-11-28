@@ -36,20 +36,21 @@ function validarRazaoSocial() {
 function validarCnpj() {
     cnpjValido = false
 
-    cnpj = document.getElementById("ipt_cnpj");
+    const cnpjIpt = document.getElementById("ipt_cnpj");
     const spanMensagem = document.getElementById("span_mensagem_cnpj");
 
     let mensagem = "";
 
-    removerCaracteresInvalidos(cnpj, "0123456789")
+    removerCaracteresInvalidos(cnpjIpt, "0123456789");
 
 
-    if (cnpj.value.length < 14) {
-        mensagem = `CNPJ deve conter exatamente 14 dígitos. Digite mais ${14 - cnpj.value.length} números...`;
+    if (cnpjIpt.value.length < 14) {
+        mensagem = `CNPJ deve conter exatamente 14 dígitos. Digite mais ${14 - cnpjIpt.value.length} números...`;
     }
 
     else {
         cnpjValido = true
+        cnpj = cnpjIpt.value;
     }
 
     spanMensagem.innerText = mensagem;
@@ -127,19 +128,20 @@ function validarEmail() {
 function validarCpf() {
     cpfValido = false;
 
-    cpf = document.getElementById("ipt_cpf");
+    const cpfIpt = document.getElementById("ipt_cpf");
     const spanMensagem = document.getElementById("span_mensagem_cpf");
 
     let mensagem = "";
 
-    removerCaracteresInvalidos(cpf, "0123456789")
+    removerCaracteresInvalidos(cpfIpt, "0123456789")
 
-    if (cpf.value.length < 11) {
-        mensagem = `CPF deve conter exatamente 11 dígitos. Digite mais ${11 - cpf.value.length} números...`;
+    if (cpfIpt.value.length < 11) {
+        mensagem = `CPF deve conter exatamente 11 dígitos. Digite mais ${11 - cpfIpt.value.length} números...`;
     }
 
     else {
         cpfValido = true;
+        cpf = cpfIpt.value;
     }
 
     spanMensagem.innerHTML = mensagem;
@@ -174,7 +176,6 @@ function validarSenha() {
 function validarConfirmarSenha() {
     confirmarSenhaValido = false;
 
-    senha = document.getElementById("ipt_senha").value;
     confirmarSenha = document.getElementById("ipt_confirmar").value;
 
     const spanMensagem = document.getElementById("span_mensagem_confirmar");
@@ -202,6 +203,7 @@ function cadastrar() {
         senhaValido &&
         confirmarSenhaValido
     ) {
+        console.log(cnpj)
         fetch("/usuarios/cadastrar", {
             method: "POST",
             headers: {
@@ -217,29 +219,18 @@ function cadastrar() {
                 cpfServer: cpf,
                 senhaServer: senha
             }),
-          })
+        })
             .then(function (resposta) {
-              console.log("resposta: ", resposta);
-              
-            if (resposta.ok) {
-                mensagemValidacao.style.display = "block";
-                  
-                span_mensagem_cadastro_efetuado.innerHTML =
-                "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-                  
+                console.log("resposta: ", resposta);
+
                 window.location.replace("./login.html");
-                
-      
-            } else {
-                throw "Houve um erro ao tentar realizar o cadastro!";
-            }
             })
             .catch(function (resposta) {
-            span_mensagem_cadastro_efetuado.innerHTML = `#ERRO: ${resposta}`;
+                span_mensagem_cadastro_efetuado.innerHTML = `#ERRO: ${resposta}`;
             });
-      
-            return false;
-        }
+
+        return false;
+    }
 
 
 }

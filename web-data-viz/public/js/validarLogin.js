@@ -3,10 +3,31 @@ function validarLogin() {
     const senha = document.getElementById("ipt_senha").value;
     const spanError = document.getElementById("spn_login_error");
 
-    if (email != "guys@guysinc.com" || senha != "12345678") {
-        spanError.innerHTML = "E-mail ou senha incorretos, tente novamente.";
-    } else {
-        window.location.replace("./dashboard.html");
-    }
+    fetch("/usuarios/autenticar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            emailServer: email,
+            senhaServer: senha,
+        }),
+    }).then(function (res) {
+        if (!res.ok) {
+            spanError.innerHTML = "Usuário ou senha incorretos";
+            return spanError.style.display = "block";
+        }
 
+        if (res.ok) {
+            res.json().then(function (data) {
+                console.log(data);
+                sessionStorage.ID_USUARIO = data.idFuncionario;
+                sessionStorage.EMAIL = data.email;
+                sessionStorage.NOME = data.nome;
+                sessionStorage.ID_EMPRESA = data.empresaId;
+
+                window.location.replace("./dashboard.html");
+            });
+        }
+    });
 }

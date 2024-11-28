@@ -96,25 +96,27 @@ button:active {
     transform: scale(1.5);
 }
 .label .ball {
-    background-color: #fff;
+    background-color: #dddddd;
     border-radius: 50%;
     position: absolute;
-    bottom: 1px;
-    left: 2px;
-    height: 22px;
-    width: 22px;        
+    top: 0;
+    left: 0;
+    height: 100%;
+    aspect-ratio: 1;       
     transform: translate(0px);
     transition: transform 0.2s linear;
 }
 .checkbox:checked + .label .ball{
-    transform: translateX(24px);
+    transform: translateX(25px);
 }
-.fa-moon {
+
+.bi {
     color: var(--cor-button);
+
+    height: 100%;
+    width: 100%;
 }
-.fa-sun {
-    color: var(--cor-button);
-}
+
 main {
     height: var(--tamanho-main);
     margin-top: 100px;
@@ -124,13 +126,22 @@ main {
     color: var(--cor-texto-main);
 }
 
-.fundo_img {
+:root[theme='light'] .fundo_img{
+    height: calc(100vh - 100px);
+    width: 100%;
+    background-image: url(../assets/img/Fundo1page_ligth.png);
+    background-size: cover;
+    background-position: 30% 40%;
+}
+
+:root[theme='dark'] .fundo_img {
     height: calc(100vh - 100px);
     width: 100%;
     background-image: url(../assets/img/Fundo1page.png);
     background-size: cover;
     background-position: 30% 40%;
 }
+
 .card #mensagem {
     color: var(--cor-texto);
 }
@@ -145,10 +156,23 @@ main {
     display: flex;
     justify-content: start;
 }  
-.card {
+
+:root[theme='dark'] .card {
     border-radius: 10px;
     transform-style: preserve-3d;
-    background-color: #fffdfd81;
+    background-color: #b8b8b881;
+    width: 100%;
+    transition: all 0.5s ease-in-out;    
+    width: 750px;
+    height: 350px;
+    padding: 35px 30px;
+    cursor: pointer;
+}
+
+:root[theme='light'] .card {
+    border-radius: 10px;
+    transform-style: preserve-3d;
+    background-color: #ececec81;
     width: 100%;
     transition: all 0.5s ease-in-out;    
     width: 750px;

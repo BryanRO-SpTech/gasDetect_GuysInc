@@ -155,4 +155,3 @@ JOIN
     fabrica AS fa ON se.fkFabrica = fa.idFabrica
 JOIN 
     empresa AS e ON fa.fkEmpresa = e.idEmpresa;
-

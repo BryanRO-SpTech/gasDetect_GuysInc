@@ -12,13 +12,19 @@ function trocaTema() {
     } else {
         document.documentElement.setAttribute("theme", "light");
     }
-    document.getElementById("trocaLogo").src = LogoAtual;
-    var auxLogo = LogoAtual;
-    LogoAtual = LogoAnterior;
-    LogoAnterior = auxLogo;
 
-    document.getElementById("trocaImg").src = imgAtual;
-    var auxImg = imgAtual;
-    imgAtual = imgAnterior;
-    imgAnterior = auxImg;
+
+    try {
+        document.getElementById("trocaLogo").src = LogoAtual;
+        var auxLogo = LogoAtual;
+        LogoAtual = LogoAnterior;
+        LogoAnterior = auxLogo;
+
+        document.getElementById("trocaImg").src = imgAtual;
+        var auxImg = imgAtual;
+        imgAtual = imgAnterior;
+        imgAnterior = auxImg;
+    } catch (error) {
+        return;
+    }
 }
