@@ -15,9 +15,19 @@ email VARCHAR(80) NOT NULL,
 senha TEXT NOT NULL,
 descCargo VARCHAR(255),
 fkEmpresa INT,
+fkCargo INT,
+CONSTRAINT fkCargoFuncionario FOREIGN KEY (fkCargo) REFERENCES Cargo(idCargo),
 CONSTRAINT fkEmpresa_Funcionario FOREIGN KEY(fkEmpresa) REFERENCES Empresa(idEmpresa)
 );
 
+
+CREATE TABLE if not exists Cargo (
+idCargo int primary key auto_increment,
+nomeCargo varchar(45),
+descCargo varchar(45),
+nivelPermissao tinyint
+);
+ 
 CREATE TABLE if not exists Fabrica (
 idFabrica INT PRIMARY KEY AUTO_INCREMENT,
 cep VARCHAR(45) NOT NULL,
