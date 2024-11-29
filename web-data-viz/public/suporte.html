@@ -70,7 +70,7 @@
                 <h3>Resposta da IA:</h3>
                 <div id="resposta"></div>
             </div>
-            
+
                 <!-- <button class="senha" onclick="alterar_senha()">Alterar Senha</button>
                 <button class="salvar" onclick="salvar()">Salvar</button> -->
 
@@ -85,13 +85,13 @@
         
 </body>
 <script>
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-    a_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    // b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    // a_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
     async function gerarResposta() {
         const pergunta = document.getElementById('pergunta').value;
 
-        const response = await fetch('http://localhost:3333/perguntar', {
+        const response = await fetch('/bobIA/perguntar', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -102,7 +102,7 @@
         const data = await response.json();
 
         resposta.style.display = 'block';
-        document.getElementById('resposta').innerText = data.resultado;
+        document.getElementById('resposta').innerHTML = data.bobIAResponse;
     }
 
 
