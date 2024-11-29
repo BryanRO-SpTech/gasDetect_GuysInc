@@ -29,7 +29,9 @@ function validarLogin() {
                 sessionStorage.ID_USUARIO = data.idFuncionario;
                 sessionStorage.EMAIL = data.email;
                 sessionStorage.NOME = data.nome;
-                sessionStorage.ID_EMPRESA = data.empresaId;
+                sessionStorage.ID_EMPRESA = data.idEmpresa;
+                sessionStorage.NIVEL_PERMISSAO = data.nivelPermissao;
+                sessionStorage.CPF = data.cpf;
 
                 window.location.replace("./dashboard.html");
             });

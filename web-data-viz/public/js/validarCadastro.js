@@ -210,8 +210,6 @@ function cadastrar() {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
                 razaoSocialServer: razaoSocial,
                 cnpjServer: cnpj,
                 nomeServer: nome,

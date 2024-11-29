@@ -42,3 +42,7 @@ body {
     --cor-button-hover:  #262A69;
     --cor-texto-main: white;
 }
+
+.condicional {
+    display: none;
+}
