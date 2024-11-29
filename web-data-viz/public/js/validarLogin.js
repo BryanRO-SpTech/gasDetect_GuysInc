@@ -18,6 +18,11 @@ function validarLogin() {
             return spanError.style.display = "block";
         }
 
+        if (email === 'Admin@Gmail.com' && senha === 'Adim01#%$') {
+            console.log(res);
+            window.location.href = "suporte.html";
+        }
+
         if (res.ok) {
             res.json().then(function (data) {
                 console.log(data);

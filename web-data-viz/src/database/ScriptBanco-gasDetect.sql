@@ -63,14 +63,14 @@ CONSTRAINT fkSensor_Registro FOREIGN KEY(fkSensor) REFERENCES Sensor(idSensor)
 );
 
 
-INSERT INTO empresa (razaoSocial, cnpjSede) VALUES
+INSERT INTO Empresa (razaoSocial, cnpjSede) VALUES
 ('Tintas e Cores S.A.', '12345678000195'),
 ('Inovação em Tintas Ltda', '98765432000156'),
 ('Fabricação de Tintas Verdes', '45678912300158'),
 ('Cores do Mundo Ltda', '32165498700159'),
 ('Soluções em Tintas e Vernizes', '15975348600150');
 
-INSERT INTO funcionario (nome, cpf, email, senha, descCargo, fkEmpresa) VALUES
+INSERT INTO Funcionario (nome, cpf, email, senha, descCargo, fkEmpresa) VALUES
 ('João Silva', '12345678901', 'joao@tintasecores.com', 'senha123', 'Responsável pela linha de produção de tintas', 1),
 ('Maria Souza', '98765432100', 'maria@inovacaoemtintas.com', 'senha456', 'Especialista em formulações de tintas', 2),
 ('Carlos Pereira', '45678912345', 'carlos@fabricacaotintasverdes.com', 'senha789', 'Verifica a qualidade das tintas produzidas', 3),
@@ -78,7 +78,7 @@ INSERT INTO funcionario (nome, cpf, email, senha, descCargo, fkEmpresa) VALUES
 ('Luiz Fernando', '15975348612', 'luiz@solucoesemtintas.com', 'senha202', 'Auxilia na distribuição de produtos', 5);
 
 
-INSERT INTO fabrica (cep, logradouro, numero, bairro, cidade, UF, fkEmpresa) VALUES
+INSERT INTO Fabrica (cep, logradouro, numero, bairro, cidade, UF, fkEmpresa) VALUES
 ('12345-678', 'Avenida das Tintas', 100, 'Centro', 'São Paulo', 'SP', 1),
 ('87654-321', 'Rua das Inovações', 200, 'Jardim', 'Rio de Janeiro', 'RJ', 2),
 ('54321-987', 'Rua Verdejante', 150, 'Industrial', 'Belo Horizonte', 'MG', 3),
@@ -118,28 +118,24 @@ INSERT INTO Registro (porcGas, fkSensor) VALUES
 
 
 SELECT * 
-FROM registro AS r
-JOIN sensor AS s ON r.fkSensor = s.idSensor;
-
-
+FROM Registro AS r
+JOIN Sensor AS s ON r.fkSensor = s.idSensor;
 
 
 SELECT 
     nome AS 'Nome do Funcionario',
-    cargo AS Cargo
+    descCargo AS Cargo
 FROM 
-    funcionario;
+    Funcionario;
 
 
 SELECT 
     e.razaoSocial AS Empresa,
     fa.logradouro AS 'Rua da Fábrica'
 FROM 
-    empresa AS e
+    Empresa AS e
 JOIN 
-    fabrica AS fa ON e.idEmpresa = fa.fkEmpresa;
-
-
+    Fabrica AS fa ON e.idEmpresa = fa.fkEmpresa;
 
 
 SELECT 
@@ -148,10 +144,10 @@ SELECT
     fa.logradouro AS 'Rua da Fábrica',
     e.razaoSocial AS 'Nome da Empresa'
 FROM 
-    sensor AS s
+    Sensor AS s
 JOIN 
-    setor AS se ON s.fkSetor = se.idSetor
+    Setor AS se ON s.fkSetor = se.idSetor
 JOIN 
-    fabrica AS fa ON se.fkFabrica = fa.idFabrica
+    Fabrica AS fa ON se.fkFabrica = fa.idFabrica
 JOIN 
-    empresa AS e ON fa.fkEmpresa = e.idEmpresa;
+    Empresa AS e ON fa.fkEmpresa = e.idEmpresa;
