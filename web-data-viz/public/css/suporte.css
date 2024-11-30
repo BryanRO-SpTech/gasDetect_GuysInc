@@ -24,6 +24,7 @@
 
 .tituloChat{
     display: flex;
+    gap: 20px;
     justify-content: center;
     align-items: center;
     height: 10vh;
@@ -34,6 +35,38 @@
     background-color: rgb(238, 237, 237);
     height: 60vh;
 }
+
+#divMsg{
+    display: flex;
+    padding: 20px;
+    justify-content: end;
+}
+
+#divMsgResp{
+    display: flex;
+    padding: 20px;
+    gap: 10px;
+    justify-content: start;
+}
+
+.contentPergunta{
+    width: 30vw;
+    text-align: center;
+    border-radius: 20px;
+    background-color: rgb(167, 166, 166);
+    font-size: 20px;
+    word-wrap: break-word;
+    padding: 10px;
+}
+
+.contentResposta{
+    width: 30vw;
+    border-radius: 20px;
+    background-color: rgb(197, 197, 197);
+    word-wrap: break-word;
+    padding: 10px;
+}
+
 
 .divPergunta{
     display: flex;
@@ -52,10 +85,30 @@
     border: none;
 }
 
+#pergunta:focus{
+    outline: none;
+}
+
 .divEnviar{
     display: flex;
     align-items: center;
+    border-left: solid 5px rgb(155, 154, 154);;
     justify-content: center;
     width: 5vw;
     height: 9vh;
+}
+
+.divEnviar img{
+    width:40px;
+    transition: all 0.3s;
+}
+
+.divEnviar img:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+    transition: all 0.3s;
+}
+
+.botoes{
+    margin-top: 30vh;
 }
