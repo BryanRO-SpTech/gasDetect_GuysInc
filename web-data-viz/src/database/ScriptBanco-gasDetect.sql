@@ -1,3 +1,5 @@
+DROP DATABASE IF EXISTS Guys_Inc;
+
 CREATE DATABASE if not exists Guys_Inc;
 USE Guys_Inc;
 -- DROP DATABASE Guys_Inc;
@@ -22,16 +24,13 @@ cpf CHAR(11) NOT NULL,
 email VARCHAR(80) NOT NULL,
 senha TEXT NOT NULL,
 descCargo VARCHAR(255),
+supportId VARCHAR(20),
 fkEmpresa INT,
 fkCargo INT,
 CONSTRAINT fkCargoFuncionario FOREIGN KEY (fkCargo) REFERENCES Cargo(idCargo),
 CONSTRAINT fkEmpresa_Funcionario FOREIGN KEY(fkEmpresa) REFERENCES Empresa(idEmpresa)
 );
-<<<<<<< HEAD
 
-=======
->>>>>>> 0cb2f756caf72e42eaa6a65a6aac84669c995e6a
- 
 CREATE TABLE if not exists Fabrica (
 idFabrica INT PRIMARY KEY AUTO_INCREMENT,
 cep VARCHAR(45) NOT NULL,

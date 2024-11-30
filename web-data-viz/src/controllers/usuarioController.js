@@ -1,4 +1,5 @@
 var usuarioModel = require("../models/usuarioModel");
+const zoho = require("../zoho/config.js");
 
 function autenticar(req, res) {
     var email = req.body.emailServer;
@@ -43,7 +44,7 @@ function autenticar(req, res) {
 
 }
 
-function cadastrar(req, res) {
+async function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var razaoSocial = req.body.razaoSocialServer;
     var cnpj = req.body.cnpjServer;
@@ -67,8 +68,10 @@ function cadastrar(req, res) {
         res.status(400).send("Seu cnpj está undefined!");
     } else {
 
+        const zohoClientId = await zoho.criarCliente(nome, email);
+
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(razaoSocial, cnpj, nome, email, cpf, senha)
+        usuarioModel.cadastrar(razaoSocial, cnpj, nome, email, cpf, senha, zohoClientId)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -86,7 +89,7 @@ function cadastrar(req, res) {
     }
 }
 
-function salvar(req, res) {    
+function salvar(req, res) {
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
     var cpf = req.body.cpfServer;
