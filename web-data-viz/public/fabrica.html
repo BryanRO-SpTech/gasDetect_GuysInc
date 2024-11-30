@@ -45,7 +45,7 @@
             </nav>
 
             <div class="botoes">
-                <input type="checkbox" onclick="mudarTema()" class="checkbox" id="chk">
+                <input type="checkbox" onclick="trocaTema()" class="checkbox" id="chk">
 
                 <label class="label" for="chk">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon-fill" viewBox="0 0 16 16">
@@ -66,17 +66,17 @@
     <div class="container">
         <div class="cadastro-content">
             <div class="guys">
-                <h1>Fábricas Cadastradas</h1>
+                <h1 id="titleGerFab">Fábricas Cadastradas</h1>
             </div>
 
 
-            <div class="cadastro-fab">
-                <span id="info">CEP</span>
-                <span id="info">Logradouro</span>
-                <span id="info">Número</span>
-                <span id="info">Bairro</span>
-                <span id="info">Cidade</span>
-                <span id="info">UF</span>
+            <div class="cadastro-fab" id="span">
+                <span id="info" class="infoSpn">CEP</span>
+                <span id="info" class="infoSpn">Logradouro</span>
+                <span id="info" class="infoSpn">Número</span>
+                <span id="info" class="infoSpn">Bairro</span>
+                <span id="info" class="infoSpn">Cidade</span>
+                <span id="info" class="infoSpn">UF</span>
             </div>
 
 
@@ -92,3 +92,18 @@
 </body>
 
 <script src="./js/configuser.js"></script>
+<script>
+function trocaTema() {
+    const temaAtual = document.documentElement.getAttribute('theme');
+
+    if (temaAtual === "light") {
+        document.documentElement.setAttribute("theme", "dark");
+        document.getElementById("titleGerFab").style.color = "var(--cor-terciaria)";
+        document.getElementById("span").style.color = "white";
+    } else {
+        document.documentElement.setAttribute("theme", "light");
+        document.getElementById("span").style.color = "black";
+        document.getElementById("titleGerFab").style.color = "black";
+    }
+}
+</script>

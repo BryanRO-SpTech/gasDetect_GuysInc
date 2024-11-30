@@ -3,7 +3,7 @@ function validarLogin() {
     const senha = document.getElementById("ipt_senha").value;
     const spanError = document.getElementById("spn_login_error");
 
-    fetch("/usuarios/autenticar", {
+    fetch("http://localhost:8080/usuarios/autenticar", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -18,10 +18,10 @@ function validarLogin() {
             return spanError.style.display = "block";
         }
 
-        if (email === 'Admin@Gmail.com' && senha === 'Adim01#%$') {
-            console.log(res);
-            window.location.href = "suporte.html";
-        }
+        // if (email === 'Admin@Gmail.com' && senha === 'Adim01#%$') {
+        //     console.log(res);
+        //     window.location.href = "suporte.html";
+        // }
 
         if (res.ok) {
             res.json().then(function (data) {

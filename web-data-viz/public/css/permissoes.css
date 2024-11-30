@@ -139,6 +139,21 @@ header {
     transform: scale(1.5);
 }
 
+.label .ball {
+    background-color: #dddddd;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    aspect-ratio: 1;       
+    transform: translate(0px);
+    transition: transform 0.2s linear;
+}
+.checkbox:checked + .label .ball{
+    transform: translateX(25px);
+}
+
 
 
 .fa-moon {

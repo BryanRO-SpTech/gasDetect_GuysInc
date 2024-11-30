@@ -9,8 +9,10 @@ function trocaTema() {
 
     if (temaAtual === "light") {
         document.documentElement.setAttribute("theme", "dark");
+        // document.getElementById("a_usuario").style.color = "var(--cor-terciaria)";
     } else {
         document.documentElement.setAttribute("theme", "light");
+        // document.getElementById("a_usuario").style.color = "var(--cor-secundaria)";
     }
 
 

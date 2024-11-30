@@ -27,10 +27,12 @@ fkCargo INT,
 CONSTRAINT fkCargoFuncionario FOREIGN KEY (fkCargo) REFERENCES Cargo(idCargo),
 CONSTRAINT fkEmpresa_Funcionario FOREIGN KEY(fkEmpresa) REFERENCES Empresa(idEmpresa)
 );
-<<<<<<< HEAD
 
-=======
->>>>>>> 0cb2f756caf72e42eaa6a65a6aac84669c995e6a
+
+-- <<<<<<< HEAD
+
+-- =======
+-- >>>>>>> 0cb2f756caf72e42eaa6a65a6aac84669c995e6a
  
 CREATE TABLE if not exists Fabrica (
 idFabrica INT PRIMARY KEY AUTO_INCREMENT,
