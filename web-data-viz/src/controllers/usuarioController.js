@@ -93,7 +93,6 @@ function salvar(req, res) {
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
     var cpf = req.body.cpfServer;
-    var senha = req.body.senhaServer;
     var cstorageServer = req.body.cstorageServer;
 
     if (nome == undefined) {
@@ -102,11 +101,9 @@ function salvar(req, res) {
         res.status(400).send("Seu email está undefined!");
     } else if (cpf == undefined) {
         res.status(400).send("Seu cpf está undefined!");
-    } else if (senha == undefined) {
-        res.status(400).send("Sua senha está undefined!");
     } else {
 
-        usuarioModel.salvar(nome, email, cpf, senha, cstorageServer)
+        usuarioModel.salvar(nome, email, cpf, cstorageServer)
             .then(
                 function (resultado) {
                     res.json(resultado);
