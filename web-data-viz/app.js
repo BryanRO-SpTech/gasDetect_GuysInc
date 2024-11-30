@@ -18,6 +18,7 @@ var app = express();
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
 var bobIARouter = require("./src/routes/bobIARoutes");
+var fabricaRouter = require("./src/routes/fabricaRoutes.js");
 
 
 app.use(express.json());
@@ -29,6 +30,7 @@ app.use(cors());
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/bobIA", bobIARouter);
+app.use("/fabrica", fabricaRouter);
 
 
 app.listen(PORTA_APP, function () {
