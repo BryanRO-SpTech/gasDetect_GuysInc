@@ -1,7 +1,7 @@
 var database = require("../database/config")
 
 function autenticar(email, senha) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function autenticar(): ", email, senha)
     var instrucaoSqlusuario = `
         SELECT idFuncionario, nome, email, cpf, nivelPermissao, fkEmpresa as idEmpresa FROM Funcionario JOIN Cargo ON idCargo = fkCargo WHERE email = '${email}' AND senha = '${senha}';
     `;
@@ -42,8 +42,19 @@ function salvar(nome, email, cpf, cstorageServer) {
     return database.executar(instrucaoSqlusuario);
 }
 
+function alterar_senha(senhaorig, senha, cpf) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function alterar_senha: ", senhaorig, senha, cpf)
+    var instrucaoSqlusuario = `
+        UPDATE Funcionario SET senha = '${senha}'
+        WHERE senha = '${senhaorig}' AND cpf = '${cpf}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSqlusuario);
+    return database.executar(instrucaoSqlusuario);
+}
+
 module.exports = {
     autenticar,
     cadastrar,
-    salvar
+    salvar,
+    alterar_senha
 };

@@ -15,4 +15,8 @@ router.post("/salvar", function (req, res) {
     usuarioController.salvar(req, res);
 });
 
+router.post("/alterar_senha", function (req, res) {
+    usuarioController.alterar_senha(req, res);
+});
+
 module.exports = router;

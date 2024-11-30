@@ -235,11 +235,11 @@ function mostrardadosuser() {
     const username = sessionStorage.getItem('NOME')
     const useremail = sessionStorage.getItem('EMAIL')
     const usercpf = sessionStorage.getItem('CPF')
-    
+
     document.getElementById('ipt_nome').placeholder = username
     document.getElementById('ipt_email').placeholder = useremail
     document.getElementById('ipt_cpf').placeholder = usercpf
-    
+
     b_usuario.innerHTML = username;
     a_usuario.innerHTML = username;
 }
@@ -252,8 +252,6 @@ function niveladministrador() {
 }
 
 function salvar() {
-    const namestorage = sessionStorage.getItem('NOME')
-    const emailstorage = sessionStorage.getItem('EMAIL')
     const cpfstorage = sessionStorage.getItem('CPF')
 
     var username = ipt_nome.value
@@ -268,7 +266,6 @@ function salvar() {
         senhaValido &&
         confirmarSenhaValido
     ) {
-        console.log(cnpj)
         fetch("/usuarios/salvar", {
             method: "POST",
             headers: {
@@ -285,7 +282,13 @@ function salvar() {
             .then(function (resposta) {
                 console.log("resposta: ", resposta);
 
-                window.location.replace("./login.html");
+                if (res.ok) {
+                    res.json().then(function (data) {
+                        sessionStorage.EMAIL = data.email;
+                        sessionStorage.NOME = data.nome;
+                        sessionStorage.CPF = data.cpf;
+                    });
+                }
             })
             .catch(function (resposta) {
                 span_mensagem_cadastro_efetuado.innerHTML = `#ERRO: ${resposta}`;
@@ -295,7 +298,42 @@ function salvar() {
     }
 }
 
+function alterar_senha() {
+    const cpfstorage = sessionStorage.getItem('CPF')
 
+    var useroriginalsenha = ipt_senha_original.value
+    var usersenha = ipt_senha.value
+
+    if (
+        senhaValido &&
+        confirmarSenhaValido
+    ) {
+        fetch("/usuarios/alterar_senha", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                origsenhaServer: useroriginalsenha,
+                senhaServer: usersenha,
+                cpfServer: cpfstorage
+            }),
+        }).then(function (res) {
+            if (!res.ok) {
+                span_mensagem_senha_original.innerHTML = "Senha incorretos";
+                return 
+            }
+
+            if (res.ok) {
+                res.json().then(function (data) {
+                    console.log(data);
+
+                    window.location.replace("./login.html");
+                });
+            }
+        });
+    }
+}
 
 
 

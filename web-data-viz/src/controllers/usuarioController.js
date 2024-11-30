@@ -121,8 +121,53 @@ function salvar(req, res) {
     }
 }
 
+function alterar_senha(req, res) {
+    var senhaorig = req.body.senhaorigServer;
+    var senha = req.body.senhaServer;
+    var cpf = req.body.cpfServer;
+
+    if (senhaorig == undefined) {
+        res.status(400).send("Sua senha original está undefined!");
+    } else if (senha == undefined) {
+        res.status(400).send("Sua senha está indefinida!");
+    } else {
+
+        usuarioModel.alterar_senha(senhaorig, senha, cpf)
+            .then(
+                function (resultadoalterar_senha) {
+                    console.log(`\nResultados encontrados: ${resultadoalterar_senha.length}`);
+                    console.log(`Resultados: ${JSON.stringify(resultadoalterar_senha)}`);
+
+                    if (resultadoalterar_senha.length == 1) {
+                        console.log(resultadoalterar_senha);
+
+                        res.json({
+                            idFuncionario: resultadoalterar_senha[0].idFuncionario,
+                            email: resultadoalterar_senha[0].email,
+                            nome: resultadoalterar_senha[0].nome,
+                            idEmpresa: resultadoalterar_senha[0].idEmpresa,
+                            nivelPermissao: resultadoalterar_senha[0].nivelPermissao,
+                            cpf: resultadoalterar_senha[0].cpf
+                        });
+
+                    } else if (resultadoalterar_senha.length == 0) {
+                        res.status(403).send("senha inválida");
+                    }
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
+}
+
 module.exports = {
     autenticar,
     cadastrar,
-    salvar
+    salvar,
+    alterar_senha
 }
