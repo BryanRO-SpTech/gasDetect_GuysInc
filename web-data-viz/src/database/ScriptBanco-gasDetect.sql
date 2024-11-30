@@ -7,6 +7,13 @@ razaoSocial VARCHAR(120) NOT NULL,
 cnpjSede CHAR(14) NOT NULL
 );
 
+CREATE TABLE if not exists Cargo (
+idCargo int primary key auto_increment,
+nomeCargo varchar(45),
+descCargo varchar(45),
+nivelPermissao tinyint
+);
+
 CREATE TABLE if not exists Funcionario (
 idFuncionario  INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(45) NOT NULL,
@@ -20,13 +27,6 @@ CONSTRAINT fkCargoFuncionario FOREIGN KEY (fkCargo) REFERENCES Cargo(idCargo),
 CONSTRAINT fkEmpresa_Funcionario FOREIGN KEY(fkEmpresa) REFERENCES Empresa(idEmpresa)
 );
 
-
-CREATE TABLE if not exists Cargo (
-idCargo int primary key auto_increment,
-nomeCargo varchar(45),
-descCargo varchar(45),
-nivelPermissao tinyint
-);
  
 CREATE TABLE if not exists Fabrica (
 idFabrica INT PRIMARY KEY AUTO_INCREMENT,
