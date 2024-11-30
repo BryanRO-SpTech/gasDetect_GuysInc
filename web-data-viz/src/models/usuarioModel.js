@@ -23,7 +23,7 @@ async function cadastrar(razaoSocial, cnpj, nome, email, cpf, senha) {
     const empresa = await database.executar(instrucaoSqlempresa);
 
     var instrucaoSqlusuario = `
-        INSERT INTO Funcionario (nome, email, cpf, senha, fkEmpresa) VALUES ('${nome}', '${email}', '${cpf}', '${senha}', '${empresa.insertId}');
+        INSERT INTO Funcionario (nome, email, cpf, senha, fkEmpresa, fkCargo) VALUES ('${nome}', '${email}', '${cpf}', '${senha}', '${empresa.insertId}', 1);
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSqlempresa);
     return database.executar(instrucaoSqlusuario);

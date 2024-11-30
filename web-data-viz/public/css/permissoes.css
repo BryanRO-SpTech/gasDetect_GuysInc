@@ -1,0 +1,227 @@
+body {
+    overflow: hidden;
+    background-color: var(--cor-fundo);
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 300px;
+    position: fixed;
+}
+
+.side {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 1em;
+    width: 100%;
+    background-color: #B9C4E4;
+    color: var(--cor-secundaria);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.side h1 {
+    font-size: 1.5em;
+}
+
+.logo a img {
+    width: 70%;
+    margin-left: 10%;
+}
+
+.logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5em;
+    color: var(--cor-secundaria)
+}
+
+.sideBar {
+    background-color: #262A69;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    color: #90E4EC;
+    gap: 10px;
+    overflow-y: auto;
+}
+
+.sideBar::-webkit-scrollbar {
+    display: none;
+  }
+
+.sideBar ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.sideBar ul li a {
+    text-decoration: none;
+}
+
+
+.imagem{
+    min-width: 140px;
+    min-height: 140px; 
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    user-select: none;
+    margin-top: 30px;
+}
+
+.imagem img{
+    height: 20px;
+}
+
+.nome #b_usuario{
+    font-size: 20px;
+    
+}
+
+.menu li{
+    padding: 10px;
+   border-bottom: 1px white solid;
+   width: 100%;
+   color: #90E4EC;
+   height: 20%;
+   font-weight: 700;
+   text-align: start;
+   
+}
+
+.menu a{
+    text-decoration: none;
+
+}
+
+.menu{
+    margin-top: 20px;
+    width: 100%;
+    
+}
+.botoes {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    margin-top: 150px;
+}
+
+.checkbox {
+    opacity: 0;
+    position: absolute;
+}
+
+.label {
+    background-color: #fff;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-end;  
+    justify-content: space-between;
+    padding: 5px;
+    position: relative;
+    height: 26px;
+    width: 50px;
+    transform: scale(1.5);
+}
+
+
+
+.fa-moon {
+    color: var(--cor-button);
+}
+
+.fa-sun {
+    color: var(--cor-button);
+}
+
+
+.container {
+    width: 100%;
+    height: 100%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.cadastro-content {
+    margin-top: 80px;
+    margin-left: 270px;
+    display: flex;
+    width: 60%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.message-content {
+    font-size: 1.4em;
+    width: 100%;
+    text-align: center;
+
+    padding: 20px;
+
+    color: var(--cor-texto-secundario);
+}
+
+.message-content h3 {
+    padding: 5px;
+}
+
+.barra-pesquisa{
+display: flex;
+align-items: center;
+border: 2px solid #ccc;
+border-radius: 25px;
+overflow: hidden;
+width: 70%;
+margin-top: 50px;
+}
+
+/* Estilo do campo de entrada */
+.barra-pesquisa input {
+border: none;
+padding: 10px;
+flex: 1;
+font-size: 16px;
+outline: none;
+}
+
+/* Estilo do botão */
+.barra-pesquisa button {
+background-color: #90E4EC;
+color: white;
+border: none;
+padding: 10px;
+cursor: pointer;
+font-size: 16px;
+}
+
+/* Efeito de hover no botão */
+.barra-pesquisa button:hover {
+background-color: #262A69;
+}
+
+#div_resultado{
+    margin-top: 20px;
+    font-size: 20px;
+}
