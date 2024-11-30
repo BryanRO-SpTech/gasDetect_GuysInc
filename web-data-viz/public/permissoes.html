@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html theme="light" lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Empresas Guys Inc</title>
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/permissoes.css">
+</head>
+
+<body>
+    <header>
+        <div class="side">
+            <div class="logo">
+                <a href="/index.html">
+                    <img src="/assets/img/GUYS-logo.png" alt="Logo Guys inc.">
+                </a>
+            </div>
+            <h1>GUYS inc.</h1>
+        </div>
+        <div class="sideBar">
+            <div class="imagem">
+                <img src="/assets/img/GUYS-logo.png" alt="imagem logo Guys Inc">
+            </div>
+            <div class="nome">
+                <h3><span id="b_usuario">usuário</span></h3>
+            </div>
+            <nav class="menu">
+                <ul>
+                    <a id="condicional" class="condicional" href="confignovofuncionario.html">
+                        <li> <img src="/assets/icons/id-de-toque.png" alt="">Cadastrar Novo Usuario</li>
+                    </a>                 
+                    <a href="config.html">
+                        <li> <img src="/assets/icons/configurando-usuario.png" alt=""> Configurar meu perfil</li>
+                    </a>
+                    <a href="">
+                        <li><img src="/assets/icons/companhia.png" alt=""> Gerenciar Empresa</li>
+                    </a>
+                    <a href="fabrica.html">
+
+                        <li> <img src="/assets/icons/gerenciamento.png" alt=""> Gerenciar Fábrica</li>
+                    </a>
+                    <a href="">
+
+                        <li> <img src="/assets/icons/id-de-toque.png" alt=""> Gerenciar Colaboradores</li>
+                    </a>
+                    <a href="permissoes.html">
+
+                        <li> <img src="/assets/icons/id-de-toque.png" alt=""> Gerenciar Permissões</li>
+                    </a>
+                </ul>
+            </nav>
+
+            <div class="botoes">
+                <input type="checkbox" onclick="mudarTema()" class="checkbox" id="chk">
+
+                <label class="label" for="chk">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                    <div class="ball"></div>
+                </label>
+                <a href="config.html">
+                    <img src="/assets/icons/engrenagem.png" alt="Configurações">
+                </a>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="cadastro-content">
+            <div class="guys">
+                <h1>Guys Inc.</h1>
+            </div>
+
+            <div class="barra-pesquisa">
+                <input type="text" id="pesquisaEmail" placeholder="Digite seu email..." />
+                <button onclick="pesquisar()">🔍</button>
+            </div>
+            <div id="div_resultado"></div>
+
+
+            
+        </div>
+    </div>
+</body>
+<script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+    function pesquisar() {
+  var userEmail = localStorage.getItem("userEmail");
+  var textoPesquisa = document.getElementById("pesquisaEmail").value.toLowerCase(); 
+  var resultado = document.getElementById("div_resultado"); 
+
+
+  if (userEmail && userEmail.toLowerCase().includes(textoPesquisa)) {
+    resultado.textContent = `Email encontrado: ${userEmail}`;
+  } else {
+    resultado.textContent = "Email não encontrado.";
+  }
+}
+
+</script>
