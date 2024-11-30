@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/css/fabrica.css">
 </head>
 
-<body>
+<body onload="niveladministrador()">
     <header>
         <div class="side">
             <div class="logo">
@@ -28,9 +28,6 @@
             </div>
             <nav class="menu">
                 <ul>
-                    <a id="condicional" class="condicional" href="confignovofuncionario.html">
-                        <li> <img src="/assets/icons/id-de-toque.png" alt="">Cadastrar Novo Usuario</li>
-                    </a>                 
                     <a href="config.html">
                         <li> <img src="/assets/icons/configurando-usuario.png" alt=""> Configurar meu perfil</li>
                     </a>
@@ -41,8 +38,7 @@
 
                         <li> <img src="/assets/icons/gerenciamento.png" alt=""> Gerenciar Fábrica</li>
                     </a>
-                    <a href="">
-
+                    <a id="condicional" class="condicional" href="confignovofuncionario.html">
                         <li> <img src="/assets/icons/id-de-toque.png" alt=""> Gerenciar Colaboradores</li>
                     </a>
                 </ul>
@@ -89,6 +85,5 @@
 
 
 </body>
-<script>
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-</script>
+
+<script src="./js/configuser.js"></script>
