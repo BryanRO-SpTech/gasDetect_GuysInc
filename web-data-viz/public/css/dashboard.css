@@ -113,13 +113,13 @@ p {
 }
 
 .label .ball {
-    background-color: #fff;
+    background-color: #dddddd;
     border-radius: 50%;
     position: absolute;
-    top: 2px;
-    left: 2px;
-    height: 22px;
-    width: 22px;        
+    top: 0;
+    left: 0;
+    height: 100%;
+    aspect-ratio: 1;
     transform: translate(0px);
     transition: transform 0.2s linear;
 }
