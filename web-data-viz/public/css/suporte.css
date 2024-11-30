@@ -16,7 +16,7 @@
 .chatContainer{
     margin-top: 3vh;
     background-color: rgb(201, 201, 201);
-    border-radius: 5px;
+    border-radius: 20px;
     border:solid 3px black;
     width: 70vw;
     height: 80vh;
@@ -111,4 +111,8 @@
 
 .botoes{
     margin-top: 30vh;
+}
+
+.n3{
+    color: white;
 }
