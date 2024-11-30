@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html theme="light" lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações Guys Inc</title>
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/confignovofunc.css">
+</head>
+
+<body onload="niveladministrador()">
+    <header>
+        <div class="side">
+            <div class="logo">
+                <a href="/index.html">
+                    <img src="/assets/img/GUYS-logo.png" alt="Logo Guys inc.">
+                </a>
+            </div>
+            <h1>GUYS inc.</h1>
+        </div>
+        <div class="sideBar">
+            <div class="imagem">
+                <img src="/assets/img/GUYS-logo.png" alt="imagem logo Guys Inc">
+            </div>
+            <div class="nome">
+                <h3><span id="b_usuario">usuário</span></h3>
+            </div>
+                <nav class="menu">
+                    <ul>
+                        <a href="config.html">
+                            <li> <img src="/assets/icons/configurando-usuario.png" alt="">  Configurar meu perfil</li>
+                        </a>
+                        <a href="funcionario.html">
+                            <li><img src="/assets/icons/companhia.png" alt=""> Gerenciar Empresa</li>
+                        </a>
+                        <a href="fabrica.html">
+    
+                            <li> <img src="/assets/icons/gerenciamento.png" alt=""> Gerenciar Fábrica</li>
+                        </a>
+                        <a id="condicional" class="condicional" href="confignovofuncionario.html">
+                            <li> <img src="/assets/icons/id-de-toque.png" alt=""> Gerenciar Colaboradores</li>
+                        </a>                       
+                    </ul>
+                </nav>
+
+            <div class="botoes">
+                <input type="checkbox" onclick="mudarTema()" class="checkbox" id="chk">
+
+                <label class="label" for="chk">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                    <div class="ball"></div>
+                </label>
+                <a href="config.html">
+                    <img src="/assets/icons/engrenagem.png" alt="Configurações">
+                </a>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="cadastro-content">
+                <div class="labels">
+                    <h3><span>Informe as informações do novo Funcionario:</span></h3>
+                </div>
+                <div class="input-div1">
+                    <div class="labels">
+                        <label for="ipt_nome">Nome do Funcionario:</label>
+                    </div>
+                    <input type="text" id="ipt_nome" placeholder="" oninput="validarNome()">
+                    <div class="mensagemValidacao">
+                        <span id="span_mensagem_nome"></span>
+                    </div>
+                </div>
+                
+                <div class="input-div">
+                    <div class="labels">
+                        <label for="ipt_email">E-mail:</label>
+                    </div>
+                    <input type="email" maxlength="80" id="ipt_email" placeholder="" oninput="validarEmail()">
+                    <div class="mensagemValidacao">
+                        <span id="span_mensagem_email"></span>
+                    </div>
+                </div>
+                
+                <div class="input-div">
+                    <div class="labels">
+                        <label for="ipt_cpf">CPF Funcionario:</label>
+                    </div>
+                    <input type="text" maxlength="11" id="ipt_cpf" placeholder="" oninput="validarCpf()">
+                    <div class="mensagemValidacao">
+                        <span id="span_mensagem_cpf"></span>
+                    </div>
+                </div>
+
+                <div class="input-div">
+                    <div class="labels">
+                        <label for="ipt_senha">Senha:</label>
+                    </div>
+                    <input type="text" maxlength="80" id="ipt_senha" placeholder="" oninput="validarSenha()">
+                    <div class="mensagemValidacao">
+                        <span id="span_mensagem_senha"></span>
+                    </div>
+                </div>
+
+                <div class="input-div">
+                    <div class="labels">
+                        <label for="ipt_confirmar">Confirme a senha:</label>
+                    </div>
+                    <input type="text" maxlength="80" id="ipt_confirmar" placeholder="" oninput="validarConfirmarSenha()">
+                    <div class="mensagemValidacao">
+                        <span id="span_mensagem_confirmar"></span>
+                    </div>
+                </div>
+
+                    <button class="salvar" onclick="salvar()">Salvar</button>
+
+
+                
+                
+            </div>
+    
+            
+        </div>
+       
+        
+</body>
+
+<script src="./js/configuser.js"></script>
+<script src="./js/validarCadastro.js"></script>

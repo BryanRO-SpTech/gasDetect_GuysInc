@@ -1,5 +1,6 @@
 CREATE DATABASE if not exists Guys_Inc;
 USE Guys_Inc;
+-- DROP DATABASE Guys_Inc;
 
 CREATE TABLE if not exists Empresa (
 idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
@@ -26,7 +27,10 @@ fkCargo INT,
 CONSTRAINT fkCargoFuncionario FOREIGN KEY (fkCargo) REFERENCES Cargo(idCargo),
 CONSTRAINT fkEmpresa_Funcionario FOREIGN KEY(fkEmpresa) REFERENCES Empresa(idEmpresa)
 );
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0cb2f756caf72e42eaa6a65a6aac84669c995e6a
  
 CREATE TABLE if not exists Fabrica (
 idFabrica INT PRIMARY KEY AUTO_INCREMENT,
@@ -80,13 +84,15 @@ INSERT INTO Empresa (razaoSocial, cnpjSede) VALUES
 ('Cores do Mundo Ltda', '32165498700159'),
 ('Soluções em Tintas e Vernizes', '15975348600150');
 
-INSERT INTO Funcionario (nome, cpf, email, senha, descCargo, fkEmpresa) VALUES
-('João Silva', '12345678901', 'joao@tintasecores.com', 'senha123', 'Responsável pela linha de produção de tintas', 1),
-('Maria Souza', '98765432100', 'maria@inovacaoemtintas.com', 'senha456', 'Especialista em formulações de tintas', 2),
-('Carlos Pereira', '45678912345', 'carlos@fabricacaotintasverdes.com', 'senha789', 'Verifica a qualidade das tintas produzidas', 3),
-('Ana Costa', '32165498765', 'ana@coresdomundo.com', 'senha101', 'Gerencia a equipe de vendas de tintas', 4),
-('Luiz Fernando', '15975348612', 'luiz@solucoesemtintas.com', 'senha202', 'Auxilia na distribuição de produtos', 5);
+INSERT INTO Cargo (nomeCargo, descCargo, nivelPermissao) VALUES
+('CEO', 'Proprietario da empresa de tintas', 1);
 
+INSERT INTO Funcionario (nome, cpf, email, senha, descCargo, fkEmpresa, fkCargo) VALUES
+('João Silva', '12345678901', 'joao@tintasecores.com', 'senha123', 'Responsável pela linha de produção de tintas', 1, 1),
+('Maria Souza', '98765432100', 'maria@inovacaoemtintas.com', 'senha456', 'Especialista em formulações de tintas', 2, 1),
+('Carlos Pereira', '45678912345', 'carlos@fabricacaotintasverdes.com', 'senha789', 'Verifica a qualidade das tintas produzidas', 3, 1),
+('Ana Costa', '32165498765', 'ana@coresdomundo.com', 'senha101', 'Gerencia a equipe de vendas de tintas', 4, 1),
+('Luiz Fernando', '15975348612', 'luiz@solucoesemtintas.com', 'senha202', 'Auxilia na distribuição de produtos', 5, 1);
 
 INSERT INTO Fabrica (cep, logradouro, numero, bairro, cidade, UF, fkEmpresa) VALUES
 ('12345-678', 'Avenida das Tintas', 100, 'Centro', 'São Paulo', 'SP', 1),
@@ -94,7 +100,6 @@ INSERT INTO Fabrica (cep, logradouro, numero, bairro, cidade, UF, fkEmpresa) VAL
 ('54321-987', 'Rua Verdejante', 150, 'Industrial', 'Belo Horizonte', 'MG', 3),
 ('65432-198', 'Avenida Colorida', 300, 'Comércio', 'Curitiba', 'PR', 4),
 ('98765-432', 'Rua Criativa', 400, 'Criativo', 'Porto Alegre', 'RS', 5);
-
 
 INSERT INTO LimiteAlerta (limiteAlerta) VALUES
 (80),
@@ -117,7 +122,6 @@ INSERT INTO Sensor (titulo, fkSetor) VALUES
 ('Sensor de gás', 3),
 ('Sensor de gás', 4),
 ('Sensor de gás', 5);
-
 
 INSERT INTO Registro (porcGas, fkSensor) VALUES
 (25.00, 1),

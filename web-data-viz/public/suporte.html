@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html theme="light" lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área de Suporte</title>
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="./css/config.css">
+    <link rel="stylesheet" href="./css/suporte.css">
+    <link rel="shortcut icon" href="/assets/img/GUYS-logo.png" type="image/png">
+</head>
+
+<body>
+    <header>
+        <div class="side">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="/assets/img/GUYS-logo.png" alt="Logo Guys inc.">
+                </a>
+            </div>
+            <h1>GUYS inc.</h1>
+        </div>
+        <div class="sideBar">
+            <div class="imagem">
+                <img src="/assets/img/GUYS-logo.png" alt="imagem logo Guys Inc">
+            </div>
+            <div class="nome">
+                <h3><span id="b_usuario">usuário</span></h3><br>
+                <h3><span id="b_usuario" class="n3">(N3)</span></h3>
+            </div>
+                <nav class="menu">
+                    <ul>
+                        <a href="#">
+                            <li><img src="/assets/icons/companhia.png" alt=""> Ferramenta de suporte</li>
+                        </a>
+                        <a href="index.html">
+                            <li> <img src="/assets/icons/configurando-usuario.png" alt="">  Página inicial</li>
+                        </a>                     
+                    </ul>
+                </nav>
+
+            <div class="botoes">
+                <input type="checkbox" onclick="mudarTema()" class="checkbox" id="chk">
+
+                <label class="label" for="chk">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                    <div class="ball"></div>
+                </label>
+                <a href="config.html">
+                    <img src="/assets/icons/engrenagem.png" alt="Configurações">
+                </a>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="cadastro-content">
+                
+            <div id="container">
+                <!-- <div class="tituloSuporte">
+                    <h1>Aréa de Suporte</h1>
+                </div> -->
+                <div class="tituloSuporte">
+                    <h1>Área de Suporte</h1>
+                </div>
+
+                <div class="chatContainer">
+                    <div class="tituloChat">
+                        <img src="assets/img/bobiaLogo.png" width="60px">
+                        <h1>BobIA</h1>
+                    </div>
+
+                    <div class="chatLog">
+                        <div id="divMsg" style="display: none;">
+                            <div class="contentPergunta">
+                                <span id="perguntaRealizada"></span>
+                            </div>
+                        </div>
+
+                        <div id="divMsgResp" style="display: none;">
+                            <div class="logoBob">
+                                <img src="assets/img/bobiaLogo.png" width="60px" height="60px" alt="">
+                            </div>
+                            <div class="contentResposta">
+                                <span id="resposta"></span>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+
+                    <div class="divPergunta">
+                        <input id="pergunta" placeholder="Faça uma pergunta ao BobIA!"></textarea>
+                        <div class="divEnviar">
+                            <img src="assets/img/enviar.png" onclick="gerarResposta()">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+       
+        
+</body>
+<script src="js/tema.js"></script>
+<script>
+    // b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    // a_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+    async function gerarResposta() {
+        const pergunta = document.getElementById('pergunta').value;
+
+        if(pergunta == ''){
+            divMsg.style.display = 'flex';
+            divMsgResp.style.display = 'flex';
+            document.getElementById('perguntaRealizada').innerHTML = pergunta;
+            document.getElementById('resposta').innerHTML = 'Me faça uma pergunta!'
+            
+            return;
+        }
+
+        divMsg.style.display = 'flex';
+        divMsgResp.style.display = 'flex';
+        document.getElementById('perguntaRealizada').innerHTML = pergunta;
+        document.getElementById('resposta').innerHTML = 'Gerando resposta...';
+        
+        const response = await fetch('/bobIA/perguntar', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ pergunta })
+        });
+
+        const data = await response.json();
+
+        document.getElementById('resposta').innerHTML = data.bobIAResponse;
+
+        document.getElementById('pergunta').value = ''
+    }
+
+
+</script>

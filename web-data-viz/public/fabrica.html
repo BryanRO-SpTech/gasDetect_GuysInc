@@ -9,11 +9,11 @@
     <link rel="stylesheet" href="/css/fabrica.css">
 </head>
 
-<body>
+<body onload="niveladministrador()">
     <header>
         <div class="side">
             <div class="logo">
-                <a href="/html/index.html">
+                <a href="/index.html">
                     <img src="/assets/img/GUYS-logo.png" alt="Logo Guys inc.">
                 </a>
             </div>
@@ -38,8 +38,7 @@
 
                         <li> <img src="/assets/icons/gerenciamento.png" alt=""> Gerenciar Fábrica</li>
                     </a>
-                    <a href="">
-
+                    <a id="condicional" class="condicional" href="confignovofuncionario.html">
                         <li> <img src="/assets/icons/id-de-toque.png" alt=""> Gerenciar Colaboradores</li>
                     </a>
                 </ul>
@@ -91,6 +90,5 @@
 
 
 </body>
-<script>
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-</script>
+
+<script src="./js/configuser.js"></script>
