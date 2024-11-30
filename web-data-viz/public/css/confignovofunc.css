@@ -140,12 +140,11 @@ header {
 
 
 
-.fa-moon {
+.bi {
     color: var(--cor-button);
-}
 
-.fa-sun {
-    color: var(--cor-button);
+    height: 100%;
+    width: 100%;
 }
 
 

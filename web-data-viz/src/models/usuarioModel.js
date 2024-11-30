@@ -29,7 +29,21 @@ async function cadastrar(razaoSocial, cnpj, nome, email, cpf, senha) {
     return database.executar(instrucaoSqlusuario);
 }
 
+function salvar(nome, email, cpf, cstorageServer) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, email, cpf,cstorageServer);
+
+    var instrucaoSqlusuario = `
+        UPDATE Funcionario SET nome = '${nome}',
+        email = '${email}',
+        cpf = '${cpf}'
+        WHERE cpf = '${cstorageServer}'; 
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSqlusuario);
+    return database.executar(instrucaoSqlusuario);
+}
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    salvar
 };

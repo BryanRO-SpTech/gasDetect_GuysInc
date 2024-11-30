@@ -229,8 +229,70 @@ function cadastrar() {
 
         return false;
     }
+}
 
+function mostrardadosuser() {
+    const username = sessionStorage.getItem('NOME')
+    const useremail = sessionStorage.getItem('EMAIL')
+    const usercpf = sessionStorage.getItem('CPF')
+    
+    document.getElementById('ipt_nome').placeholder = username
+    document.getElementById('ipt_email').placeholder = useremail
+    document.getElementById('ipt_cpf').placeholder = usercpf
+    
+    b_usuario.innerHTML = username;
+    a_usuario.innerHTML = username;
+}
 
+function niveladministrador() {
+    const userlevel = sessionStorage.getItem('NIVEL_PERMISSAO')
+    if (userlevel == '1') {
+        document.getElementById('condicional').style.display = 'flex'
+    }
+}
+
+function salvar() {
+    const namestorage = sessionStorage.getItem('NOME')
+    const emailstorage = sessionStorage.getItem('EMAIL')
+    const cpfstorage = sessionStorage.getItem('CPF')
+
+    var username = ipt_nome.value
+    var useremail = ipt_email.value
+    var usercpf = ipt_cpf.value
+    var usersenha = ipt_senha_original.value
+
+    if (
+        nomeValido &&
+        emailValido &&
+        cpfValido &&
+        senhaValido &&
+        confirmarSenhaValido
+    ) {
+        console.log(cnpj)
+        fetch("/usuarios/salvar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                nomeServer: username,
+                emailServer: useremail,
+                cpfServer: usercpf,
+                senhaServer: usersenha,
+                cstorageServer: cpfstorage
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                window.location.replace("./login.html");
+            })
+            .catch(function (resposta) {
+                span_mensagem_cadastro_efetuado.innerHTML = `#ERRO: ${resposta}`;
+            });
+
+        return false;
+    }
 }
 
 

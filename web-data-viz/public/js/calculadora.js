@@ -64,7 +64,7 @@ function calcular() {
         💸 Com ${incidentesAnuais} incidentes anuais, seu lucro anual seria de: <span class='ganhos'>${formatarDinheiro(economiaPerdas)}.</span> <br> <br>
         📶 Ao adquirir nossa solução por 3 anos, sua empresa terá uma prospecção de <span class='ganhos'>${formatarDinheiro(economiaPerdas * 3)}.</span>
         
-        <a href="../html/calculadoraGUYS.html"><button class="botao-voltar">Voltar</button></a>
+        <button class="botao-voltar" onclick="location.reload()">Voltar</button>
         `
 
 

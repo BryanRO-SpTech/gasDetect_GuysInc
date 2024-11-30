@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Configurações Guys Inc</title>
     <link rel="stylesheet" href="/css/global.css">
-    <link rel="stylesheet" href="./css/config.css">
+    <link rel="stylesheet" href="/css/config.css">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 </head>
 
-<body onload="mostrardadosuser()">
+<body onload="niveladministrador(), mostrardadosuser()">
     <header>
         <div class="side">
             <div class="logo">
@@ -26,32 +28,34 @@
             <div class="nome">
                 <h3><span id="b_usuario">usuário</span></h3>
             </div>
-                <nav class="menu">
-                    <ul>
-                        <a id="condicional" class="condicional" href="confignovofuncionario.html">
-                            <li> <img src="/assets/icons/id-de-toque.png" alt="">Cadastrar Novo Usuario</li>
-                        </a>                       
-                        <a href="">
-                            <li> <img src="/assets/icons/configurando-usuario.png" alt="">  Configurar meu perfil</li>
-                        </a>
-                        <a href="funcionario.html">
-                            <li><img src="/assets/icons/companhia.png" alt=""> Gerenciar Empresa</li>
-                        </a>
-                        <a href="fabrica.html">
-                            <li> <img src="/assets/icons/gerenciamento.png" alt=""> Gerenciar Fábrica</li>
-                        </a>
-                        <a href="">
-                            <li> <img src="/assets/icons/id-de-toque.png" alt=""> Gerenciar Colaboradores</li>
-                        </a>                       
-                    </ul>
-                </nav>
+            <nav class="menu">
+                <ul>
+                    <a href="">
+                        <li> <img src="/assets/icons/configurando-usuario.png" alt=""> Configurar meu perfil</li>
+                    </a>
+                    <a href="funcionario.html">
+                        <li><img src="/assets/icons/companhia.png" alt=""> Gerenciar Empresa</li>
+                    </a>
+                    <a href="fabrica.html">
+                        <li> <img src="/assets/icons/gerenciamento.png" alt=""> Gerenciar Fábrica</li>
+                    </a>
+                    <a id="condicional" class="condicional" href="confignovofuncionario.html">
+                        <li> <img src="/assets/icons/id-de-toque.png" alt=""> Gerenciar Colaboradores</li>
+                    </a>
+                </ul>
+            </nav>
 
             <div class="botoes">
                 <input type="checkbox" onclick="mudarTema()" class="checkbox" id="chk">
 
                 <label class="label" for="chk">
-                    <i class="fas fa-moon"></i>
-                    <i class="fas fa-sun"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon-fill" viewBox="0 0 16 16">
+                        <path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278"/>
+                    </svg>
+                    
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-brightness-high-fill" viewBox="0 0 16 16">
+                        <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"/>
+                    </svg>
                     <div class="ball"></div>
                 </label>
                 <a href="config.html">
@@ -62,51 +66,80 @@
     </header>
     <div class="container">
         <div class="cadastro-content">
-                <div class="user">
-                    <h3><span id="a_usuario">usuário</span></h3>
-                </div>
-                <div class="input-div1">
-                    <div class="labels">
-                        <label for="ipt_nome">Seu nome:</label>
-                    </div>
-                    <input type="text" id="ipt_nome" placeholder="" oninput="validarNome()">
-                    <div class="mensagemValidacao">
-                        <span id="span_mensagem_nome"></span>
-                    </div>
-                </div>
-                
-                <div class="input-div">
-                    <div class="labels">
-                        <label for="ipt_email">E-mail:</label>
-                    </div>
-                    <input type="email" maxlength="80" id="ipt_email" placeholder="" oninput="validarEmail()">
-                    <div class="mensagemValidacao">
-                        <span id="span_mensagem_email"></span>
-                    </div>
-                </div>
-                
-                <div class="input-div">
-                    <div class="labels">
-                        <label for="ipt_cpf">Seu CPF:</label>
-                    </div>
-                    <input type="text" maxlength="11" id="ipt_cpf" placeholder="" oninput="validarCpf()">
-                    <div class="mensagemValidacao">
-                        <span id="span_mensagem_cpf"></span>
-                    </div>
-                </div>
-                <button class="senha" onclick="alterar_senha()">Alterar Senha</button>
-                    <button class="salvar" onclick="salvar()">Salvar</button>
-
-
-                
-                
+            <div class="user">
+                <h3><span id="a_usuario">usuário</span></h3>
             </div>
-    
-            
+            <div class="input-div1">
+                <div class="labels">
+                    <label for="ipt_nome">Seu nome:</label>
+                </div>
+                <input type="text" id="ipt_nome" placeholder="" oninput="validarNome()">
+                <div class="mensagemValidacao">
+                    <span id="span_mensagem_nome"></span>
+                </div>
+            </div>
+
+            <div class="input-div">
+                <div class="labels">
+                    <label for="ipt_email">E-mail:</label>
+                </div>
+                <input type="email" maxlength="80" id="ipt_email" placeholder="" oninput="validarEmail()">
+                <div class="mensagemValidacao">
+                    <span id="span_mensagem_email"></span>
+                </div>
+            </div>
+
+            <div class="input-div">
+                <div class="labels">
+                    <label for="ipt_cpf">Seu CPF:</label>
+                </div>
+                <input type="text" maxlength="11" id="ipt_cpf" placeholder="" oninput="validarCpf()">
+                <div class="mensagemValidacao">
+                    <span id="span_mensagem_cpf"></span>
+                </div>
+            </div>
+            <div class="input-div">
+                <div class="labels">
+                    <label for="ipt_nome">Senha Original:</label>
+                </div>
+                <input type="text" id="ipt_senha_original" placeholder="">
+                <div class="mensagemValidacao">
+                    <span id="span_mensagem_nome"></span>
+                </div>
+            </div>
+
+            <div class="input-div">
+                <div class="labels">
+                    <label for="ipt_senha">Senha:</label>
+                </div>
+                <input type="senha" maxlength="80" id="ipt_senha" placeholder="" oninput="validarSenha()">
+                <div class="mensagemValidacao">
+                    <span id="span_mensagem_senha"></span>
+                </div>
+            </div>
+
+            <div class="input-div">
+                <div class="labels">
+                    <label for="ipt_confirmar">Confirmar senha:</label>
+                </div>
+                <input type="text" maxlength="11" id="ipt_confirmar" placeholder="" oninput="validarConfirmarSenha()">
+                <div class="mensagemValidacao">
+                    <span id="span_mensagem_confirmar"></span>
+                </div>
+            </div>
+
+            <button class="senha" onclick="alterar_senha()">Alterar Senha</button>
+            <button class="salvar" onclick="salvar()">Salvar</button>
+
+
+
+
         </div>
-       
-        
+
+
+    </div>
+
+
 </body>
 
-<script src="./js/configuser.js"></script>
-<script></script>
+<script src="./js/validarCadastro.js"></script>
