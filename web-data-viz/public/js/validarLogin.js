@@ -3,7 +3,7 @@ function validarLogin() {
     const senha = document.getElementById("ipt_senha").value;
     const spanError = document.getElementById("spn_login_error");
 
-    fetch("http://localhost:8080/usuarios/autenticar", {
+    fetch("/usuarios/autenticar", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

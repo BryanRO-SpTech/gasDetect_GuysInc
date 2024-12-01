@@ -21,7 +21,6 @@ function autenticar(req, res) {
                         console.log(resultadoAutenticar);
 
                         res.json({
-                            idFuncionario: resultadoAutenticar[0].idFuncionario,
                             email: resultadoAutenticar[0].email,
                             nome: resultadoAutenticar[0].nome,
                             idEmpresa: resultadoAutenticar[0].idEmpresa,
@@ -93,7 +92,6 @@ function salvar(req, res) {
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
     var cpf = req.body.cpfServer;
-    var senha = req.body.senhaServer;
     var cstorageServer = req.body.cstorageServer;
 
     if (nome == undefined) {
@@ -102,11 +100,9 @@ function salvar(req, res) {
         res.status(400).send("Seu email está undefined!");
     } else if (cpf == undefined) {
         res.status(400).send("Seu cpf está undefined!");
-    } else if (senha == undefined) {
-        res.status(400).send("Sua senha está undefined!");
     } else {
 
-        usuarioModel.salvar(nome, email, cpf, senha, cstorageServer)
+        usuarioModel.salvar(nome, email, cpf, cstorageServer)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -125,7 +121,7 @@ function salvar(req, res) {
 }
 
 function alterar_senha(req, res) {
-    var senhaorig = req.body.senhaorigServer;
+    var senhaorig = req.body.origsenhaServer;
     var senha = req.body.senhaServer;
     var cpf = req.body.cpfServer;
 
@@ -141,19 +137,12 @@ function alterar_senha(req, res) {
                     console.log(`\nResultados encontrados: ${resultadoalterar_senha.length}`);
                     console.log(`Resultados: ${JSON.stringify(resultadoalterar_senha)}`);
 
-                    if (resultadoalterar_senha.length == 1) {
+                    if (resultadoalterar_senha.affectedRows == 1) {
                         console.log(resultadoalterar_senha);
 
-                        res.json({
-                            idFuncionario: resultadoalterar_senha[0].idFuncionario,
-                            email: resultadoalterar_senha[0].email,
-                            nome: resultadoalterar_senha[0].nome,
-                            idEmpresa: resultadoalterar_senha[0].idEmpresa,
-                            nivelPermissao: resultadoalterar_senha[0].nivelPermissao,
-                            cpf: resultadoalterar_senha[0].cpf
-                        });
+                        res.json();
 
-                    } else if (resultadoalterar_senha.length == 0) {
+                    } else if (resultadoalterar_senha.affectedRows == 0) {
                         res.status(403).send("senha inválida");
                     }
                 }

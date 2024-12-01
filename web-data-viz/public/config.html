@@ -115,7 +115,7 @@
                 <div class="labels">
                     <label for="ipt_senha">Senha:</label>
                 </div>
-                <input type="senha" maxlength="80" id="ipt_senha" placeholder="" oninput="validarSenha()">
+                <input type="senha" id="ipt_senha" placeholder="" oninput="validarSenha()">
                 <div class="mensagemValidacao">
                     <span id="span_mensagem_senha"></span>
                 </div>
@@ -125,7 +125,7 @@
                 <div class="labels">
                     <label for="ipt_confirmar">Confirmar senha:</label>
                 </div>
-                <input type="text" maxlength="11" id="ipt_confirmar" placeholder="" oninput="validarConfirmarSenha()">
+                <input type="text" id="ipt_confirmar" placeholder="" oninput="validarConfirmarSenha()">
                 <div class="mensagemValidacao">
                     <span id="span_mensagem_confirmar"></span>
                 </div>
@@ -133,7 +133,8 @@
 
             <button class="senha" onclick="alterar_senha()">Alterar Senha</button>
             <button class="salvar" onclick="salvar()">Salvar</button>
-
+            
+            <span style="color: red; font-weight: bold;" id="span_mensagem_cadastro_efetuado"></span>
         </div>
 
     </div>
@@ -141,3 +142,8 @@
 </body>
 
 <script src="./js/validarCadastro.js"></script>
+<script src="./js/tema.js"></script>
+<script>window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){
+    $zoho.salesiq.visitor.name(sessionStorage.NOME);
+    $zoho.salesiq.visitor.email(sessionStorage.EMAIL);
+}}</script><script id="zsiqscript" src="https://salesiq.zohopublic.com/widget?wc=siq16d8b41f912488fb6ba8c00ce7c5fb32ce9b2ebd895fbf8340455d283739d1ed" defer></script>

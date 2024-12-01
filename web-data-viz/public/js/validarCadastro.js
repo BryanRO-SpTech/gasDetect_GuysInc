@@ -232,13 +232,17 @@ function cadastrar() {
 }
 
 function mostrardadosuser() {
-    const username = sessionStorage.getItem('NOME')
-    const useremail = sessionStorage.getItem('EMAIL')
-    const usercpf = sessionStorage.getItem('CPF')
+    const username = sessionStorage.getItem('NOME');
+    const useremail = sessionStorage.getItem('EMAIL');
+    const usercpf = sessionStorage.getItem('CPF');
 
-    document.getElementById('ipt_nome').placeholder = username
-    document.getElementById('ipt_email').placeholder = useremail
-    document.getElementById('ipt_cpf').placeholder = usercpf
+    document.getElementById('ipt_nome').value = username
+    document.getElementById('ipt_email').value = useremail
+    document.getElementById('ipt_cpf').value = usercpf
+
+    nomeValido = true
+    emailValido = true
+    cpfValido = true
 
     b_usuario.innerHTML = username;
     a_usuario.innerHTML = username;
@@ -257,14 +261,11 @@ function salvar() {
     var username = ipt_nome.value
     var useremail = ipt_email.value
     var usercpf = ipt_cpf.value
-    var usersenha = ipt_senha_original.value
 
     if (
         nomeValido &&
         emailValido &&
-        cpfValido &&
-        senhaValido &&
-        confirmarSenhaValido
+        cpfValido
     ) {
         fetch("/usuarios/salvar", {
             method: "POST",
@@ -275,19 +276,22 @@ function salvar() {
                 nomeServer: username,
                 emailServer: useremail,
                 cpfServer: usercpf,
-                senhaServer: usersenha,
                 cstorageServer: cpfstorage
             }),
         })
             .then(function (resposta) {
                 console.log("resposta: ", resposta);
 
-                if (res.ok) {
-                    res.json().then(function (data) {
-                        sessionStorage.EMAIL = data.email;
-                        sessionStorage.NOME = data.nome;
-                        sessionStorage.CPF = data.cpf;
+                if (resposta.ok) {
+                    resposta.json().then(function (data) {
+                        sessionStorage.EMAIL = useremail;
+                        sessionStorage.NOME = username;
+                        sessionStorage.CPF = usercpf;
                     });
+
+
+                    span_mensagem_cadastro_efetuado.innerHTML = `Dados alterados com sucesso!`;
+                    span_mensagem_cadastro_efetuado.style.color = "green";
                 }
             })
             .catch(function (resposta) {
@@ -295,6 +299,8 @@ function salvar() {
             });
 
         return false;
+    } else {
+        span_mensagem_cadastro_efetuado.innerHTML = `Verifique os campos e tente novamente`;
     }
 }
 
@@ -320,17 +326,14 @@ function alterar_senha() {
             }),
         }).then(function (res) {
             if (!res.ok) {
-                span_mensagem_senha_original.innerHTML = "Senha incorretos";
-                return 
+                span_mensagem_senha_original.innerHTML = "Senha incorreta";
+                return;
             }
 
-            if (res.ok) {
-                res.json().then(function (data) {
-                    console.log(data);
+            span_mensagem_senha_original.innerHTML = ""
 
-                    window.location.replace("./login.html");
-                });
-            }
+            span_mensagem_cadastro_efetuado.innerHTML = "Senha alterada com sucesso!";
+            span_mensagem_cadastro_efetuado.style.color = "green";
         });
     }
 }
