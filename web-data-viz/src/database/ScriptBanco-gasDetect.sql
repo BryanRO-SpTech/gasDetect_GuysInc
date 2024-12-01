@@ -30,6 +30,21 @@ fkCargo INT,
 CONSTRAINT fkCargoFuncionario FOREIGN KEY (fkCargo) REFERENCES Cargo(idCargo),
 CONSTRAINT fkEmpresa_Funcionario FOREIGN KEY(fkEmpresa) REFERENCES Empresa(idEmpresa)
 );
+
+CREATE TABLE if not exists SolicitacaoSensor (
+    idPedido INT PRIMARY KEY AUTO_INCREMENT,
+    cnpj CHAR(14) NOT NULL,
+    cepFabrica VARCHAR(45) NOT NULL,
+    logradouro VARCHAR(45) NOT NULL,
+    bairro VARCHAR(45) NOT NULL,
+    municipio VARCHAR(45) NOT NULL,
+    estado VARCHAR(45) NOT NULL,
+    setor VARCHAR(45) NOT NULL,
+    descSetor TEXT NOT NULL,
+    tamanhoSetor VARCHAR(45) NOT NULL,
+    fkFuncionario INT,
+    CONSTRAINT fkfuncSolicitacao FOREIGN KEY (fkFuncionario) REFERENCES Funcionario (idFuncionario)
+);
 <<<<<<< HEAD
 
 =======
@@ -132,6 +147,19 @@ INSERT INTO Registro (porcGas, fkSensor) VALUES
 (20.75, 3),
 (15.60, 4),
 (18.30, 5);
+
+INSERT INTO SolicitacaoSensor (cnpj, cepFabrica, logradouro, bairro, municipio, estado, setor, descSetor, tamanhoSetor, fkFuncionario)
+VALUES 
+('12345678000195', '12345-678', 'Rua das Flores', 'Centro', 'São Paulo', 'SP', 'Produção', 'Setor responsável pela linha de montagem', 'Grande', 1),
+('98765432000123', '87654-321', 'Avenida Industrial', 'Bairro Novo', 'Campinas', 'SP', 'Logística', 'Setor de armazenamento e distribuição de materiais', 'Médio', 2),
+('11223344000156', '23456-789', 'Rua dos Trabalhadores', 'Vila Maria', 'Rio de Janeiro', 'RJ', 'Manutenção', 'Setor responsável pela manutenção de máquinas e equipamentos', 'Pequeno', 3),
+('55667788000199', '54321-876', 'Praça Central', 'Jardim das Palmeiras', 'Belo Horizonte', 'MG', 'Qualidade', 'Setor responsável pelo controle de qualidade da produção', 'Grande', 4),
+('99887766000132', '76543-210', 'Rua da Paz', 'Zona Norte', 'Curitiba', 'PR', 'Vendas', 'Setor de vendas e atendimento ao cliente', 'Médio', 5);
+
+
+SELECT * 
+    FROM SolicitacaoSensor
+    JOIN Funcionario ON fkFuncionario = idFuncionario;
 
 
 SELECT * 
