@@ -28,6 +28,7 @@ body {
     --cor-button: #262A69;
     --cor-button-hover:  #6fc5ff;
     --cor-texto-main: black;
+    --cor-sombra: rgba(0, 0, 0, 0.5);
 }
 
 :root[theme="dark"] {
@@ -41,6 +42,8 @@ body {
     --cor-button: #00A0EB;
     --cor-button-hover:  #262A69;
     --cor-texto-main: white;
+
+    --cor-sombra: rgba(255, 255, 255, 0.5);
 }
 
 .condicional {

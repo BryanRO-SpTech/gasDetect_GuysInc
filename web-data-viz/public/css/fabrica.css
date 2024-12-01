@@ -26,6 +26,10 @@ header {
     font-size: 1.5em;
 }
 
+#titleGerFab {
+    color: var(--cor-texto);
+}
+
 .logo a img {
     width: 70%;
     margin-left: 10%;
@@ -210,6 +214,11 @@ li img {
 
 }
 
+
+.modal-header h2 {
+    color: var(--cor-texto);
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -246,7 +255,7 @@ table a {
 
 .modal-cadastro {
     background-color: var(--cor-fundo);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 12px 24px var(--cor-sombra);
     width: 60%;
     height: 65%;
 
@@ -334,4 +343,13 @@ table a {
     font-weight: 700;
 
     color: red;
+}
+
+:root[theme="dark"] .contraste {
+    background-color: #1f1f1f;
+    color: white;   
+}
+
+:root[theme="light"] .contraste {
+    background-color: #dddddd;   
 }

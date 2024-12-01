@@ -17,7 +17,7 @@ function carregarFabricas() {
 
                 for (var i = 0; i < fabricas.length; i++) {
                     fabricaHTML += `
-                        <tr style="${i % 2 == 0 ? "background-color: #e6e5e5" : ""}">
+                        <tr class="${i % 2 == 0 ? "contraste" : ""}">
                             <td>${fabricas[i].cep}</td>
                             <td>${fabricas[i].logradouro}</td>
                             <td>${fabricas[i].numero}</td>
