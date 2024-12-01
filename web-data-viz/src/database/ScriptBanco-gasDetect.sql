@@ -2,32 +2,31 @@ DROP DATABASE IF EXISTS Guys_Inc;
 
 CREATE DATABASE if not exists Guys_Inc;
 USE Guys_Inc;
--- DROP DATABASE Guys_Inc;
 
 CREATE TABLE if not exists Empresa (
-idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
-razaoSocial VARCHAR(120) NOT NULL,
-cnpjSede CHAR(14) NOT NULL
+    idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
+    razaoSocial VARCHAR(120) NOT NULL,
+    cnpjSede CHAR(14) NOT NULL
 );
 
 CREATE TABLE if not exists Cargo (
-idCargo int primary key auto_increment,
-nomeCargo varchar(45),
-descCargo varchar(45),
-nivelPermissao tinyint
+    idCargo int primary key auto_increment,
+    nomeCargo varchar(45),
+    descCargo varchar(45),
+    nivelPermissao tinyint
 );
 
 CREATE TABLE if not exists Funcionario (
-idFuncionario  INT PRIMARY KEY AUTO_INCREMENT,
-nome VARCHAR(45) NOT NULL,
-cpf CHAR(11) NOT NULL,
-email VARCHAR(80) NOT NULL,
-senha TEXT NOT NULL,
-supportId VARCHAR(20),
-fkEmpresa INT,
-fkCargo INT,
-CONSTRAINT fkCargoFuncionario FOREIGN KEY (fkCargo) REFERENCES Cargo(idCargo),
-CONSTRAINT fkEmpresa_Funcionario FOREIGN KEY(fkEmpresa) REFERENCES Empresa(idEmpresa)
+    idFuncionario  INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(45) NOT NULL,
+    cpf CHAR(11) NOT NULL,
+    email VARCHAR(80) NOT NULL,
+    senha TEXT NOT NULL,
+    supportId VARCHAR(20),
+    fkEmpresa INT,
+    fkCargo INT,
+    CONSTRAINT fkCargoFuncionario FOREIGN KEY (fkCargo) REFERENCES Cargo(idCargo),
+    CONSTRAINT fkEmpresa_Funcionario FOREIGN KEY(fkEmpresa) REFERENCES Empresa(idEmpresa)
 );
 
 
@@ -52,8 +51,7 @@ limiteAlerta INT NOT NULL
 CREATE TABLE if not exists Setor (
 idSetor INT PRIMARY KEY AUTO_INCREMENT,
 tamanhoM2 INT NOT NULL,
-setor VARCHAR(45),
-sala VARCHAR(45),
+nome VARCHAR(45),
 descricao VARCHAR(45),
 fkFabrica INT,
 fkLimite INT,
@@ -64,7 +62,7 @@ CONSTRAINT fkLimite_Setor FOREIGN KEY(fkLimite) REFERENCES LimiteAlerta(idParame
 CREATE TABLE if not exists Sensor (
 idSensor INT PRIMARY KEY AUTO_INCREMENT,
 titulo VARCHAR(255),
-statusSensor char(9),
+statusSensor char(9) DEFAULT 'Pendente' NOT NULL,
 CONSTRAINT chkStatus CHECK(statusSensor in ('Pendente', 'Concluido')),
 fkSetor INT,
 CONSTRAINT fkSetor_Sensor FOREIGN KEY(fkSetor) REFERENCES Setor(idSetor)
@@ -112,12 +110,12 @@ INSERT INTO LimiteAlerta (limiteAlerta) VALUES
 (20);
 
 
-INSERT INTO Setor (tamanhoM2, setor, sala, descricao, fkFabrica, fkLimite) VALUES
-(100, 'Produção', 'Sala de Mistura', 'Ambiente de mistura de tintas', 1, 1),
-(150, 'Armazenagem', 'Sala de Estocagem', 'Área de estocagem de tintas', 2, 2),
-(200, 'Laboratório', 'Sala de Testes', 'Ambiente de testes de qualidade', 3, 3),
-(120, 'Expedição', 'Sala de Envio', 'Área de expedição de tintas', 4, 4),
-(180, 'Desenvolvimento', 'Sala de Formulação', 'Ambiente para desenvolvimento de novas tintas', 5, 5);
+INSERT INTO Setor (tamanhoM2, nome, descricao, fkFabrica, fkLimite) VALUES
+(100, 'Produção', 'Sala de Mistura', 1, 1),
+(150, 'Armazenagem', 'Sala de Estocagem', 2, 2),
+(200, 'Laboratório', 'Sala de Testes', 3, 3),
+(120, 'Expedição', 'Sala de Envio', 4, 4),
+(180, 'Desenvolvimento', 'Sala de Formulação', 5, 5);
 
 INSERT INTO Sensor (titulo, statusSensor, fkSetor) VALUES
 ('Sensor de gás', 'Concluido', 1),
@@ -132,40 +130,3 @@ INSERT INTO Registro (porcGas, fkSensor) VALUES
 (20.75, 3),
 (15.60, 4),
 (18.30, 5);
-
-
-SELECT * 
-FROM Registro AS r
-JOIN Sensor AS s ON r.fkSensor = s.idSensor;
-
-
-SELECT 
-    nome AS 'Nome do Funcionario',
-    descCargo AS Cargo
-FROM 
-    Funcionario
-    JOIN Cargo ON fkCargo = idCargo;
-
-
-SELECT 
-    e.razaoSocial AS Empresa,
-    fa.logradouro AS 'Rua da Fábrica'
-FROM 
-    Empresa AS e
-JOIN 
-    Fabrica AS fa ON e.idEmpresa = fa.fkEmpresa;
-
-
-SELECT 
-    s.titulo AS Sensor,
-    se.setor AS Setor,
-    fa.logradouro AS 'Rua da Fábrica',
-    e.razaoSocial AS 'Nome da Empresa'
-FROM 
-    Sensor AS s
-JOIN 
-    Setor AS se ON s.fkSetor = se.idSetor
-JOIN 
-    Fabrica AS fa ON se.fkFabrica = fa.idFabrica
-JOIN 
-    Empresa AS e ON fa.fkEmpresa = e.idEmpresa;

@@ -3,7 +3,7 @@ body {
     height: 100dvh;
     width: 100vw;
 }
-
+/* 
 header {
     display: flex;
     flex-direction: column;
@@ -162,7 +162,7 @@ header {
 
     height: 100%;
     width: 100%;
-}
+} */
 
 .container {
     width: 100%;
@@ -236,12 +236,12 @@ header {
 
 .modal-cadastro {
     background-color: var(--cor-fundo);
-    box-shadow: 0 12px 24px var(--cor-sombra);
+    /* box-shadow: 0 12px 24px var(--cor-sombra); */
     width: 45%;
     height: 40%;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-40%, -95%);
     position: absolute;
     border-radius: 15px;
     display: none;
