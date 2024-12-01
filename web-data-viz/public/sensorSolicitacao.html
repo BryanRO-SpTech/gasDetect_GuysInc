@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html theme="light" lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações Guys Inc</title>
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/sensorSolicitado.css">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+</head>
+
+<body onload="niveladministrador(), mostrardadosuser()">
+    <header>
+        <div class="side">
+            <div class="logo">
+                <a href="/index.html">
+                    <img src="/assets/img/GUYS-logo.png" alt="Logo Guys inc.">
+                </a>
+            </div>
+            <h1>GUYS inc.</h1>
+        </div>
+        <div class="sideBar">
+            <div class="imagem">
+                <img src="/assets/img/GUYS-logo.png" alt="imagem logo Guys Inc">
+            </div>
+            <div class="nome">
+                <h3><span id="b_usuario">usuário</span></h3>
+            </div>
+            <nav class="menu">
+                <ul>
+                    <a href="">
+                        <li> <img src="/assets/icons/configurando-usuario.png" alt=""> Configurar meu perfil</li>
+                    </a>
+                    <a href="funcionario.html">
+                        <li><img src="/assets/icons/companhia.png" alt=""> Gerenciar Empresa</li>
+                    </a>
+                    <a href="fabrica.html">
+                        <li> <img src="/assets/icons/gerenciamento.png" alt=""> Gerenciar Fábrica</li>
+                    </a>
+                    <a id="condicional" class="condicional" href="confignovofuncionario.html">
+                        <li> <img src="/assets/icons/id-de-toque.png" alt=""> Gerenciar Colaboradores</li>
+                    </a>
+                    <a href="sensorSolicitacao.html">
+                        <li><img src="" alt=""> Solicite um Sensor</li>
+                    </a>
+                </ul>
+            </nav>
+
+            <div class="botoes">
+                <input type="checkbox" onclick="trocaTema()" class="checkbox" id="chk">
+
+                <label class="label" for="chk">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-moon-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278" />
+                    </svg>
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-brightness-high-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708" />
+                    </svg>
+                    <div class="ball"></div>
+                </label>
+                <a href="config.html">
+                    <img src="/assets/icons/engrenagem.png" alt="Configurações">
+                </a>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="cadastro-content">
+            <div class="user">
+                <h3><span id="a_usuario">usuário</span></h3>
+            </div>
+            <div class="contentSlt" id="fabrica" style="display: block;">
+                <select id="sltFabrica" class="sltOption">
+                    <option value="#" selected disabled>Selecione uma opção</option>
+                    <option value="sltFab1" id="id_fabrica">Fabrica 1</option>
+                    <option value="sltFab2" id="id_fabrica">Fabrica 2</option>
+                    <option value="sltFab3" id="id_fabrica">Fabrica 3</option>
+                    <option value="sltFab4" id="id_fabrica">Fabrica 4</option>
+                    <option value="sltFab5" id="id_fabrica">Fabrica 5</option>
+                </select>
+                <img src="./assets/icons/icons8-arrow-down-right-48.png" class="arrow" alt="icone de flecha">
+                <div class="buttonForm">
+                    <button onclick="fabrica()">Consultar Fabrica</button>
+                </div>
+                <div class="mensagemValidacao">
+                    <span id="spanMsgFabrica"></span>
+                </div>
+            </div>
+
+            <div class="contentSlt" id="setor" style="display: none;">
+                <select id="sltSetor" class="sltOption">
+                    <option value="#" selected disabled>Selecione uma opção</option>
+                    <option value="sltSet1" id="id_setor">setor 1</option>
+                    <option value="sltSet2" id="id_setor">setor 2</option>
+                    <option value="sltSet3" id="id_setor">setor 3</option>
+                    <option value="sltSet4" id="id_setor">setor 4</option>
+                    <option value="sltSet5" id="id_setor">setor 5</option>
+                </select>
+                <img src="./assets/icons/icons8-arrow-down-right-48.png" class="arrow" alt="icone de flecha">
+                <div class="buttonForm">
+                    <button onclick="setor()">Consultar Setor</button>
+                </div>
+                <div class="mensagemValidacao">
+                    <span id="spanMsgSetor"></span>
+                </div>
+            </div>
+
+
+            <div class="cadastro-content" id="solicitacao" style="display: none;">
+                <div class="input-div1">
+                    <div class="labels">
+                        <label>Seu nome:</label>
+                    </div>
+                    <input type="text" id="ipt_nome" placeholder="">
+
+                </div>
+
+                <div class="input-div">
+                    <div class="labels">
+                        <label>E-mail:</label>
+                    </div>
+                    <input type="email" maxlength="80" id="ipt_email" placeholder="">
+    
+                </div>
+
+                <div class="input-div">
+                    <div class="labels">
+                        <label>Empresa:</label>
+                    </div>
+                    <input type="text" maxlength="11" id="ipt_empresa" placeholder="">
+                </div>
+
+                <div class="input-div">
+                    <div class="labels">
+                        <label>Cnpj:</label>
+                    </div>
+                    <input type="number" maxlength="11" id="ipt_cnpj" placeholder="">
+                </div>
+
+                <div class="input-div">
+                    <div class="labels">
+                        <label>CEP da Fábrica:</label>
+                    </div>
+                    <input type="number" maxlength="11" id="ipt_cep" placeholder="">
+                </div>
+
+                <div class="input-div">
+                    <div class="labels">
+                        <label>Bairro da Fábrica:</label>
+                    </div>
+                    <input type="text" maxlength="11" id="ipt_bairro" placeholder="">
+                </div>
+
+                <div class="input-div">
+                    <div class="labels">
+                        <label>Múnicipio da Fábrica:</label>
+                    </div>
+                    <input type="text" maxlength="11" id="ipt_municipio" placeholder="">
+                </div>
+
+                <div class="input-div">
+                    <div class="labels">
+                        <label>Estado da Fábrica:</label>
+                    </div>
+                    <input type="text" maxlength="11" id="ipt_estado" placeholder="">
+                </div>
+
+                <div class="input-div">
+                    <div class="labels">
+                        <label>Setor:</label>
+                    </div>
+                    <input type="text" maxlength="11" id="ipt_setor" placeholder="">
+                </div>
+
+                <div class="input-div">
+                    <div class="labels">
+                        <label>Descrição do Setor:</label>
+                    </div>
+                    <input type="text" maxlength="11" id="ipt_desc_setor" placeholder="">
+                </div>
+
+                <div class="input-div">
+                    <div class="labels">
+                        <label>Tamanho do Setor em m²:</label>
+                    </div>
+                    <input type="number" maxlength="11" id="ipt_tamanho_setor" placeholder="">
+                </div>
+                <div class="buttonForm">
+                    <button onclick="enviar()">Enviar</button>
+                </div>
+                <div class="mensagemValidacao">
+                    <span id="spanMsgSolicitacao"></span>
+                </div>
+            </div>
+        </div>
+        <script src="./js/validarSolicitacao.js"></script>
+</body>
+
+</html>
+
