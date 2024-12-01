@@ -326,17 +326,14 @@ function alterar_senha() {
             }),
         }).then(function (res) {
             if (!res.ok) {
-                span_mensagem_senha_original.innerHTML = "Senha incorretos";
+                span_mensagem_senha_original.innerHTML = "Senha incorreta";
                 return
             }
 
-            if (res.ok) {
-                res.json().then(function (data) {
-                    console.log(data);
+            span_mensagem_senha_original.innerHTML = ""
 
-                    window.location.replace("./login.html");
-                });
-            }
+            span_mensagem_cadastro_efetuado.innerHTML = "Senha alterada com sucesso!";
+            span_mensagem_cadastro_efetuado.style.color = "green";
         });
     }
 }
