@@ -3,7 +3,7 @@ body {
     height: 100dvh;
     width: 100vw;
 }
-
+/* 
 header {
     display: flex;
     flex-direction: column;
@@ -162,7 +162,7 @@ header {
 
     height: 100%;
     width: 100%;
-}
+} */
 
 .container {
     width: 100%;
