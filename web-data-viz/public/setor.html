@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html theme="light" lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Fábricas Guys Inc</title>
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/fabrica.css">
+</head>
+
+<body onload="niveladministrador()">
+    <script src="./components/configNavBar/configNavBar.js" paginaAtual="setor"></script>
+
+        <div class="container">
+        <div class="cadastro-content">
+            <div class="guys">
+                <h1 id="titleGerFab">Setores Cadastradas</h1>
+                <button onclick="abrirModal()">Cadastrar Setor</button>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Setor</th>
+                        <th>Tamanho</th>
+                        <th>Sala</th>
+                        <th>Descrição</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela_de_fabricas">
+
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+    <div class="modal-cadastro" id="modal-cadastro">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Cadastrar Setor</h2>
+                <span class="close" onclick="fecharModal()">X</span>
+            </div>
+            <div class="modal-body">
+                <div class="input-div">
+                    <div class="labels">
+                        <label for="ipt_cep">CEP:</label>
+                    </div>
+                    <input type="text" id="ipt_cep" placeholder="Digite o CEP" maxlength="9" oninput="preencherFormularioComCep()">
+                    <div class="mensagemValidacao">
+                        <span id="span_mensagem_cep"></span>
+                    </div>
+                </div>
+
+                <div class="input-div">
+                    <div class="labels">
+                        <label for="ipt_logradouro">Logradouro:</label>
+                    </div>
+                    <input type="text" id="ipt_logradouro" placeholder="Será preenchido automaticamente" readonly>
+                </div>
+
+                <div class="input-div">
+                    <div class="labels">
+                        <label for="ipt_numero">Número:</label>
+                    </div>
+                    <input type="text" id="ipt_numero" placeholder="Digite o Número">
+                </div>
+
+                <div class="input-div">
+                    <div class="labels">
+                        <label for="ipt_bairro">Bairro:</label>
+                    </div>
+                    <input type="text" id="ipt_bairro" placeholder="Será preenchido automaticamente" readonly>
+                </div>
+
+                <div class="input-div">
+                    <div class="labels">
+                        <label for="ipt_cidade">Cidade:</label>
+                    </div>
+                    <input type="text" id="ipt_cidade" placeholder="Será preenchido automaticamente" readonly>
+                </div>
+
+                <div class="input-div">
+                    <div class="labels">
+                        <label for="ipt_uf">UF:</label>
+                    </div>
+                    <input type="text" id="ipt_uf" placeholder="Será preenchido automaticamente" readonly>
+
+                    <div class="input-div">
+                        <button onclick="cadastrarFabrica()">Cadastrar</button>
+
+                        <span id="span_mensagem" style="color: red; font-weight: 700;"></span>
+                    </div>
+        </div>
+    </div>
+</body>
+
+<script src="./js/fabrica.js"></script>
+<script src="/js/tema.js"></script>
+<script>window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){
+    $zoho.salesiq.visitor.name(sessionStorage.NOME);
+    $zoho.salesiq.visitor.email(sessionStorage.EMAIL);
+}}</script><script id="zsiqscript" src="https://salesiq.zohopublic.com/widget?wc=siq16d8b41f912488fb6ba8c00ce7c5fb32ce9b2ebd895fbf8340455d283739d1ed" defer></script>
