@@ -42,6 +42,9 @@
                     <a id="condicional" class="condicional" href="confignovofuncionario.html">
                         <li> <img src="/assets/icons/id-de-toque.png" alt=""> Gerenciar Colaboradores</li>
                     </a>
+                    <a href="sensorSolicitacao.html">
+                        <li><img src="" alt=""> Solicite um Sensor</li>
+                    </a>
                 </ul>
             </nav>
 
@@ -139,7 +142,20 @@
 </body>
 
 <script src="./js/validarCadastro.js"></script>
-<script src="./js/tema.js"></script>
+<script>
+
+function trocaTema() {
+    const temaAtual = document.documentElement.getAttribute('theme');
+
+    if (temaAtual === "light") {
+        document.documentElement.setAttribute("theme", "dark");
+        document.getElementById("a_usuario").style.color = "var(--cor-terciaria)";
+    } else {
+        document.documentElement.setAttribute("theme", "light");
+        document.getElementById("a_usuario").style.color = "var(--cor-secundaria)";
+    }
+}
+</script>
 <script>window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){
     $zoho.salesiq.visitor.name(sessionStorage.NOME);
     $zoho.salesiq.visitor.email(sessionStorage.EMAIL);
