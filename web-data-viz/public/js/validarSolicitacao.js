@@ -21,37 +21,48 @@ function setor() {
 
 
     document.getElementById("setor").style.display = "none";
-    document.getElementById("solicitacao").style.display = "block";
+    document.getElementById("modal").style.display = "block"
 
 }
 
+function closeModal() {
+    document.getElementById("modal").style.display = "none"
+    document.getElementById("setor").style.display = "block";
+}
+
 function enviar() {
-    var nome = ipt_nome.value;
-    var email = ipt_email.value;
-    var empresa = ipt_empresa.value;
-    var cnpj = Number(ipt_cnpj.value);
-    var cep = Number(ipt_cep.value);
-    var bairro = ipt_bairro.value;
-    var municipio = ipt_municipio.value;
-    var estado = ipt_estado.value;
     var setor = ipt_setor.value;
     var descStor = ipt_desc_setor;
     var tamanhoSetor = Number(ipt_tamanho_setor.value);
 
     if (
-        nome == "" ||
-        email == "" ||
-        empresa == "" ||
-        cnpj == "" ||
-        cep == "" ||
-        bairro == "" ||
-        municipio == "" ||
-        estado == "" ||
         setor == "" ||
         descStor == "" ||
         tamanhoSetor == ""
     ) {
-        spanMsgSolicitacao.innerHTML = `<span> Preencha todos os campos para proseguir.</span>`;
+        span_mensagem.innerHTML = `<span> Preencha todos os campos para proseguir.</span>`;
         return;
     }
+
+    var num_sensores = Math.ceil(tamanhoSetor / 30);
+
+
+    fetch("", {
+        method: "POST",
+        header: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            setor,
+            descStor,
+            tamanhoSetor,
+            num_sensores,
+            idFuncionario: sessionStorage.ID_FUNCIONARIO,
+        }),
+    }).then(function(resposta) {
+        if (!resposta.ok) {
+            console.error("Erro ao realizar a solicitação:", resposta);
+            return;
+        }
+    })
 }

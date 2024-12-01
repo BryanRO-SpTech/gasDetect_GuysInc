@@ -16,7 +16,45 @@
 </head>
 
 <body onload="niveladministrador(), mostrardadosuser()">
+<<<<<<< Updated upstream
     <script src="./components/configNavBar/configNavBar.js" paginaAtual="sensor"></script>
+=======
+    <header>
+        <div class="side">
+            <div class="logo">
+                <a href="/index.html">
+                    <img src="/assets/img/GUYS-logo.png" alt="Logo Guys inc.">
+                </a>
+            </div>
+            <h1>GUYS inc.</h1>
+        </div>
+        <div class="sideBar">
+            <div class="imagem">
+                <img src="/assets/img/GUYS-logo.png" alt="imagem logo Guys Inc">
+            </div>
+            <div class="nome">
+                <h3><span id="b_usuario">usuário</span></h3>
+            </div>
+            <nav class="menu">
+                <ul>
+                    <a href="./config.html">
+                        <li> <img src="/assets/icons/configurando-usuario.png" alt=""> Configurar meu perfil</li>
+                    </a>
+                    <a href="funcionario.html">
+                        <li><img src="/assets/icons/companhia.png" alt=""> Gerenciar Empresa</li>
+                    </a>
+                    <a href="fabrica.html">
+                        <li> <img src="/assets/icons/gerenciamento.png" alt=""> Gerenciar Fábrica</li>
+                    </a>
+                    <a id="condicional" class="condicional" href="confignovofuncionario.html">
+                        <li> <img src="/assets/icons/id-de-toque.png" alt=""> Gerenciar Colaboradores</li>
+                    </a>
+                    <a href="sensorSolicitacao.html">
+                        <li><img src="" alt=""> Solicite um Sensor</li>
+                    </a>
+                </ul>
+            </nav>
+>>>>>>> Stashed changes
 
     <div class="container">
         <div class="cadastro-content">
@@ -57,93 +95,55 @@
                 <div class="mensagemValidacao">
                     <span id="spanMsgSetor"></span>
                 </div>
+
+                <!-- <table>
+                    <thead>
+                        <tr>
+                            <th>Setor</th>
+                            <th>Descrição do Setor</th>
+                            <th>Tamanho do setor</th>
+                            <th>Status do Pedido</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela_de_fabricas">
+
+                    </tbody>
+                </table> -->
             </div>
 
 
-            <div class="cadastro-content" id="solicitacao" style="display: none;">
-                <div class="input-div1">
-                    <div class="labels">
-                        <label>Seu nome:</label>
+            <div class="modal-cadastro" id="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Cadastrar Setor</h2>
+                        <span class="close" onclick="closeModal()">X</span>
                     </div>
-                    <input type="text" id="ipt_nome" placeholder="">
+                    <div class="modal-body">
+                        <div class="input-div">
+                            <div class="labels">
+                                <label>Setor:</label>
+                            </div>
+                            <input type="text" maxlength="11" id="ipt_setor" placeholder="">
+                        </div>
 
-                </div>
+                        <div class="input-div">
+                            <div class="labels">
+                                <label>Descrição do Setor:</label>
+                            </div>
+                            <input type="text" maxlength="11" id="ipt_desc_setor" placeholder="">
+                        </div>
 
-                <div class="input-div">
-                    <div class="labels">
-                        <label>E-mail:</label>
+                        <div class="input-div">
+                            <div class="labels">
+                                <label>Tamanho do Setor em m²:</label>
+                            </div>
+                            <input type="number" maxlength="11" id="ipt_tamanho_setor" placeholder="">
+                        </div>
+                        <div class="buttonForm">
+                            <button onclick="enviar()">Enviar</button>
+                            <span id="span_mensagem" style="color: red; font-weight: 700;"></span>
+                        </div>
                     </div>
-                    <input type="email" maxlength="80" id="ipt_email" placeholder="">
-    
-                </div>
-
-                <div class="input-div">
-                    <div class="labels">
-                        <label>Empresa:</label>
-                    </div>
-                    <input type="text" maxlength="11" id="ipt_empresa" placeholder="">
-                </div>
-
-                <div class="input-div">
-                    <div class="labels">
-                        <label>Cnpj:</label>
-                    </div>
-                    <input type="number" maxlength="11" id="ipt_cnpj" placeholder="">
-                </div>
-
-                <div class="input-div">
-                    <div class="labels">
-                        <label>CEP da Fábrica:</label>
-                    </div>
-                    <input type="number" maxlength="11" id="ipt_cep" placeholder="">
-                </div>
-
-                <div class="input-div">
-                    <div class="labels">
-                        <label>Bairro da Fábrica:</label>
-                    </div>
-                    <input type="text" maxlength="11" id="ipt_bairro" placeholder="">
-                </div>
-
-                <div class="input-div">
-                    <div class="labels">
-                        <label>Múnicipio da Fábrica:</label>
-                    </div>
-                    <input type="text" maxlength="11" id="ipt_municipio" placeholder="">
-                </div>
-
-                <div class="input-div">
-                    <div class="labels">
-                        <label>Estado da Fábrica:</label>
-                    </div>
-                    <input type="text" maxlength="11" id="ipt_estado" placeholder="">
-                </div>
-
-                <div class="input-div">
-                    <div class="labels">
-                        <label>Setor:</label>
-                    </div>
-                    <input type="text" maxlength="11" id="ipt_setor" placeholder="">
-                </div>
-
-                <div class="input-div">
-                    <div class="labels">
-                        <label>Descrição do Setor:</label>
-                    </div>
-                    <input type="text" maxlength="11" id="ipt_desc_setor" placeholder="">
-                </div>
-
-                <div class="input-div">
-                    <div class="labels">
-                        <label>Tamanho do Setor em m²:</label>
-                    </div>
-                    <input type="number" maxlength="11" id="ipt_tamanho_setor" placeholder="">
-                </div>
-                <div class="buttonForm">
-                    <button onclick="enviar()">Enviar</button>
-                </div>
-                <div class="mensagemValidacao">
-                    <span id="spanMsgSolicitacao"></span>
                 </div>
             </div>
         </div>
@@ -154,16 +154,15 @@
 
 <script>
 
-function trocaTema() {
-    const temaAtual = document.documentElement.getAttribute('theme');
+    function trocaTema() {
+        const temaAtual = document.documentElement.getAttribute('theme');
 
-    if (temaAtual === "light") {
-        document.documentElement.setAttribute("theme", "dark");
-        document.getElementById("a_usuario").style.color = "var(--cor-terciaria)";
-    } else {
-        document.documentElement.setAttribute("theme", "light");
-        document.getElementById("a_usuario").style.color = "black";
+        if (temaAtual === "light") {
+            document.documentElement.setAttribute("theme", "dark");
+            document.getElementById("a_usuario").style.color = "var(--cor-terciaria)";
+        } else {
+            document.documentElement.setAttribute("theme", "light");
+            document.getElementById("a_usuario").style.color = "black";
+        }
     }
-}
 </script>
-
