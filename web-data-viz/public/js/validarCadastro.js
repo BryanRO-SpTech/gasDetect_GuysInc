@@ -339,9 +339,6 @@ function alterar_senha() {
 }
 
 
-
-
-
 // Funções para validações genericas
 
 function validarTexto(caracteresValidos, texto) {

@@ -1,9 +1,9 @@
 const fabricaModel = require('../models/fabricaModel.js');
 
-function listarPeloIdDoUsuario(req, res) {
-    var userId = req.params.userId;
+function listar(req, res) {
+    var empresaId = req.params.empresaId;
 
-    fabricaModel.listarPeloIdDoUsuario(userId)
+    fabricaModel.listar(empresaId)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -23,9 +23,9 @@ function criar(req, res) {
     var bairro = req.body.bairro;
     var cidade = req.body.cidade;
     var uf = req.body.uf;
-    var idUsuarioCriador = req.body.idUsuarioCriador;
+    var idEmpresa = req.body.idEmpresa;
 
-    fabricaModel.criar(cep, logradouro, numero, bairro, cidade, uf, idUsuarioCriador)
+    fabricaModel.criar(cep, logradouro, numero, bairro, cidade, uf, idEmpresa)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -39,6 +39,6 @@ function criar(req, res) {
 }
 
 module.exports = {
-    listarPeloIdDoUsuario,
+    listar,
     criar
 }

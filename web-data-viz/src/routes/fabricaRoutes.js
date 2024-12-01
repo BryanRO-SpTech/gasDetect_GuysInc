@@ -3,8 +3,8 @@ const router = require('express').Router();
 const fabricaController = require('../controllers/fabricaController.js');
 
 
-router.get('/listar/:userId', function (req, res) {
-    fabricaController.listarPeloIdDoUsuario(req, res);
+router.get('/listar/:empresaId', function (req, res) {
+    fabricaController.listar(req, res);
 });
 
 router.post('/criar', function (req, res) {

@@ -67,31 +67,91 @@
         <div class="cadastro-content">
             <div class="guys">
                 <h1 id="titleGerFab">Fábricas Cadastradas</h1>
+                <button onclick="abrirModal()">Cadastrar Fabrica</button>
             </div>
 
+            <table>
+                <thead>
+                    <tr>
+                        <th>CEP</th>
+                        <th>Logradouro</th>
+                        <th>Número</th>
+                        <th>Bairro</th>
+                        <th>Cidade</th>
+                        <th>UF</th>
+                        <th>Detalhes</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela_de_fabricas">
 
-            <div class="cadastro-fab" id="span">
-                <span id="info" class="infoSpn">CEP</span>
-                <span id="info" class="infoSpn">Logradouro</span>
-                <span id="info" class="infoSpn">Número</span>
-                <span id="info" class="infoSpn">Bairro</span>
-                <span id="info" class="infoSpn">Cidade</span>
-                <span id="info" class="infoSpn">UF</span>
-            </div>
-
-
-
-
-
+                </tbody>
+            </table>
         </div>
 
 
     </div>
 
+    <div class="modal-cadastro" id="modal-cadastro">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Cadastrar Fábrica</h2>
+                <span class="close" onclick="fecharModal()">X</span>
+            </div>
+            <div class="modal-body">
+                <div class="input-div">
+                    <div class="labels">
+                        <label for="ipt_cep">CEP:</label>
+                    </div>
+                    <input type="text" id="ipt_cep" placeholder="Digite o CEP" maxlength="9" oninput="preencherFormularioComCep()">
+                    <div class="mensagemValidacao">
+                        <span id="span_mensagem_cep"></span>
+                    </div>
+                </div>
 
+                <div class="input-div">
+                    <div class="labels">
+                        <label for="ipt_logradouro">Logradouro:</label>
+                    </div>
+                    <input type="text" id="ipt_logradouro" placeholder="Será preenchido automaticamente" readonly>
+                </div>
+
+                <div class="input-div">
+                    <div class="labels">
+                        <label for="ipt_numero">Número:</label>
+                    </div>
+                    <input type="text" id="ipt_numero" placeholder="Digite o Número">
+                </div>
+
+                <div class="input-div">
+                    <div class="labels">
+                        <label for="ipt_bairro">Bairro:</label>
+                    </div>
+                    <input type="text" id="ipt_bairro" placeholder="Será preenchido automaticamente" readonly>
+                </div>
+
+                <div class="input-div">
+                    <div class="labels">
+                        <label for="ipt_cidade">Cidade:</label>
+                    </div>
+                    <input type="text" id="ipt_cidade" placeholder="Será preenchido automaticamente" readonly>
+                </div>
+
+                <div class="input-div">
+                    <div class="labels">
+                        <label for="ipt_uf">UF:</label>
+                    </div>
+                    <input type="text" id="ipt_uf" placeholder="Será preenchido automaticamente" readonly>
+
+                    <div class="input-div">
+                        <button onclick="cadastrarFabrica()">Cadastrar</button>
+
+                        <span id="span_mensagem" style="color: red; font-weight: 700;"></span>
+                    </div>
+        </div>
+    </div>
 </body>
 
-<script src="./js/configuser.js"></script>
+<script src="./js/fabrica.js"></script>
 <script src="/js/tema.js"></script>
 <script>window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){
     $zoho.salesiq.visitor.name(sessionStorage.NOME);
