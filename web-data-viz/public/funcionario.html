@@ -97,7 +97,20 @@
 </body>
 
 <script src="./js/configuser.js"></script>
-<script src="/js/tema.js"></script>
+<script>
+
+function trocaTema() {
+    const temaAtual = document.documentElement.getAttribute('theme');
+
+    if (temaAtual === "light") {
+        document.documentElement.setAttribute("theme", "dark");
+        document.getElementById("titleGerEmpr").style.color = "var(--cor-terciaria)";
+    } else {
+        document.documentElement.setAttribute("theme", "light");
+        document.getElementById("titleGerEmpr").style.color = "black";
+    }
+}
+</script>
 <script>window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){
     $zoho.salesiq.visitor.name(sessionStorage.NOME);
     $zoho.salesiq.visitor.email(sessionStorage.EMAIL);
