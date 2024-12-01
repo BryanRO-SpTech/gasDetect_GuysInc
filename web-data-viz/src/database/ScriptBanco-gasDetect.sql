@@ -23,7 +23,6 @@ nome VARCHAR(45) NOT NULL,
 cpf CHAR(11) NOT NULL,
 email VARCHAR(80) NOT NULL,
 senha TEXT NOT NULL,
-descCargo VARCHAR(255),
 supportId VARCHAR(20),
 fkEmpresa INT,
 fkCargo INT,
@@ -31,25 +30,7 @@ CONSTRAINT fkCargoFuncionario FOREIGN KEY (fkCargo) REFERENCES Cargo(idCargo),
 CONSTRAINT fkEmpresa_Funcionario FOREIGN KEY(fkEmpresa) REFERENCES Empresa(idEmpresa)
 );
 
-CREATE TABLE if not exists SolicitacaoSensor (
-    idPedido INT PRIMARY KEY AUTO_INCREMENT,
-    cnpj CHAR(14) NOT NULL,
-    cepFabrica VARCHAR(45) NOT NULL,
-    logradouro VARCHAR(45) NOT NULL,
-    bairro VARCHAR(45) NOT NULL,
-    municipio VARCHAR(45) NOT NULL,
-    estado VARCHAR(45) NOT NULL,
-    setor VARCHAR(45) NOT NULL,
-    descSetor TEXT NOT NULL,
-    tamanhoSetor VARCHAR(45) NOT NULL,
-    fkFuncionario INT,
-    CONSTRAINT fkfuncSolicitacao FOREIGN KEY (fkFuncionario) REFERENCES Funcionario (idFuncionario)
-);
-<<<<<<< HEAD
 
-=======
->>>>>>> 0cb2f756caf72e42eaa6a65a6aac84669c995e6a
- 
 CREATE TABLE if not exists Fabrica (
 idFabrica INT PRIMARY KEY AUTO_INCREMENT,
 cep VARCHAR(45) NOT NULL,
@@ -67,6 +48,7 @@ idParametroAlerta INT PRIMARY KEY AUTO_INCREMENT,
 limiteAlerta INT NOT NULL
 );
 
+
 CREATE TABLE if not exists Setor (
 idSetor INT PRIMARY KEY AUTO_INCREMENT,
 tamanhoM2 INT NOT NULL,
@@ -82,9 +64,12 @@ CONSTRAINT fkLimite_Setor FOREIGN KEY(fkLimite) REFERENCES LimiteAlerta(idParame
 CREATE TABLE if not exists Sensor (
 idSensor INT PRIMARY KEY AUTO_INCREMENT,
 titulo VARCHAR(255),
+statusSensor char(9),
+CONSTRAINT chkStatus CHECK(statusSensor in ('Pendente', 'Concluido')),
 fkSetor INT,
 CONSTRAINT fkSetor_Sensor FOREIGN KEY(fkSetor) REFERENCES Setor(idSetor)
 );
+
 
 CREATE TABLE if not exists Registro (
 idRegistro INT PRIMARY KEY AUTO_INCREMENT,
@@ -105,12 +90,12 @@ INSERT INTO Empresa (razaoSocial, cnpjSede) VALUES
 INSERT INTO Cargo (nomeCargo, descCargo, nivelPermissao) VALUES
 ('CEO', 'Proprietario da empresa de tintas', 1);
 
-INSERT INTO Funcionario (nome, cpf, email, senha, descCargo, fkEmpresa, fkCargo) VALUES
-('João Silva', '12345678901', 'joao@tintasecores.com', 'senha123', 'Responsável pela linha de produção de tintas', 1, 1),
-('Maria Souza', '98765432100', 'maria@inovacaoemtintas.com', 'senha456', 'Especialista em formulações de tintas', 2, 1),
-('Carlos Pereira', '45678912345', 'carlos@fabricacaotintasverdes.com', 'senha789', 'Verifica a qualidade das tintas produzidas', 3, 1),
-('Ana Costa', '32165498765', 'ana@coresdomundo.com', 'senha101', 'Gerencia a equipe de vendas de tintas', 4, 1),
-('Luiz Fernando', '15975348612', 'luiz@solucoesemtintas.com', 'senha202', 'Auxilia na distribuição de produtos', 5, 1);
+INSERT INTO Funcionario (nome, cpf, email, senha, fkEmpresa, fkCargo) VALUES
+('João Silva', '12345678901', 'joao@tintasecores.com', 'senha123', 1, 1),
+('Maria Souza', '98765432100', 'maria@inovacaoemtintas.com', 'senha456',  2, 1),
+('Carlos Pereira', '45678912345', 'carlos@fabricacaotintasverdes.com', 'senha789', 3, 1),
+('Ana Costa', '32165498765', 'ana@coresdomundo.com', 'senha101',  4, 1),
+('Luiz Fernando', '15975348612', 'luiz@solucoesemtintas.com', 'senha202', 5, 1);
 
 INSERT INTO Fabrica (cep, logradouro, numero, bairro, cidade, UF, fkEmpresa) VALUES
 ('12345-678', 'Avenida das Tintas', 100, 'Centro', 'São Paulo', 'SP', 1),
@@ -134,12 +119,12 @@ INSERT INTO Setor (tamanhoM2, setor, sala, descricao, fkFabrica, fkLimite) VALUE
 (120, 'Expedição', 'Sala de Envio', 'Área de expedição de tintas', 4, 4),
 (180, 'Desenvolvimento', 'Sala de Formulação', 'Ambiente para desenvolvimento de novas tintas', 5, 5);
 
-INSERT INTO Sensor (titulo, fkSetor) VALUES
-('Sensor de gás', 1),
-('Sensor de gás', 2),
-('Sensor de gás', 3),
-('Sensor de gás', 4),
-('Sensor de gás', 5);
+INSERT INTO Sensor (titulo, statusSensor, fkSetor) VALUES
+('Sensor de gás', 'Concluido', 1),
+('Sensor de gás', 'Concluido', 2),
+('Sensor de gás', 'Concluido', 3),
+('Sensor de gás', 'Concluido', 4),
+('Sensor de gás', 'Concluido', 5);
 
 INSERT INTO Registro (porcGas, fkSensor) VALUES
 (25.00, 1),
@@ -147,19 +132,6 @@ INSERT INTO Registro (porcGas, fkSensor) VALUES
 (20.75, 3),
 (15.60, 4),
 (18.30, 5);
-
-INSERT INTO SolicitacaoSensor (cnpj, cepFabrica, logradouro, bairro, municipio, estado, setor, descSetor, tamanhoSetor, fkFuncionario)
-VALUES 
-('12345678000195', '12345-678', 'Rua das Flores', 'Centro', 'São Paulo', 'SP', 'Produção', 'Setor responsável pela linha de montagem', 'Grande', 1),
-('98765432000123', '87654-321', 'Avenida Industrial', 'Bairro Novo', 'Campinas', 'SP', 'Logística', 'Setor de armazenamento e distribuição de materiais', 'Médio', 2),
-('11223344000156', '23456-789', 'Rua dos Trabalhadores', 'Vila Maria', 'Rio de Janeiro', 'RJ', 'Manutenção', 'Setor responsável pela manutenção de máquinas e equipamentos', 'Pequeno', 3),
-('55667788000199', '54321-876', 'Praça Central', 'Jardim das Palmeiras', 'Belo Horizonte', 'MG', 'Qualidade', 'Setor responsável pelo controle de qualidade da produção', 'Grande', 4),
-('99887766000132', '76543-210', 'Rua da Paz', 'Zona Norte', 'Curitiba', 'PR', 'Vendas', 'Setor de vendas e atendimento ao cliente', 'Médio', 5);
-
-
-SELECT * 
-    FROM SolicitacaoSensor
-    JOIN Funcionario ON fkFuncionario = idFuncionario;
 
 
 SELECT * 
@@ -171,7 +143,8 @@ SELECT
     nome AS 'Nome do Funcionario',
     descCargo AS Cargo
 FROM 
-    Funcionario;
+    Funcionario
+    JOIN Cargo ON fkCargo = idCargo;
 
 
 SELECT 
