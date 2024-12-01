@@ -38,7 +38,7 @@ function configNavBar() {
                             <li> <img src="/assets/icons/gerenciamento.png" alt=""> Gerenciar Fábrica</li>
                         </a>
                         <a href="/sensorSolicitacao.html" class="${paginaAtual == "sensor" ? "paginaAtual" : ""}">
-                            <li><img src="" alt=""> Solicite um Sensor</li>
+                            <li><img src="/assets/icons/companhia.png" alt=""> Solicite um Sensor</li>
                         </a>
                     </ul>
                 </nav>

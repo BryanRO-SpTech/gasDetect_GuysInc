@@ -25,15 +25,14 @@ function setor() {
 
 }
 
-function closeModal() {
-    document.getElementById("modal").style.display = "none"
-    document.getElementById("setor").style.display = "block";
-}
+// function closeModal() {
+//     document.getElementById("modal").style.display = "none"
+//     document.getElementById("setor").style.display = "block";
+// }
 
 function enviar() {
-    var setor = ipt_setor.value;
-    var descStor = ipt_desc_setor;
-    var tamanhoSetor = Number(ipt_tamanho_setor.value);
+    var titulo = ipt_titulo.value;
+    var n_sensores = Number(ipt_num_sensor.value);
 
     if (
         setor == "" ||
@@ -54,9 +53,8 @@ function enviar() {
         },
         body: JSON.stringify({
             setor,
-            descStor,
-            tamanhoSetor,
-            num_sensores,
+            titulo,
+            n_sensores,
             idFuncionario: sessionStorage.ID_FUNCIONARIO,
         }),
     }).then(function(resposta) {
