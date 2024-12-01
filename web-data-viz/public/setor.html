@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciar Fábricas Guys Inc</title>
     <link rel="stylesheet" href="/css/global.css">
-    <link rel="stylesheet" href="/css/fabrica.css">
+    <link rel="stylesheet" href="/css/setor.css">
 </head>
 
 <body onload="niveladministrador()">
@@ -24,11 +24,13 @@
                     <tr>
                         <th>Setor</th>
                         <th>Tamanho</th>
-                        <th>Sala</th>
                         <th>Descrição</th>
+                        <th>Fábrica</th>
+                        <th>Limite</th>
+
                     </tr>
                 </thead>
-                <tbody id="tabela_de_fabricas">
+                <tbody id="tabela_de_setor">
 
                 </tbody>
             </table>
@@ -46,50 +48,41 @@
             <div class="modal-body">
                 <div class="input-div">
                     <div class="labels">
-                        <label for="ipt_cep">CEP:</label>
+                        <label for="ipt_cep">Setor:</label>
                     </div>
-                    <input type="text" id="ipt_cep" placeholder="Digite o CEP" maxlength="9" oninput="preencherFormularioComCep()">
+                    <input type="text" id="ipt_cep" placeholder="Nome do setor">
                     <div class="mensagemValidacao">
                         <span id="span_mensagem_cep"></span>
                     </div>
                 </div>
-
                 <div class="input-div">
                     <div class="labels">
-                        <label for="ipt_logradouro">Logradouro:</label>
+                        <label for="ipt_logradouro">Tamanho:</label>
                     </div>
-                    <input type="text" id="ipt_logradouro" placeholder="Será preenchido automaticamente" readonly>
+                    <input type="text" id="ipt_logradouro" placeholder="Tamanho do setor">
+                </div>
+                <div class="input-div">
+                    <div class="labels">
+                        <label for="ipt_bairro">Descrição:</label>
+                    </div>
+                    <input type="text" id="ipt_bairro" placeholder="Descrição do setor">
                 </div>
 
                 <div class="input-div">
                     <div class="labels">
-                        <label for="ipt_numero">Número:</label>
+                        <label for="ipt_cidade">Fábrica:</label>
                     </div>
-                    <input type="text" id="ipt_numero" placeholder="Digite o Número">
+                    <input type="text" id="ipt_cidade" placeholder="Fábrica do setor">
                 </div>
 
                 <div class="input-div">
                     <div class="labels">
-                        <label for="ipt_bairro">Bairro:</label>
+                        <label for="ipt_uf">Limite:</label>
                     </div>
-                    <input type="text" id="ipt_bairro" placeholder="Será preenchido automaticamente" readonly>
-                </div>
-
-                <div class="input-div">
-                    <div class="labels">
-                        <label for="ipt_cidade">Cidade:</label>
-                    </div>
-                    <input type="text" id="ipt_cidade" placeholder="Será preenchido automaticamente" readonly>
-                </div>
-
-                <div class="input-div">
-                    <div class="labels">
-                        <label for="ipt_uf">UF:</label>
-                    </div>
-                    <input type="text" id="ipt_uf" placeholder="Será preenchido automaticamente" readonly>
+                    <input type="text" id="ipt_uf" placeholder="Limite do setor">
 
                     <div class="input-div">
-                        <button onclick="cadastrarFabrica()">Cadastrar</button>
+                        <button onclick="cadastrarSetor()">Cadastrar</button>
 
                         <span id="span_mensagem" style="color: red; font-weight: 700;"></span>
                     </div>
@@ -97,7 +90,7 @@
     </div>
 </body>
 
-<script src="./js/fabrica.js"></script>
+<script src="./js/setor.js"></script>
 <script src="/js/tema.js"></script>
 <script>window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){
     $zoho.salesiq.visitor.name(sessionStorage.NOME);
