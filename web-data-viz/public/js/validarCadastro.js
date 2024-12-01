@@ -327,7 +327,7 @@ function alterar_senha() {
         }).then(function (res) {
             if (!res.ok) {
                 span_mensagem_senha_original.innerHTML = "Senha incorreta";
-                return
+                return;
             }
 
             span_mensagem_senha_original.innerHTML = ""
