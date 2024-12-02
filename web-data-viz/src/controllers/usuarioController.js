@@ -10,28 +10,28 @@ function autenticar(req, res) {
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
     }else {
-
-        usuarioModel.autenticar(email, senha)
+        usuarioModel.autenticar(email, senha)   
             .then(
                 function (resultadoAutenticar) {
-                    console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
-                    console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
-
+                    console.log(resultadoAutenticar);
+                    
                     if (resultadoAutenticar.length == 1) {
-                        console.log(resultadoAutenticar);
-                        if (email == "suporte@gmail.com" && senha == "senha987") {
+                        if (email == "suporte@gmail.com" && senha == "senha0101") {
                             res.json({
                                 nome: resultadoAutenticar[0].nome
                             })
+                        }else {
+                            res.json({
+                                nome: resultadoAutenticar[0].nome,
+                                email: resultadoAutenticar[0].email,
+                                idEmpresa: resultadoAutenticar[0].idEmpresa,
+                                nivelPermissao: resultadoAutenticar[0].nivelPermissao,
+                                cpf: resultadoAutenticar[0].cpf
+                            });
+
                         }
 
-                        res.json({
-                            email: resultadoAutenticar[0].email,
-                            nome: resultadoAutenticar[0].nome,
-                            idEmpresa: resultadoAutenticar[0].idEmpresa,
-                            nivelPermissao: resultadoAutenticar[0].nivelPermissao,
-                            cpf: resultadoAutenticar[0].cpf
-                        });
+                        
 
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
