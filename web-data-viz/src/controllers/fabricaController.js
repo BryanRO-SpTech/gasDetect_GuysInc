@@ -38,6 +38,7 @@ function criar(req, res) {
         );
 }
 
+
 module.exports = {
     listar,
     criar

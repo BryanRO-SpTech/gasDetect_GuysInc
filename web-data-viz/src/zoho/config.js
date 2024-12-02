@@ -53,7 +53,7 @@ async function criarCliente(nome, email) {
 
 
 
-function solicitarSensor(zohoClientId, {
+async function solicitarSensor(zohoClientId, {
     nomeCliente,
     emailCliente,
     empresa: {
@@ -70,11 +70,10 @@ function solicitarSensor(zohoClientId, {
     },
     setor: {
         nomeSetor,
-        descricao,
         tamanhoM2
     }
 }, idSensor) {
-    const token = gerarToken();
+    const token = await gerarToken();
 
     fetch('https://desk.zoho.com/api/v1/tickets', {
         method: 'POST',
@@ -121,7 +120,7 @@ function solicitarSensor(zohoClientId, {
                         </tr>
                         <tr>
                             <td><span style="font-size:16px"><strong>Bairro da F&aacute;brica</strong></span></td>
-                            <td><span style="font-size:16px">${bairro}/span></td>
+                            <td><span style="font-size:16px">${bairro}</span></td>
                         </tr>
                         <tr>
                             <td><span style="font-size:16px"><strong>M&uacute;nicipio&nbsp;</strong><strong>da F&aacute;brica</strong></span></td>
@@ -134,14 +133,6 @@ function solicitarSensor(zohoClientId, {
                         <tr>
                             <td><span style="font-size:16px"><strong>Setor</strong></span></td>
                             <td><span style="font-size:16px">${nomeSetor}</span></td>
-                        </tr>
-                        <tr>
-                            <td>
-                            <p><span style="font-size:16px"><strong>Descri&ccedil;&atilde;o do Setor</strong></span></p>
-                            </td>
-                            <td>
-                            <p><span style="font-size:16px">${descricao}</span></p>
-                            </td>
                         </tr>
                         <tr>
                             <td><span style="font-size:16px"><strong>Tamanho do setor em M2</strong></span></td>
@@ -180,7 +171,7 @@ function solicitarSensor(zohoClientId, {
 
             `,
             contactId: zohoClientId,
-            departmentId: "1061151000000006907"
+            departmentId: "1061935000000006907"
         })
     })
         .then(response => response.json())

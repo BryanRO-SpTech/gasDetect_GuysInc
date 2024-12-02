@@ -9,33 +9,33 @@ function autenticar(req, res) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
-    }else {
+    } else {
 
         usuarioModel.autenticar(email, senha)
             .then(
                 function (resultadoAutenticar) {
-                    console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
-                    console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
+                    console.log(resultadoAutenticar);
 
                     if (resultadoAutenticar.length == 1) {
-                        console.log(resultadoAutenticar);
-                        if (email == "suporte@gmail.com" && senha == "senha987") {
+                        if (email == "suporte@gmail.com" && senha == "senha0101") {
                             res.json({
                                 nome: resultadoAutenticar[0].nome
                             })
+                        } else {
+                            res.json({
+                                email: resultadoAutenticar[0].email,
+                                nome: resultadoAutenticar[0].nome,
+                                idEmpresa: resultadoAutenticar[0].idEmpresa,
+                                nivelPermissao: resultadoAutenticar[0].nivelPermissao,
+                                cpf: resultadoAutenticar[0].cpf
+                            });
                         }
 
-                        res.json({
-                            email: resultadoAutenticar[0].email,
-                            nome: resultadoAutenticar[0].nome,
-                            idEmpresa: resultadoAutenticar[0].idEmpresa,
-                            nivelPermissao: resultadoAutenticar[0].nivelPermissao,
-                            cpf: resultadoAutenticar[0].cpf
-                        });
 
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     }
+
                 }
             ).catch(
                 function (erro) {
@@ -43,9 +43,8 @@ function autenticar(req, res) {
                     console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
                     res.status(500).json(erro.sqlMessage);
                 }
-            );
+            )
     }
-
 }
 
 async function cadastrar(req, res) {
@@ -204,3 +203,16 @@ module.exports = {
     salvarfunc,
     alterar_senha
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

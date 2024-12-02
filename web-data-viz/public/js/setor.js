@@ -19,8 +19,6 @@ function carregarSetores() {
             function (setor) {
                 var setorHTML = "";
 
-                console.log(setor);
-
                 for (var i = 0; i < setor.length; i++) {
                     setorHTML += `
                         <tr class="${i % 2 == 0 ? "contraste" : ""}">
@@ -28,7 +26,6 @@ function carregarSetores() {
                             <td>${setor[i].tamanhoM2} m2</td>
                             <td>${setor[i].descricao}</td>
                             <td>${setor[i].limiteAlerta}%</td>
-                            <td><a href="/setor.html?setor=${setor[i].idSetor}">Ver mais</a></td>
                         </tr>
                     `;
                 }
