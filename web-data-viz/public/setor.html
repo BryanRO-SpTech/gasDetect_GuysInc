@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/css/setor.css">
 </head>
 
-<body onload="niveladministrador()">
+<body>
     <script src="./components/configNavBar/configNavBar.js" paginaAtual="setor"></script>
 
         <div class="container">
@@ -25,8 +25,7 @@
                         <th>Setor</th>
                         <th>Tamanho</th>
                         <th>Descrição</th>
-                        <th>Limite</th>
-                        <th>Cadastrar Sensor</th>
+                        <th>Limite aceitável</th>
                     </tr>
                 </thead>
                 <tbody id="tabela_de_setor">
@@ -56,7 +55,7 @@
                 </div>
                 <div class="input-div">
                     <div class="labels">
-                        <label>Tamanho:</label>
+                        <label>Tamanho em m²:</label>
                     </div>
                     <input type="text" id="ipt_tamanho" placeholder="Tamanho do setor">
                 </div>
@@ -80,6 +79,9 @@
                     </div>
         </div>
     </div>
+
+
+    
 </body>
 
 <script src="./js/setor.js"></script>

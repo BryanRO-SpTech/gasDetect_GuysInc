@@ -20,14 +20,15 @@ function validarLogin() {
         }
 
         if (res.ok) {
-            res.json().then(function (data){
-                var suporte = data.nome;
-                console.log(suporte);
-                
-                if (suporte == "Suporte N3") {
-                    console.log("chegou");
-                    window.location.replace("./suporte.html");
-                } else {
+            var suporte = res.json["nome"];
+            console.log(suporte)
+            if (suporte == res.json["nome"]) {
+                console.log("Vitoria faz nd: ");
+                window.location.replace("./suporte.html");
+            } else {
+
+                res.json().then(function (data) {
+                    console.log(data);
                     sessionStorage.ID_USUARIO = data.idFuncionario;
                     sessionStorage.EMAIL = data.email;
                     sessionStorage.NOME = data.nome;
@@ -36,8 +37,8 @@ function validarLogin() {
                     sessionStorage.CPF = data.cpf;
     
                     window.location.replace("./dashboard.html");
-                }
-            } )
+                });
+            }
         }
     });
 }

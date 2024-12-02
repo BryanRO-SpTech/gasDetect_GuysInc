@@ -20,7 +20,6 @@ var usuarioRouter = require("./src/routes/usuarios");
 var bobIARouter = require("./src/routes/bobIARoutes");
 var fabricaRouter = require("./src/routes/fabricaRoutes.js");
 var setorRouter = require("./src/routes/setorRoutes.js");
-// var dashboardRouter = require("./src/routes/dashboardRoutes.js");
 
 
 
@@ -36,7 +35,6 @@ app.use("/usuarios", usuarioRouter);
 app.use("/bobIA", bobIARouter);
 app.use("/fabrica", fabricaRouter);
 app.use("/setor", setorRouter);
-// app.use("/dashboard", dashboardRouter);
 
 
 
