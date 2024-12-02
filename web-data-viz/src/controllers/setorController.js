@@ -23,7 +23,7 @@ function criar(req, res) {
     var limite = req.body.limite;
     var idFabrica = req.body.idFabrica;
 
-    setorModel.criar(setor, tamanho, descricao, idFabrica , limite)
+    setorModel.criar(setor, tamanho, descricao, idFabrica, limite)
         .then(
             function (resultado) {
                 res.json(resultado);

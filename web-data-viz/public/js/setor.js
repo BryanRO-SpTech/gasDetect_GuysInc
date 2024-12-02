@@ -1,9 +1,8 @@
 const urlParams = new URLSearchParams(window.location.search);
 const idFabrica = urlParams.get('fabrica');
 
-console.log(idFabrica)
 function carregarSetores() {
-    
+
     fetch(`/setor/listar/${idFabrica}`)
         .then(
             function (resposta) {
@@ -20,14 +19,15 @@ function carregarSetores() {
             function (setor) {
                 var setorHTML = "";
 
+                console.log(setor);
+
                 for (var i = 0; i < setor.length; i++) {
                     setorHTML += `
                         <tr class="${i % 2 == 0 ? "contraste" : ""}">
-                            <td>${setor[i].setor}</td>
-                            <td>${setor[i].tamanho}</td>
+                            <td>${setor[i].nome}</td>
+                            <td>${setor[i].tamanhoM2} m2</td>
                             <td>${setor[i].descricao}</td>
-                            <td>${setor[i].fabrica}</td>
-                            <td>${setor[i].limite}</td>
+                            <td>${setor[i].limiteAlerta}%</td>
                             <td><a href="/setor.html?setor=${setor[i].idSetor}">Ver mais</a></td>
                         </tr>
                     `;
@@ -56,10 +56,9 @@ function cadastrarSetor() {
     const setor = document.getElementById("ipt_setor").value;
     const tamanho = document.getElementById("ipt_tamanho").value;
     const descricao = document.getElementById("ipt_descricao").value;
-    // const fabrica = document.getElementById("ipt_fabrica").value;
     const limite = document.getElementById("ipt_limite").value;
 
-   
+
 
     if (!setor || !tamanho || !descricao || !limite) {
         document.getElementById("span_mensagem").innerHTML = "Todos os campos são obrigatórios.";
