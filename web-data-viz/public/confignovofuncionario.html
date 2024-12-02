@@ -69,31 +69,32 @@
                 </div>
                 <input type="text" maxlength="80" id="ipt_confirmar" placeholder="" oninput="validarConfirmarSenha()">
                 <div class="mensagemValidacao">
-                    <div class="labels">
-                        <label for="ipt_nivel_permissao">Nivel de Permissao:</label>
-                    </div>
-                    <input type="number" max="5" min="0" id="ipt_nivel_permissao" placeholder=""
-                        oninput="limitenivel()">
-                    <div class="mensagemValidacao">
-                        <span id="span_nivel_permissao"></span>
-                    </div>
                 </div>
-
-                <button class="salvar" onclick="salvarfunc()">Salvar</button>
-
-
-                <span style="color: red; font-weight: bold;" id="span_mensagem_cadastro_efetuado"></span>
-
-
             </div>
+            <div class="input-div">
+                <div class="labels">
+                    <label for="ipt_nivel_permissao">Nivel de Permissao:</label>
+                </div>
+                <input type="number" max="3" min="0" id="ipt_nivel_permissao" placeholder="" oninput="limitenivel()">
+                <div class="mensagemValidacao">
+                    <span id="span_nivel_permissao"></span>
+                </div>
+            </div>
+
+            <button class="salvar" onclick="salvarfunc()">Salvar</button>
+
+
+            <span style="color: red; font-weight: bold;" id="span_mensagem_cadastro_efetuado"></span>
 
 
         </div>
 
 
+    </div>
+
+
 </body>
 
-<script src="./js/configuser.js"></script>
 <script src="./js/validarCadastro.js"></script>
 <script src="/js/tema.js"></script>
 <script>window.$zoho = window.$zoho || {}; $zoho.salesiq = $zoho.salesiq || {

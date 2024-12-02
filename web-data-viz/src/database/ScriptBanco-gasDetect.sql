@@ -87,21 +87,19 @@ INSERT INTO NivelPermissao (descNivel) VALUES
 ('Gerenciar sua propria senha, pode cadastrar novos funcionarios, fabricas, setores e sensores'),
 ('Pode alterar a senha e ver dashboard');
 
-<<<<<<< HEAD
 INSERT INTO Funcionario (nome, cpf, email, senha, fkEmpresa, fkNivel) VALUES
 ('João Silva', '12345678901', 'joao@tintasecores.com', 'senha123', 1, 1),
 ('Maria Souza', '98765432100', 'maria@inovacaoemtintas.com', 'senha456',  2, 1),
 ('Carlos Pereira', '45678912345', 'carlos@fabricacaotintasverdes.com', 'senha789', 3, 1),
 ('Ana Costa', '32165498765', 'ana@coresdomundo.com', 'senha101',  4, 1),
 ('Luiz Fernando', '15975348612', 'luiz@solucoesemtintas.com', 'senha202', 5, 1);
-=======
-INSERT INTO Funcionario (nome, cpf, email, senha, fkEmpresa, fkCargo, supportId) VALUES
+
+INSERT INTO Funcionario (nome, cpf, email, senha, fkEmpresa, fkNivel, supportId) VALUES
 ('João Silva', '12345678901', 'joao@tintasecores.com', 'senha123', 1, 1, '1061935000000388001'),
 ('Maria Souza', '98765432100', 'maria@inovacaoemtintas.com', 'senha456',  2, 1, '1061935000000389001'),
 ('Carlos Pereira', '45678912345', 'carlos@fabricacaotintasverdes.com', 'senha789', 3, 1, '1061935000000390001'),
 ('Ana Costa', '32165498765', 'ana@coresdomundo.com', 'senha101',  4, 1, '1061935000000391001'),
 ('Luiz Fernando', '15975348612', 'luiz@solucoesemtintas.com', 'senha202', 5, 1, '1061935000000392001');
->>>>>>> 05cdea6ced51b966a5b9e0a8a5bee05c1ba2b46a
 
 INSERT INTO Fabrica (cep, logradouro, numero, bairro, cidade, UF, fkEmpresa) VALUES
 ('12345-678', 'Avenida das Tintas', 100, 'Centro', 'São Paulo', 'SP', 1),
@@ -138,12 +136,3 @@ INSERT INTO Registro (porcGas, fkSensor) VALUES
 (20.75, 3),
 (15.60, 4),
 (18.30, 5);
-
-
-<<<<<<< HEAD
-select * from Setor;
-=======
-select * from Setor;
-
-UPDATE Setor SET fkLimite = ${} WHERE idSetor = ${};
->>>>>>> 05cdea6ced51b966a5b9e0a8a5bee05c1ba2b46a
