@@ -2,7 +2,6 @@ const setorModel = require('../models/setorModel.js');
 
 function listar(req, res) {
     var fabricaId = req.params.idFabrica;
-console.log(fabricaId, "coco xixi bunda")
 
     setorModel.listar(fabricaId)
         .then(
@@ -23,9 +22,8 @@ function criar(req, res) {
     var descricao = req.body.descricao;
     var limite = req.body.limite;
     var idFabrica = req.body.idFabrica;
-    var idLimite = req.params.idParametroAlerta
 
-    setorModel.criar(setor, tamanho, descricao, idFabrica , limite, idLimite)
+    setorModel.criar(setor, tamanho, descricao, idFabrica , limite)
         .then(
             function (resultado) {
                 res.json(resultado);

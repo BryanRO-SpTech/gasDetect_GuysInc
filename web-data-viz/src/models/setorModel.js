@@ -25,12 +25,14 @@ ON
 
 }
 
-function criar(setor, tamanho, descricao, idFabrica , limite, idLimite) {
+function criar(setor, tamanho, descricao, idFabrica, limite) {
     var instrucaoSQL2 = `INSERT INTO LimiteAlerta (LimiteAlerta) VALUES (${limite})`;
-    var instrucaoSql = `INSERT INTO Setor (nome, tamanhoM2, descricao, fkFabrica, fkLimite) VALUES ('${setor}', ${tamanho}, '${descricao}', ${idFabrica}, ${idLimite})`;
     // var instrucaoSql3 = `UPDATE Setor SET fkLimite = ${idParametroAlerta} WHERE idSetor = ${idSetor}`
 
-    return database.executar(instrucaoSql, instrucaoSQL2);
+    return database.executar(instrucaoSQL2).then(function (resultado) {
+        var instrucaoSql = `INSERT INTO Setor (nome, tamanhoM2, descricao, fkFabrica, fkLimite) VALUES ('${setor}', ${tamanho}, '${descricao}', ${idFabrica}, ${resultado.insertId})`;
+        return database.executar(instrucaoSql);
+    })
 }
 
 module.exports = {
