@@ -125,6 +125,41 @@ function salvar(req, res) {
     }
 }
 
+function salvarfunc(req, res) {
+    var nome = req.body.nomeServer;
+    var email = req.body.emailServer;
+    var cpf = req.body.cpfServer;
+    var nivelpermissao = req.body.nivelServer;
+    var empresa = req.body.estorageServer;
+
+    if (nome == undefined) {
+        res.status(400).send("Seu nome está undefined!");
+    } else if (email == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    } else if (cpf == undefined) {
+        res.status(400).send("Seu cpf está undefined!");
+    } else if (nivelpermissao == undefined) {
+        res.status(400).send("Seu nivelpermissao está undefined!");
+    } else {
+
+        usuarioModel.salvar(nome, email, cpf, empresa, nivelpermissao)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
 function alterar_senha(req, res) {
     var senhaorig = req.body.origsenhaServer;
     var senha = req.body.senhaServer;
@@ -166,5 +201,6 @@ module.exports = {
     autenticar,
     cadastrar,
     salvar,
+    salvarfunc,
     alterar_senha
 }

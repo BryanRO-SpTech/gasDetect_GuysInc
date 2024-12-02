@@ -14,6 +14,9 @@ router.post("/autenticar", function (req, res) {
 router.post("/salvar", function (req, res) {
     usuarioController.salvar(req, res);
 });
+router.post("/salvarfunc", function (req, res) {
+    usuarioController.salvarfunc(req, res);
+});
 
 router.post("/alterar_senha", function (req, res) {
     usuarioController.alterar_senha(req, res);

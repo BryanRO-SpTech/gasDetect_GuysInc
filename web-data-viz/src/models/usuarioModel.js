@@ -32,7 +32,7 @@ async function cadastrar(razaoSocial, cnpj, nome, email, cpf, senha, supportId) 
     const empresa = await database.executar(instrucaoSqlempresa);
 
     var instrucaoSqlusuario = `
-        INSERT INTO Funcionario (nome, email, cpf, senha, fkEmpresa, fkCargo, supportId) VALUES ('${nome}', '${email}', '${cpf}', '${senha}', '${empresa.insertId}', 1, '${supportId}');
+        INSERT INTO Funcionario (nome, email, cpf, senha, fkEmpresa, fkNivel, supportId) VALUES ('${nome}', '${email}', '${cpf}', '${senha}', '${empresa.insertId}', 1, '${supportId}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSqlempresa);
     return database.executar(instrucaoSqlusuario);
@@ -46,6 +46,17 @@ function salvar(nome, email, cpf, cstorageServer) {
         email = '${email}',
         cpf = '${cpf}'
         WHERE cpf = '${cstorageServer}'; 
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSqlusuario);
+    return database.executar(instrucaoSqlusuario);
+}
+
+function salvar(nome, email, senha, cpf, empresa, nivelpermissao) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, email, senha, cpf, empresa, nivelpermissao);
+
+    var instrucaoSqlusuario = `
+        INSERT INTO Funcionario (nome, email, senha, cpf, fkEmpresa, fkCargo) VALUES
+        ('${nome}', '${email}', '${senha}', '${cpf}', '${nivelpermissao}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSqlusuario);
     return database.executar(instrucaoSqlusuario);

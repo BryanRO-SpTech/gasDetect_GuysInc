@@ -9,11 +9,9 @@ CREATE TABLE if not exists Empresa (
     cnpjSede CHAR(14) NOT NULL
 );
 
-CREATE TABLE if not exists Cargo (
-    idCargo int primary key auto_increment,
-    nomeCargo varchar(45),
-    descCargo varchar(45),
-    nivelPermissao tinyint
+CREATE TABLE if not exists NivelPermissao (
+    idNivel int primary key auto_increment,
+    descNivel varchar(255)
 );
 
 CREATE TABLE if not exists Funcionario (
@@ -24,8 +22,8 @@ CREATE TABLE if not exists Funcionario (
     senha TEXT NOT NULL,
     supportId VARCHAR(20),
     fkEmpresa INT,
-    fkCargo INT,
-    CONSTRAINT fkCargoFuncionario FOREIGN KEY (fkCargo) REFERENCES Cargo(idCargo),
+    fkNivel INT,
+    CONSTRAINT fkNivelFuncionario FOREIGN KEY (fkNivel) REFERENCES NivelPermissao(idNivel),
     CONSTRAINT fkEmpresa_Funcionario FOREIGN KEY(fkEmpresa) REFERENCES Empresa(idEmpresa)
 );
 
@@ -84,10 +82,12 @@ INSERT INTO Empresa (razaoSocial, cnpjSede) VALUES
 ('Cores do Mundo Ltda', '32165498700159'),
 ('Soluções em Tintas e Vernizes', '15975348600150');
 
-INSERT INTO Cargo (nomeCargo, descCargo, nivelPermissao) VALUES
-('CEO', 'Proprietario da empresa de tintas', 1);
+INSERT INTO NivelPermissao (descNivel) VALUES
+('Controle total sobre a plataforma'),
+('Gerenciar sua propria senha, pode cadastrar novos funcionarios, fabricas, setores e sensores'),
+('Pode alterar a senha e ver dashboard');
 
-INSERT INTO Funcionario (nome, cpf, email, senha, fkEmpresa, fkCargo) VALUES
+INSERT INTO Funcionario (nome, cpf, email, senha, fkEmpresa, fkNivel) VALUES
 ('João Silva', '12345678901', 'joao@tintasecores.com', 'senha123', 1, 1),
 ('Maria Souza', '98765432100', 'maria@inovacaoemtintas.com', 'senha456',  2, 1),
 ('Carlos Pereira', '45678912345', 'carlos@fabricacaotintasverdes.com', 'senha789', 3, 1),
@@ -132,6 +132,3 @@ INSERT INTO Registro (porcGas, fkSensor) VALUES
 
 
 select * from Setor;
-
-
-UPDATE Setor SET fkLimite = ${} WHERE idSetor = ${};

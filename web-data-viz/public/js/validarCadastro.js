@@ -287,11 +287,57 @@ function salvar() {
                         sessionStorage.EMAIL = useremail;
                         sessionStorage.NOME = username;
                         sessionStorage.CPF = usercpf;
+
+                        span_mensagem_cadastro_efetuado.innerHTML = `Dados alterados com sucesso!`;
+                        span_mensagem_cadastro_efetuado.style.color = "green";
                     });
+                }
+            })
+            .catch(function (resposta) {
+                span_mensagem_cadastro_efetuado.innerHTML = `#ERRO: ${resposta}`;
+            });
 
+        return false;
+    } else {
+        span_mensagem_cadastro_efetuado.innerHTML = `Verifique os campos e tente novamente`;
+    }
+}
 
-                    span_mensagem_cadastro_efetuado.innerHTML = `Dados alterados com sucesso!`;
-                    span_mensagem_cadastro_efetuado.style.color = "green";
+function salvarfunc() {
+    const empresastorage = sessionStorage.getItem('ID_EMPRESA')
+
+    var username = ipt_nome.value
+    var useremail = ipt_email.value
+    var usercpf = ipt_cpf.value
+    var userpermissao = ipt_nivel_permissao.value
+
+    if (
+        nomeValido &&
+        emailValido &&
+        userpermissao &&
+        cpfValido
+    ) {
+        fetch("/usuarios/salvarfunc", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                nomeServer: username,
+                emailServer: useremail,
+                cpfServer: usercpf,
+                nivelServer: userpermissao,
+                estorageServer: empresastorage
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    resposta.json().then(function (data) {
+                        span_mensagem_cadastro_efetuado.innerHTML = `Dados alterados com sucesso!`;
+                        span_mensagem_cadastro_efetuado.style.color = "green";
+                    });
                 }
             })
             .catch(function (resposta) {
