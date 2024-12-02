@@ -22,6 +22,11 @@ function autenticar(req, res) {
 
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
+                        if (email == "suporte@gmail.com" && senha == "senha987") {
+                            res.json({
+                                nome: resultadoAutenticar[0].nome
+                            })
+                        }
 
                         res.json({
                             email: resultadoAutenticar[0].email,
