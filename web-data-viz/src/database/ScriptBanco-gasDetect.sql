@@ -92,14 +92,8 @@ INSERT INTO Funcionario (nome, cpf, email, senha, fkEmpresa, fkNivel) VALUES
 ('Maria Souza', '98765432100', 'maria@inovacaoemtintas.com', 'senha456',  2, 1),
 ('Carlos Pereira', '45678912345', 'carlos@fabricacaotintasverdes.com', 'senha789', 3, 1),
 ('Ana Costa', '32165498765', 'ana@coresdomundo.com', 'senha101',  4, 1),
-('Luiz Fernando', '15975348612', 'luiz@solucoesemtintas.com', 'senha202', 5, 1);
-
-INSERT INTO Funcionario (nome, cpf, email, senha, fkEmpresa, fkNivel, supportId) VALUES
-('João Silva', '12345678901', 'joao@tintasecores.com', 'senha123', 1, 1, '1061935000000388001'),
-('Maria Souza', '98765432100', 'maria@inovacaoemtintas.com', 'senha456',  2, 1, '1061935000000389001'),
-('Carlos Pereira', '45678912345', 'carlos@fabricacaotintasverdes.com', 'senha789', 3, 1, '1061935000000390001'),
-('Ana Costa', '32165498765', 'ana@coresdomundo.com', 'senha101',  4, 1, '1061935000000391001'),
-('Luiz Fernando', '15975348612', 'luiz@solucoesemtintas.com', 'senha202', 5, 1, '1061935000000392001');
+('Luiz Fernando', '15975348612', 'luiz@solucoesemtintas.com', 'senha202', 5, 1),
+('Suporte N3', '', 'support@gasdetect.zohodesk.com', 'senha0101', NULL, 1);
 
 INSERT INTO Fabrica (cep, logradouro, numero, bairro, cidade, UF, fkEmpresa) VALUES
 ('12345-678', 'Avenida das Tintas', 100, 'Centro', 'São Paulo', 'SP', 1),

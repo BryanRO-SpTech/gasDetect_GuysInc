@@ -17,7 +17,7 @@ function autenticar(req, res) {
                     console.log(resultadoAutenticar);
 
                     if (resultadoAutenticar.length == 1) {
-                        if (email == "suporte@gmail.com" && senha == "senha0101") {
+                        if (resultadoAutenticar[0].email == "support@gasdetect.zohodesk.com") {
                             res.json({
                                 nome: resultadoAutenticar[0].nome
                             })
