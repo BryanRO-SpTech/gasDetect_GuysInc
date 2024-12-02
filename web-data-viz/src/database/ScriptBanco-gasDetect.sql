@@ -9,11 +9,9 @@ CREATE TABLE if not exists Empresa (
     cnpjSede CHAR(14) NOT NULL
 );
 
-CREATE TABLE if not exists Cargo (
-    idCargo int primary key auto_increment,
-    nomeCargo varchar(45),
-    descCargo varchar(45),
-    nivelPermissao tinyint
+CREATE TABLE if not exists NivelPermissao (
+    idNivel int primary key auto_increment,
+    descNivel varchar(255)
 );
 
 CREATE TABLE if not exists Funcionario (
@@ -24,8 +22,8 @@ CREATE TABLE if not exists Funcionario (
     senha TEXT NOT NULL,
     supportId VARCHAR(20),
     fkEmpresa INT,
-    fkCargo INT,
-    CONSTRAINT fkCargoFuncionario FOREIGN KEY (fkCargo) REFERENCES Cargo(idCargo),
+    fkNivel INT,
+    CONSTRAINT fkNivelFuncionario FOREIGN KEY (fkNivel) REFERENCES NivelPermissao(idNivel),
     CONSTRAINT fkEmpresa_Funcionario FOREIGN KEY(fkEmpresa) REFERENCES Empresa(idEmpresa)
 );
 
@@ -84,15 +82,26 @@ INSERT INTO Empresa (razaoSocial, cnpjSede) VALUES
 ('Cores do Mundo Ltda', '32165498700159'),
 ('Soluções em Tintas e Vernizes', '15975348600150');
 
-INSERT INTO Cargo (nomeCargo, descCargo, nivelPermissao) VALUES
-('CEO', 'Proprietario da empresa de tintas', 1);
+INSERT INTO NivelPermissao (descNivel) VALUES
+('Controle total sobre a plataforma'),
+('Gerenciar sua propria senha, pode cadastrar novos funcionarios, fabricas, setores e sensores'),
+('Pode alterar a senha e ver dashboard');
 
+<<<<<<< HEAD
+INSERT INTO Funcionario (nome, cpf, email, senha, fkEmpresa, fkNivel) VALUES
+('João Silva', '12345678901', 'joao@tintasecores.com', 'senha123', 1, 1),
+('Maria Souza', '98765432100', 'maria@inovacaoemtintas.com', 'senha456',  2, 1),
+('Carlos Pereira', '45678912345', 'carlos@fabricacaotintasverdes.com', 'senha789', 3, 1),
+('Ana Costa', '32165498765', 'ana@coresdomundo.com', 'senha101',  4, 1),
+('Luiz Fernando', '15975348612', 'luiz@solucoesemtintas.com', 'senha202', 5, 1);
+=======
 INSERT INTO Funcionario (nome, cpf, email, senha, fkEmpresa, fkCargo, supportId) VALUES
 ('João Silva', '12345678901', 'joao@tintasecores.com', 'senha123', 1, 1, '1061935000000388001'),
 ('Maria Souza', '98765432100', 'maria@inovacaoemtintas.com', 'senha456',  2, 1, '1061935000000389001'),
 ('Carlos Pereira', '45678912345', 'carlos@fabricacaotintasverdes.com', 'senha789', 3, 1, '1061935000000390001'),
 ('Ana Costa', '32165498765', 'ana@coresdomundo.com', 'senha101',  4, 1, '1061935000000391001'),
 ('Luiz Fernando', '15975348612', 'luiz@solucoesemtintas.com', 'senha202', 5, 1, '1061935000000392001');
+>>>>>>> 05cdea6ced51b966a5b9e0a8a5bee05c1ba2b46a
 
 INSERT INTO Fabrica (cep, logradouro, numero, bairro, cidade, UF, fkEmpresa) VALUES
 ('12345-678', 'Avenida das Tintas', 100, 'Centro', 'São Paulo', 'SP', 1),
@@ -131,6 +140,10 @@ INSERT INTO Registro (porcGas, fkSensor) VALUES
 (18.30, 5);
 
 
+<<<<<<< HEAD
+select * from Setor;
+=======
 select * from Setor;
 
 UPDATE Setor SET fkLimite = ${} WHERE idSetor = ${};
+>>>>>>> 05cdea6ced51b966a5b9e0a8a5bee05c1ba2b46a
