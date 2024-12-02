@@ -14,8 +14,6 @@ function autenticar(req, res) {
         usuarioModel.autenticar(email, senha)
             .then(
                 function (resultadoAutenticar) {
-                    console.log(resultadoAutenticar);
-
                     if (resultadoAutenticar.length == 1) {
                         if (resultadoAutenticar[0].email == "support@gasdetect.zohodesk.com") {
                             res.json({
@@ -27,7 +25,7 @@ function autenticar(req, res) {
                                 email: resultadoAutenticar[0].email,
                                 nome: resultadoAutenticar[0].nome,
                                 idEmpresa: resultadoAutenticar[0].idEmpresa,
-                                nivelPermissao: resultadoAutenticar[0].nivelPermissao,
+                                nivelPermissao: resultadoAutenticar[0].idNivel,
                                 cpf: resultadoAutenticar[0].cpf
                             });
                         }
