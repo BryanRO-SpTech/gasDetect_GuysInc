@@ -52,9 +52,15 @@ function alterar_senha(senhaorig, senha, cpf) {
     return database.executar(instrucaoSqlusuario);
 }
 
+function pegarPorId(id) {
+    var instrucaoSql = `SELECT * FROM Funcionario WHERE idFuncionario = ${id}`;
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     autenticar,
     cadastrar,
     salvar,
-    alterar_senha
+    alterar_senha,
+    pegarPorId
 };

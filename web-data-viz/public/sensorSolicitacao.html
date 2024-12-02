@@ -13,48 +13,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
+
+
+
 </head>
 
-<body onload="niveladministrador(), mostrardadosuser()">
+<body>
     <script src="./components/configNavBar/configNavBar.js" paginaAtual="sensor"></script>
-
-    <!-- <header>
-        <div class="side">
-            <div class="logo">
-                <a href="/index.html">
-                    <img src="/assets/img/GUYS-logo.png" alt="Logo Guys inc.">
-                </a>
-            </div>
-            <h1>GUYS inc.</h1>
-        </div>
-        <div class="sideBar">
-            <div class="imagem">
-                <img src="/assets/img/GUYS-logo.png" alt="imagem logo Guys Inc">
-            </div>
-            <div class="nome">
-                <h3><span id="b_usuario">usuário</span></h3>
-            </div>
-            <nav class="menu">
-                <ul>
-                    <a href="./config.html">
-                        <li> <img src="/assets/icons/configurando-usuario.png" alt=""> Configurar meu perfil</li>
-                    </a>
-                    <a href="funcionario.html">
-                        <li><img src="/assets/icons/companhia.png" alt=""> Gerenciar Empresa</li>
-                    </a>
-                    <a href="fabrica.html">
-                        <li> <img src="/assets/icons/gerenciamento.png" alt=""> Gerenciar Fábrica</li>
-                    </a>
-                    <a id="condicional" class="condicional" href="confignovofuncionario.html">
-                        <li> <img src="/assets/icons/id-de-toque.png" alt=""> Gerenciar Colaboradores</li>
-                    </a>
-                    <a href="sensorSolicitacao.html">
-                        <li><img src="" alt=""> Solicite um Sensor</li>
-                    </a>
-                </ul>
-            </nav>
-
-    </header> -->
 
     <div class="container">
         <div class="cadastro-content">
@@ -64,11 +29,6 @@
             <div class="contentSlt" id="fabrica" style="display: block;">
                 <select id="sltFabrica" class="sltOption">
                     <option value="#" selected disabled>Selecione uma opção</option>
-                    <option value="sltFab1" id="id_fabrica">Fabrica 1</option>
-                    <option value="sltFab2" id="id_fabrica">Fabrica 2</option>
-                    <option value="sltFab3" id="id_fabrica">Fabrica 3</option>
-                    <option value="sltFab4" id="id_fabrica">Fabrica 4</option>
-                    <option value="sltFab5" id="id_fabrica">Fabrica 5</option>
                 </select>
                 <img src="./assets/icons/icons8-arrow-down-right-48.png" class="arrow" alt="icone de flecha">
                 <div class="buttonForm">
@@ -82,11 +42,6 @@
             <div class="contentSlt" id="setor" style="display: none;">
                 <select id="sltSetor" class="sltOption">
                     <option value="#" selected disabled>Selecione uma opção</option>
-                    <option value="sltSet1" id="id_setor">setor 1</option>
-                    <option value="sltSet2" id="id_setor">setor 2</option>
-                    <option value="sltSet3" id="id_setor">setor 3</option>
-                    <option value="sltSet4" id="id_setor">setor 4</option>
-                    <option value="sltSet5" id="id_setor">setor 5</option>
                 </select>
                 <img src="./assets/icons/icons8-arrow-down-right-48.png" class="arrow" alt="icone de flecha">
                 <div class="buttonForm">
@@ -95,20 +50,6 @@
                 <div class="mensagemValidacao">
                     <span id="spanMsgSetor"></span>
                 </div>
-
-                <!-- <table>
-                    <thead>
-                        <tr>
-                            <th>Setor</th>
-                            <th>Descrição do Setor</th>
-                            <th>Tamanho do setor</th>
-                            <th>Status do Pedido</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tabela_de_fabricas">
-
-                    </tbody>
-                </table> -->
             </div>
 
 
@@ -121,16 +62,9 @@
                     <div class="modal-body">
                         <div class="input-div">
                             <div class="labels">
-                                <label>Titulo:</label>
+                                <label>Titulo do sensor: (Descrição breve da localização)</label>
                             </div>
-                            <input type="text" maxlength="11" id="ipt_titulo" placeholder="">
-                        </div>
-
-                        <div class="input-div">
-                            <div class="labels">
-                                <label>Número de sensores:</label>
-                            </div>
-                            <input type="number" maxlength="11" id="ipt_num_sensor" placeholder="">
+                            <textarea type="text" maxlength="11" id="ipt_titulo" placeholder=""></textarea>
                         </div>
                         <div class="buttonForm">
                             <button onclick="enviar()">Enviar</button>
@@ -140,12 +74,13 @@
                 </div>
             </div>
         </div>
-        <script src="./js/validarSolicitacao.js"></script>
-</body>
+    </body>
+    
+    </html>
 
-</html>
+    <script src="./js/sensorSolicitacao.js"></script>
 
-<script>
+    <script>
 
     function trocaTema() {
         const temaAtual = document.documentElement.getAttribute('theme');

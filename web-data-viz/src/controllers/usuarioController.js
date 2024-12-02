@@ -9,7 +9,7 @@ function autenticar(req, res) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
-    }else if (email == 'Admin@Gmail.com' && senha == 'Adim01#%$') {
+    } else if (email == 'Admin@Gmail.com' && senha == 'Adim01#%$') {
         console.log(res);
         req.status(400).send("validou")
     } else {
@@ -26,6 +26,7 @@ function autenticar(req, res) {
                         res.json({
                             email: resultadoAutenticar[0].email,
                             nome: resultadoAutenticar[0].nome,
+                            idFuncionario: resultadoAutenticar[0].idFuncionario,
                             idEmpresa: resultadoAutenticar[0].idEmpresa,
                             nivelPermissao: resultadoAutenticar[0].nivelPermissao,
                             cpf: resultadoAutenticar[0].cpf

@@ -20,7 +20,6 @@ function validarLogin() {
 
         if (res.ok) {
             res.json().then(function (data) {
-                console.log(data);
                 sessionStorage.ID_USUARIO = data.idFuncionario;
                 sessionStorage.EMAIL = data.email;
                 sessionStorage.NOME = data.nome;

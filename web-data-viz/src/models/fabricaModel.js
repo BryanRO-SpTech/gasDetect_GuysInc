@@ -7,6 +7,11 @@ function listar(empresaId) {
 
 }
 
+function pegarPorId(id) {
+    var instrucaoSql = `SELECT * FROM Fabrica WHERE idFabrica = ${id}`;
+    return database.executar(instrucaoSql);
+}
+
 function criar(cep, logradouro, numero, bairro, cidade, uf, idEmpresa) {
     var instrucaoSql = `INSERT INTO Fabrica (cep, logradouro, numero, bairro, cidade, uf, fkEmpresa) VALUES ('${cep}', '${logradouro}', '${numero}', '${bairro}', '${cidade}', '${uf}', ${idEmpresa})`;
 
@@ -15,5 +20,6 @@ function criar(cep, logradouro, numero, bairro, cidade, uf, idEmpresa) {
 
 module.exports = {
     listar,
+    pegarPorId,
     criar
 }

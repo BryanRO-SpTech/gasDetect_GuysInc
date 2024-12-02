@@ -248,13 +248,6 @@ function mostrardadosuser() {
     a_usuario.innerHTML = username;
 }
 
-function niveladministrador() {
-    const userlevel = sessionStorage.getItem('NIVEL_PERMISSAO')
-    if (userlevel == '1') {
-        document.getElementById('condicional').style.display = 'flex'
-    }
-}
-
 function salvar() {
     const cpfstorage = sessionStorage.getItem('CPF')
 
