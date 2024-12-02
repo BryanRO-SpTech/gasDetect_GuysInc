@@ -19,17 +19,25 @@ function validarLogin() {
         }
 
         if (res.ok) {
-            res.json().then(function (data) {
-                console.log(data);
-                sessionStorage.ID_USUARIO = data.idFuncionario;
-                sessionStorage.EMAIL = data.email;
-                sessionStorage.NOME = data.nome;
-                sessionStorage.ID_EMPRESA = data.idEmpresa;
-                sessionStorage.NIVEL_PERMISSAO = data.nivelPermissao;
-                sessionStorage.CPF = data.cpf;
+            var suporte = res.json["nome"];
+            console.log(suporte)
+            if (suporte == res.json["nome"]) {
+                console.log("Vitoria faz nd: ");
+                window.location.replace("./suporte.html");
+            } else {
 
-                window.location.replace("./dashboard.html");
-            });
+                res.json().then(function (data) {
+                    console.log(data);
+                    sessionStorage.ID_USUARIO = data.idFuncionario;
+                    sessionStorage.EMAIL = data.email;
+                    sessionStorage.NOME = data.nome;
+                    sessionStorage.ID_EMPRESA = data.idEmpresa;
+                    sessionStorage.NIVEL_PERMISSAO = data.nivelPermissao;
+                    sessionStorage.CPF = data.cpf;
+    
+                    window.location.replace("./dashboard.html");
+                });
+            }
         }
     });
 }
