@@ -77,7 +77,6 @@ fkSensor INT,
 CONSTRAINT fkSensor_Registro FOREIGN KEY(fkSensor) REFERENCES Sensor(idSensor)
 );
 
-
 INSERT INTO Empresa (razaoSocial, cnpjSede) VALUES
 ('Tintas e Cores S.A.', '12345678000195'),
 ('Inovação em Tintas Ltda', '98765432000156'),
@@ -133,5 +132,6 @@ INSERT INTO Registro (porcGas, fkSensor) VALUES
 
 
 select * from Setor;
+
 
 UPDATE Setor SET fkLimite = ${} WHERE idSetor = ${};

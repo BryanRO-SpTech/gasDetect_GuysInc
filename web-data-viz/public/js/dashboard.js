@@ -142,7 +142,7 @@ function mostrarGraficoDeLinha() {
         lineChart.update();
     }
 
-
+    //filtro grafico diario
     diario.addEventListener("click", () => {
         data = [];
         labels = [];
@@ -164,6 +164,7 @@ function mostrarGraficoDeLinha() {
         div_titulo.innerHTML = `<h1>Evasão de gás(%)</h1>`
     });
 
+    // filtro mensal grafico
     mensal.addEventListener("click", () => {
         data = [];
         labels = [];
@@ -184,6 +185,7 @@ function mostrarGraficoDeLinha() {
         div_titulo.innerHTML = `<h1>Maior Evasão Registrada(%)</h1>`
     });
 
+    // filtro anual grafico
     anual.addEventListener("click", () => {
         data = [];
         labels = [];
