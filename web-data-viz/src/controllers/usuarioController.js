@@ -21,15 +21,16 @@ function autenticar(req, res) {
                             res.json({
                                 nome: resultadoAutenticar[0].nome
                             })
+                        } else {
+                            res.json({
+                                email: resultadoAutenticar[0].email,
+                                nome: resultadoAutenticar[0].nome,
+                                idEmpresa: resultadoAutenticar[0].idEmpresa,
+                                nivelPermissao: resultadoAutenticar[0].nivelPermissao,
+                                cpf: resultadoAutenticar[0].cpf
+                            });
                         }
 
-                        res.json({
-                            email: resultadoAutenticar[0].email,
-                            nome: resultadoAutenticar[0].nome,
-                            idEmpresa: resultadoAutenticar[0].idEmpresa,
-                            nivelPermissao: resultadoAutenticar[0].nivelPermissao,
-                            cpf: resultadoAutenticar[0].cpf
-                        });
 
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
