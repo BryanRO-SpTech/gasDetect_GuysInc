@@ -1,8 +1,9 @@
 const urlParams = new URLSearchParams(window.location.search);
 const idFabrica = urlParams.get('fabrica');
 
-
+console.log(idFabrica)
 function carregarSetores() {
+    
     fetch(`/setor/listar/${idFabrica}`)
         .then(
             function (resposta) {
@@ -55,11 +56,12 @@ function cadastrarSetor() {
     const setor = document.getElementById("ipt_setor").value;
     const tamanho = document.getElementById("ipt_tamanho").value;
     const descricao = document.getElementById("ipt_descricao").value;
-    const fabrica = document.getElementById("ipt_fabrica").value;
+    // const fabrica = document.getElementById("ipt_fabrica").value;
     const limite = document.getElementById("ipt_limite").value;
+
    
 
-    if (!setor || !tamanho || !descricao || !fabrica || !limite) {
+    if (!setor || !tamanho || !descricao || !limite) {
         document.getElementById("span_mensagem").innerHTML = "Todos os campos são obrigatórios.";
         return;
     }
@@ -74,7 +76,6 @@ function cadastrarSetor() {
             setor,
             tamanho,
             descricao,
-            fabrica,
             limite,
             idFabrica: idFabrica,
         }),

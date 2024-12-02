@@ -130,3 +130,8 @@ INSERT INTO Registro (porcGas, fkSensor) VALUES
 (20.75, 3),
 (15.60, 4),
 (18.30, 5);
+
+
+select * from Setor;
+
+UPDATE Setor SET fkLimite = ${} WHERE idSetor = ${};

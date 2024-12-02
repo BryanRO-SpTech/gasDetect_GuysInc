@@ -3,9 +3,9 @@ const database = require("../database/config");
 function listar(idFabrica) {
     var instrucaoSql = `SELECT 
     s.tamanhoM2,
-    s.setor,
+    s.nome,
     s.descricao,
-    la.limite,
+    la.limiteAlerta,
     f.idFabrica
 FROM 
     Setor s
@@ -25,10 +25,12 @@ ON
 
 }
 
-function criar(setor, tamanho, descricao, fabrica, limite, idFabrica) {
-    var instrucaoSql = `INSERT INTO Setor (setor, tamanhoM2, descricao, fabrica, limite, fkFabrica) VALUES ('${setor}', '${tamanho}', '${descricao}', '${fabrica}', '${limite}', ${idFabrica})`;
+function criar(setor, tamanho, descricao, idFabrica , limite, idLimite) {
+    var instrucaoSQL2 = `INSERT INTO LimiteAlerta (LimiteAlerta) VALUES (${limite})`;
+    var instrucaoSql = `INSERT INTO Setor (nome, tamanhoM2, descricao, fkFabrica, fkLimite) VALUES ('${setor}', ${tamanho}, '${descricao}', ${idFabrica}, ${idLimite})`;
+    // var instrucaoSql3 = `UPDATE Setor SET fkLimite = ${idParametroAlerta} WHERE idSetor = ${idSetor}`
 
-    return database.executar(instrucaoSql);
+    return database.executar(instrucaoSql, instrucaoSQL2);
 }
 
 module.exports = {
