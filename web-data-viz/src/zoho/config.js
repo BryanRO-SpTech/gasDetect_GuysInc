@@ -135,7 +135,7 @@ async function solicitarSensor(zohoClientId, {
                             <td><span style="font-size:16px">${nomeSetor}</span></td>
                         </tr>
                         <tr>
-                            <td><span style="font-size:16px"><strong>Tamanho do setor em M2</strong></span></td>
+                            <td><span style="font-size:16px"><strong>Tamanho do setor em M²</strong></span></td>
                             <td>${tamanhoM2}</td>
                         </tr>
                     </tbody>
