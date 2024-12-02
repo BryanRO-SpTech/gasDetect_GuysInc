@@ -9,13 +9,13 @@ function autenticar(req, res) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
-    }else {
+    } else {
 
         usuarioModel.autenticar(email, senha)
             .then(
                 function (resultadoAutenticar) {
                     console.log(resultadoAutenticar);
-                    
+
                     if (resultadoAutenticar.length == 1) {
                         if (email == "suporte@gmail.com" && senha == "senha0101") {
                             res.json({
@@ -31,13 +31,10 @@ function autenticar(req, res) {
                             cpf: resultadoAutenticar[0].cpf
                         });
 
-                        }
-
-                        
-
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     }
+
                 }
             ).catch(
                 function (erro) {
@@ -45,9 +42,8 @@ function autenticar(req, res) {
                     console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
                     res.status(500).json(erro.sqlMessage);
                 }
-            );
+            )
     }
-
 }
 
 async function cadastrar(req, res) {
@@ -170,3 +166,16 @@ module.exports = {
     salvar,
     alterar_senha
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
