@@ -276,11 +276,11 @@ main {
 }
 
 .kpi.selected{
-    color: var(--cor-button);
+    color: #61a0a6;
     font-weight: 900;
-
     transition: all 0.5s;
 }
+
 
 .line .line-chart-div{
     width: 100%;
