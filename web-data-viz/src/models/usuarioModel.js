@@ -43,10 +43,10 @@ function salvar(nome, email, cpf, cstorageServer) {
     return database.executar(instrucaoSqlusuario);
 }
 
-function salvar(nome, email, senha, cpf, nivelpermissao) {
+function salvarfunc(nome, email, cpf, empresa, nivelpermissao) {
     var instrucaoSqlusuario = `
         INSERT INTO Funcionario (nome, email, senha, cpf, fkEmpresa, fkNivel) VALUES
-        ('${nome}', '${email}', '${senha}', '${cpf}', '${nivelpermissao}');
+        ('${nome}', '${email}', '${senha}', '${cpf}', '${empresa}', '${nivelpermissao}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSqlusuario);
     return database.executar(instrucaoSqlusuario);
@@ -71,5 +71,6 @@ module.exports = {
     cadastrar,
     salvar,
     alterar_senha,
+    salvarfunc,
     pegarPorId
 };

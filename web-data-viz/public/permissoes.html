@@ -28,9 +28,22 @@
                 <input type="text" id="pesquisaEmail" placeholder="Digite seu email..." />
                 <button onclick="pesquisar()">🔍</button>
             </div>
-            <div id="div_resultado"></div>
+            <div id="div_resultado">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>CPF</th>
+                            <th>Email</th>
+                            <th>Nivel Permissão</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela_de_fabricas">
 
-
+                    </tbody>
+                </table>
+            </div>
 
         </div>
     </div>
@@ -41,21 +54,61 @@
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
     function pesquisar() {
-        var userEmail = localStorage.getItem("userEmail");
-        var textoPesquisa = document.getElementById("pesquisaEmail").value.toLowerCase();
+        var textoPesquisa = document.getElementById("pesquisaEmail").value;
+        var textoPesquisamin = document.getElementById("pesquisaEmail").value.toLowerCase();
         var resultado = document.getElementById("div_resultado");
 
+        fetch(`/pesquisafunc/pesquisar`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                emailServer: textoPesquisa,
+                minemailServer: textoPesquisamin,
+                empresaServer: sessionStorage.ID_EMPRESA
+            }),
+        }).then(function (res) {
+            console.log(res.status)
+            if (!res.ok) {
+                resultado.textContent = "Email não encontrado.";
+                return spanError.style.display = "block";
+            }
 
-        if (userEmail && userEmail.toLowerCase().includes(textoPesquisa)) {
-            resultado.textContent = `Email encontrado: ${userEmail}`;
-        } else {
-            resultado.textContent = "Email não encontrado.";
-        }
+            if (res.ok) {
+                res.json().then(function (data) {
+                    data.useremail;
+                    data.username;
+                    data.usercpf;
+
+                        var fabricaHTML = "";
+
+                        for (var i = 0; i < fabricas.length; i++) {
+                            fabricaHTML += `
+                        <tr class="${i % 2 == 0 ? "contraste" : ""}">
+                            <td>${fabricas[i].cep}</td>
+                            <td>${fabricas[i].logradouro}</td>
+                            <td>${fabricas[i].numero}</td>
+                            <td>${fabricas[i].bairro}</td>
+                            <td>${fabricas[i].cidade}</td>
+                            <td>${fabricas[i].UF}</td>
+                            <td><a href="/setor.html?fabrica=${fabricas[i].idFabrica}">Ver mais</a></td>
+                        </tr>
+                    `;
+                        
+
+                        document.getElementById("tabela_de_fabricas").innerHTML = fabricaHTML;
+                    }
+
+                    span_mensagem_cadastro_efetuado.innerHTML = `Dados alterados com sucesso!`;
+                    span_mensagem_cadastro_efetuado.style.color = "green";
+                    resultado.textContent = `Email encontrado: ${userEmail}`;
+                });
+            }
+        });
     }
 
 </script>
-
-<<<<<<< HEAD
 <script>window.$zoho = window.$zoho || {}; $zoho.salesiq = $zoho.salesiq || {
         ready: function () {
             $zoho.salesiq.visitor.name(sessionStorage.NOME);
@@ -65,10 +118,10 @@
 <script id="zsiqscript"
     src="https://salesiq.zohopublic.com/widget?wc=siq16d8b41f912488fb6ba8c00ce7c5fb32ce9b2ebd895fbf8340455d283739d1ed"
     defer></script>
-=======
-<script>window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){
-    $zoho.salesiq.visitor.name(sessionStorage.NOME);
-    $zoho.salesiq.visitor.email(sessionStorage.EMAIL);
-}}</script>
+<script>window.$zoho = window.$zoho || {}; $zoho.salesiq = $zoho.salesiq || {
+        ready: function () {
+            $zoho.salesiq.visitor.name(sessionStorage.NOME);
+            $zoho.salesiq.visitor.email(sessionStorage.EMAIL);
+        }
+    }</script>
 <script src="/js/tema.js"></script>
->>>>>>> aba3b64f4d649bdd6bb6f4a3fb5d40c97d96a88c

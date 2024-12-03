@@ -20,8 +20,7 @@ var usuarioRouter = require("./src/routes/usuarios");
 var bobIARouter = require("./src/routes/bobIARoutes");
 var fabricaRouter = require("./src/routes/fabricaRoutes.js");
 var setorRouter = require("./src/routes/setorRoutes.js");
-var sensorRouter = require("./src/routes/sensorRoutes");
-var dashboardRouter = require("./src/routes/dashboardRoutes");
+var sensorRouter = require("./src/routes/sensorRoutes")
 
 
 
@@ -37,7 +36,6 @@ app.use("/bobIA", bobIARouter);
 app.use("/fabrica", fabricaRouter);
 app.use("/setor", setorRouter);
 app.use("/sensor", sensorRouter);
-app.use("/dashboard", dashboardRouter);
 
 
 app.listen(PORTA_APP, function () {
