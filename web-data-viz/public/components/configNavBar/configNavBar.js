@@ -22,24 +22,30 @@ function configNavBar() {
                 </div>
                 <nav class="menu">
                     <ul>
-                        <a href="/config.html" class="${paginaAtual == "perfil" ? "paginaAtual" : ""}">
+                        ${sessionStorage.NIVEL_PERMISSAO <= 2 ? `
+                            <a href="/config.html" class="${paginaAtual == "perfil" ? "paginaAtual" : ""}">
                             <li> <img src="/assets/icons/configurando-usuario.png" alt=""> Configurar meu perfil</li>
-                        </a>
-                        <a href="/confignovofuncionario.html" class="${paginaAtual == "colaboradores" ? "paginaAtual" : ""}">
+                        </a>` : ""}
+
+                        ${sessionStorage.NIVEL_PERMISSAO == 1 ? `
+                            <a href="/confignovofuncionario.html" class="${paginaAtual == "colaboradores" ? "paginaAtual" : ""}">
                             <li> <img src="/assets/icons/id-de-toque.png" alt=""> Cadastrar Colaboradores</li>
-                        </a>
+                        </a>` : ""}
+
+                        ${sessionStorage.NIVEL_PERMISSAO == 1 ? `
                         <a href="/permissoes.html" class="${paginaAtual == "permissoes" ? "paginaAtual" : ""}">
                             <li> <img src="/assets/icons/id-de-toque.png" alt=""> Gerenciar Permissões</li>
-                        </a>
-                        <a href="/empresa.html" class="${paginaAtual == "empresa" ? "paginaAtual" : ""}">
-                            <li><img src="/assets/icons/companhia.png" alt=""> Gerenciar Empresa</li>
-                        </a>
-                        <a href="/fabrica.html" class="${paginaAtual == "fabrica" ? "paginaAtual" : ""}">
+                        </a>` : ""}
+
+                        ${sessionStorage.NIVEL_PERMISSAO <= 2 ? `
+                            <a href="/fabrica.html" class="${paginaAtual == "fabrica" ? "paginaAtual" : ""}">
                             <li> <img src="/assets/icons/gerenciamento.png" alt=""> Gerenciar Fábrica</li>
-                        </a>
+                        </a>` : ""}
+
+                        ${sessionStorage.NIVEL_PERMISSAO <= 2 ? `
                         <a href="/sensorSolicitacao.html" class="${paginaAtual == "sensor" ? "paginaAtual" : ""}">
                             <li><img src="/assets/icons/companhia.png" alt=""> Solicite um Sensor</li>
-                        </a>
+                        </a>` : ""}
                     </ul>
                 </nav>
 

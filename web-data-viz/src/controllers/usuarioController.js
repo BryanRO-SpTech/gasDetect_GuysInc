@@ -14,22 +14,22 @@ function autenticar(req, res) {
         usuarioModel.autenticar(email, senha)
             .then(
                 function (resultadoAutenticar) {
-                    console.log(resultadoAutenticar);
-
                     if (resultadoAutenticar.length == 1) {
-                        if (email == "suporte@gmail.com" && senha == "senha0101") {
+                        if (resultadoAutenticar[0].email == "support@gasdetect.zohodesk.com") {
                             res.json({
                                 nome: resultadoAutenticar[0].nome
                             })
+                        } else {
+                            res.json({
+                                idFuncionario: resultadoAutenticar[0].idFuncionario,
+                                email: resultadoAutenticar[0].email,
+                                nome: resultadoAutenticar[0].nome,
+                                idEmpresa: resultadoAutenticar[0].idEmpresa,
+                                nivelPermissao: resultadoAutenticar[0].idNivel,
+                                cpf: resultadoAutenticar[0].cpf
+                            });
                         }
 
-                        res.json({
-                            email: resultadoAutenticar[0].email,
-                            nome: resultadoAutenticar[0].nome,
-                            idEmpresa: resultadoAutenticar[0].idEmpresa,
-                            nivelPermissao: resultadoAutenticar[0].nivelPermissao,
-                            cpf: resultadoAutenticar[0].cpf
-                        });
 
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
@@ -123,6 +123,41 @@ function salvar(req, res) {
     }
 }
 
+function salvarfunc(req, res) {
+    var nome = req.body.nomeServer;
+    var email = req.body.emailServer;
+    var cpf = req.body.cpfServer;
+    var nivelpermissao = req.body.nivelServer;
+    var empresa = req.body.estorageServer;
+
+    if (nome == undefined) {
+        res.status(400).send("Seu nome está undefined!");
+    } else if (email == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    } else if (cpf == undefined) {
+        res.status(400).send("Seu cpf está undefined!");
+    } else if (nivelpermissao == undefined) {
+        res.status(400).send("Seu nivelpermissao está undefined!");
+    } else {
+
+        usuarioModel.salvar(nome, email, cpf, empresa, nivelpermissao)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
 function alterar_senha(req, res) {
     var senhaorig = req.body.origsenhaServer;
     var senha = req.body.senhaServer;
@@ -164,6 +199,7 @@ module.exports = {
     autenticar,
     cadastrar,
     salvar,
+    salvarfunc,
     alterar_senha
 }
 

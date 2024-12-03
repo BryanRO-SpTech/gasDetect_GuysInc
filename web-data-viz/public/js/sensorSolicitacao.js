@@ -121,5 +121,14 @@ function enviar() {
             console.error("Erro ao realizar a solicitação:", resposta);
             return;
         }
+
+
+        span_mensagem.innerHTML = `<span style="color:green;"> Solicitação realizada com sucesso!</span>`;
+
+        document.getElementById("botao").style.pointerEvents = "none";
+
+        setTimeout(function () {
+            window.location.reload();
+        }, 2000);
     })
 }
