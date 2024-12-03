@@ -174,7 +174,7 @@ async function mediaGasHorario(idSensor) {
 
 
     return {
-        data: media,
+        data: media.reverse(),
         limite: limite[0].limitealerta
     };
 }
