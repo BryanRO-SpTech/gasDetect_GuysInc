@@ -289,4 +289,18 @@ main {
     justify-content: center;
 }
 
+#slt_fabricas{
+    width: 50%;
+    height: 30px;
+    margin-top: 10%;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 10px;
+    border: solid 3px #90E4EC;
+}
+
+.fabricas .subtitulo{
+    font-size: 20px;
+}
+
 
