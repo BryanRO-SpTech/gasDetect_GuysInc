@@ -1,6 +1,26 @@
 let lineChart = null;
 let barChart = null;
 let sensorSelecionado = 0;
+let idFabrica = sessionStorage.ID_FABRICA;
+let idSetor = sessionStorage.ID_SETOR;
+
+function carregarPagina(){
+    fetch(`/sensor/listarSensores/${idFabrica}`)
+    .then(
+        function(resposta){
+            if (!resposta.ok) {
+                console.error("Erro ao listar setores:", resposta);
+                return;
+            }
+
+            console.log(resposta,'FETCH IDFABRICA')
+            return resposta.json();
+        }
+    )
+
+    
+    
+}
 
 function mostrarKPI() {
     const kpisContent = document.getElementById("kpis-content");

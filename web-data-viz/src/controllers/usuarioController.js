@@ -26,7 +26,9 @@ function autenticar(req, res) {
                                 nome: resultadoAutenticar[0].nome,
                                 idEmpresa: resultadoAutenticar[0].idEmpresa,
                                 nivelPermissao: resultadoAutenticar[0].idNivel,
-                                cpf: resultadoAutenticar[0].cpf
+                                cpf: resultadoAutenticar[0].cpf,
+                                idFabrica: resultadoAutenticar[0].idFabrica,
+                                idSetor: resultadoAutenticar[0].idSetor
                             });
                         }
 
