@@ -231,22 +231,36 @@ function cadastrar() {
     }
 }
 
-function mostrardadosuser() {
-    const username = funcname
-    const useremail = funcemail
-    const usercpf = funccpf
-
-    document.getElementById('ipt_nome').value = username
-    document.getElementById('ipt_email').value = useremail
-    document.getElementById('ipt_cpf').value = usercpf
-
-    nomeValido = true
-    emailValido = true
-    cpfValido = true
-
-    b_usuario.innerHTML = username;
-    a_usuario.innerHTML = username;
+function mostrardadosuser() {        
+        const empresastorage = sessionStorage.getItem('ID_EMPRESA')
+        const funcstorage = sessionStorage.getItem('ID_USUARIO')
+        
+        fetch(`/pesquisafunc/mostrarfuncionarioesp`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            funcServer: funcstorage,
+            empresaServer: empresastorage
+        }),
+    })
+    .then(function (res) {
+        if (!res.ok) {
+            console.log('Usuário não encontrado.')
+        }
+        return res.json()
+    })
+    
+    .then(function (data) {
+            b_usuario.innerHTML = data[0].nome;
+            a_usuario.innerHTML = data[0].nome;
+            document.getElementById('ipt_nome').value = data[0].nome
+            document.getElementById('ipt_email').value = data[0].email
+            document.getElementById('ipt_cpf').value = data[0].cpf
+        })
 }
+
 
 function salvar() {
     const cpfstorage = sessionStorage.getItem('CPF')
