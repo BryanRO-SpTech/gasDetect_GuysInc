@@ -1,7 +1,7 @@
 var database = require("../database/config")
 
 function pesquisar(email, minemail, empresa) {
-    var instrucaoSqlusuario = `SELECT nome, email, cpf, fkNivel FROM Funcionario WHERE email = '${email}' OR email = '${minemail}' AND fkEmpresa = '${empresa}'`;
+    var instrucaoSqlusuario = `SELECT idFuncionario nome, email, cpf, fkNivel FROM Funcionario WHERE email = '${email}' OR email = '${minemail}' AND fkEmpresa = '${empresa}'`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSqlusuario);
     return database.executar(instrucaoSqlusuario);

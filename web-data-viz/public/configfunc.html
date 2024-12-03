@@ -11,7 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 </head>
 
-<body onload="mostrardadosfunc()">
+<body onload="mostrardadosfuncesp()">
     <script src="./components/configNavBar/configNavBar.js" paginaAtual="perfil"></script>
 
 
@@ -47,6 +47,16 @@
                 <input type="text" maxlength="11" id="ipt_cpf" placeholder="" oninput="validarCpf()">
                 <div class="mensagemValidacao">
                     <span id="span_mensagem_cpf"></span>
+                </div>
+            </div>
+
+            <div class="input-div">
+                <div class="labels">
+                    <label for="ipt_permissao">Nivel Permissão:</label>
+                </div>
+                <input type="text" max="3" id="ipt_permissao" placeholder="">
+                <div class="mensagemValidacao">
+                    <span id="span_mensagem_permissao"></span>
                 </div>
             </div>
 
