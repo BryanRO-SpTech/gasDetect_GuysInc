@@ -60,12 +60,16 @@ header {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 10px;
 }
 
 .setores {
     border-bottom: white solid 1px;
     width: 100%;
+    height: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .sideBar ul li a {
@@ -314,3 +318,11 @@ main {
 }
 
 
+#setores {
+    width: 100%;
+}
+
+.setores.selected {
+    background-color: #90E4EC;
+    color: #262A69;
+}

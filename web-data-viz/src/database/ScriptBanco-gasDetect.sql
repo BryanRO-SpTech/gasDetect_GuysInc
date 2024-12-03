@@ -104,7 +104,7 @@ INSERT INTO Fabrica (cep, logradouro, numero, bairro, cidade, UF, fkEmpresa) VAL
 
 INSERT INTO LimiteAlerta (limiteAlerta) VALUES
 (15),
-(60),
+(40),
 (20),
 (40),
 (20);
