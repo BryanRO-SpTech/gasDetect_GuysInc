@@ -1,7 +1,7 @@
 const urlParams = new URLSearchParams(window.location.search);
 const idFuncionario = urlParams.get('funcionario');
 
-function mostrardadosfunc() {
+function mostrardadosfuncesp() {
     const empresastorage = sessionStorage.getItem('ID_EMPRESA')
 
     fetch(`/pesquisafunc/mostrarfuncionarioesp`, {
@@ -22,26 +22,45 @@ function mostrardadosfunc() {
         })
 
         .then(function (data) {
-            data.funcname,
-            data.funcemail,
-            data.funccpf,
-            data.funcpermissao
+            document.getElementById('ipt_nome').value = data[0].nome
+            document.getElementById('ipt_email').value = data[0].email
+            document.getElementById('ipt_cpf').value = data[0].cpf
+            document.getElementById('ipt_permissao').value = data[0].fkNivel
         })
-
-    document.getElementById('ipt_nome').value = funcname
-    document.getElementById('ipt_email').value = funcemail
-    document.getElementById('ipt_cpf').value = funccpf
-    document.getElementById('ipt_permissao').value = funcpermissao
 }
 
 function alterar_dados() {
-    var funcname = ipt_nome.value
-    var funcemail = ipt_email.value
-    var funccpf = ipt_cpf.value
-    var funcpermissao = ipt_nivel_permissao.value
+    var funcname = ipt_nome.value 
+    var funcemail = ipt_email.value 
+    var funccpf = ipt_cpf.value 
+    var funcnivel = ipt_permissao.value  
+    const empresastorage = sessionStorage.getItem('ID_EMPRESA')
 
-    
-    fetch("/pesquisaFunc/alterar_dados", {
-
+    fetch(`/pesquisafunc/mostrarfuncionarioesp`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            funcServer: idFuncionario,
+            nomeServer: funcname,
+            emailServer: funcemail,
+            cpfServer: funccpf,
+            nivelServer: funcnivel,
+            empresaServer: empresastorage
+        }),
     })
+        .then(function (res) {
+            if (!res.ok) {
+                resultado.textContent = "Não possui nenhum funcionario.";
+            }
+            return res.json()
+        })
+
+        .then(function (data) {
+            document.getElementById('ipt_nome').value = data[0].nome
+            document.getElementById('ipt_email').value = data[0].email
+            document.getElementById('ipt_cpf').value = data[0].cpf
+            document.getElementById('ipt_permissao').value = data[0].fkNivel
+        })
 }

@@ -232,9 +232,9 @@ function cadastrar() {
 }
 
 function mostrardadosuser() {
-    const username = sessionStorage.getItem('NOME');
-    const useremail = sessionStorage.getItem('EMAIL');
-    const usercpf = sessionStorage.getItem('CPF');
+    const username = funcname
+    const useremail = funcemail
+    const usercpf = funccpf
 
     document.getElementById('ipt_nome').value = username
     document.getElementById('ipt_email').value = useremail

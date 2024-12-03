@@ -8,12 +8,7 @@ function pesquisar(req, res) {
     pesquisafuncModel.pesquisar(email, minemail, empresa)
         .then(
             function (data) {
-                res.json({
-                    nome: data.nome,
-                    email: data.email,
-                    cpf: data.cpf,
-                    nivelPermissao: data.fkNivel
-                });
+                res.json(data);
             }
         ).catch(
             function (erro) {
@@ -48,8 +43,8 @@ function mostrarfuncionarioesp(req, res) {
 
     pesquisafuncModel.mostrarfuncionario(empresa, idfunc)
         .then(
-            function (info) {
-                res.json(info);
+            function (data) {
+                res.json(data);
             }
         ).catch(
             function (erro) {
