@@ -19,4 +19,12 @@ router.get("/contarDiasSemVazamentos/:idFabrica", function (req, res) {
     dashboardController.contarDiasSemVazamentosPorFabrica(req, res);
 });
 
+router.get("/ultimoRegistroPorSensor/:idSetor", function (req, res) {
+    dashboardController.ultimosRegistrosPorSetor(req, res);
+});
+
+router.get("/vazamentosPorMes/:idSensor", function (req, res) {
+    dashboardController.vazamentosPorMes(req, res);
+});
+
 module.exports = router;

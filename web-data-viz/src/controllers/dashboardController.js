@@ -60,14 +60,51 @@ function contarDiasSemVazamentosPorFabrica(req, res) {
         )
         .catch(
             function (erro) {
+                console.log(erro);
                 res.status(500).send(erro.message || erro);
             }
         )
 }
 
+function ultimosRegistrosPorSetor(req, res) {
+    const idSetor = req.params.idSetor;
+
+    dashboardModel.ultimosRegistrosPorSetor(idSetor)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        )
+        .catch(
+            function (erro) {
+                res.status(500).send(erro.message || erro);
+            }
+        )
+
+}
+
+function vazamentosPorMes(req, res) {
+    const idSensor = req.params.idSensor;
+
+    dashboardModel.vazamentosPorMes(idSensor)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        )
+        .catch(
+            function (erro) {
+                res.status(500).send(erro.message || erro);
+            }
+        );
+}
+
+
 module.exports = {
     listarSensores,
     listarSetoresPeloIdFabrica,
     listarFabricasPeloIdEmpresa,
-    contarDiasSemVazamentosPorFabrica
+    contarDiasSemVazamentosPorFabrica,
+    ultimosRegistrosPorSetor,
+    vazamentosPorMes
 }

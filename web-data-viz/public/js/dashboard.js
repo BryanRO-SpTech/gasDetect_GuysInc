@@ -65,12 +65,22 @@ function trocarFabrica() {
     carregarDiasSemVazamento(selectFabrica);
 }
 
+function trocarSetor() {
+    const setores = document.querySelectorAll(".setores");
+
+    for (let i = 0; i < setores.length; i++) {
+        setores[i].addEventListener("click", () => {
+            mostrarKPI(setores[i].getAttribute("data-idSetor"));
+        });
+    }
+
+}
+
 function carregarSetores(idFabrica) {
     fetch(`/dashboard/listarSetores/${idFabrica}`)
         .then(resposta => {
             if (!resposta.ok) {
                 console.log(resposta);
-
                 return;
             }
 
@@ -89,7 +99,16 @@ function carregarSetores(idFabrica) {
                 `
             }
 
+
+            if (data.length > 0) {
+                mostrarKPI(data[0].idSetor);
+            } else {
+                mostrarKPI(0);
+            }
+
             divSetores.innerHTML = listaSetores;
+
+            trocarSetor();
         });
 }
 
@@ -107,10 +126,9 @@ function carregarDiasSemVazamento(idFabrica) {
         })
         .then(data => {
             const diasSemVazamento = document.getElementById("kpiDiasSemVaza");
-            console.log(data)
 
             diasSemVazamento.innerHTML = data.diasSemVazamento;
-        })
+        });
 }
 
 window.onload = () => carregarSeletorDeFabricas();
@@ -121,16 +139,20 @@ document.getElementById("slt_fabricas").onchange = trocarFabrica;
 
 
 
-
-
-function mostrarKPI() {
+async function mostrarKPI(idSetor) {
     const kpisContent = document.getElementById("kpis-content");
 
-    for (let i = 0; i < dataDiario.length; i++) {
-        const kpi = parseInt(dataDiario[i].registros[dataDiario[i].registros.length - 1].porcGas);
+    kpisContent.innerHTML = "";
+
+
+    const ultimoRegistroReq = await fetch(`/dashboard/ultimoRegistroPorSensor/${idSetor}`);
+    const ultimoRegistroRes = await ultimoRegistroReq.json();
+
+    for (let i = 0; i < ultimoRegistroRes.length; i++) {
+        const kpi = parseInt(ultimoRegistroRes[i].porcGas);
 
         kpisContent.insertAdjacentHTML("beforeend", `
-            <div class="kpi">
+            <div class="kpi" data-sensor="${ultimoRegistroRes[i].fkSensor}">
                 <div class="nanometro">
                     <div class="chartDiv">
                         <canvas id="doughnutChart${i}"></canvas>
@@ -138,7 +160,7 @@ function mostrarKPI() {
                     <span>${kpi}%</span>
                 </div>
         
-                <span>Sensor ${i + 1}</span>
+                <span>${ultimoRegistroRes[i].titulo}</span>
             </div>
         `);
 
@@ -160,7 +182,7 @@ function mostrarKPI() {
                     label: 'Gás',
                     data: [kpi, 100 - kpi],
                     backgroundColor: [
-                        kpi > 20 ? "red" : "#8D6969",
+                        kpi > ultimoRegistroRes[i].limiteAlerta ? "red" : "#8D6969",
                         "transparent"
                     ],
                     rotation: 180,
@@ -172,7 +194,10 @@ function mostrarKPI() {
         });
     }
 
+
+
     const kpis = document.querySelectorAll(".kpi");
+    mostrarGraficoDeBarra(kpis[0].getAttribute("data-sensor"));
 
     for (let i = 0; i < kpis.length; i++) {
         kpis[i].addEventListener("click", () => {
@@ -183,8 +208,8 @@ function mostrarKPI() {
 
             kpis[i].classList.add("selected");
             sensorSelecionado = i;
-            mostrarGraficoDeLinha();
-            mostrarGraficoDeBarra();
+            // mostrarGraficoDeLinha();
+            mostrarGraficoDeBarra(kpis[i].getAttribute("data-sensor"));
         });
     }
 }
@@ -326,12 +351,26 @@ function mostrarGraficoDeLinha() {
 
         div_titulo.innerHTML = `<h1>Evasão média anual(%)</h1>`
     });
-
-    console.log(limite)
 }
 
 
-function mostrarGraficoDeBarra() {
+async function mostrarGraficoDeBarra(idSensor) {
+    const reqVazamentos = await fetch(`/dashboard/vazamentosPorMes/${idSensor}`);
+
+    if (!reqVazamentos.ok) {
+        console.log(reqVazamentos);
+        return;
+    }
+
+    const resVazamentos = await reqVazamentos.json();
+
+    const labels = [];
+    const data = [];
+
+    for (let i = 0; i < resVazamentos.length; i++) {
+        labels.push(`${resVazamentos[i].mes}/${resVazamentos[i].ano}`);
+        data.push(resVazamentos[i].qtdVazamentos);
+    }
 
     const ctx = document.getElementById('barChart');
 
@@ -339,10 +378,10 @@ function mostrarGraficoDeBarra() {
         barChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                labels,
                 datasets: [{
                     label: `Sensor ${sensorSelecionado + 1}`,
-                    data: [12, 19, 3, 5, 2, 3, 10, 6, 14, 10, 18, 12],
+                    data,
                     borderWidth: 1
                 }]
             },
@@ -362,26 +401,17 @@ function mostrarGraficoDeBarra() {
 
         });
     } else {
-        if (sensorSelecionado == 0) {
-            barChart.data.datasets[0].data = [12, 19, 3, 5, 2, 3, 10, 6, 14, 10, 18, 12];
-            barChart.data.datasets[0].label = `Sensor ${sensorSelecionado + 1}`;
-        } else if (sensorSelecionado == 1) {
-            barChart.data.datasets[0].data = [20, 7, 10, 8, 5, 11, 15, 19, 10, 4, 11, 17];
-            barChart.data.datasets[0].label = `Sensor ${sensorSelecionado + 1}`;
-        } else if (sensorSelecionado == 2) {
-            barChart.data.datasets[0].data = [11, 4, 17, 19, 4, 10, 18, 15, 12, 3, 4, 7];
-            barChart.data.datasets[0].label = `Sensor ${sensorSelecionado + 1}`;
-        } else if (sensorSelecionado == 3) {
-            barChart.data.datasets[0].data = [3, 7, 13, 18, 10, 6, 5, 11, 15, 19, 3, 5];
-            barChart.data.datasets[0].label = `Sensor ${sensorSelecionado + 1}`;
-        }
+        barChart.data.datasets[0].data = data;
+        barChart.data.labels = labels;
+        barChart.data.datasets[0].label = `Quantidade de vazamentos por mês`;
+
         barChart.update();
     }
 }
 
 function mudarTema() {
     const theme = document.documentElement.getAttribute("theme");
-    console.log(theme);
+
     if (theme == "light") {
         lineChart.options.plugins.legend.labels.color = "#2A719B";
         lineChart.options.scales.y.grid.color = "#2A719B";
@@ -412,6 +442,5 @@ function mudarTema() {
     trocaTema();
 }
 
-document.addEventListener("DOMContentLoaded", mostrarKPI);
 document.addEventListener("DOMContentLoaded", mostrarGraficoDeLinha);
-document.addEventListener("DOMContentLoaded", mostrarGraficoDeBarra);
+// document.addEventListener("DOMContentLoaded", mostrarGraficoDeBarra);
