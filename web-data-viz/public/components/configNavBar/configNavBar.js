@@ -18,7 +18,7 @@ function configNavBar() {
                     <img src="/assets/img/GUYS-logo.png" alt="imagem logo Guys Inc">
                 </div>
                 <div class="nome">
-                    <h3><span id="b_usuario">usuário</span></h3>
+                    <h3><span id="b_usuario">${sessionStorage.NOME}</span></h3>
                 </div>
                 <nav class="menu">
                     <ul>
@@ -62,8 +62,10 @@ function configNavBar() {
                         </svg>
                         <div class="ball"></div>
                     </label>
-                    <a href="config.html">
-                        <img src="/assets/icons/engrenagem.png" alt="Configurações">
+                    <a href="/dashboard.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-graph-up" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M0 0h1v15h15v1H0zm14.817 3.113a.5.5 0 0 1 .07.704l-4.5 5.5a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61 4.15-5.073a.5.5 0 0 1 .704-.07"/>
+                        </svg>
                     </a>
                 </div>
             </div>
