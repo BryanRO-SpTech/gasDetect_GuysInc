@@ -117,11 +117,76 @@ async function vazamentosPorMes(idSensor) {
     return vazamentos;
 }
 
+async function mediaGasPorMes(idSensor) {
+    const media = await database.executar(`
+        SELECT DATE_FORMAT(dtHora, '%b/ %Y') AS dt, TRUNCATE(AVG(porcGas), 2) AS porcGas 
+        FROM Registro WHERE fkSensor = ${idSensor} 
+        GROUP BY MONTH(dtHora), YEAR(dtHora) 
+        ORDER BY dtHora DESC LIMIT 12
+    `);
+
+    const limite = await database.executar(`
+        SELECT limitealerta FROM Sensor JOIN Setor ON fkSetor = idSetor
+        JOIN LimiteAlerta ON fkLimite = idParametroAlerta
+        WHERE idSensor = ${idSensor};
+    `);
+
+    return {
+        data: media,
+        limite: limite[0].limitealerta
+    };
+}
+
+async function mediaGasPorDia(idSensor) {
+    const media = await database.executar(`
+        SELECT DATE_FORMAT(dtHora, '%d /%b') AS dt, TRUNCATE(AVG(porcGas), 2) AS porcGas
+        FROM Registro 
+        WHERE fkSensor = ${idSensor}
+        GROUP BY DAY(dtHora), MONTH(dtHora), YEAR(dtHora) 
+        ORDER BY dtHora DESC LIMIT 30;
+    `);
+
+    const limite = await database.executar(`
+        SELECT limitealerta FROM Sensor JOIN Setor ON fkSetor = idSetor
+        JOIN LimiteAlerta ON fkLimite = idParametroAlerta
+        WHERE idSensor = ${idSensor};
+    `);
+
+    return {
+        data: media.reverse(),
+        limite: limite[0].limitealerta
+    };
+}
+
+
+async function mediaGasHorario(idSensor) {
+    const media = await database.executar(`
+        SELECT DATE_FORMAT(dtHora, 'Dia %d - %h:%i') AS dt, TRUNCATE(AVG(porcGas), 2) AS porcGas 
+        FROM Registro GROUP BY HOUR(dtHora), DAY(dtHora), MONTH(dtHora), YEAR(dtHora) 
+        ORDER BY dtHora DESC LIMIT 24;    
+    `);
+
+    const limite = await database.executar(`
+        SELECT limitealerta FROM Sensor JOIN Setor ON fkSetor = idSetor
+        JOIN LimiteAlerta ON fkLimite = idParametroAlerta
+        WHERE idSensor = ${idSensor};
+    `);
+
+
+    return {
+        data: media,
+        limite: limite[0].limitealerta
+    };
+}
+
 module.exports = {
     listarSensores,
     listarSetoresPeloIdFabrica,
     listarFabricasPeloIdEmpresa,
     contarDiasSemVazamentosPorFabrica,
     ultimosRegistrosPorSetor,
-    vazamentosPorMes
+    vazamentosPorMes,
+    mediaGasPorMes,
+    mediaGasPorDia,
+    mediaGasHorario
 }

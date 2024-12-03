@@ -192,6 +192,8 @@ async function mostrarKPI(idSetor) {
 
     const kpis = document.querySelectorAll(".kpi");
     mostrarGraficoDeBarra(kpis[0].getAttribute("data-sensor"));
+    mostrarGraficoDeLinha(kpis[0].getAttribute("data-sensor"), "hora");
+
 
     for (let i = 0; i < kpis.length; i++) {
         kpis[i].addEventListener("click", () => {
@@ -202,32 +204,61 @@ async function mostrarKPI(idSetor) {
 
             kpis[i].classList.add("selected");
             sensorSelecionado = i;
-            // mostrarGraficoDeLinha();
+
             mostrarGraficoDeBarra(kpis[i].getAttribute("data-sensor"));
+            mostrarGraficoDeLinha(kpis[i].getAttribute("data-sensor"), "hora");
         });
     }
 }
 
 
-function mostrarGraficoDeLinha() {
+async function mostrarGraficoDeLinha(idSensor, periodo) {
+    if (periodo == "hora") {
+        const reqHora = await fetch(`/dashboard//mediaGasHorario/${idSensor}`);
+
+        if (!reqHora.ok) {
+            console.log(reqHora);
+            return;
+        }
+
+        var res = await reqHora.json();
+    } else if (periodo == "diario") {
+        const reqDiario = await fetch(`/dashboard/mediaGasPorDia/${idSensor}`);
+
+        if (!reqDiario.ok) {
+            console.log(reqDiario);
+            return;
+        }
+
+        var res = await reqDiario.json();
+    } else {
+        const reqMensal = await fetch(`/dashboard/mediaGasPorMes/${idSensor}`);
+
+        if (!reqMensal.ok) {
+            console.log(reqMensal);
+            return;
+        }
+
+        var res = await reqMensal.json();
+    }
+
+    console.log(res);
+
     const ctx = document.getElementById("lineChart");
 
     let data = [];
     let labels = [];
     let limite = [];
 
+
     const diario = document.getElementById("diario");
     const mensal = document.getElementById("mensal");
     const anual = document.getElementById("anual");
 
-
-    for (let i = 0; i < dataDiario[sensorSelecionado].registros.length; i++) {
-        data.push(dataDiario[sensorSelecionado].registros[i].porcGas);
-        labels.push(dataDiario[sensorSelecionado].registros[i].horario);
-    }
-
-    for (i = 0; i < 30; i++) {
-        limite.push(20);
+    for (let i = 0; i < res.data.length; i++) {
+        data.push(res.data[i].porcGas);
+        labels.push(res.data[i].dt);
+        limite.push(res.limite);
     }
 
     if (!lineChart) {
@@ -237,7 +268,7 @@ function mostrarGraficoDeLinha() {
                 labels: labels,
                 datasets: [
                     {
-                        label: `Sensor ${sensorSelecionado + 1}`,
+                        label: `Média de gás(%)`,
                         data: data,
                         fill: false,
                         tension: 0.1,
@@ -271,82 +302,40 @@ function mostrarGraficoDeLinha() {
             }
         });
     } else {
-        anual.classList.remove("selected");
-        mensal.classList.remove("selected");
-        diario.classList.add("selected");
-
         lineChart.data.datasets[0].data = data;
         lineChart.data.datasets[1].data = limite;
         lineChart.data.labels = labels;
-        lineChart.data.datasets[0].label = `Sensor ${sensorSelecionado + 1}`;
         lineChart.update();
     }
 
     //filtro grafico diario
-    diario.addEventListener("click", () => {
-        data = [];
-        labels = [];
-
-        for (let i = 0; i < dataDiario[sensorSelecionado].registros.length; i++) {
-            data.push(dataDiario[sensorSelecionado].registros[i].porcGas);
-            labels.push(dataDiario[sensorSelecionado].registros[i].horario);
-        }
-
-        lineChart.data.datasets[0].data = data;
-        lineChart.data.datasets[1].data = limite;
-        lineChart.data.labels = labels;
-        lineChart.update();
-
+    diario.onclick = () => {
         anual.classList.remove("selected");
         mensal.classList.remove("selected");
         diario.classList.add("selected");
 
-        div_titulo.innerHTML = `<h1>Evasão de gás(%)</h1>`
-    });
+
+        mostrarGraficoDeLinha(idSensor, "hora");
+    };
 
     // filtro mensal grafico
-    mensal.addEventListener("click", () => {
-        data = [];
-        labels = [];
-
-        for (let i = 0; i < dataMensal[sensorSelecionado].registros.length; i++) {
-            data.push(dataMensal[sensorSelecionado].registros[i].porcGas);
-            labels.push(`Dia ${dataMensal[sensorSelecionado].registros[i].dia}`);
-        }
-
-        lineChart.data.datasets[0].data = data;
-        lineChart.data.labels = labels;
-        lineChart.update();
-
+    mensal.onclick = () => {
         anual.classList.remove("selected");
-        diario.classList.remove("selected");
         mensal.classList.add("selected");
+        diario.classList.remove("selected");
 
-        div_titulo.innerHTML = `<h1>Maior Evasão Registrada(%)</h1>`
-    });
+        mostrarGraficoDeLinha(idSensor, "diario");
+    };
 
     // filtro anual grafico
-    anual.addEventListener("click", () => {
-        data = [];
-        labels = [];
-
-        for (let i = 0; i < dataAnual[sensorSelecionado].registros.length; i++) {
-            data.push(dataAnual[sensorSelecionado].registros[i].porcGas);
-            labels.push(`${dataAnual[sensorSelecionado].registros[i].mes}`);
-        }
-
-        lineChart.data.datasets[0].data = data;
-        lineChart.data.labels = labels;
-        lineChart.update();
-
-        diario.classList.remove("selected");
-        mensal.classList.remove("selected");
+    anual.onclick = () => {
         anual.classList.add("selected");
+        mensal.classList.remove("selected");
+        diario.classList.remove("selected");
 
-        div_titulo.innerHTML = `<h1>Evasão média anual(%)</h1>`
-    });
+        mostrarGraficoDeLinha(idSensor, "mensal");
+    };
 }
-
 
 async function mostrarGraficoDeBarra(idSensor) {
     const reqVazamentos = await fetch(`/dashboard/vazamentosPorMes/${idSensor}`);
@@ -436,5 +425,5 @@ function mudarTema() {
     trocaTema();
 }
 
-document.addEventListener("DOMContentLoaded", mostrarGraficoDeLinha);
+// document.addEventListener("DOMContentLoaded", mostrarGraficoDeLinha);
 // document.addEventListener("DOMContentLoaded", mostrarGraficoDeBarra);

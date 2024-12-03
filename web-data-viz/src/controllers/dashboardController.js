@@ -80,7 +80,6 @@ function ultimosRegistrosPorSetor(req, res) {
                 res.status(500).send(erro.message || erro);
             }
         )
-
 }
 
 function vazamentosPorMes(req, res) {
@@ -99,6 +98,39 @@ function vazamentosPorMes(req, res) {
         );
 }
 
+function mediaGasPorMes(req, res) {
+    const idSensor = req.params.idSensor;
+
+    dashboardModel.mediaGasPorMes(idSensor).then(resultado => {
+        res.json(resultado);
+    }).catch(error => {
+        console.error(error);
+        res.status(500).send(error.message || error);
+    })
+}
+
+function mediaGasPorDia(req, res) {
+    const idSensor = req.params.idSensor;
+
+    dashboardModel.mediaGasPorDia(idSensor).then(resultado => {
+        res.json(resultado);
+    }).catch(error => {
+        console.error(error);
+        res.status(500).send(error.message || error);
+    })
+}
+
+function mediaGasPorHora(req, res) {
+    const idSensor = req.params.idSensor;
+
+    dashboardModel.mediaGasHorario(idSensor).then(resultado => {
+        res.json(resultado);
+    }).catch(error => {
+        console.error(error);
+        res.status(500).send(error.message || error);
+    })
+}
+
 
 module.exports = {
     listarSensores,
@@ -106,5 +138,8 @@ module.exports = {
     listarFabricasPeloIdEmpresa,
     contarDiasSemVazamentosPorFabrica,
     ultimosRegistrosPorSetor,
-    vazamentosPorMes
+    vazamentosPorMes,
+    mediaGasPorMes,
+    mediaGasPorDia,
+    mediaGasPorHora
 }

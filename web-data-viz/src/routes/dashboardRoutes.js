@@ -27,4 +27,16 @@ router.get("/vazamentosPorMes/:idSensor", function (req, res) {
     dashboardController.vazamentosPorMes(req, res);
 });
 
+router.get("/mediaGasPorMes/:idSensor", function (req, res) {
+    dashboardController.mediaGasPorMes(req, res);
+});
+
+router.get("/mediaGasPorDia/:idSensor", function (req, res) {
+    dashboardController.mediaGasPorDia(req, res);
+});
+
+router.get("/mediaGasHorario/:idSensor", function (req, res) {
+    dashboardController.mediaGasPorHora(req, res);
+});
+
 module.exports = router;
