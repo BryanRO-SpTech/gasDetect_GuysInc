@@ -7,6 +7,13 @@ function autenticar(email, senha) {
     return database.executar(instrucaoSqlusuario);
 }
 
+function pesquisar(email, minemail) {
+    var instrucaoSqlusuario = `SELECT idFuncionario, nome, email, cpf, idNivel FROM Funcionario LEFT JOIN NivelPermissao ON idNivel = fkNivel WHERE email = '${email}' OR email = '${minemail}'`;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSqlusuario);
+    return database.executar(instrucaoSqlusuario);
+}
+
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucaoSql
 async function cadastrar(razaoSocial, cnpj, nome, email, cpf, senha, supportId) {
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
@@ -35,10 +42,10 @@ function salvar(nome, email, cpf, cstorageServer) {
     return database.executar(instrucaoSqlusuario);
 }
 
-function salvar(nome, email, senha, cpf, nivelpermissao) {
+function salvarfunc(nome, email, cpf, empresa, nivelpermissao) {
     var instrucaoSqlusuario = `
         INSERT INTO Funcionario (nome, email, senha, cpf, fkEmpresa, fkNivel) VALUES
-        ('${nome}', '${email}', '${senha}', '${cpf}', '${nivelpermissao}');
+        ('${nome}', '${email}', '${senha}', '${cpf}', '${empresa}', '${nivelpermissao}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSqlusuario);
     return database.executar(instrucaoSqlusuario);
@@ -63,5 +70,7 @@ module.exports = {
     cadastrar,
     salvar,
     alterar_senha,
+    salvarfunc,
+    pesquisar,
     pegarPorId
 };

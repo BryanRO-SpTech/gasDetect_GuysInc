@@ -328,7 +328,7 @@ function salvarfunc() {
 
                 if (resposta.ok) {
                     resposta.json().then(function (data) {
-                        span_mensagem_cadastro_efetuado.innerHTML = `Dados alterados com sucesso!`;
+                        span_mensagem_cadastro_efetuado.innerHTML = `Dados cadastrados com sucesso!`;
                         span_mensagem_cadastro_efetuado.style.color = "green";
                     });
                 }
