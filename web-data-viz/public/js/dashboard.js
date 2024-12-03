@@ -1,26 +1,127 @@
 let lineChart = null;
 let barChart = null;
 let sensorSelecionado = 0;
-let idFabrica = sessionStorage.ID_FABRICA;
-let idSetor = sessionStorage.ID_SETOR;
 
-function carregarPagina(){
-    fetch(`/sensor/listarSensores/${idFabrica}`)
-    .then(
-        function(resposta){
+// function carregarPagina() {
+//     // fetch(`/dashboard/listarSensores/1`)
+//     //     .then(
+//     //         function (resposta) {
+//     //             if (!resposta.ok) {
+//     //                 console.error("Erro ao listar setores:", resposta);
+//     //                 return;
+//     //             }
+
+//     //             return resposta.json();
+//     //         }
+//     //     )
+//     //     .then(
+//     //         function (data) {
+//     //             console.log(data);
+//     //         }
+//     //     )
+
+
+
+
+
+
+// }
+
+
+
+
+function carregarSeletorDeFabricas() {
+    fetch(`/dashboard/listarFabricas/${sessionStorage.ID_EMPRESA}`)
+        .then(resposta => {
             if (!resposta.ok) {
-                console.error("Erro ao listar setores:", resposta);
+                console.log(resposta);
+
                 return;
             }
 
-            console.log(resposta,'FETCH IDFABRICA')
             return resposta.json();
         }
-    )
+        )
+        .then(data => {
+            let opcoes = "";
 
-    
-    
+            for (let i = 0; i < data.length; i++) {
+                opcoes += `
+                        <option value="${data[i].idFabrica}">${data[i].logradouro}, ${data[i].numero}</option>
+                    `;
+            }
+
+            carregarSetores(data[0].idFabrica);
+            carregarDiasSemVazamento(data[0].idFabrica);
+            slt_fabricas.innerHTML += opcoes;
+        }
+        )
 }
+
+function trocarFabrica() {
+    const selectFabrica = document.getElementById("slt_fabricas").value;
+
+    carregarSetores(selectFabrica)
+    carregarDiasSemVazamento(selectFabrica);
+}
+
+function carregarSetores(idFabrica) {
+    fetch(`/dashboard/listarSetores/${idFabrica}`)
+        .then(resposta => {
+            if (!resposta.ok) {
+                console.log(resposta);
+
+                return;
+            }
+
+            return resposta.json();
+        })
+        .then(data => {
+            const divSetores = document.getElementById("setores");
+
+            let listaSetores = "";
+
+            for (let i = 0; i < data.length; i++) {
+                listaSetores += `
+                    <li class="setores" style="cursor: pointer" data-idSetor="${data[i].idSetor}">
+                        <a>${data[i].nome}</a>
+                    </li>
+                `
+            }
+
+            divSetores.innerHTML = listaSetores;
+        });
+}
+
+
+function carregarDiasSemVazamento(idFabrica) {
+    fetch(`/dashboard/contarDiasSemVazamentos/${idFabrica}`)
+        .then(resposta => {
+            if (!resposta.ok) {
+                console.log(resposta);
+
+                return;
+            }
+
+            return resposta.json();
+        })
+        .then(data => {
+            const diasSemVazamento = document.getElementById("kpiDiasSemVaza");
+            console.log(data)
+
+            diasSemVazamento.innerHTML = data.diasSemVazamento;
+        })
+}
+
+window.onload = () => carregarSeletorDeFabricas();
+
+document.getElementById("slt_fabricas").onchange = trocarFabrica;
+
+
+
+
+
+
 
 function mostrarKPI() {
     const kpisContent = document.getElementById("kpis-content");

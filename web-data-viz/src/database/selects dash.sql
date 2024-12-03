@@ -134,3 +134,34 @@ SELECT idFuncionario,
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT COUNT(*) AS diasSemVazamento FROM 
+(
+    SELECT DAY(dtHora) AS quant FROM Registro
+JOIN Sensor ON fkSensor = idSensor 
+JOIN Setor ON fkSetor = idSetor
+JOIN Fabrica ON fkFabrica = idFabrica
+JOIN LimiteAlerta ON fkLimite = idParametroAlerta
+WHERE idFabrica = 1 AND dtHora > '2024-12-14 10:00:00' GROUP BY DAY(dtHora)
+) AS resultados;
+
+
+SELECT dtHora FROM Registro
+JOIN Sensor ON fkSensor = idSensor 
+JOIN Setor ON fkSetor = idSetor
+JOIN Fabrica ON fkFabrica = idFabrica
+JOIN LimiteAlerta ON fkLimite = idParametroAlerta
+WHERE idFabrica = 1 AND porcGas > limiteAlerta ORDER BY dtHora DESC LIMIT 1;

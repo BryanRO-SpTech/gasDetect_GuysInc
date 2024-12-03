@@ -49,8 +49,7 @@ header {
     width: 100%;
     height: 100vh;
     color: #90E4EC;
-    gap: 50px;
-    overflow-y: auto;
+    gap: 25px;
 }
 
 .sideBar::-webkit-scrollbar {
@@ -61,8 +60,14 @@ header {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 26px;
+    gap: 10px;
 }
+
+.setores {
+    border-bottom: white solid 1px;
+    width: 100%;
+}
+
 .sideBar ul li a {
     text-decoration: none;
 }
@@ -85,12 +90,16 @@ p {
     font-size: 1.5em;
 }
 
+
 .botoes {
     display: flex;
     justify-content: space-around;
     align-items: center;
     width: 100%;
     padding: 20px;
+
+    position: absolute;
+    bottom: 0;
 }
 
 .checkbox {
@@ -290,13 +299,14 @@ main {
 }
 
 #slt_fabricas{
-    width: 50%;
+    width: 85%;
     height: 30px;
     margin-top: 10%;
     font-size: 20px;
     text-align: center;
     border-radius: 10px;
     border: solid 3px #90E4EC;
+    font-weight: 700;
 }
 
 .fabricas .subtitulo{

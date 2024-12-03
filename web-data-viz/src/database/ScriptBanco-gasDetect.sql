@@ -103,9 +103,9 @@ INSERT INTO Fabrica (cep, logradouro, numero, bairro, cidade, UF, fkEmpresa) VAL
 ('98765-432', 'Rua Criativa', 400, 'Criativo', 'Porto Alegre', 'RS', 5);
 
 INSERT INTO LimiteAlerta (limiteAlerta) VALUES
-(80),
+(15),
 (60),
-(70),
+(20),
 (40),
 (20);
 
@@ -130,3 +130,31 @@ INSERT INTO Registro (porcGas, fkSensor) VALUES
 (20.75, 3),
 (15.60, 4),
 (18.30, 5);
+
+INSERT INTO Registro (dtHora, porcGas, fkSensor) VALUES
+('2024-12-01 10:00:00', 22.00, 1),
+('2024-12-02 11:00:00', 28.50, 1),
+('2024-12-03 12:00:00', 19.75, 1),
+('2024-12-04 13:00:00', 17.60, 1),
+('2024-12-05 14:00:00', 70.30, 1),
+('2024-12-06 15:00:00', 81.00, 1),
+('2024-12-07 16:00:00', 2.50, 1),
+('2024-12-08 17:00:00', 10.75, 1),
+('2024-12-09 18:00:00', 4.60, 1),
+('2024-12-10 19:00:00', 5.30, 1);
+
+
+INSERT INTO Registro (dtHora, porcGas, fkSensor) VALUES
+('2024-12-11 10:00:00', 50.00, 1);
+
+INSERT INTO Registro (dtHora, porcGas, fkSensor) VALUES
+('2024-12-13 10:00:00', 0.00, 1);
+
+INSERT INTO Registro (dtHora, porcGas, fkSensor) VALUES
+('2024-12-14 10:00:00', 100, 1);
+
+INSERT INTO Registro (dtHora, porcGas, fkSensor) VALUES
+('2024-12-15 10:00:00', 10, 1);
+
+INSERT INTO Registro (dtHora, porcGas, fkSensor) VALUES
+('2024-12-16 10:00:00', 10, 1);

@@ -10,7 +10,7 @@
     <link rel="shortcut icon" href="/assets/img/GUYS-logo.png" type="image/png">
 </head>
 
-<body onload="carregarPagina()">
+<body>
     <header>
         <div class="side">
             <div class="logo">
@@ -23,32 +23,16 @@
         <div class="sideBar">
             <div class="dias">
                 <p>Dias sem vazamentos</p>
-                <h1 id="kpiDiasSemVaza">5</h1>
+                <h1 id="kpiDiasSemVaza"></h1>
             </div>
             <a>Visão Geral</a>
             <div class="fabricas">
                 <span class="subtitulo">Selecionar uma fabrica:</span>
                 <select name="" id="slt_fabricas">
-                    <option value="">Fabrica 1</option>
-                    <option value="">Fabrica 2</option>
-                    <option value="">Fabrica 3</option>
                 </select>
             </div>
                 <p>Setores:</p>
-            <ul class="setores">
-                <li class="selec">
-                    <a>Setor 1</a>
-                </li>
-                <li>
-                    <a>Setor 2</a>
-                </li>
-                <li>
-                    <a>Setor 3</a>
-                </li>
-                <li>
-                    <a>Setor 4</a>
-                </li>
-            </ul>
+            <ul class="setores" id="setores"></ul>
             <div class="botoes">
                 <input type="checkbox" onclick="mudarTema()" class="checkbox" id="chk">
 

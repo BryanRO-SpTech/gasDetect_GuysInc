@@ -5,15 +5,10 @@ function autenticar(email, senha) {
 	    funcionario.nome,
 	    email,
 	    cpf,
-	    nivelPermissao,
-	    funcionario.fkEmpresa as idEmpresa,
-        idFabrica,
-        idSetor
+	    idNivel,
+	    funcionario.fkEmpresa as idEmpresa
     FROM Funcionario 
-    LEFT JOIN Cargo ON idCargo = fkCargo
-    JOIN Empresa ON funcionario.fkEmpresa = idEmpresa
-    JOIN Fabrica ON fabrica.fkEmpresa = idEmpresa
-    JOIN Setor ON fkFabrica = idFabrica
+    LEFT JOIN NivelPermissao ON idNivel = fkNivel
     WHERE email = '${email}' AND senha = '${senha}';`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSqlusuario);
