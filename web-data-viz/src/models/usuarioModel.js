@@ -2,11 +2,11 @@ var database = require("../database/config")
 
 function autenticar(email, senha) {
     var instrucaoSqlusuario = `SELECT idFuncionario,
-	    funcionario.nome,
+	    Funcionario.nome,
 	    email,
 	    cpf,
 	    idNivel,
-	    funcionario.fkEmpresa as idEmpresa
+	    Funcionario.fkEmpresa as idEmpresa
     FROM Funcionario 
     LEFT JOIN NivelPermissao ON idNivel = fkNivel
     WHERE email = '${email}' AND senha = '${senha}';`;
