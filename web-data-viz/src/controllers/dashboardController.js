@@ -4,7 +4,7 @@ function listarSensores(req, res) {
     var fabricaId = req.params.idFabrica;
     var setorId = req.params.idSetor;
 
-    dashboardModel.listarSensores(fabricaId,idSetor)
+    dashboardModel.listarSensores(fabricaId,setorId)
         .then(
             function (resultado) {
                 res.json(resultado);
