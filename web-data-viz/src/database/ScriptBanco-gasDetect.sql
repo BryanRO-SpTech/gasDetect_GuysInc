@@ -1,3 +1,5 @@
+SET GLOBAL sql_mode = '';
+
 DROP DATABASE IF EXISTS Guys_Inc;
 
 CREATE DATABASE if not exists Guys_Inc;
@@ -151,7 +153,7 @@ INSERT INTO Registro (dtHora, porcGas, fkSensor) VALUES
 ('2024-12-13 10:00:00', 0.00, 1);
 
 INSERT INTO Registro (dtHora, porcGas, fkSensor) VALUES
-('2024-12-14 10:00:00', 100, 1);
+('2024-12-14 10:00:00', 100, 1);                
 
 INSERT INTO Registro (dtHora, porcGas, fkSensor) VALUES
 ('2024-12-15 10:00:00', 10, 1);
