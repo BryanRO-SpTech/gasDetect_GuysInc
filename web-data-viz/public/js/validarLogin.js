@@ -34,6 +34,8 @@ function validarLogin() {
                     sessionStorage.ID_EMPRESA = data.idEmpresa;
                     sessionStorage.NIVEL_PERMISSAO = data.nivelPermissao;
                     sessionStorage.CPF = data.cpf;
+                    sessionStorage.ID_FABRICA = data.idFabrica;
+                    sessionStorage.ID_SETOR = data.idSetor;
             
                     window.location.replace("./dashboard.html");
                 }

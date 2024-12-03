@@ -13,10 +13,13 @@ function carregarPagina(){
                 return;
             }
 
-            console.log(resposta,'123 TESTE')
+            console.log(resposta,'FETCH IDFABRICA')
             return resposta.json();
         }
     )
+
+    
+    
 }
 
 function mostrarKPI() {
