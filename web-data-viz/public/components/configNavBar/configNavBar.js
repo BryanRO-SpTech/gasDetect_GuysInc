@@ -14,9 +14,6 @@ function configNavBar() {
                 <h1>GUYS inc.</h1>
             </div>
             <div class="sideBar">
-                <div class="imagem">
-                    <img src="/assets/img/GUYS-logo.png" alt="imagem logo Guys Inc">
-                </div>
                 <div class="nome">
                     <h3><span id="b_usuario">${sessionStorage.NOME}</span></h3>
                 </div>

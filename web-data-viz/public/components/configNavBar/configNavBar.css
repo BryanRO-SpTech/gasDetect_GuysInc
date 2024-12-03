@@ -85,9 +85,16 @@ header {
     height: 20px;
 }
 
-.nome #b_usuario {
-    font-size: 20px;
+.nome {
+    margin-top: 50%;
+}
 
+.nome #b_usuario {
+    font-size: 36px;
+}
+
+.menu ul {
+    margin-top: 30%;
 }
 
 .menu li {
@@ -118,7 +125,8 @@ header {
     align-items: center;
     width: 100%;
     padding: 20px;
-    margin-top: 150px;
+    position: absolute;
+    bottom: 0;
 }
 
 .checkbox {

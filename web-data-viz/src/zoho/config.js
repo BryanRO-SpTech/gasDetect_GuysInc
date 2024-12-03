@@ -73,6 +73,8 @@ async function solicitarSensor(zohoClientId, {
         tamanhoM2
     }
 }, idSensor) {
+    console.log('Solicitando sensor para:', zohoClientId);
+
     const token = await gerarToken();
 
     fetch('https://desk.zoho.com/api/v1/tickets', {
@@ -176,6 +178,7 @@ async function solicitarSensor(zohoClientId, {
     })
         .then(response => response.json())
         .then(data => {
+            console.log(data);
             return data;
         })
         .catch(error => {
