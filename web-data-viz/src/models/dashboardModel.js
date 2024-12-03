@@ -2,7 +2,7 @@ const database = require("../database/config");
 
 function listarSensores(idSetor) {
     var instrucaoSql = `select idSensor,
-    setor.nome as Setor
+    Setor.nome as Setor
     from Sensor
     JOIN Setor on fkSetor = idSetor
     WHERE fkSetor = ${idSetor};
@@ -161,7 +161,7 @@ async function mediaGasPorDia(idSensor) {
 
 async function mediaGasHorario(idSensor) {
     const media = await database.executar(`
-        SELECT DATE_FORMAT(dtHora, 'Dia %d - %h:%i') AS dt, TRUNCATE(MAX(porcGas), 2) AS porcGas 
+        SELECT DATE_FORMAT(dtHora, 'Dia %d - %H:%i') AS dt, TRUNCATE(MAX(porcGas), 2) AS porcGas 
         FROM Registro GROUP BY HOUR(dtHora), DAY(dtHora), MONTH(dtHora), YEAR(dtHora) 
         ORDER BY dtHora DESC LIMIT 24;    
     `);

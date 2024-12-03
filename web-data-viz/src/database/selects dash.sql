@@ -227,4 +227,4 @@ WHERE idSensor = 1;
 
 SELECT DATE_FORMAT(dtHora, '%d/%b'), TRUNCATE(AVG(porcGas), 2) FROM Registro GROUP BY DAY(dtHora), MONTH(dtHora), YEAR(dtHora) ORDER BY dtHora DESC LIMIT 30;
 
-SELECT DATE_FORMAT(dtHora, 'Dia %d - %h:%i'), TRUNCATE(AVG(porcGas), 2) FROM Registro GROUP BY HOUR(dtHora), DAY(dtHora), MONTH(dtHora), YEAR(dtHora) ORDER BY dtHora DESC LIMIT 24;
+SELECT DATE_FORMAT(dtHora, 'Dia %d - %H:%i'), TRUNCATE(AVG(porcGas), 2) FROM Registro GROUP BY HOUR(dtHora), DAY(dtHora), MONTH(dtHora), YEAR(dtHora) ORDER BY dtHora DESC LIMIT 24;

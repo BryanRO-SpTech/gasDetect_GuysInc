@@ -23,7 +23,6 @@ ON
     `
 
     return database.executar(instrucaoSql);
-
 }
 
 
