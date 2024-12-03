@@ -107,7 +107,7 @@ async function vazamentosPorMes(idSensor) {
             JOIN Setor ON fkSetor = idSetor
             JOIN LimiteAlerta ON fkLimite = idParametroAlerta
             WHERE idSensor = ${idSensor} AND porcGas >= limiteAlerta
-            GROUP BY DATE(dtHora), HOUR(dtHora)
+            GROUP BY DATE(dtHora)
         ) AS sub
         GROUP BY MONTH(dtHora), YEAR(dtHora)
         ORDER BY mes DESC, ano DESC LIMIT 12;
@@ -119,7 +119,7 @@ async function vazamentosPorMes(idSensor) {
 
 async function mediaGasPorMes(idSensor) {
     const media = await database.executar(`
-        SELECT DATE_FORMAT(dtHora, '%b/ %Y') AS dt, TRUNCATE(AVG(porcGas), 2) AS porcGas 
+        SELECT DATE_FORMAT(dtHora, '%b/ %Y') AS dt, TRUNCATE(MAX(porcGas), 2) AS porcGas 
         FROM Registro WHERE fkSensor = ${idSensor} 
         GROUP BY MONTH(dtHora), YEAR(dtHora) 
         ORDER BY dtHora DESC LIMIT 12
@@ -132,14 +132,14 @@ async function mediaGasPorMes(idSensor) {
     `);
 
     return {
-        data: media,
+        data: media.reverse(),
         limite: limite[0].limitealerta
     };
 }
 
 async function mediaGasPorDia(idSensor) {
     const media = await database.executar(`
-        SELECT DATE_FORMAT(dtHora, '%d /%b') AS dt, TRUNCATE(AVG(porcGas), 2) AS porcGas
+        SELECT DATE_FORMAT(dtHora, '%d /%b') AS dt, TRUNCATE(MAX(porcGas), 2) AS porcGas
         FROM Registro 
         WHERE fkSensor = ${idSensor}
         GROUP BY DAY(dtHora), MONTH(dtHora), YEAR(dtHora) 
@@ -161,7 +161,7 @@ async function mediaGasPorDia(idSensor) {
 
 async function mediaGasHorario(idSensor) {
     const media = await database.executar(`
-        SELECT DATE_FORMAT(dtHora, 'Dia %d - %h:%i') AS dt, TRUNCATE(AVG(porcGas), 2) AS porcGas 
+        SELECT DATE_FORMAT(dtHora, 'Dia %d - %h:%i') AS dt, TRUNCATE(MAX(porcGas), 2) AS porcGas 
         FROM Registro GROUP BY HOUR(dtHora), DAY(dtHora), MONTH(dtHora), YEAR(dtHora) 
         ORDER BY dtHora DESC LIMIT 24;    
     `);

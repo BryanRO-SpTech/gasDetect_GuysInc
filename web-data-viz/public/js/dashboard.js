@@ -1,28 +1,6 @@
 let lineChart = null;
 let barChart = null;
-let sensorSelecionado = 0;
-
-// function carregarPagina() {
-//     // fetch(`/dashboard/listarSensores/1`)
-//     //     .then(
-//     //         function (resposta) {
-//     //             if (!resposta.ok) {
-//     //                 console.error("Erro ao listar setores:", resposta);
-//     //                 return;
-//     //             }
-
-//     //             return resposta.json();
-//     //         }
-//     //     )
-//     //     .then(
-//     //         function (data) {
-//     //             console.log(data);
-//     //         }
-//     //     )
-// }
-
-
-
+let periodo = "hora";
 
 function carregarSeletorDeFabricas() {
     fetch(`/dashboard/listarFabricas/${sessionStorage.ID_EMPRESA}`)
@@ -64,6 +42,11 @@ function trocarSetor() {
 
     for (let i = 0; i < setores.length; i++) {
         setores[i].addEventListener("click", () => {
+            for (let j = 0; j < setores.length; j++) {
+                setores[j].classList.remove("selected");
+            }
+
+            setores[i].classList.add("selected");
             mostrarKPI(setores[i].getAttribute("data-idSetor"));
         });
     }
@@ -87,7 +70,7 @@ function carregarSetores(idFabrica) {
 
             for (let i = 0; i < data.length; i++) {
                 listaSetores += `
-                    <li class="setores" style="cursor: pointer" data-idSetor="${data[i].idSetor}">
+                    <li class="setores ${i == 0 ? "selected" : ""}" style="cursor: pointer" data-idSetor="${data[i].idSetor}">
                         <a>${data[i].nome}</a>
                     </li>
                 `
@@ -128,9 +111,6 @@ function carregarDiasSemVazamento(idFabrica) {
 window.onload = () => carregarSeletorDeFabricas();
 
 document.getElementById("slt_fabricas").onchange = trocarFabrica;
-
-
-
 
 
 async function mostrarKPI(idSetor) {
@@ -191,9 +171,9 @@ async function mostrarKPI(idSetor) {
 
 
     const kpis = document.querySelectorAll(".kpi");
+
     mostrarGraficoDeBarra(kpis[0].getAttribute("data-sensor"));
     mostrarGraficoDeLinha(kpis[0].getAttribute("data-sensor"), "hora");
-
 
     for (let i = 0; i < kpis.length; i++) {
         kpis[i].addEventListener("click", () => {
@@ -203,7 +183,6 @@ async function mostrarKPI(idSetor) {
 
 
             kpis[i].classList.add("selected");
-            sensorSelecionado = i;
 
             mostrarGraficoDeBarra(kpis[i].getAttribute("data-sensor"));
             mostrarGraficoDeLinha(kpis[i].getAttribute("data-sensor"), "hora");
@@ -212,9 +191,9 @@ async function mostrarKPI(idSetor) {
 }
 
 
-async function mostrarGraficoDeLinha(idSensor, periodo) {
+async function mostrarGraficoDeLinha(idSensor) {
     if (periodo == "hora") {
-        const reqHora = await fetch(`/dashboard//mediaGasHorario/${idSensor}`);
+        const reqHora = await fetch(`/dashboard/mediaGasHorario/${idSensor}`);
 
         if (!reqHora.ok) {
             console.log(reqHora);
@@ -268,7 +247,7 @@ async function mostrarGraficoDeLinha(idSensor, periodo) {
                 labels: labels,
                 datasets: [
                     {
-                        label: `Média de gás(%)`,
+                        label: `Pico de gás(%)`,
                         data: data,
                         fill: false,
                         tension: 0.1,
@@ -314,8 +293,8 @@ async function mostrarGraficoDeLinha(idSensor, periodo) {
         mensal.classList.remove("selected");
         diario.classList.add("selected");
 
-
-        mostrarGraficoDeLinha(idSensor, "hora");
+        periodo = "hora";
+        mostrarGraficoDeLinha(idSensor);
     };
 
     // filtro mensal grafico
@@ -324,7 +303,8 @@ async function mostrarGraficoDeLinha(idSensor, periodo) {
         mensal.classList.add("selected");
         diario.classList.remove("selected");
 
-        mostrarGraficoDeLinha(idSensor, "diario");
+        periodo = "diario"
+        mostrarGraficoDeLinha(idSensor);
     };
 
     // filtro anual grafico
@@ -333,7 +313,9 @@ async function mostrarGraficoDeLinha(idSensor, periodo) {
         mensal.classList.remove("selected");
         diario.classList.remove("selected");
 
-        mostrarGraficoDeLinha(idSensor, "mensal");
+        periodo = "mensal";
+        mostrarGraficoDeLinha(idSensor);
+
     };
 }
 
@@ -363,7 +345,7 @@ async function mostrarGraficoDeBarra(idSensor) {
             data: {
                 labels,
                 datasets: [{
-                    label: `Sensor ${sensorSelecionado + 1}`,
+                    label: `Quantidade de vazamentos por mês`,
                     data,
                     borderWidth: 1
                 }]
@@ -425,5 +407,14 @@ function mudarTema() {
     trocaTema();
 }
 
-// document.addEventListener("DOMContentLoaded", mostrarGraficoDeLinha);
-// document.addEventListener("DOMContentLoaded", mostrarGraficoDeBarra);
+
+
+let intervalo;
+
+function atualizarGrafico(func) {
+    if (intervalo) {
+        clearInterval(intervalo);
+    }
+
+    intervalo = setInterval(func, 2000);
+}
