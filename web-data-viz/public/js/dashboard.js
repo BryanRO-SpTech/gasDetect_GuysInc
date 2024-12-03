@@ -1,6 +1,9 @@
 let lineChart = null;
 let barChart = null;
 let periodo = "hora";
+let sensor = 0;
+let setor = 0;
+let fabrica = 0;
 
 function carregarSeletorDeFabricas() {
     fetch(`/dashboard/listarFabricas/${sessionStorage.ID_EMPRESA}`)
@@ -23,8 +26,10 @@ function carregarSeletorDeFabricas() {
                     `;
             }
 
-            carregarSetores(data[0].idFabrica);
-            carregarDiasSemVazamento(data[0].idFabrica);
+            fabrica = data[0].idFabrica;
+
+            carregarSetores();
+            carregarDiasSemVazamento();
             slt_fabricas.innerHTML += opcoes;
         }
         )
@@ -33,8 +38,10 @@ function carregarSeletorDeFabricas() {
 function trocarFabrica() {
     const selectFabrica = document.getElementById("slt_fabricas").value;
 
-    carregarSetores(selectFabrica)
-    carregarDiasSemVazamento(selectFabrica);
+    fabrica = selectFabrica;
+
+    carregarSetores()
+    carregarDiasSemVazamento();
 }
 
 function trocarSetor() {
@@ -47,14 +54,17 @@ function trocarSetor() {
             }
 
             setores[i].classList.add("selected");
-            mostrarKPI(setores[i].getAttribute("data-idSetor"));
+
+            setor = setores[i].getAttribute("data-idSetor");
+
+            mostrarKPI();
         });
     }
 
 }
 
-function carregarSetores(idFabrica) {
-    fetch(`/dashboard/listarSetores/${idFabrica}`)
+function carregarSetores() {
+    fetch(`/dashboard/listarSetores/${fabrica}`)
         .then(resposta => {
             if (!resposta.ok) {
                 console.log(resposta);
@@ -64,6 +74,8 @@ function carregarSetores(idFabrica) {
             return resposta.json();
         })
         .then(data => {
+            setor = data[0].idSetor;
+
             const divSetores = document.getElementById("setores");
 
             let listaSetores = "";
@@ -78,9 +90,9 @@ function carregarSetores(idFabrica) {
 
 
             if (data.length > 0) {
-                mostrarKPI(data[0].idSetor);
+                mostrarKPI();
             } else {
-                mostrarKPI(0);
+                mostrarKPI();
             }
 
             divSetores.innerHTML = listaSetores;
@@ -90,8 +102,8 @@ function carregarSetores(idFabrica) {
 }
 
 
-function carregarDiasSemVazamento(idFabrica) {
-    fetch(`/dashboard/contarDiasSemVazamentos/${idFabrica}`)
+function carregarDiasSemVazamento() {
+    fetch(`/dashboard/contarDiasSemVazamentos/${fabrica}`)
         .then(resposta => {
             if (!resposta.ok) {
                 console.log(resposta);
@@ -113,13 +125,13 @@ window.onload = () => carregarSeletorDeFabricas();
 document.getElementById("slt_fabricas").onchange = trocarFabrica;
 
 
-async function mostrarKPI(idSetor) {
+async function mostrarKPI() {
     const kpisContent = document.getElementById("kpis-content");
 
     kpisContent.innerHTML = "";
 
 
-    const ultimoRegistroReq = await fetch(`/dashboard/ultimoRegistroPorSensor/${idSetor}`);
+    const ultimoRegistroReq = await fetch(`/dashboard/ultimoRegistroPorSensor/${setor}`);
     const ultimoRegistroRes = await ultimoRegistroReq.json();
 
     for (let i = 0; i < ultimoRegistroRes.length; i++) {
@@ -172,8 +184,10 @@ async function mostrarKPI(idSetor) {
 
     const kpis = document.querySelectorAll(".kpi");
 
-    mostrarGraficoDeBarra(kpis[0].getAttribute("data-sensor"));
-    mostrarGraficoDeLinha(kpis[0].getAttribute("data-sensor"), "hora");
+    sensor = kpis[0].getAttribute("data-sensor");
+
+    mostrarGraficoDeBarra();
+    mostrarGraficoDeLinha();
 
     for (let i = 0; i < kpis.length; i++) {
         kpis[i].addEventListener("click", () => {
@@ -184,16 +198,18 @@ async function mostrarKPI(idSetor) {
 
             kpis[i].classList.add("selected");
 
-            mostrarGraficoDeBarra(kpis[i].getAttribute("data-sensor"));
-            mostrarGraficoDeLinha(kpis[i].getAttribute("data-sensor"), "hora");
+            sensor = kpis[i].getAttribute("data-sensor");
+
+            mostrarGraficoDeBarra();
+            mostrarGraficoDeLinha();
         });
     }
 }
 
 
-async function mostrarGraficoDeLinha(idSensor) {
+async function mostrarGraficoDeLinha() {
     if (periodo == "hora") {
-        const reqHora = await fetch(`/dashboard/mediaGasHorario/${idSensor}`);
+        const reqHora = await fetch(`/dashboard/mediaGasHorario/${sensor}`);
 
         if (!reqHora.ok) {
             console.log(reqHora);
@@ -202,7 +218,7 @@ async function mostrarGraficoDeLinha(idSensor) {
 
         var res = await reqHora.json();
     } else if (periodo == "diario") {
-        const reqDiario = await fetch(`/dashboard/mediaGasPorDia/${idSensor}`);
+        const reqDiario = await fetch(`/dashboard/mediaGasPorDia/${sensor}`);
 
         if (!reqDiario.ok) {
             console.log(reqDiario);
@@ -211,7 +227,7 @@ async function mostrarGraficoDeLinha(idSensor) {
 
         var res = await reqDiario.json();
     } else {
-        const reqMensal = await fetch(`/dashboard/mediaGasPorMes/${idSensor}`);
+        const reqMensal = await fetch(`/dashboard/mediaGasPorMes/${sensor}`);
 
         if (!reqMensal.ok) {
             console.log(reqMensal);
@@ -294,7 +310,7 @@ async function mostrarGraficoDeLinha(idSensor) {
         diario.classList.add("selected");
 
         periodo = "hora";
-        mostrarGraficoDeLinha(idSensor);
+        mostrarGraficoDeLinha(sensor);
     };
 
     // filtro mensal grafico
@@ -304,7 +320,7 @@ async function mostrarGraficoDeLinha(idSensor) {
         diario.classList.remove("selected");
 
         periodo = "diario"
-        mostrarGraficoDeLinha(idSensor);
+        mostrarGraficoDeLinha(sensor);
     };
 
     // filtro anual grafico
@@ -314,13 +330,13 @@ async function mostrarGraficoDeLinha(idSensor) {
         diario.classList.remove("selected");
 
         periodo = "mensal";
-        mostrarGraficoDeLinha(idSensor);
+        mostrarGraficoDeLinha(sensor);
 
     };
 }
 
-async function mostrarGraficoDeBarra(idSensor) {
-    const reqVazamentos = await fetch(`/dashboard/vazamentosPorMes/${idSensor}`);
+async function mostrarGraficoDeBarra() {
+    const reqVazamentos = await fetch(`/dashboard/vazamentosPorMes/${sensor}`);
 
     if (!reqVazamentos.ok) {
         console.log(reqVazamentos);
@@ -411,10 +427,8 @@ function mudarTema() {
 
 let intervalo;
 
-function atualizarGrafico(func) {
-    if (intervalo) {
-        clearInterval(intervalo);
-    }
-
-    intervalo = setInterval(func, 2000);
-}
+setInterval(() => {
+    mostrarGraficoDeBarra();
+    mostrarGraficoDeLinha();
+    mostrarKPI();
+}, 3000);
