@@ -28,7 +28,22 @@
                 <input type="text" id="pesquisaEmail" placeholder="Digite seu email..." />
                 <button onclick="pesquisar()">🔍</button>
             </div>
-            <div id="div_resultado"></div>
+            <div id="div_resultado">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>CPF</th>
+                            <th>Email</th>
+                            <th>Nivel Permissão</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela_de_fabricas">
+
+                    </tbody>
+                </table>
+            </div>
 
         </div>
     </div>
@@ -43,14 +58,15 @@
         var textoPesquisamin = document.getElementById("pesquisaEmail").value.toLowerCase();
         var resultado = document.getElementById("div_resultado");
 
-        fetch("/usuarios/pesquisar", {
+        fetch(`/pesquisafunc/pesquisar`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
                 emailServer: textoPesquisa,
-                minemailServer: textoPesquisamin
+                minemailServer: textoPesquisamin,
+                empresaServer: sessionStorage.ID_EMPRESA
             }),
         }).then(function (res) {
             console.log(res.status)
@@ -61,6 +77,31 @@
 
             if (res.ok) {
                 res.json().then(function (data) {
+                    data.useremail;
+                    data.username;
+                    data.usercpf;
+
+                        var fabricaHTML = "";
+
+                        for (var i = 0; i < fabricas.length; i++) {
+                            fabricaHTML += `
+                        <tr class="${i % 2 == 0 ? "contraste" : ""}">
+                            <td>${fabricas[i].cep}</td>
+                            <td>${fabricas[i].logradouro}</td>
+                            <td>${fabricas[i].numero}</td>
+                            <td>${fabricas[i].bairro}</td>
+                            <td>${fabricas[i].cidade}</td>
+                            <td>${fabricas[i].UF}</td>
+                            <td><a href="/setor.html?fabrica=${fabricas[i].idFabrica}">Ver mais</a></td>
+                        </tr>
+                    `;
+                        
+
+                        document.getElementById("tabela_de_fabricas").innerHTML = fabricaHTML;
+                    }
+
+                    span_mensagem_cadastro_efetuado.innerHTML = `Dados alterados com sucesso!`;
+                    span_mensagem_cadastro_efetuado.style.color = "green";
                     resultado.textContent = `Email encontrado: ${userEmail}`;
                 });
             }

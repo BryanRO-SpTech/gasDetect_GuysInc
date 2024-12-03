@@ -48,31 +48,6 @@ function autenticar(req, res) {
     }
 }
 
-function pesquisar(req, res) {
-    var email = req.body.emailServer;
-    var minemail = req.body.minemailServer;
-
-        usuarioModel.pesquisar(email, minemail)
-            .then(
-                function (resultadopesquisar) {
-                            res.json({
-                                idFuncionario: resultadopesquisar[0].idFuncionario,
-                                email: resultadopesquisar[0].email,
-                                nome: resultadopesquisar[0].nome,
-                                nivelPermissao: resultadopesquisar[0].idNivel,
-                                cpf: resultadopesquisar[0].cpf
-                            });
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log("\nHouve um erro ao localizar o funcionario! Erro: ", erro.sqlMessage);
-                    res.status(500).json(erro.sqlMessage);
-                }
-            )
-    }
-
-
 async function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var razaoSocial = req.body.razaoSocialServer;
@@ -227,7 +202,6 @@ module.exports = {
     cadastrar,
     salvar,
     salvarfunc,
-    pesquisar,
     alterar_senha
 }
 

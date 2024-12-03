@@ -277,9 +277,9 @@ function salvar() {
 
                 if (resposta.ok) {
                     resposta.json().then(function (data) {
-                        sessionStorage.EMAIL = useremail;
-                        sessionStorage.NOME = username;
-                        sessionStorage.CPF = usercpf;
+                        sessionStorage.EMAIL = data.useremail;
+                        sessionStorage.NOME = data.username;
+                        sessionStorage.CPF = data.usercpf;
 
                         span_mensagem_cadastro_efetuado.innerHTML = `Dados alterados com sucesso!`;
                         span_mensagem_cadastro_efetuado.style.color = "green";

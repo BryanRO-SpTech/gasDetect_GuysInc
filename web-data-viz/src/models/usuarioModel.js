@@ -20,13 +20,6 @@ function autenticar(email, senha) {
     return database.executar(instrucaoSqlusuario);
 }
 
-function pesquisar(email, minemail) {
-    var instrucaoSqlusuario = `SELECT idFuncionario, nome, email, cpf, idNivel FROM Funcionario LEFT JOIN NivelPermissao ON idNivel = fkNivel WHERE email = '${email}' OR email = '${minemail}'`;
-
-    console.log("Executando a instrução SQL: \n" + instrucaoSqlusuario);
-    return database.executar(instrucaoSqlusuario);
-}
-
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucaoSql
 async function cadastrar(razaoSocial, cnpj, nome, email, cpf, senha, supportId) {
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
@@ -84,6 +77,5 @@ module.exports = {
     salvar,
     alterar_senha,
     salvarfunc,
-    pesquisar,
     pegarPorId
 };

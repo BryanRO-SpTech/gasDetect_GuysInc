@@ -11,10 +11,6 @@ router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });
 
-router.post("/pesquisar", function (req, res) {
-    usuarioController.pesquisar(req, res);
-});
-
 router.post("/salvar", function (req, res) {
     usuarioController.salvar(req, res);
 });

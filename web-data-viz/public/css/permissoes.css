@@ -212,7 +212,6 @@ width: 70%;
 margin-top: 50px;
 }
 
-/* Estilo do campo de entrada */
 .barra-pesquisa input {
 border: none;
 padding: 10px;
@@ -221,7 +220,6 @@ font-size: 16px;
 outline: none;
 }
 
-/* Estilo do botão */
 .barra-pesquisa button {
 background-color: #90E4EC;
 color: white;
@@ -231,7 +229,6 @@ cursor: pointer;
 font-size: 16px;
 }
 
-/* Efeito de hover no botão */
 .barra-pesquisa button:hover {
 background-color: #262A69;
 }
@@ -239,4 +236,36 @@ background-color: #262A69;
 #div_resultado{
     margin-top: 20px;
     font-size: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    color: var(--cor-texto);
+
+    overflow: auto;
+}
+
+table tr {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    transition: all .3s;
+}
+
+table td, table th {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px 50px;
+}
+
+table a {
+    text-decoration: none;
+    color: var(--cor-button);
+    font-weight: 700;
 }
