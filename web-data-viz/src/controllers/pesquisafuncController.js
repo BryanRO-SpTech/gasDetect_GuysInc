@@ -61,6 +61,10 @@ function mostrarfuncionarioesp(req, res) {
 
 }
 
+function alterar_dados() {
+    
+}
+
 module.exports = {
     pesquisar,
     mostrarfuncionarioesp,

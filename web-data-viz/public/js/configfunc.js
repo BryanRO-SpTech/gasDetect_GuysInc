@@ -41,7 +41,7 @@ function alterar_dados() {
     var funcpermissao = ipt_nivel_permissao.value
 
     
-    nomeValido = true
-    emailValido = true
-    cpfValido = true
+    fetch("/pesquisaFunc/alterar_dados", {
+
+    })
 }
