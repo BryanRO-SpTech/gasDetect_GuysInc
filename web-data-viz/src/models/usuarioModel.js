@@ -43,10 +43,10 @@ function salvar(nome, email, cpf, cstorageServer) {
     return database.executar(instrucaoSqlusuario);
 }
 
-function salvarfunc(nome, email, cpf, empresa, nivelpermissao) {
+function salvarfunc(nome, email, cpf, senha, empresa, nivelpermissao) {
     var instrucaoSqlusuario = `
-        INSERT INTO Funcionario (nome, email, senha, cpf, fkEmpresa, fkNivel) VALUES
-        ('${nome}', '${email}', '${senha}', '${cpf}', '${empresa}', '${nivelpermissao}');
+        INSERT INTO Funcionario (nome, email, cpf, senha, fkEmpresa, fkNivel) VALUES
+        ('${nome}', '${email}', '${cpf}', '${senha}', '${empresa}', '${nivelpermissao}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSqlusuario);
     return database.executar(instrucaoSqlusuario);

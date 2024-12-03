@@ -127,6 +127,7 @@ function salvarfunc(req, res) {
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
     var cpf = req.body.cpfServer;
+    var senha = req.body.senhaServer;
     var nivelpermissao = req.body.nivelServer;
     var empresa = req.body.estorageServer;
 
@@ -138,9 +139,11 @@ function salvarfunc(req, res) {
         res.status(400).send("Seu cpf está undefined!");
     } else if (nivelpermissao == undefined) {
         res.status(400).send("Seu nivelpermissao está undefined!");
+    } else if (senha == undefined) {
+        res.status(400).send("Sua senha está undefined!");
     } else {
-
-        usuarioModel.salvar(nome, email, cpf, empresa, nivelpermissao)
+        console.log('to aqui')
+        usuarioModel.salvarfunc(nome, email, cpf, senha, empresa, nivelpermissao)
             .then(
                 function (resultado) {
                     res.json(resultado);

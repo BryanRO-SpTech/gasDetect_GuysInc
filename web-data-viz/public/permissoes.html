@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/css/permissoes.css">
 </head>
 
-<body>
+<body onload="mostrarfuncionario()">
     <script src="./components/configNavBar/configNavBar.js" paginaAtual="permissoes"></script>
 
     <div class="container">
@@ -33,7 +33,7 @@
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody id="tabela_de_fabricas">
+                    <tbody id="tabela_de_funcionarios">
 
                     </tbody>
                 </table>
@@ -44,63 +44,7 @@
 
     <script src="./js/tema.js"></script>
 </body>
-<script>
-    function pesquisar() {
-        var textoPesquisa = document.getElementById("pesquisaEmail").value;
-        var textoPesquisamin = document.getElementById("pesquisaEmail").value.toLowerCase();
-        var resultado = document.getElementById("div_resultado");
-
-        fetch(`/pesquisafunc/pesquisar`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                emailServer: textoPesquisa,
-                minemailServer: textoPesquisamin,
-                empresaServer: sessionStorage.ID_EMPRESA
-            }),
-        }).then(function (res) {
-            console.log(res.status)
-            if (!res.ok) {
-                resultado.textContent = "Email não encontrado.";
-                return spanError.style.display = "block";
-            }
-
-            if (res.ok) {
-                res.json().then(function (data) {
-                    data.useremail;
-                    data.username;
-                    data.usercpf;
-
-                        var fabricaHTML = "";
-
-                        for (var i = 0; i < fabricas.length; i++) {
-                            fabricaHTML += `
-                        <tr class="${i % 2 == 0 ? "contraste" : ""}">
-                            <td>${fabricas[i].cep}</td>
-                            <td>${fabricas[i].logradouro}</td>
-                            <td>${fabricas[i].numero}</td>
-                            <td>${fabricas[i].bairro}</td>
-                            <td>${fabricas[i].cidade}</td>
-                            <td>${fabricas[i].UF}</td>
-                            <td><a href="/setor.html?fabrica=${fabricas[i].idFabrica}">Ver mais</a></td>
-                        </tr>
-                    `;
-                        
-
-                        document.getElementById("tabela_de_fabricas").innerHTML = fabricaHTML;
-                    }
-
-                    span_mensagem_cadastro_efetuado.innerHTML = `Dados alterados com sucesso!`;
-                    span_mensagem_cadastro_efetuado.style.color = "green";
-                    resultado.textContent = `Email encontrado: ${userEmail}`;
-                });
-            }
-        });
-    }
-
-</script>
+<script src="/js/permissoes.js"></script>
 <script>window.$zoho = window.$zoho || {}; $zoho.salesiq = $zoho.salesiq || {
         ready: function () {
             $zoho.salesiq.visitor.name(sessionStorage.NOME);

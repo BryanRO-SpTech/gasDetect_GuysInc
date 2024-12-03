@@ -7,6 +7,10 @@ router.post("/mostrarfuncionario", function (req, res) {
     pesquisarfuncController.mostrarfuncionario(req, res);
 })
 
+router.post("/mostrarfuncionarioesp", function (req, res) {
+    pesquisarfuncController.mostrarfuncionarioesp(req, res);
+})
+
 router.post("/pesquisar", function (req, res) {
     pesquisarfuncController.pesquisar(req, res);
 })

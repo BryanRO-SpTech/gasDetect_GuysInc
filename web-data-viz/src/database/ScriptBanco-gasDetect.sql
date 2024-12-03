@@ -87,13 +87,19 @@ INSERT INTO NivelPermissao (descNivel) VALUES
 ('Gerenciar sua propria senha, pode cadastrar novos funcionarios, fabricas, setores e sensores'),
 ('Pode alterar a senha e ver dashboard');
 
+INSERT INTO Funcionario (nome, cpf, email, senha, fkEmpresa, fkNivel) VALUES
+('João Silva', '12345678901', 'joao@tintasecores.com', 'senha123', 1, 1),
+('Maria Souza', '98765432100', 'maria@inovacaoemtintas.com', 'senha456',  2, 1),
+('Carlos Pereira', '45678912345', 'carlos@fabricacaotintasverdes.com', 'senha789', 3, 1),
+('Ana Costa', '32165498765', 'ana@coresdomundo.com', 'senha101',  4, 1),
+('Luiz Fernando', '15975348612', 'luiz@solucoesemtintas.com', 'senha202', 5, 1);
+
 INSERT INTO Funcionario (nome, cpf, email, senha, fkEmpresa, fkNivel, supportId) VALUES
 ('João Silva', '12345678901', 'joao@tintasecores.com', 'senha123', 1, 1, '1061935000000388001'),
 ('Maria Souza', '98765432100', 'maria@inovacaoemtintas.com', 'senha456',  2, 1, '1061935000000389001'),
 ('Carlos Pereira', '45678912345', 'carlos@fabricacaotintasverdes.com', 'senha789', 3, 1, '1061935000000390001'),
 ('Ana Costa', '32165498765', 'ana@coresdomundo.com', 'senha101',  4, 1, '1061935000000391001'),
-('Luiz Fernando', '15975348612', 'luiz@solucoesemtintas.com', 'senha202', 5, 1, '1061935000000392001'),
-('Suporte N3', '', 'support@gasdetect.zohodesk.com', 'senha0101', NULL, 1, '');
+('Luiz Fernando', '15975348612', 'luiz@solucoesemtintas.com', 'senha202', 5, 1, '1061935000000392001');
 
 INSERT INTO Fabrica (cep, logradouro, numero, bairro, cidade, UF, fkEmpresa) VALUES
 ('12345-678', 'Avenida das Tintas', 100, 'Centro', 'São Paulo', 'SP', 1),
@@ -103,9 +109,9 @@ INSERT INTO Fabrica (cep, logradouro, numero, bairro, cidade, UF, fkEmpresa) VAL
 ('98765-432', 'Rua Criativa', 400, 'Criativo', 'Porto Alegre', 'RS', 5);
 
 INSERT INTO LimiteAlerta (limiteAlerta) VALUES
-(15),
+(80),
 (60),
-(20),
+(70),
 (40),
 (20);
 
@@ -130,31 +136,3 @@ INSERT INTO Registro (porcGas, fkSensor) VALUES
 (20.75, 3),
 (15.60, 4),
 (18.30, 5);
-
-INSERT INTO Registro (dtHora, porcGas, fkSensor) VALUES
-('2024-12-01 10:00:00', 22.00, 1),
-('2024-12-02 11:00:00', 28.50, 1),
-('2024-12-03 12:00:00', 19.75, 1),
-('2024-12-04 13:00:00', 17.60, 1),
-('2024-12-05 14:00:00', 70.30, 1),
-('2024-12-06 15:00:00', 81.00, 1),
-('2024-12-07 16:00:00', 2.50, 1),
-('2024-12-08 17:00:00', 10.75, 1),
-('2024-12-09 18:00:00', 4.60, 1),
-('2024-12-10 19:00:00', 5.30, 1);
-
-
-INSERT INTO Registro (dtHora, porcGas, fkSensor) VALUES
-('2024-12-11 10:00:00', 50.00, 1);
-
-INSERT INTO Registro (dtHora, porcGas, fkSensor) VALUES
-('2024-12-13 10:00:00', 0.00, 1);
-
-INSERT INTO Registro (dtHora, porcGas, fkSensor) VALUES
-('2024-12-14 10:00:00', 100, 1);
-
-INSERT INTO Registro (dtHora, porcGas, fkSensor) VALUES
-('2024-12-15 10:00:00', 10, 1);
-
-INSERT INTO Registro (dtHora, porcGas, fkSensor) VALUES
-('2024-12-16 10:00:00', 10, 1);

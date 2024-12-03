@@ -7,12 +7,12 @@ function pesquisar(req, res) {
 
     pesquisafuncModel.pesquisar(email, minemail, empresa)
         .then(
-            function (resultadopesquisar) {
+            function (data) {
                 res.json({
-                    email: resultadopesquisar[0].email,
-                    nome: resultadopesquisar[0].nome,
-                    nivelPermissao: resultadopesquisar[0].idNivel,
-                    cpf: resultadopesquisar[0].cpf
+                    nome: data.nome,
+                    email: data.email,
+                    cpf: data.cpf,
+                    nivelPermissao: data.fkNivel
                 });
             }
         ).catch(
@@ -25,19 +25,12 @@ function pesquisar(req, res) {
 }
 
 function mostrarfuncionario(req, res) {
-    var email = req.body.emailServer;
-    var minemail = req.body.minemailServer;
     var empresa = req.body.empresaServer;
 
-    pesquisafuncModel.mostrarfuncionario(email, minemail, empresa)
+    pesquisafuncModel.mostrarfuncionario(empresa)
         .then(
-            function (resultadomostrarfuncionario) {
-                res.json({
-                    email: resultadomostrarfuncionario[0].email,
-                    nome: resultadomostrarfuncionario[0].nome,
-                    nivelPermissao: resultadomostrarfuncionario[0].idNivel,
-                    cpf: resultadomostrarfuncionario[0].cpf
-                });
+            function (info) {
+                res.json(info);
             }
         ).catch(
             function (erro) {
@@ -46,9 +39,30 @@ function mostrarfuncionario(req, res) {
                 res.status(500).json(erro.sqlMessage);
             }
         )
+
+}
+
+function mostrarfuncionarioesp(req, res) {
+    var empresa = req.body.empresaServer;
+    var idfunc = req.body.funcServer;
+
+    pesquisafuncModel.mostrarfuncionario(empresa, idfunc)
+        .then(
+            function (info) {
+                res.json(info);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("\nHouve um erro ao localizar o funcionario! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        )
+
 }
 
 module.exports = {
     pesquisar,
+    mostrarfuncionarioesp,
     mostrarfuncionario
 }

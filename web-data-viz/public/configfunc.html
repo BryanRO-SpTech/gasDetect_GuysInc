@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html theme="light" lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações Guys Inc</title>
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/config.css">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+</head>
+
+<body onload="mostrardadosfunc()">
+    <script src="./components/configNavBar/configNavBar.js" paginaAtual="perfil"></script>
+
+
+    <div class="container">
+        <div class="cadastro-content">
+            <div class="user">
+                <h3><span id="a_usuario">usuário</span></h3>
+            </div>
+            <div class="input-div1">
+                <div class="labels">
+                    <label for="ipt_nome">Seu nome:</label>
+                </div>
+                <input type="text" id="ipt_nome" placeholder="" oninput="validarNome()">
+                <div class="mensagemValidacao">
+                    <span id="span_mensagem_nome"></span>
+                </div>
+            </div>
+
+            <div class="input-div">
+                <div class="labels">
+                    <label for="ipt_email">E-mail:</label>
+                </div>
+                <input type="email" maxlength="80" id="ipt_email" placeholder="" oninput="validarEmail()">
+                <div class="mensagemValidacao">
+                    <span id="span_mensagem_email"></span>
+                </div>
+            </div>
+
+            <div class="input-div">
+                <div class="labels">
+                    <label for="ipt_cpf">Seu CPF:</label>
+                </div>
+                <input type="text" maxlength="11" id="ipt_cpf" placeholder="" oninput="validarCpf()">
+                <div class="mensagemValidacao">
+                    <span id="span_mensagem_cpf"></span>
+                </div>
+            </div>
+
+            <button class="senha" onclick="alterar_dados()">Alterar dados</button>
+            
+            <span style="color: red; font-weight: bold;" id="span_mensagem_dados_alterados"></span>
+        </div>
+
+    </div>
+
+</body>
+
+<script src="./js/configfunc.js"></script>
+<script src="./js/validarCadastro.js"></script>
+<script>
+
+function trocaTema() {
+    const temaAtual = document.documentElement.getAttribute('theme');
+
+    if (temaAtual === "light") {
+        document.documentElement.setAttribute("theme", "dark");
+        document.getElementById("a_usuario").style.color = "var(--cor-terciaria)";
+    } else {
+        document.documentElement.setAttribute("theme", "light");
+        document.getElementById("a_usuario").style.color = "var(--cor-secundaria)";
+    }
+}
+</script>
+<script>window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){
+    $zoho.salesiq.visitor.name(sessionStorage.NOME);
+    $zoho.salesiq.visitor.email(sessionStorage.EMAIL);
+}}</script><script id="zsiqscript" src="https://salesiq.zohopublic.com/widget?wc=siq16d8b41f912488fb6ba8c00ce7c5fb32ce9b2ebd895fbf8340455d283739d1ed" defer></script>

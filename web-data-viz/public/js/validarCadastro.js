@@ -302,11 +302,13 @@ function salvarfunc() {
     var username = ipt_nome.value
     var useremail = ipt_email.value
     var usercpf = ipt_cpf.value
+    var usersenha = ipt_senha.value
     var userpermissao = ipt_nivel_permissao.value
 
     if (
         nomeValido &&
         emailValido &&
+        senhaValido &&
         userpermissao &&
         cpfValido
     ) {
@@ -319,13 +321,12 @@ function salvarfunc() {
                 nomeServer: username,
                 emailServer: useremail,
                 cpfServer: usercpf,
+                senhaServer: usersenha,
                 nivelServer: userpermissao,
                 estorageServer: empresastorage
             }),
         })
             .then(function (resposta) {
-                console.log("resposta: ", resposta);
-
                 if (resposta.ok) {
                     resposta.json().then(function (data) {
                         span_mensagem_cadastro_efetuado.innerHTML = `Dados cadastrados com sucesso!`;
