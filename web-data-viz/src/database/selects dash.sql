@@ -213,3 +213,9 @@ FROM (
 ) AS sub
 GROUP BY MONTH(dtHora), YEAR(dtHora)
 ORDER BY mes DESC, ano DESC LIMIT 12;
+
+
+SELECT DATE_FORMAT(dtHora, '%b'), TRUNCATE(AVG(porcGas), 2) FROM Registro GROUP BY MONTH(dtHora), YEAR(dtHora) ORDER BY dtHora DESC LIMIT 12;
+SELECT DATE_FORMAT(dtHora, '%d/%b'), TRUNCATE(AVG(porcGas), 2) FROM Registro GROUP BY DAY(dtHora), MONTH(dtHora), YEAR(dtHora) ORDER BY dtHora DESC LIMIT 30;
+
+SELECT `dtHora`, DATE_FORMAT(dtHora, '%h:%i'), TRUNCATE(AVG(porcGas), 2) FROM Registro GROUP BY HOUR(dtHora), DAY(dtHora), MONTH(dtHora), YEAR(dtHora) ORDER BY dtHora DESC LIMIT 30;

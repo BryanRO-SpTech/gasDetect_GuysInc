@@ -19,12 +19,6 @@ let sensorSelecionado = 0;
 //     //             console.log(data);
 //     //         }
 //     //     )
-
-
-
-
-
-
 // }
 
 
