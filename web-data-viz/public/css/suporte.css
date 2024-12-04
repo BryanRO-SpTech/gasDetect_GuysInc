@@ -59,7 +59,7 @@
     padding: 10px;
 }
 
-.contentResposta{
+.contentResposta {
     width: 30vw;
     border-radius: 20px;
     background-color: rgb(197, 197, 197);
@@ -68,7 +68,7 @@
 }
 
 
-.divPergunta{
+.divPergunta {
     display: flex;
     align-items: center;
     height: 10vh;
@@ -76,7 +76,7 @@
     border-top: solid 5px rgb(155, 154, 154); ;
 }
 
-#pergunta{
+#pergunta {
     width: 65vw;
     text-align: center;
     font-size: 20px;
@@ -85,11 +85,11 @@
     border: none;
 }
 
-#pergunta:focus{
+#pergunta:focus {
     outline: none;
 }
 
-.divEnviar{
+.divEnviar {
     display: flex;
     align-items: center;
     border-left: solid 5px rgb(155, 154, 154);;
@@ -98,7 +98,7 @@
     height: 9vh;
 }
 
-.divEnviar img{
+.divEnviar img {
     width:40px;
     transition: all 0.3s;
 }
@@ -110,9 +110,10 @@
 }
 
 .botoes{
-    margin-top: 30vh;
+    position: absolute;
+    bottom: 0;
 }
 
-.n3{
+.n3 {
     color: white;
 }
