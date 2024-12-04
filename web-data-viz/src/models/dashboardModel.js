@@ -133,7 +133,7 @@ async function mediaGasPorMes(idSensor) {
 
     return {
         data: media.reverse(),
-        limite: limite[0].limitealerta
+        limite: limite[0].limiteAlerta
     };
 }
 
@@ -154,7 +154,7 @@ async function mediaGasPorDia(idSensor) {
 
     return {
         data: media.reverse(),
-        limite: limite[0].limitealerta
+        limite: limite[0].limiteAlerta
     };
 }
 
@@ -175,7 +175,7 @@ async function mediaGasHorario(idSensor) {
 
     return {
         data: media.reverse(),
-        limite: limite[0].limitealerta
+        limite: limite[0].limiteAlerta
     };
 }
 
