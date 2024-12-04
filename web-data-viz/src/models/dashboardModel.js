@@ -14,10 +14,7 @@ function listarSensores(idSetor) {
 
 
 function listarSetoresPeloIdFabrica(idFabrica) {
-    var instrucaoSql = `SELECT Setor.*, LimiteAlerta.limiteAlerta
-    FROM Setor
-    JOIN LimiteAlerta ON idParametroAlerta = fkLimite
-    WHERE fkFabrica = ${idFabrica};`;
+    var instrucaoSql = `SELECT view_listar_setor WHERE fkFabrica = ${idFabrica};`;
 
     return database.executar(instrucaoSql);
 }
