@@ -22,7 +22,7 @@ var fabricaRouter = require("./src/routes/fabricaRoutes.js");
 var setorRouter = require("./src/routes/setorRoutes.js");
 var sensorRouter = require("./src/routes/sensorRoutes");
 var dashboardRouter = require("./src/routes/dashboardRoutes");
-var peesquisaFuncRouter = require("./src/routes/pesquisaFuncRoutes");
+var peesquisaFuncRouter = require("./src/routes/pesquisafuncRoutes.js");
 
 
 
