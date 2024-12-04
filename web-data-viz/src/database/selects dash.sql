@@ -40,7 +40,8 @@ WHERE registro.fkSensor = 1 and fkSetor = 1
 ORDER BY dtHora DESC limit 1;
 
 -- select graf diario
-select 	
+selec
+t 	
 	hour(dtHora) AS Hora,
     TRUNCATE(AVG(porcGas),0) AS MediaHora,
     setor.nome AS Setor 
@@ -97,6 +98,7 @@ GROUP BY YEAR(dtHora), MONTH(dtHora);
 select * from Funcionario;
 select * from empresa;
 select * from fabrica;
+select * from sensor;
 
 insert into funcionario values
 (default, 'Suporte N3', '12565678901', 'suporte@gmail.com', 'suporte123', null, null, null);
@@ -227,4 +229,4 @@ WHERE idSensor = 1;
 
 SELECT DATE_FORMAT(dtHora, '%d/%b'), TRUNCATE(AVG(porcGas), 2) FROM Registro GROUP BY DAY(dtHora), MONTH(dtHora), YEAR(dtHora) ORDER BY dtHora DESC LIMIT 30;
 
-SELECT DATE_FORMAT(dtHora, 'Dia %d - %H:%i'), TRUNCATE(AVG(porcGas), 2) FROM Registro GROUP BY HOUR(dtHora), DAY(dtHora), MONTH(dtHora), YEAR(dtHora) ORDER BY dtHora DESC LIMIT 24;
+SELECT DATE_FORMAT(dtHora, 'Dia %d - %h:%i'), TRUNCATE(AVG(porcGas), 2) FROM Registro GROUP BY HOUR(dtHora), DAY(dtHora), MONTH(dtHora), YEAR(dtHora) ORDER BY dtHora DESC LIMIT 24;
