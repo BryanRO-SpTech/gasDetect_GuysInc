@@ -14,7 +14,7 @@ function listarSensores(idSetor) {
 
 
 function listarSetoresPeloIdFabrica(idFabrica) {
-    var instrucaoSql = `SELECT view_listar_setor WHERE fkFabrica = ${idFabrica};`;
+    var instrucaoSql = `SELECT * FROM view_listar_setor WHERE fkFabrica = ${idFabrica};`;
 
     return database.executar(instrucaoSql);
 }
