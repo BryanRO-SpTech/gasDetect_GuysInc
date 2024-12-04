@@ -159,7 +159,9 @@ async function mediaGasPorDia(idSensor) {
 async function mediaGasHorario(idSensor) {
     const media = await database.executar(`
         SELECT DATE_FORMAT(dtHora, 'Dia %d - %H:%i') AS dt, TRUNCATE(MAX(porcGas), 2) AS porcGas 
-        FROM Registro GROUP BY HOUR(dtHora), DAY(dtHora), MONTH(dtHora), YEAR(dtHora) 
+        FROM Registro 
+        WHERE fkSensor = ${idSensor}
+        GROUP BY HOUR(dtHora), DAY(dtHora), MONTH(dtHora), YEAR(dtHora) 
         ORDER BY dtHora DESC LIMIT 24;    
     `);
 
