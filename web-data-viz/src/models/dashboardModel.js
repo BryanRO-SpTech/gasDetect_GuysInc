@@ -123,7 +123,7 @@ async function mediaGasPorMes(idSensor) {
     `);
 
     const limite = await database.executar(`
-        SELECT limitealerta FROM Sensor JOIN Setor ON fkSetor = idSetor
+        SELECT limiteAlerta FROM Sensor JOIN Setor ON fkSetor = idSetor
         JOIN LimiteAlerta ON fkLimite = idParametroAlerta
         WHERE idSensor = ${idSensor};
     `);
@@ -144,7 +144,7 @@ async function mediaGasPorDia(idSensor) {
     `);
 
     const limite = await database.executar(`
-        SELECT limitealerta FROM Sensor JOIN Setor ON fkSetor = idSetor
+        SELECT limiteAlerta FROM Sensor JOIN Setor ON fkSetor = idSetor
         JOIN LimiteAlerta ON fkLimite = idParametroAlerta
         WHERE idSensor = ${idSensor};
     `);
@@ -164,7 +164,7 @@ async function mediaGasHorario(idSensor) {
     `);
 
     const limite = await database.executar(`
-        SELECT limitealerta FROM Sensor JOIN Setor ON fkSetor = idSetor
+        SELECT limiteAlerta FROM Sensor JOIN Setor ON fkSetor = idSetor
         JOIN LimiteAlerta ON fkLimite = idParametroAlerta
         WHERE idSensor = ${idSensor};
     `);
