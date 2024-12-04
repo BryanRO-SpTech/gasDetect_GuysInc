@@ -3445,3 +3445,6 @@ insert into sensor values
 
 
 
+CREATE VIEW view_listar_setor AS SELECT Setor.*, LimiteAlerta.limiteAlerta
+    FROM Setor
+    JOIN LimiteAlerta ON idParametroAlerta = fkLimite;
